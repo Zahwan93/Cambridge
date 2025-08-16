@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebun Ilmu — IGCSE Physics MCQ Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.08); }
+    .option:hover { transform: translateY(-1px); }
+    .choice-correct { border-color: #22c55e !important; background: rgba(34,197,94,.08) !important; }
+    .choice-wrong { border-color: #ef4444 !important; background: rgba(239,68,68,.08) !important; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-white/10 sticky top-0 z-40 bg-slate-900/80 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <img src="https://zahwan93.github.io/Kebun-Ilmu-Matematika-SMP/logo.png" alt="Kebun Ilmu Logo" class="w-10 h-10 rounded-xl ring-2 ring-white/10"/>
+      <div>
+        <h1 class="text-xl font-bold leading-tight">Kebun Ilmu — IGCSE Physics</h1>
+        <p class="text-xs text-slate-300">Topical multiple-choice practice — interactive & elegant</p>
+      </div>
+      <div class="ml-auto flex items-center gap-2">
+        <button id="btnTheme" class="text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition">Theme</button>
+        <a href="#import" class="text-xs px-3 py-1.5 rounded-full bg-sky-600 hover:bg-sky-500 transition">Import Questions (JSON)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Controls -->
+  <section class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-4">
+    <div class="md:col-span-2 glass p-5 rounded-2xl ring-1 ring-white/10 shadow-xl">
+      <h2 class="text-lg font-semibold mb-2">Start a Session</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <label class="block">
+          <span class="text-sm text-slate-300">Topic</span>
+          <select id="topic" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2">
+            <option value="all">All topics</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Number of Questions</span>
+          <input id="count" type="number" min="1" max="50" value="10" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2"/>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Time (minutes)</span>
+          <input id="minutes" type="number" min="0" max="180" value="15" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2"/>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Shuffle Options</span>
+          <input id="shuffleChoices" type="checkbox" class="align-middle ml-2" checked>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Mode</span>
+          <select id="mode" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2">
+            <option value="practice">Practice (instant feedback)</option>
+            <option value="exam">Exam (feedback at the end)</option>
+          </select>
+        </label>
+        <div class="flex items-end">
+          <button id="start" class="w-full py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 font-semibold shadow">Start</button>
+        </div>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Note: To respect copyright, this app does <span class="font-semibold text-slate-200">not include</span> Cambridge IGCSE past paper questions verbatim. Please import your own licensed question bank (see the JSON format below).</p>
+      <label class="mt-3 flex items-center gap-2 text-xs text-slate-300">
+        <input id="demoToggle" type="checkbox" class="accent-sky-600" checked>
+        Enable demo questions (original, IGCSE-style) so you can test the UI now
+      </label>
+    </div>
+    <div class="glass p-5 rounded-2xl ring-1 ring-white/10 shadow-xl">
+      <h2 class="text-lg font-semibold mb-2">Stats</h2>
+      <div class="grid grid-cols-2 gap-3 text-center">
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statScore" class="text-2xl font-bold">0%</div>
+          <div class="text-xs text-slate-300">Score</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statProgress" class="text-2xl font-bold">0/0</div>
+          <div class="text-xs text-slate-300">Progress</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statTime" class="text-2xl font-bold">00:00</div>
+          <div class="text-xs text-slate-300">Time Left</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statStreak" class="text-2xl font-bold">0🔥</div>
+          <div class="text-xs text-slate-300">Streak</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Area -->
+  <main class="max-w-5xl mx-auto px-4 pb-24">
+    <div id="quiz" class="space-y-4"></div>
+    <div id="finish" class="hidden mt-6 p-6 rounded-2xl ring-1 ring-white/10 bg-emerald-900/20">
+      <h3 class="text-xl font-bold mb-2">Summary</h3>
+      <p id="summary" class="text-sm text-slate-200 mb-3"></p>
+      <button id="reviewBtn" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">Review Explanations</button>
+      <button id="restartBtn" class="ml-2 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500">Restart</button>
+      <details class="mt-3">
+        <summary class="cursor-pointer select-none">Export results (JSON)</summary>
+        <pre id="exportArea" class="mt-2 text-xs whitespace-pre-wrap"></pre>
+      </details>
+    </div>
+  </main>
+
+  <!-- Import Section -->
+  <section id="import" class="max-w-5xl mx-auto px-4 pb-24">
+    <div class="glass p-6 rounded-2xl ring-1 ring-white/10">
+      <h2 class="text-lg font-semibold">Import Question Bank (JSON)</h2>
+      <p class="text-sm text-slate-300 mt-1">Upload a <code>.json</code> file. Your questions will be merged into the current bank.</p>
+      <pre class="mt-3 text-xs bg-black/30 p-3 rounded-xl overflow-x-auto"><code>{
+  "meta": {"source": "Your licensed past papers", "author": "Your Name"},
+  "questions": [
+    {
+      "id": "unique-001",
+      "topic": "Mechanics",
+      "paper": "0625/22",
+      "session": "May/Jun 2021",
+      "qnum": "Q3",
+      "question": "<PASTE the exact question text here if you have the rights>",
+      "choices": ["A", "B", "C", "D"],
+      "answer": 2,
+      "explanation": "Your explanation.",
+      "tags": ["suv", "kinematics"],
+      "image": "(optional image URL)"
+    }
+  ]
+}</code></pre>
+      <div class="mt-3 flex items-center gap-3">
+        <input id="file" type="file" accept="application/json" class="block w-full text-sm text-slate-200"/>
+        <button id="loadFile" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">Load</button>
+      </div>
+      <p class="text-xs text-slate-400 mt-2">Reminder: Only import materials you are licensed or permitted to use. This app ships with demo questions that are original (non‑Cambridge) for testing.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-xs text-slate-400 py-10">
+    © <span id="year"></span> Kebun Ilmu — IGCSE Physics MCQ Trainer. Built with ♥.
+  </footer>
+
+  <!-- Question bank (DEMO original, not copied from past papers). Toggle via #demoToggle. -->
+  <script id="demo-bank" type="application/json">{
+    "meta": {"version": "1.1", "note": "Demo questions for UI testing (original, IGCSE-style). Includes sample paper/session/Q-number metadata so you can see how it appears."},
+    "questions": [
+      {
+        "id":"demo-mech-1",
+        "topic":"Mechanics",
+        "paper":"0625/22",
+        "session":"May/Jun 2021",
+        "qnum":"Q3",
+        "question":"A car accelerates uniformly from rest to 20 m/s in 4.0 s. What distance does it travel in this time?",
+        "choices":["10 m","20 m","40 m","80 m"],
+        "answer":3,
+        "explanation":"s = 1/2 at^2; a = Δv/Δt = 20/4 = 5 m/s²; s = 0.5×5×16 = 40 m.",
+        "tags":["suvat"]
+      },
+      {
+        "id":"demo-elec-1",
+        "topic":"Electricity",
+        "paper":"0625/12",
+        "session":"Oct/Nov 2020",
+        "qnum":"Q8",
+        "question":"Two resistors of 6 Ω and 3 Ω are connected in series to a 9 V battery. What is the current?",
+        "choices":["0.5 A","1.0 A","1.5 A","3.0 A"],
+        "answer":1,
+        "explanation":"R_total=9 Ω; I=V/R=9/9=1.0 A.",
+        "tags":["ohm","series"]
+      },
+      {
+        "id":"demo-waves-1",
+        "topic":"Waves",
+        "paper":"0625/21",
+        "session":"May/Jun 2019",
+        "qnum":"Q12",
+        "question":"A wave travels at 340 m/s with frequency 170 Hz. What is its wavelength?",
+        "choices":["0.5 m","1.0 m","2.0 m","3.4 m"],
+        "answer":2,
+        "explanation":"λ=v/f=340/170=2.0 m.",
+        "tags":["lambda=v/f"]
+      }
+    ]
+  }</script>
+
+  <!-- Empty bank to receive licensed past-paper content via import -->
+  <script id="question-bank" type="application/json">{
+    "meta": {"version": "1.0", "note": "Paste/import your licensed past-paper questions. This block intentionally contains no items."},
+    "questions": []
+  }</script>
+
+  <script>
+    // --- Helpers ---
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    const state = {
+      allQuestions: [],
+      picked: [],
+      cursor: 0,
+      correct: 0,
+      streak: 0,
+      startTime: 0,
+      endTime: 0,
+      mode: 'practice',
+      timer: null,
+      timeLeft: 0,
+      answers: [] // {id, choice, correct}
+    };
+
+    const topicsPreferred = ["Mechanics","Thermal","Waves","Electricity","Magnetism","Nuclear","Space","Practical"];
+
+    function loadBanks(){
+      try {
+        const base = JSON.parse(document.getElementById('question-bank').textContent);
+        const demo = JSON.parse(document.getElementById('demo-bank').textContent);
+        state.allQuestions = [].concat(base.questions);
+        if($('#demoToggle').checked){ state.allQuestions = state.allQuestions.concat(demo.questions); }
+      } catch(e){ console.error(e); }
+    }
+
+    function renderTopicOptions(){
+      const sel = document.getElementById('topic');
+      sel.innerHTML = '<option value="all">All topics</option>';
+      const topics = [...new Set(state.allQuestions.map(q=>q.topic))];
+      topicsPreferred.concat(topics).filter((v,i,self)=>self.indexOf(v)===i).forEach(t=>{
+        if(!t) return; const opt=document.createElement('option'); opt.value=t; opt.textContent=t; sel.appendChild(opt);
+      });
+    }
+
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+      return arr;
+    }
+
+    function startQuiz(){
+      const topic = document.getElementById('topic').value;
+      const count = Math.max(1, Math.min(50, parseInt(document.getElementById('count').value||'10')));
+      const minutes = Math.max(0, parseInt(document.getElementById('minutes').value||'0'));
+      state.mode = document.getElementById('mode').value;
+      const shuffleChoices = document.getElementById('shuffleChoices').checked;
+
+      loadBanks();
+      renderTopicOptions();
+
+      let pool = state.allQuestions.filter(q=> topic==='all' ? true : q.topic===topic);
+      pool = shuffle([...pool]);
+      state.picked = pool.slice(0, count).map(q=> ({...q, choices:[...q.choices]}));
+
+      if(shuffleChoices){
+        state.picked.forEach(q=>{
+          const correctText = q.choices[q.answer];
+          shuffle(q.choices);
+          q.answer = q.choices.indexOf(correctText);
+        });
+      }
+
+      state.cursor = 0; state.correct = 0; state.streak = 0; state.answers = [];
+      state.startTime = Date.now();
+      state.endTime = minutes>0 ? state.startTime + minutes*60*1000 : 0;
+      clearInterval(state.timer);
+      if(minutes>0){
+        state.timeLeft = minutes*60;
+        state.timer = setInterval(()=>{
+          state.timeLeft--; updateTimer(); if(state.timeLeft<=0){ clearInterval(state.timer); finishQuiz(); }
+        }, 1000);
+      } else { state.timeLeft = 0; updateTimer(); }
+
+      renderQuestion();
+      updateStats();
+      document.getElementById('finish').classList.add('hidden');
+      document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+    }
+
+    function updateTimer(){
+      const el = document.getElementById('statTime');
+      if(state.endTime===0){ el.textContent = '∞'; return; }
+      const m = Math.max(0, Math.floor(state.timeLeft/60)).toString().padStart(2,'0');
+      const s = Math.max(0, state.timeLeft%60).toString().padStart(2,'0');
+      el.textContent = `${m}:${s}`;
+    }
+
+    function updateStats(){
+      const scorePct = state.picked.length ? Math.round(100*state.correct/state.picked.length) : 0;
+      document.getElementById('statScore').textContent = scorePct + '%';
+      document.getElementById('statProgress').textContent = `${Math.min(state.cursor+1, state.picked.length)}/${state.picked.length}`;
+      document.getElementById('statStreak').textContent = `${state.streak}🔥`;
+    }
+
+    function renderQuestion(){
+      const wrap = document.getElementById('quiz');
+      wrap.innerHTML = '';
+      if(state.cursor >= state.picked.length){ finishQuiz(); return; }
+      const q = state.picked[state.cursor];
+
+      const card = document.createElement('div');
+      card.className = 'glass p-6 rounded-2xl ring-1 ring-white/10 shadow-xl';
+
+      const meta = document.createElement('div');
+      meta.className = 'flex items-start gap-3 flex-wrap';
+      meta.innerHTML = `<div class="text-xs px-2 py-1 bg-white/10 rounded">${q.topic||'—'}</div>` +
+        (q.paper? `<div class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10">Paper: ${q.paper||''} ${q.session? '• '+q.session: ''} ${q.qnum? '• '+q.qnum: ''}</div>`:'' );
+      card.appendChild(meta);
+
+      const h3 = document.createElement('h3');
+      h3.className = 'mt-2 text-lg font-semibold';
+      h3.textContent = q.question;
+      card.appendChild(h3);
+
+      if(q.image){
+        const img = document.createElement('img');
+        img.src = q.image; img.alt='Question figure';
+        img.className = 'mt-3 rounded-xl max-h-60 object-contain ring-1 ring-white/10';
+        card.appendChild(img);
+      }
+
+      const list = document.createElement('div');
+      list.className = 'mt-4 grid gap-3';
+
+      q.choices.forEach((c,idx)=>{
+        const btn = document.createElement('button');
+        btn.className = 'option text-left px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition';
+        btn.innerHTML = `<span class='font-semibold mr-2'>${String.fromCharCode(65+idx)}.</span> ${c}`;
+        btn.addEventListener('click', ()=> selectChoice(idx));
+        list.appendChild(btn);
+      });
+      card.appendChild(list);
+
+      const actions = document.createElement('div');
+      actions.className = 'mt-4 flex items-center gap-3';
+      const skip = document.createElement('button');
+      skip.className = 'px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20';
+      skip.textContent = 'Skip';
+      skip.addEventListener('click', ()=>{ recordAnswer(null,false); nextQuestion(); });
+
+      const reveal = document.createElement('button');
+      reveal.className = 'px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20';
+      reveal.textContent = 'Show Explanation';
+      reveal.addEventListener('click', ()=> showExplain(q, null));
+
+      actions.appendChild(skip);
+      actions.appendChild(reveal);
+      card.appendChild(actions);
+
+      wrap.appendChild(card);
+
+      function selectChoice(idx){
+        const nodes = $$('.option', card);
+        nodes.forEach(n=> n.disabled = true);
+        const correct = idx===q.answer;
+        nodes[idx].classList.add(correct? 'choice-correct' : 'choice-wrong');
+        nodes[q.answer].classList.add('choice-correct');
+        recordAnswer(idx, correct);
+        if(state.mode==='practice') showExplain(q, correct);
+        setTimeout(()=> nextQuestion(), 900);
+      }
+    }
+
+    function showExplain(q){
+      const box = document.createElement('div');
+      box.className = 'mt-3 p-3 rounded-xl bg-black/30 border border-white/10';
+      box.innerHTML = `<div class='font-semibold mb-1'>Explanation</div><div class='text-sm text-slate-200'>${q.explanation||'-'}</div>`;
+      document.getElementById('quiz').firstChild.appendChild(box);
+    }
+
+    function recordAnswer(choice, correct){
+      if(correct){ state.correct++; state.streak++; }
+      else { state.streak = 0; }
+      const q = state.picked[state.cursor];
+      state.answers.push({id:q.id, topic:q.topic, choice, correct, key:q.answer});
+      updateStats();
+    }
+
+    function nextQuestion(){
+      state.cursor++;
+      if(state.cursor < state.picked.length){ renderQuestion(); }
+      else { finishQuiz(); }
+    }
+
+    function finishQuiz(){
+      clearInterval(state.timer);
+      const wrap = document.getElementById('finish');
+      wrap.classList.remove('hidden');
+      const pct = Math.round(100*state.correct/state.picked.length);
+      const timeUsed = Math.round((Date.now()-state.startTime)/1000);
+      const mm = String(Math.floor(timeUsed/60)).padStart(2,'0');
+      const ss = String(timeUsed%60).padStart(2,'0');
+      document.getElementById('summary').textContent = `Score: ${pct}% | Correct ${state.correct} out of ${state.picked.length} | Time: ${mm}:${ss}`;
+      const data = {summary:{score:pct, correct:state.correct, total:state.picked.length, time:timeUsed}, answers:state.answers, picked:state.picked.map(q=>({id:q.id, topic:q.topic, paper:q.paper, session:q.session, qnum:q.qnum}))};
+      document.getElementById('exportArea').textContent = JSON.stringify(data,null,2);
+
+      document.getElementById('reviewBtn').onclick = ()=> renderReview();
+      document.getElementById('restartBtn').onclick = ()=> startQuiz();
+    }
+
+    function renderReview(){
+      const wrap = document.getElementById('quiz');
+      wrap.innerHTML = '';
+      state.picked.forEach((q,i)=>{
+        const card = document.createElement('div');
+        card.className = 'glass p-6 rounded-2xl ring-1 ring-white/10 shadow-xl mb-4';
+        const ans = state.answers[i];
+        card.innerHTML = `<div class='text-xs px-2 py-1 bg-white/10 rounded inline-block mb-2'>${q.topic||'—'}</div>`+
+          (q.paper? `<div class='text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 ml-2 inline-block'>Paper: ${q.paper||''} ${q.session? '• '+q.session: ''} ${q.qnum? '• '+q.qnum: ''}</div>`: '')+
+          `<div class='text-sm text-slate-300 mb-2'></div>
+          <h3 class='text-lg font-semibold mb-2'>${q.question}</h3>`;
+        const list = document.createElement('div');
+        list.className = 'grid gap-2';
+        q.choices.forEach((c,idx)=>{
+          const div = document.createElement('div');
+          div.className = 'px-4 py-3 rounded-xl border';
+          div.classList.add(idx===q.answer ? 'choice-correct' : (ans.choice===idx ? 'choice-wrong' : 'border-white/10 bg-white/5'));
+          div.innerHTML = `<span class='font-semibold mr-2'>${String.fromCharCode(65+idx)}.</span> ${c}`;
+          list.appendChild(div);
+        });
+        card.appendChild(list);
+        const box = document.createElement('div');
+        box.className = 'mt-3 p-3 rounded-xl bg-black/30 border border-white/10 text-sm';
+        box.innerHTML = `<div class='font-semibold mb-1'>Explanation</div>${q.explanation||'-'}`;
+        card.appendChild(box);
+        wrap.appendChild(card);
+      });
+      document.getElementById('finish').scrollIntoView({behavior:'smooth'});
+    }
+
+    function loadFromFile(){
+      const input = document.getElementById('file');
+      const file = input.files?.[0];
+      if(!file) return alert('Choose a JSON file first.');
+      const reader = new FileReader();
+      reader.onload = (e)=>{
+        try{
+          const json = JSON.parse(e.target.result);
+          if(!json.questions || !Array.isArray(json.questions)) throw new Error('Invalid JSON structure.');
+          json.questions.forEach((q,idx)=>{
+            if(!q.id || !q.topic || !q.question || !Array.isArray(q.choices) || typeof q.answer!=="number"){
+              throw new Error(`Question at index ${idx} is invalid.`);
+            }
+          });
+          const base = JSON.parse(document.getElementById('question-bank').textContent);
+          base.questions = base.questions.concat(json.questions);
+          document.getElementById('question-bank').textContent = JSON.stringify(base);
+          alert(`Loaded ${json.questions.length} question(s).`);
+          loadBanks();
+          renderTopicOptions();
+        } catch(err){ alert('Failed to load: '+ err.message); }
+      };
+      reader.readAsText(file);
+    }
+
+    function toggleTheme(){
+      document.body.classList.toggle('bg-slate-50');
+      document.body.classList.toggle('text-slate-900');
+    }
+
+    // Init
+    document.getElementById('start').addEventListener('click', startQuiz);
+    document.getElementById('loadFile').addEventListener('click', loadFromFile);
+    document.getElementById('btnTheme').addEventListener('click', toggleTheme);
+    document.getElementById('demoToggle').addEventListener('change', ()=>{ loadBanks(); renderTopicOptions(); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // First load
+    loadBanks();
+    renderTopicOptions();
+  </script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebun Ilmu — Primary Checkpoint MCQ Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.08); }
+    .option:hover { transform: translateY(-1px); }
+    .choice-correct { border-color: #22c55e !important; background: rgba(34,197,94,.08) !important; }
+    .choice-wrong { border-color: #ef4444 !important; background: rgba(239,68,68,.08) !important; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-white/10 sticky top-0 z-40 bg-slate-900/80 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <img src="https://zahwan93.github.io/Kebun-Ilmu-Matematika-SMP/logo.png" alt="Kebun Ilmu Logo" class="w-10 h-10 rounded-xl ring-2 ring-white/10"/>
+      <div>
+        <h1 class="text-xl font-bold leading-tight">Kebun Ilmu — Checkpoint</h1>
+        <p class="text-xs text-slate-300">Topical multiple-choice practice — Primary Grade 6</p>
+      </div>
+      <div class="ml-auto flex items-center gap-2">
+        <button id="btnTheme" class="text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition">Theme</button>
+        <a href="#import" class="text-xs px-3 py-1.5 rounded-full bg-sky-600 hover:bg-sky-500 transition">Import Questions (JSON)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Controls -->
+  <section class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-4">
+    <div class="md:col-span-2 glass p-5 rounded-2xl ring-1 ring-white/10 shadow-xl">
+      <h2 class="text-lg font-semibold mb-2">Start a Session</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <label class="block">
+          <span class="text-sm text-slate-300">Topic</span>
+          <select id="topic" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2">
+            <option value="all">All topics</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Number of Questions</span>
+          <input id="count" type="number" min="1" max="50" value="10" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2"/>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Time (minutes)</span>
+          <input id="minutes" type="number" min="0" max="180" value="15" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2"/>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Shuffle Options</span>
+          <input id="shuffleChoices" type="checkbox" class="align-middle ml-2" checked>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Mode</span>
+          <select id="mode" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2">
+            <option value="practice">Practice (instant feedback)</option>
+            <option value="exam">Exam (feedback at the end)</option>
+          </select>
+        </label>
+        <div class="flex items-end">
+          <button id="start" class="w-full py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 font-semibold shadow">Start</button>
+        </div>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Note: To respect copyright, this app does <span class="font-semibold text-slate-200">not include</span> Cambridge IGCSE past paper questions verbatim. Please import your own licensed question bank (see the JSON format below).</p>
+      <label class="mt-3 flex items-center gap-2 text-xs text-slate-300">
+        <input id="demoToggle" type="checkbox" class="accent-sky-600" checked>
+        Enable demo questions (original, IGCSE-style) so you can test the UI now
+      </label>
+    </div>
+    <div class="glass p-5 rounded-2xl ring-1 ring-white/10 shadow-xl">
+      <h2 class="text-lg font-semibold mb-2">Stats</h2>
+      <div class="grid grid-cols-2 gap-3 text-center">
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statScore" class="text-2xl font-bold">0%</div>
+          <div class="text-xs text-slate-300">Score</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statProgress" class="text-2xl font-bold">0/0</div>
+          <div class="text-xs text-slate-300">Progress</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statTime" class="text-2xl font-bold">00:00</div>
+          <div class="text-xs text-slate-300">Time Left</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statStreak" class="text-2xl font-bold">0🔥</div>
+          <div class="text-xs text-slate-300">Streak</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Area -->
+  <main class="max-w-5xl mx-auto px-4 pb-24">
+    <div id="quiz" class="space-y-4"></div>
+    <div id="finish" class="hidden mt-6 p-6 rounded-2xl ring-1 ring-white/10 bg-emerald-900/20">
+      <h3 class="text-xl font-bold mb-2">Summary</h3>
+      <p id="summary" class="text-sm text-slate-200 mb-3"></p>
+      <button id="reviewBtn" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">Review Explanations</button>
+      <button id="restartBtn" class="ml-2 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500">Restart</button>
+      <details class="mt-3">
+        <summary class="cursor-pointer select-none">Export results (JSON)</summary>
+        <pre id="exportArea" class="mt-2 text-xs whitespace-pre-wrap"></pre>
+      </details>
+    </div>
+  </main>
+
+  <!-- Import Section -->
+  <section id="import" class="max-w-5xl mx-auto px-4 pb-24">
+    <div class="glass p-6 rounded-2xl ring-1 ring-white/10">
+      <h2 class="text-lg font-semibold">Import Question Bank (JSON)</h2>
+      <p class="text-sm text-slate-300 mt-1">Upload a <code>.json</code> file. Your questions will be merged into the current bank.</p>
+      <pre class="mt-3 text-xs bg-black/30 p-3 rounded-xl overflow-x-auto"><code>{
+  "meta": {"source": "Your licensed past papers", "author": "Your Name"},
+  "questions": [
+    {
+      "id": "unique-001",
+      "topic": "Mechanics",
+      "paper": "0625/22",
+      "session": "May/Jun 2021",
+      "qnum": "Q3",
+      "question": "<PASTE the exact question text here if you have the rights>",
+      "choices": ["A", "B", "C", "D"],
+      "answer": 2,
+      "explanation": "Your explanation.",
+      "tags": ["suv", "kinematics"],
+      "image": "(optional image URL)"
+    }
+  ]
+}</code></pre>
+      <div class="mt-3 flex items-center gap-3">
+        <input id="file" type="file" accept="application/json" class="block w-full text-sm text-slate-200"/>
+        <button id="loadFile" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">Load</button>
+      </div>
+      <p class="text-xs text-slate-400 mt-2">Reminder: Only import materials you are licensed or permitted to use. This app ships with demo questions that are original (non‑Cambridge) for testing.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-xs text-slate-400 py-10">
+    © <span id="year"></span> Kebun Ilmu — Primary Grade 6 Checkpoint MCQ Trainer. Built with ♥.
+  </footer>
+
+  <!-- Question bank (Primary Grade 6 Topics) -->
+<script id="demo-bank" type="application/json">{
+  "meta": {
+    "version": "1.1",
+    "note": "Primary Grade 6 checkpoint topics"
+  },
+  "questions": [
+    {
+      "id":"q-hd-1",
+      "topic":"Human Disease",
+      "question":"Which disease is caused by a deficiency of Vitamin C?",
+      "choices":["Rickets","Scurvy","Goitre","Anaemia"],
+      "answer":1,
+      "explanation":"Scurvy is caused by lack of Vitamin C."
+    },
+    {
+      "id":"q-fc-1",
+      "topic":"Food Chains and Food Webs",
+      "question":"In a food chain: grass → rabbit → fox, which organism is the primary consumer?",
+      "choices":["Grass","Rabbit","Fox","All of them"],
+      "answer":1,
+      "explanation":"The rabbit eats the producer (grass), so it is the primary consumer."
+    },
+    {
+      "id":"q-pm-1",
+      "topic":"Properties of Matter",
+      "question":"Which state of matter has a definite volume but no definite shape?",
+      "choices":["Solid","Liquid","Gas","Plasma"],
+      "answer":1,
+      "explanation":"Liquids have a definite volume but take the shape of their container."
+    },
+    {
+      "id":"q-pc-1",
+      "topic":"Physical and Chemical Changes",
+      "question":"Which of these is a chemical change?",
+      "choices":["Melting ice","Boiling water","Burning wood","Breaking glass"],
+      "answer":2,
+      "explanation":"Burning wood produces new substances, so it is a chemical change."
+    },
+    {
+      "id":"q-ef-1",
+      "topic":"Effect of Forces",
+      "question":"Which force slows down a moving bicycle on the road?",
+      "choices":["Magnetic force","Friction","Gravity","Air pressure"],
+      "answer":1,
+      "explanation":"Friction between tires and road slows the bicycle."
+    },
+    {
+      "id":"q-ml-1",
+      "topic":"Movement of Light",
+      "question":"When light passes from air into water, it bends. What is this effect called?",
+      "choices":["Reflection","Refraction","Absorption","Diffusion"],
+      "answer":1,
+      "explanation":"The bending of light as it enters a different medium is refraction."
+    },
+    {
+      "id":"q-ec-1",
+      "topic":"More About Electrical Circuits",
+      "question":"What happens to the brightness of bulbs when more bulbs are added in series?",
+      "choices":["Increase","Decrease","Stay the same","Explode"],
+      "answer":1,
+      "explanation":"Adding bulbs in series increases total resistance, so current decreases and bulbs dim."
+    },
+    {
+      "id":"q-rk-1",
+      "topic":"More About Rocks",
+      "question":"Which type of rock is formed from cooled lava?",
+      "choices":["Sedimentary","Igneous","Metamorphic","Fossil"],
+      "answer":1,
+      "explanation":"Igneous rocks form when molten lava or magma cools and solidifies."
+    },
+    {
+      "id":"q-sl-1",
+      "topic":"Soil",
+      "question":"Which type of soil holds the most water?",
+      "choices":["Sandy","Clay","Loamy","Gravel"],
+      "answer":1,
+      "explanation":"Clay soil particles are very small, so they retain more water."
+    },
+    {
+      "id":"q-ss-1",
+      "topic":"More About the Solar System",
+      "question":"Which planet is known as the 'Red Planet'?",
+      "choices":["Venus","Mars","Jupiter","Mercury"],
+      "answer":1,
+      "explanation":"Mars appears red because of iron oxide (rust) on its surface."
+    }
+  ]
+}</script>
+
+
+  <!-- Empty bank to receive licensed past-paper content via import -->
+    <!-- Question bank (Primary Grade 6) -->
+  <script id="question-bank" type="application/json">{
+    "meta": {"versi": "1.0", "catatan": "Contoh soal Primary 6 Checkpoint"},
+    "questions": [
+
+      {"id":"hd-1","topic":"Human disease","question":"Which of the following is caused by a virus?","choices":["Malaria","Tuberculosis","Influenza","Ringworm"],"answer":2,"explanation":"Influenza is caused by a virus. Malaria (protozoa), Tuberculosis (bacteria), Ringworm (fungus).","tags":["disease","virus"]},
+  {"id":"hd-2","topic":"Human disease","question":"How can we prevent the spread of cholera?","choices":["By vaccination","By using mosquito nets","By drinking clean water","By eating more fruits"],"answer":2,"explanation":"Cholera spreads through contaminated water. Clean water prevents it.","tags":["disease","prevention"]},
+  {"id":"hd-3","topic":"Human disease","question":"Which disease is spread by mosquitoes?","choices":["Typhoid","Dengue","Tuberculosis","Measles"],"answer":1,"explanation":"Dengue fever is transmitted by Aedes mosquitoes.","tags":["disease","mosquito"]},
+  {"id":"hd-4","topic":"Human disease","question":"What type of microorganism causes tuberculosis?","choices":["Virus","Bacterium","Fungus","Protozoa"],"answer":1,"explanation":"Tuberculosis is caused by Mycobacterium tuberculosis, a bacterium.","tags":["disease","bacteria"]},
+  {"id":"hd-5","topic":"Human disease","question":"Which disease can be prevented by using mosquito nets?","choices":["Malaria","Influenza","Diarrhoea","Cholera"],"answer":0,"explanation":"Malaria spreads through bites of infected mosquitoes. Nets help prevent it.","tags":["disease","mosquito"]},
+  {"id":"hd-6","topic":"Human disease","question":"Which of these is a fungal disease?","choices":["Ringworm","Cholera","Typhoid","Polio"],"answer":0,"explanation":"Ringworm is a fungal infection that affects the skin.","tags":["disease","fungus"]},
+  {"id":"hd-7","topic":"Human disease","question":"Which disease affects the liver and can be caused by a virus?","choices":["Hepatitis","Pneumonia","Diabetes","Cholera"],"answer":0,"explanation":"Hepatitis is an inflammation of the liver, often caused by viruses.","tags":["disease","liver"]},
+  {"id":"hd-8","topic":"Human disease","question":"Which of the following is a water-borne disease?","choices":["Cholera","Measles","Dengue","Tuberculosis"],"answer":0,"explanation":"Cholera spreads through contaminated water.","tags":["disease","water"]},
+  {"id":"hd-9","topic":"Human disease","question":"What is the main symptom of malaria?","choices":["Cough","Fever and chills","Skin rash","Diarrhoea"],"answer":1,"explanation":"Malaria causes recurring fever, chills, and sweating.","tags":["disease","malaria"]},
+  {"id":"hd-10","topic":"Human disease","question":"Which of these diseases can be prevented by vaccination?","choices":["Measles","Diarrhoea","Scurvy","Asthma"],"answer":0,"explanation":"Vaccination protects against measles and many other viral diseases.","tags":["disease","vaccine"]},
+  {"id":"hd-11","topic":"Human disease","question":"Which of the following is a non-communicable disease?","choices":["Diabetes","Cholera","Influenza","Malaria"],"answer":0,"explanation":"Diabetes cannot spread from person to person, so it is non-communicable.","tags":["disease","non-communicable"]},
+  {"id":"hd-12","topic":"Human disease","question":"Scurvy is caused by the lack of which vitamin?","choices":["Vitamin A","Vitamin C","Vitamin D","Vitamin K"],"answer":1,"explanation":"Scurvy is caused by vitamin C deficiency.","tags":["disease","deficiency"]},
+  {"id":"hd-13","topic":"Human disease","question":"Which organ does tuberculosis mainly affect?","choices":["Heart","Lungs","Liver","Kidneys"],"answer":1,"explanation":"Tuberculosis mainly affects the lungs, though it can spread elsewhere.","tags":["disease","lungs"]},
+  {"id":"hd-14","topic":"Human disease","question":"Which of these is a sexually transmitted disease (STD)?","choices":["HIV/AIDS","Typhoid","Dengue","Measles"],"answer":0,"explanation":"HIV/AIDS is spread through sexual contact and blood.","tags":["disease","STD"]},
+  {"id":"hd-15","topic":"Human disease","question":"Which deficiency disease is caused by lack of Vitamin D?","choices":["Goitre","Rickets","Anaemia","Kwashiorkor"],"answer":1,"explanation":"Rickets is caused by Vitamin D deficiency, leading to weak bones.","tags":["disease","deficiency"]},
+  {"id":"hd-16","topic":"Human disease","question":"Which of these diseases is caused by protozoa?","choices":["Malaria","Influenza","Ringworm","Tuberculosis"],"answer":0,"explanation":"Malaria is caused by the protozoan Plasmodium.","tags":["disease","protozoa"]},
+  {"id":"hd-17","topic":"Human disease","question":"Which mineral deficiency causes anaemia?","choices":["Calcium","Iron","Iodine","Zinc"],"answer":1,"explanation":"Iron deficiency leads to anaemia, causing tiredness and weakness.","tags":["disease","deficiency"]},
+  {"id":"hd-18","topic":"Human disease","question":"Which of the following spreads through coughing and sneezing?","choices":["Influenza","Diabetes","Cholera","Rickets"],"answer":0,"explanation":"Influenza is spread by droplets released when infected people cough or sneeze.","tags":["disease","airborne"]},
+  {"id":"hd-19","topic":"Human disease","question":"Goitre is caused by deficiency of which mineral?","choices":["Iron","Iodine","Calcium","Potassium"],"answer":1,"explanation":"Iodine deficiency causes goitre, swelling of the thyroid gland.","tags":["disease","deficiency"]},
+  {"id":"hd-20","topic":"Human disease","question":"Which disease is commonly known as the 'silent killer'?","choices":["Hypertension","Malaria","Tuberculosis","Hepatitis"],"answer":0,"explanation":"Hypertension often shows no symptoms but can lead to heart disease and stroke.","tags":["disease","non-communicable"]},
+{"id":"hd-21","topic":"Human disease","question":"Which part of the body is mainly affected by hepatitis?","choices":["Lungs","Liver","Kidneys","Heart"],"answer":1,"explanation":"Hepatitis is an inflammation of the liver.","tags":["disease","liver"]},
+  {"id":"hd-22","topic":"Human disease","question":"Which of these diseases is NOT infectious?","choices":["Cholera","Diabetes","Influenza","Malaria"],"answer":1,"explanation":"Diabetes is a lifestyle/non-communicable disease, not spread by infection.","tags":["disease","non-communicable"]},
+  {"id":"hd-23","topic":"Human disease","question":"Which disease is caused by lack of protein in the diet?","choices":["Kwashiorkor","Rickets","Scurvy","Goitre"],"answer":0,"explanation":"Kwashiorkor is caused by protein deficiency.","tags":["disease","deficiency"]},
+  {"id":"hd-24","topic":"Human disease","question":"Which microorganism causes polio?","choices":["Fungus","Virus","Bacterium","Protozoa"],"answer":1,"explanation":"Polio is caused by poliovirus.","tags":["disease","virus"]},
+  {"id":"hd-25","topic":"Human disease","question":"Which of these diseases is commonly spread by houseflies?","choices":["Typhoid","Malaria","Chickenpox","Tuberculosis"],"answer":0,"explanation":"Houseflies can spread bacteria that cause typhoid.","tags":["disease","vector"]},
+  {"id":"hd-26","topic":"Human disease","question":"What is the main method to prevent the spread of measles?","choices":["Washing hands","Vaccination","Using mosquito nets","Boiling water"],"answer":1,"explanation":"Measles is prevented by MMR vaccination.","tags":["disease","prevention"]},
+  {"id":"hd-27","topic":"Human disease","question":"Which of these diseases mainly affects the nervous system?","choices":["Polio","Cholera","Diabetes","Typhoid"],"answer":0,"explanation":"Polio attacks the nervous system and may cause paralysis.","tags":["disease","nervous system"]},
+  {"id":"hd-28","topic":"Human disease","question":"Which disease is often called 'childhood killer' if vaccination is missed?","choices":["Measles","Diabetes","Hypertension","Scurvy"],"answer":0,"explanation":"Measles can be deadly in children without vaccination.","tags":["disease","childhood"]},
+  {"id":"hd-29","topic":"Human disease","question":"What type of disease is cancer?","choices":["Deficiency disease","Non-communicable disease","Infectious disease","Vector-borne disease"],"answer":1,"explanation":"Cancer is a non-communicable disease caused by abnormal cell growth.","tags":["disease","cancer"]},
+  {"id":"hd-30","topic":"Human disease","question":"Which of the following is the best way to prevent food poisoning?","choices":["Storing food properly","Using mosquito nets","Taking antibiotics daily","Drinking more water"],"answer":0,"explanation":"Food poisoning can be avoided by proper food storage and hygiene.","tags":["disease","food safety"]},
+
+
+      {"id":"fc-1","topic":"Food chains and food webs","question":"In a food chain, plants are always the ...","choices":["Consumers","Decomposers","Producers","Carnivores"],"answer":2,"explanation":"Plants make their own food by photosynthesis, so they are producers.","tags":["food chain","producers"]},
+      {"id":"fc-2","topic":"Food chains and food webs","question":"Which organism is a primary consumer?","choices":["Lion","Goat","Eagle","Mushroom"],"answer":1,"explanation":"Goat eats plants directly, so it is a primary consumer.","tags":["food chain","consumers"]},
+
+      {"id":"pm-1","topic":"Properties of matter","question":"Which of these is a property of solids?","choices":["Fixed shape","Flow easily","Easily compressed","No definite volume"],"answer":0,"explanation":"Solids have a fixed shape and definite volume.","tags":["matter","solid"]},
+      {"id":"pm-2","topic":"Properties of matter","question":"Particles in a gas are ...","choices":["Closely packed","Far apart and move freely","Arranged in layers","Vibrate in place"],"answer":1,"explanation":"Gas particles are far apart and move randomly with high energy.","tags":["matter","gas"]},
+
+      {"id":"pc-1","topic":"Physical and chemical changes","question":"Melting of ice is a ...","choices":["Physical change","Chemical change","Both","Neither"],"answer":0,"explanation":"Melting changes state from solid to liquid, but no new substance is formed.","tags":["physical change"]},
+      {"id":"pc-2","topic":"Physical and chemical changes","question":"Rusting of iron is a ...","choices":["Physical change","Chemical change","Reversible change","Temporary change"],"answer":1,"explanation":"Rusting forms a new substance (iron oxide), so it is a chemical change.","tags":["chemical change"]},
+
+      {"id":"ef-1","topic":"Effect of forces","question":"Which instrument measures force?","choices":["Thermometer","Spring balance","Barometer","Ammeter"],"answer":1,"explanation":"A spring balance (or Newton meter) is used to measure force.","tags":["force","measurement"]},
+      {"id":"ef-2","topic":"Effect of forces","question":"Friction is useful because it ...","choices":["Slows down movement","Helps us walk without slipping","Wastes energy","Heats surfaces"],"answer":1,"explanation":"Friction allows grip, so we can walk without slipping.","tags":["friction"]},
+
+      {"id":"ml-1","topic":"Movement of light","question":"Light travels in ...","choices":["Curved lines","Straight lines","Random paths","Circular paths"],"answer":1,"explanation":"Light travels in straight lines.","tags":["light"]},
+      {"id":"ml-2","topic":"Movement of light","question":"Which change happens when light enters water from air?","choices":["It reflects","It refracts","It disappears","It speeds up"],"answer":1,"explanation":"Light bends (refracts) when moving between different media.","tags":["refraction"]},
+
+      {"id":"ec-1","topic":"More about electrical circuits","question":"Which material is a good conductor of electricity?","choices":["Wood","Rubber","Copper","Plastic"],"answer":2,"explanation":"Copper is a good conductor used in wires.","tags":["electricity","conductor"]},
+      {"id":"ec-2","topic":"More about electrical circuits","question":"What happens if one bulb in a series circuit blows?","choices":["Other bulbs stay on","All bulbs go off","Nothing changes","Circuit gets stronger"],"answer":1,"explanation":"In a series circuit, if one bulb fails, the whole circuit is broken.","tags":["circuit","series"]},
+
+      {"id":"rk-1","topic":"More about rocks","question":"Which rock is formed from cooled lava?","choices":["Igneous","Sedimentary","Metamorphic","Fossil"],"answer":0,"explanation":"Igneous rocks form from cooled lava or magma.","tags":["rocks","igneous"]},
+      {"id":"rk-2","topic":"More about rocks","question":"Sandstone is an example of ...","choices":["Igneous rock","Sedimentary rock","Metamorphic rock","Mineral"],"answer":1,"explanation":"Sandstone forms from layers of sand compacted, so it is sedimentary.","tags":["rocks","sedimentary"]},
+
+      {"id":"sl-1","topic":"Soil","question":"Which type of soil holds the most water?","choices":["Clay soil","Sandy soil","Loamy soil","Gravel"],"answer":0,"explanation":"Clay soil particles are very fine and hold water tightly.","tags":["soil","water retention"]},
+      {"id":"sl-2","topic":"Soil","question":"Loamy soil is best for farming because ...","choices":["It is very dry","It has good drainage and nutrients","It is too sticky","It contains only sand"],"answer":1,"explanation":"Loamy soil has balanced sand, silt, and clay, making it fertile.","tags":["soil","farming"]},
+
+      {"id":"ss-1","topic":"More about the solar system","question":"Which planet is known as the Red Planet?","choices":["Earth","Mars","Jupiter","Venus"],"answer":1,"explanation":"Mars looks red because of iron oxide on its surface.","tags":["planet","mars"]},
+      {"id":"ss-2","topic":"More about the solar system","question":"What causes day and night on Earth?","choices":["Earth’s revolution","Earth’s rotation","Moon’s revolution","Sun’s movement"],"answer":1,"explanation":"Day and night occur due to Earth’s rotation on its axis.","tags":["earth","rotation"]}
+    ]
+  }</script>
+
+
+  <script>
+    // --- Helpers ---
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    const state = {
+      allQuestions: [],
+      picked: [],
+      cursor: 0,
+      correct: 0,
+      streak: 0,
+      startTime: 0,
+      endTime: 0,
+      mode: 'practice',
+      timer: null,
+      timeLeft: 0,
+      answers: [] // {id, choice, correct}
+    };
+
+    const topicsPreferred = [
+  "Human disease",
+  "Food chains and food webs",
+  "Properties of matter",
+  "Physical and chemical changes",
+  "Effect of forces",
+  "Movement of light",
+  "More about electrical circuits",
+  "More about rocks",
+  "Soil",
+  "More about the solar system"
+];
+
+
+    function loadBanks(){
+      try {
+        const base = JSON.parse(document.getElementById('question-bank').textContent);
+        const demo = JSON.parse(document.getElementById('demo-bank').textContent);
+        state.allQuestions = [].concat(base.questions);
+        if($('#demoToggle').checked){ state.allQuestions = state.allQuestions.concat(demo.questions); }
+      } catch(e){ console.error(e); }
+    }
+
+    function renderTopicOptions(){
+      const sel = document.getElementById('topic');
+      sel.innerHTML = '<option value="all">All topics</option>';
+      const topics = [...new Set(state.allQuestions.map(q=>q.topic))];
+      topicsPreferred.concat(topics).filter((v,i,self)=>self.indexOf(v)===i).forEach(t=>{
+        if(!t) return; const opt=document.createElement('option'); opt.value=t; opt.textContent=t; sel.appendChild(opt);
+      });
+    }
+
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+      return arr;
+    }
+
+    function startQuiz(){
+      const topic = document.getElementById('topic').value;
+      const count = Math.max(1, Math.min(50, parseInt(document.getElementById('count').value||'10')));
+      const minutes = Math.max(0, parseInt(document.getElementById('minutes').value||'0'));
+      state.mode = document.getElementById('mode').value;
+      const shuffleChoices = document.getElementById('shuffleChoices').checked;
+
+      loadBanks();
+      renderTopicOptions();
+
+      let pool = state.allQuestions.filter(q=> topic==='all' ? true : q.topic===topic);
+      pool = shuffle([...pool]);
+      state.picked = pool.slice(0, count).map(q=> ({...q, choices:[...q.choices]}));
+
+      if(shuffleChoices){
+        state.picked.forEach(q=>{
+          const correctText = q.choices[q.answer];
+          shuffle(q.choices);
+          q.answer = q.choices.indexOf(correctText);
+        });
+      }
+
+      state.cursor = 0; state.correct = 0; state.streak = 0; state.answers = [];
+      state.startTime = Date.now();
+      state.endTime = minutes>0 ? state.startTime + minutes*60*1000 : 0;
+      clearInterval(state.timer);
+      if(minutes>0){
+        state.timeLeft = minutes*60;
+        state.timer = setInterval(()=>{
+          state.timeLeft--; updateTimer(); if(state.timeLeft<=0){ clearInterval(state.timer); finishQuiz(); }
+        }, 1000);
+      } else { state.timeLeft = 0; updateTimer(); }
+
+      renderQuestion();
+      updateStats();
+      document.getElementById('finish').classList.add('hidden');
+      document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+    }
+
+    function updateTimer(){
+      const el = document.getElementById('statTime');
+      if(state.endTime===0){ el.textContent = '∞'; return; }
+      const m = Math.max(0, Math.floor(state.timeLeft/60)).toString().padStart(2,'0');
+      const s = Math.max(0, state.timeLeft%60).toString().padStart(2,'0');
+      el.textContent = `${m}:${s}`;
+    }
+
+    function updateStats(){
+      const scorePct = state.picked.length ? Math.round(100*state.correct/state.picked.length) : 0;
+      document.getElementById('statScore').textContent = scorePct + '%';
+      document.getElementById('statProgress').textContent = `${Math.min(state.cursor+1, state.picked.length)}/${state.picked.length}`;
+      document.getElementById('statStreak').textContent = `${state.streak}🔥`;
+    }
+
+    function renderQuestion(){
+      const wrap = document.getElementById('quiz');
+      wrap.innerHTML = '';
+      if(state.cursor >= state.picked.length){ finishQuiz(); return; }
+      const q = state.picked[state.cursor];
+
+      const card = document.createElement('div');
+      card.className = 'glass p-6 rounded-2xl ring-1 ring-white/10 shadow-xl';
+
+      const meta = document.createElement('div');
+      meta.className = 'flex items-start gap-3 flex-wrap';
+      meta.innerHTML = `<div class="text-xs px-2 py-1 bg-white/10 rounded">${q.topic||'—'}</div>` +
+        (q.paper? `<div class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10">Paper: ${q.paper||''} ${q.session? '• '+q.session: ''} ${q.qnum? '• '+q.qnum: ''}</div>`:'' );
+      card.appendChild(meta);
+
+      const h3 = document.createElement('h3');
+      h3.className = 'mt-2 text-lg font-semibold';
+      h3.textContent = q.question;
+      card.appendChild(h3);
+
+      if(q.image){
+        const img = document.createElement('img');
+        img.src = q.image; img.alt='Question figure';
+        img.className = 'mt-3 rounded-xl max-h-60 object-contain ring-1 ring-white/10';
+        card.appendChild(img);
+      }
+
+      const list = document.createElement('div');
+      list.className = 'mt-4 grid gap-3';
+
+      q.choices.forEach((c,idx)=>{
+        const btn = document.createElement('button');
+        btn.className = 'option text-left px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition';
+        btn.innerHTML = `<span class='font-semibold mr-2'>${String.fromCharCode(65+idx)}.</span> ${c}`;
+        btn.addEventListener('click', ()=> selectChoice(idx));
+        list.appendChild(btn);
+      });
+      card.appendChild(list);
+
+      const actions = document.createElement('div');
+      actions.className = 'mt-4 flex items-center gap-3';
+      const skip = document.createElement('button');
+      skip.className = 'px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20';
+      skip.textContent = 'Skip';
+      skip.addEventListener('click', ()=>{ recordAnswer(null,false); nextQuestion(); });
+
+      const reveal = document.createElement('button');
+      reveal.className = 'px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20';
+      reveal.textContent = 'Show Explanation';
+      reveal.addEventListener('click', ()=> showExplain(q, null));
+
+      actions.appendChild(skip);
+      actions.appendChild(reveal);
+      card.appendChild(actions);
+
+      wrap.appendChild(card);
+
+      function selectChoice(idx){
+        const nodes = $$('.option', card);
+        nodes.forEach(n=> n.disabled = true);
+        const correct = idx===q.answer;
+        nodes[idx].classList.add(correct? 'choice-correct' : 'choice-wrong');
+        nodes[q.answer].classList.add('choice-correct');
+        recordAnswer(idx, correct);
+        if(state.mode==='practice') showExplain(q, correct);
+        setTimeout(()=> nextQuestion(), 900);
+      }
+    }
+
+    function showExplain(q){
+      const box = document.createElement('div');
+      box.className = 'mt-3 p-3 rounded-xl bg-black/30 border border-white/10';
+      box.innerHTML = `<div class='font-semibold mb-1'>Explanation</div><div class='text-sm text-slate-200'>${q.explanation||'-'}</div>`;
+      document.getElementById('quiz').firstChild.appendChild(box);
+    }
+
+    function recordAnswer(choice, correct){
+      if(correct){ state.correct++; state.streak++; }
+      else { state.streak = 0; }
+      const q = state.picked[state.cursor];
+      state.answers.push({id:q.id, topic:q.topic, choice, correct, key:q.answer});
+      updateStats();
+    }
+
+    function nextQuestion(){
+      state.cursor++;
+      if(state.cursor < state.picked.length){ renderQuestion(); }
+      else { finishQuiz(); }
+    }
+
+    function finishQuiz(){
+      clearInterval(state.timer);
+      const wrap = document.getElementById('finish');
+      wrap.classList.remove('hidden');
+      const pct = Math.round(100*state.correct/state.picked.length);
+      const timeUsed = Math.round((Date.now()-state.startTime)/1000);
+      const mm = String(Math.floor(timeUsed/60)).padStart(2,'0');
+      const ss = String(timeUsed%60).padStart(2,'0');
+      document.getElementById('summary').textContent = `Score: ${pct}% | Correct ${state.correct} out of ${state.picked.length} | Time: ${mm}:${ss}`;
+      const data = {summary:{score:pct, correct:state.correct, total:state.picked.length, time:timeUsed}, answers:state.answers, picked:state.picked.map(q=>({id:q.id, topic:q.topic, paper:q.paper, session:q.session, qnum:q.qnum}))};
+      document.getElementById('exportArea').textContent = JSON.stringify(data,null,2);
+
+      document.getElementById('reviewBtn').onclick = ()=> renderReview();
+      document.getElementById('restartBtn').onclick = ()=> startQuiz();
+    }
+
+    function renderReview(){
+      const wrap = document.getElementById('quiz');
+      wrap.innerHTML = '';
+      state.picked.forEach((q,i)=>{
+        const card = document.createElement('div');
+        card.className = 'glass p-6 rounded-2xl ring-1 ring-white/10 shadow-xl mb-4';
+        const ans = state.answers[i];
+        card.innerHTML = `<div class='text-xs px-2 py-1 bg-white/10 rounded inline-block mb-2'>${q.topic||'—'}</div>`+
+          (q.paper? `<div class='text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 ml-2 inline-block'>Paper: ${q.paper||''} ${q.session? '• '+q.session: ''} ${q.qnum? '• '+q.qnum: ''}</div>`: '')+
+          `<div class='text-sm text-slate-300 mb-2'></div>
+          <h3 class='text-lg font-semibold mb-2'>${q.question}</h3>`;
+        const list = document.createElement('div');
+        list.className = 'grid gap-2';
+        q.choices.forEach((c,idx)=>{
+          const div = document.createElement('div');
+          div.className = 'px-4 py-3 rounded-xl border';
+          div.classList.add(idx===q.answer ? 'choice-correct' : (ans.choice===idx ? 'choice-wrong' : 'border-white/10 bg-white/5'));
+          div.innerHTML = `<span class='font-semibold mr-2'>${String.fromCharCode(65+idx)}.</span> ${c}`;
+          list.appendChild(div);
+        });
+        card.appendChild(list);
+        const box = document.createElement('div');
+        box.className = 'mt-3 p-3 rounded-xl bg-black/30 border border-white/10 text-sm';
+        box.innerHTML = `<div class='font-semibold mb-1'>Explanation</div>${q.explanation||'-'}`;
+        card.appendChild(box);
+        wrap.appendChild(card);
+      });
+      document.getElementById('finish').scrollIntoView({behavior:'smooth'});
+    }
+
+    function loadFromFile(){
+      const input = document.getElementById('file');
+      const file = input.files?.[0];
+      if(!file) return alert('Choose a JSON file first.');
+      const reader = new FileReader();
+      reader.onload = (e)=>{
+        try{
+          const json = JSON.parse(e.target.result);
+          if(!json.questions || !Array.isArray(json.questions)) throw new Error('Invalid JSON structure.');
+          json.questions.forEach((q,idx)=>{
+            if(!q.id || !q.topic || !q.question || !Array.isArray(q.choices) || typeof q.answer!=="number"){
+              throw new Error(`Question at index ${idx} is invalid.`);
+            }
+          });
+          const base = JSON.parse(document.getElementById('question-bank').textContent);
+          base.questions = base.questions.concat(json.questions);
+          document.getElementById('question-bank').textContent = JSON.stringify(base);
+          alert(`Loaded ${json.questions.length} question(s).`);
+          loadBanks();
+          renderTopicOptions();
+        } catch(err){ alert('Failed to load: '+ err.message); }
+      };
+      reader.readAsText(file);
+    }
+
+    function toggleTheme(){
+      document.body.classList.toggle('bg-slate-50');
+      document.body.classList.toggle('text-slate-900');
+    }
+
+    // Init
+    document.getElementById('start').addEventListener('click', startQuiz);
+    document.getElementById('loadFile').addEventListener('click', loadFromFile);
+    document.getElementById('btnTheme').addEventListener('click', toggleTheme);
+    document.getElementById('demoToggle').addEventListener('change', ()=>{ loadBanks(); renderTopicOptions(); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // First load
+    loadBanks();
+    renderTopicOptions();
+  </script>
+</body>
+</html>
