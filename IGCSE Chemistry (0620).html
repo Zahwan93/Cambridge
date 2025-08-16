@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebun Ilmu — Chemistry MCQ Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.08); }
+    .option:hover { transform: translateY(-1px); }
+    .choice-correct { border-color: #22c55e !important; background: rgba(34,197,94,.08) !important; }
+    .choice-wrong { border-color: #ef4444 !important; background: rgba(239,68,68,.08) !important; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100">
+  <!-- Header -->
+  <header class="border-b border-white/10 sticky top-0 z-40 bg-slate-900/80 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <img src="https://zahwan93.github.io/Kebun-Ilmu-Matematika-SMP/logo.png" alt="Kebun Ilmu Logo" class="w-10 h-10 rounded-xl ring-2 ring-white/10"/>
+      <div>
+        <h1 class="text-xl font-bold leading-tight">Kebun Ilmu — IGCSE Chemistry</h1>
+        <p class="text-xs text-slate-300">Topical multiple-choice practice — interactive & elegant</p>
+      </div>
+      <div class="ml-auto flex items-center gap-2">
+        <button id="btnTheme" class="text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition">Theme</button>
+        <a href="#import" class="text-xs px-3 py-1.5 rounded-full bg-sky-600 hover:bg-sky-500 transition">Import Questions (JSON)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Controls -->
+  <section class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-4">
+    <div class="md:col-span-2 glass p-5 rounded-2xl ring-1 ring-white/10 shadow-xl">
+      <h2 class="text-lg font-semibold mb-2">Start a Session</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <label class="block">
+          <span class="text-sm text-slate-300">Topic</span>
+          <select id="topic" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2">
+            <option value="all">All topics</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Number of Questions</span>
+          <input id="count" type="number" min="1" max="50" value="10" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2"/>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Time (minutes)</span>
+          <input id="minutes" type="number" min="0" max="180" value="15" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2"/>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Shuffle Options</span>
+          <input id="shuffleChoices" type="checkbox" class="align-middle ml-2" checked>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-300">Mode</span>
+          <select id="mode" class="mt-1 w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2">
+            <option value="practice">Practice (instant feedback)</option>
+            <option value="exam">Exam (feedback at the end)</option>
+          </select>
+        </label>
+        <div class="flex items-end">
+          <button id="start" class="w-full py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 font-semibold shadow">Start</button>
+        </div>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Note: To respect copyright, this app does <span class="font-semibold text-slate-200">not include</span> Cambridge IGCSE past paper questions verbatim. Please import your own licensed question bank (see the JSON format below).</p>
+      <label class="mt-3 flex items-center gap-2 text-xs text-slate-300">
+        <input id="demoToggle" type="checkbox" class="accent-sky-600" checked>
+        Enable demo questions (original, IGCSE-style) so you can test the UI now
+      </label>
+    </div>
+    <div class="glass p-5 rounded-2xl ring-1 ring-white/10 shadow-xl">
+      <h2 class="text-lg font-semibold mb-2">Stats</h2>
+      <div class="grid grid-cols-2 gap-3 text-center">
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statScore" class="text-2xl font-bold">0%</div>
+          <div class="text-xs text-slate-300">Score</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statProgress" class="text-2xl font-bold">0/0</div>
+          <div class="text-xs text-slate-300">Progress</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statTime" class="text-2xl font-bold">00:00</div>
+          <div class="text-xs text-slate-300">Time Left</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white/5">
+          <div id="statStreak" class="text-2xl font-bold">0🔥</div>
+          <div class="text-xs text-slate-300">Streak</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Area -->
+  <main class="max-w-5xl mx-auto px-4 pb-24">
+    <div id="quiz" class="space-y-4"></div>
+    <div id="finish" class="hidden mt-6 p-6 rounded-2xl ring-1 ring-white/10 bg-emerald-900/20">
+      <h3 class="text-xl font-bold mb-2">Summary</h3>
+      <p id="summary" class="text-sm text-slate-200 mb-3"></p>
+      <button id="reviewBtn" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">Review Explanations</button>
+      <button id="restartBtn" class="ml-2 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500">Restart</button>
+      <details class="mt-3">
+        <summary class="cursor-pointer select-none">Export results (JSON)</summary>
+        <pre id="exportArea" class="mt-2 text-xs whitespace-pre-wrap"></pre>
+      </details>
+    </div>
+  </main>
+
+  <!-- Import Section -->
+  <section id="import" class="max-w-5xl mx-auto px-4 pb-24">
+    <div class="glass p-6 rounded-2xl ring-1 ring-white/10">
+      <h2 class="text-lg font-semibold">Import Question Bank (JSON)</h2>
+      <p class="text-sm text-slate-300 mt-1">Upload a <code>.json</code> file. Your questions will be merged into the current bank.</p>
+      <pre class="mt-3 text-xs bg-black/30 p-3 rounded-xl overflow-x-auto"><code>{
+  "meta": {"source": "Your licensed past papers", "author": "Your Name"},
+  "questions": [
+    {
+      "id": "unique-001",
+      "topic": "Mechanics",
+      "paper": "0625/22",
+      "session": "May/Jun 2021",
+      "qnum": "Q3",
+      "question": "<PASTE the exact question text here if you have the rights>",
+      "choices": ["A", "B", "C", "D"],
+      "answer": 2,
+      "explanation": "Your explanation.",
+      "tags": ["suv", "kinematics"],
+      "image": "(optional image URL)"
+    }
+  ]
+}</code></pre>
+      <div class="mt-3 flex items-center gap-3">
+        <input id="file" type="file" accept="application/json" class="block w-full text-sm text-slate-200"/>
+        <button id="loadFile" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20">Load</button>
+      </div>
+      <p class="text-xs text-slate-400 mt-2">Reminder: Only import materials you are licensed or permitted to use. This app ships with demo questions that are original (non‑Cambridge) for testing.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-xs text-slate-400 py-10">
+    © <span id="year"></span> Kebun Ilmu — IGCSE Chemistry MCQ Trainer. Built with ♥.
+  </footer>
+
+  <!-- Question bank (DEMO original, not copied from past papers). Toggle via #demoToggle. -->
+  <script id="demo-bank" type="application/json">{
+  "meta": {
+    "version": "1.1",
+    "note": "Demo questions for UI testing (IGCSE Chemistry-style). Includes sample paper/session/Q-number metadata."
+  },
+  "questions": [
+    {
+      "id":"demo-chem-1",
+      "topic":"Atomic Structure",
+      "paper":"0620/22",
+      "session":"May/Jun 2021",
+      "qnum":"Q2",
+      "question":"Which subatomic particles are found in the nucleus of an atom?",
+      "choices":["Protons and electrons","Protons and neutrons","Electrons and neutrons","Only protons"],
+      "answer":1,
+      "explanation":"The nucleus contains protons and neutrons, while electrons orbit outside the nucleus.",
+      "tags":["atomic","particles"]
+    },
+    {
+      "id":"demo-chem-2",
+      "topic":"Bonding",
+      "paper":"0620/12",
+      "session":"Oct/Nov 2020",
+      "qnum":"Q7",
+      "question":"What type of bonding is present in sodium chloride (NaCl)?",
+      "choices":["Covalent bonding","Ionic bonding","Metallic bonding","Hydrogen bonding"],
+      "answer":1,
+      "explanation":"NaCl is an ionic compound formed by transfer of electrons from sodium to chlorine.",
+      "tags":["bonding","ionic"]
+    },
+    {
+      "id":"demo-chem-3",
+      "topic":"Acids, Bases and Salt",
+      "paper":"0620/21",
+      "session":"May/Jun 2019",
+      "qnum":"Q10",
+      "question":"Which ion is responsible for the acidic properties of hydrochloric acid?",
+      "choices":["Cl⁻","H⁺","OH⁻","Na⁺"],
+      "answer":1,
+      "explanation":"Acids release H⁺ ions in aqueous solution, which give them their acidic properties.",
+      "tags":["acids","ions"]
+    },
+    {
+      "id":"demo-chem-4",
+      "topic":"Electrolysis",
+      "paper":"0620/42",
+      "session":"Oct/Nov 2021",
+      "qnum":"Q6",
+      "question":"During electrolysis of molten lead(II) bromide, what is formed at the cathode?",
+      "choices":["Bromine","Lead","Hydrogen","Oxygen"],
+      "answer":1,
+      "explanation":"The positive Pb²⁺ ions are reduced at the cathode to form lead metal.",
+      "tags":["electrolysis","cathode"]
+    },
+    {
+      "id":"demo-chem-5",
+      "topic":"Periodic Table",
+      "paper":"0620/22",
+      "session":"May/Jun 2020",
+      "qnum":"Q4",
+      "question":"Which element is in Group 1 of the Periodic Table?",
+      "choices":["Calcium","Magnesium","Sodium","Aluminium"],
+      "answer":2,
+      "explanation":"Group 1 elements are alkali metals. Sodium (Na) belongs to Group 1.",
+      "tags":["periodic","groups"]
+    }
+  ]
+}</script>
+
+
+
+  <!-- Empty bank to receive licensed past-paper content via import -->
+  <script id="question-bank" type="application/json">{
+  "meta": {
+    "version": "1.0",
+    "note": "Sample IGCSE Chemistry questions for testing/import."
+  },
+  "questions": [
+    {
+      "id":"chem-atomic-1",
+      "topic":"Atomic Structure",
+      "paper":"0620/12",
+      "session":"Oct/Nov 2020",
+      "qnum":"Q1",
+      "question":"What is the mass number of an atom with 6 protons and 6 neutrons?",
+      "choices":["6","12","18","24"],
+      "answer":1,
+      "explanation":"Mass number = protons + neutrons = 6 + 6 = 12.",
+      "tags":["atomic","massnumber"]
+    },
+    {
+      "id":"chem-bonding-1",
+      "topic":"Bonding",
+      "paper":"0620/22",
+      "session":"May/Jun 2019",
+      "qnum":"Q5",
+      "question":"Which of the following substances has giant covalent structure?",
+      "choices":["Diamond","Sodium chloride","Carbon dioxide","Ammonia"],
+      "answer":0,
+      "explanation":"Diamond has a giant covalent lattice; NaCl is ionic; CO₂ and NH₃ are simple molecules.",
+      "tags":["bonding","covalent"]
+    },
+    {
+      "id":"chem-reactions-1",
+      "topic":"Reactions of Acids",
+      "paper":"0620/21",
+      "session":"May/Jun 2021",
+      "qnum":"Q9",
+      "question":"Which products are formed when hydrochloric acid reacts with sodium hydroxide?",
+      "choices":["Sodium and water","Sodium chloride and water","Hydrogen and sodium","Hydrogen and chlorine"],
+      "answer":1,
+      "explanation":"HCl + NaOH → NaCl + H₂O (neutralisation reaction).",
+      "tags":["acids","neutralisation"]
+    },
+    {
+      "id":"chem-electrolysis-1",
+      "topic":"Electrolysis",
+      "paper":"0620/42",
+      "session":"Oct/Nov 2021",
+      "qnum":"Q11",
+      "question":"What is produced at the anode during the electrolysis of concentrated aqueous sodium chloride solution?",
+      "choices":["Chlorine","Hydrogen","Sodium","Oxygen"],
+      "answer":0,
+      "explanation":"At the anode, chloride ions are discharged to form chlorine gas.",
+      "tags":["electrolysis","anode"]
+    },
+    {
+      "id":"chem-periodic-1",
+      "topic":"Periodic Table",
+      "paper":"0620/22",
+      "session":"May/Jun 2020",
+      "qnum":"Q14",
+      "question":"Which element is a halogen?",
+      "choices":["Oxygen","Fluorine","Magnesium","Neon"],
+      "answer":1,
+      "explanation":"Fluorine belongs to Group 17 (halogens).",
+      "tags":["periodic","halogens"]
+    },
+{
+    "id":"chem-acidbase-1",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/22",
+    "session":"May/Jun 2019",
+    "qnum":"Q1",
+    "question":"Which ion is responsible for the acidic properties of hydrochloric acid?",
+    "choices":["OH⁻","H⁺","Cl⁻","Na⁺"],
+    "answer":1,
+    "explanation":"Acids produce H⁺ ions in aqueous solution, which give acidic properties.",
+    "tags":["acids","ions"]
+  },
+  {
+    "id":"chem-acidbase-2",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/21",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q2",
+    "question":"Which substance is an alkali?",
+    "choices":["NaOH","CO₂","NH₄Cl","H₂SO₄"],
+    "answer":0,
+    "explanation":"NaOH dissolves in water to produce OH⁻ ions, so it is an alkali.",
+    "tags":["bases","alkalis"]
+  },
+  {
+    "id":"chem-acidbase-3",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/11",
+    "session":"May/Jun 2021",
+    "qnum":"Q3",
+    "question":"Which of these is a weak acid?",
+    "choices":["HCl","H₂SO₄","CH₃COOH","HNO₃"],
+    "answer":2,
+    "explanation":"Ethanoic acid (CH₃COOH) is weak, only partially ionises in water.",
+    "tags":["acids","weak acid"]
+  },
+  {
+    "id":"chem-acidbase-4",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/12",
+    "session":"Oct/Nov 2018",
+    "qnum":"Q4",
+    "question":"Which pH value indicates a strong alkali?",
+    "choices":["3","5","7","13"],
+    "answer":3,
+    "explanation":"pH 13 is strongly alkaline; pH <7 acidic; pH=7 neutral.",
+    "tags":["pH","alkalis"]
+  },
+  {
+    "id":"chem-acidbase-5",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/23",
+    "session":"May/Jun 2020",
+    "qnum":"Q5",
+    "question":"What is produced when hydrochloric acid reacts with sodium hydroxide?",
+    "choices":["NaCl + H₂O","NaOH + HCl","Na + H₂","Cl₂ + H₂O"],
+    "answer":0,
+    "explanation":"Neutralisation: HCl + NaOH → NaCl + H₂O.",
+    "tags":["neutralisation","salts"]
+  },
+  {
+    "id":"chem-acidbase-6",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/12",
+    "session":"May/Jun 2017",
+    "qnum":"Q6",
+    "question":"Which of the following is amphoteric?",
+    "choices":["NaOH","Al(OH)₃","HCl","NH₃"],
+    "answer":1,
+    "explanation":"Al(OH)₃ reacts with both acids and bases; amphoteric hydroxide.",
+    "tags":["amphoteric","bases"]
+  },
+  {
+    "id":"chem-acidbase-7",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/13",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q7",
+    "question":"Which indicator is suitable for titration of a strong acid and strong alkali?",
+    "choices":["Methyl orange","Phenolphthalein","Universal indicator","Litmus"],
+    "answer":1,
+    "explanation":"Phenolphthalein changes sharply at pH 7 neutralisation point.",
+    "tags":["titration","indicators"]
+  },
+  {
+    "id":"chem-acidbase-8",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/22",
+    "session":"May/Jun 2021",
+    "qnum":"Q8",
+    "question":"Which salt is formed from reaction of sulfuric acid with potassium hydroxide?",
+    "choices":["K₂SO₄","KHSO₄","KCl","KHCO₃"],
+    "answer":0,
+    "explanation":"H₂SO₄ + 2KOH → K₂SO₄ + 2H₂O.",
+    "tags":["salts","neutralisation"]
+  },
+  {
+    "id":"chem-acidbase-9",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/21",
+    "session":"Oct/Nov 2018",
+    "qnum":"Q9",
+    "question":"Which method is best for preparing insoluble salts such as BaSO₄?",
+    "choices":["Neutralisation","Titration","Precipitation","Crystallisation"],
+    "answer":2,
+    "explanation":"Insoluble salts are prepared by precipitation reactions.",
+    "tags":["salts","methods"]
+  },
+  {
+    "id":"chem-acidbase-10",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/11",
+    "session":"May/Jun 2019",
+    "qnum":"Q10",
+    "question":"What is the name of the salt formed when nitric acid reacts with magnesium?",
+    "choices":["Magnesium nitrate","Magnesium chloride","Magnesium sulfate","Magnesium hydroxide"],
+    "answer":0,
+    "explanation":"HNO₃ + Mg → Mg(NO₃)₂ + H₂.",
+    "tags":["salts","reactions"]
+  },
+
+  {
+    "id":"chem-acidbase-11",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/21",
+    "session":"May/Jun 2022",
+    "qnum":"Q11",
+    "question":"Which pH would you expect for a solution of calcium hydroxide?",
+    "choices":["2","7","12","5"],
+    "answer":2,
+    "explanation":"Ca(OH)₂ is alkaline, so pH > 7, around 12.",
+    "tags":["alkalis","pH"]
+  },
+  {
+    "id":"chem-acidbase-12",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/23",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q12",
+    "question":"Ammonia solution reacts with hydrochloric acid to produce which salt?",
+    "choices":["NH₄Cl","NH₄NO₃","NH₄₂SO₄","NaCl"],
+    "answer":0,
+    "explanation":"NH₃ + HCl → NH₄Cl.",
+    "tags":["ammonia","salts"]
+  },
+  {
+    "id":"chem-acidbase-13",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/11",
+    "session":"May/Jun 2020",
+    "qnum":"Q13",
+    "question":"What is the correct pH range of methyl orange in acid?",
+    "choices":["pH 3-4","pH 4-5","pH 0-3","pH 9-11"],
+    "answer":2,
+    "explanation":"Methyl orange is red in acidic pH (0–3).",
+    "tags":["indicators","pH"]
+  },
+  {
+    "id":"chem-acidbase-14",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/13",
+    "session":"Oct/Nov 2017",
+    "qnum":"Q14",
+    "question":"Which base is insoluble in water?",
+    "choices":["NaOH","KOH","CuO","NH₃"],
+    "answer":2,
+    "explanation":"Copper(II) oxide is a base but insoluble, not an alkali.",
+    "tags":["bases","alkalis"]
+  },
+  {
+    "id":"chem-acidbase-15",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/22",
+    "session":"May/Jun 2018",
+    "qnum":"Q15",
+    "question":"Which gas is given off when dilute acid reacts with carbonate?",
+    "choices":["CO₂","H₂","O₂","Cl₂"],
+    "answer":0,
+    "explanation":"Carbonates + acids → salt + water + carbon dioxide.",
+    "tags":["acids","carbonates"]
+  },
+  {
+    "id":"chem-acidbase-16",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/23",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q16",
+    "question":"Which substance can be used to neutralise acidic soil?",
+    "choices":["NaCl","CaCO₃","H₂SO₄","SiO₂"],
+    "answer":1,
+    "explanation":"Lime (CaCO₃) neutralises acidity in soil.",
+    "tags":["neutralisation","application"]
+  },
+  {
+    "id":"chem-acidbase-17",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/11",
+    "session":"May/Jun 2018",
+    "qnum":"Q17",
+    "question":"What type of reaction occurs when an acid reacts with a base?",
+    "choices":["Precipitation","Neutralisation","Oxidation","Reduction"],
+    "answer":1,
+    "explanation":"Acid + base → salt + water, a neutralisation reaction.",
+    "tags":["neutralisation"]
+  },
+  {
+    "id":"chem-acidbase-18",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/21",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q18",
+    "question":"Which salt is formed from nitric acid and potassium hydroxide?",
+    "choices":["KNO₃","KCl","K₂SO₄","KHCO₃"],
+    "answer":0,
+    "explanation":"HNO₃ + KOH → KNO₃ + H₂O.",
+    "tags":["salts"]
+  },
+  {
+    "id":"chem-acidbase-19",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/12",
+    "session":"May/Jun 2022",
+    "qnum":"Q19",
+    "question":"What is the ionic equation for neutralisation?",
+    "choices":["H⁺ + OH⁻ → H₂O","H⁺ + Cl⁻ → HCl","Na⁺ + OH⁻ → NaOH","H⁺ + CO₃²⁻ → H₂O"],
+    "answer":0,
+    "explanation":"Neutralisation at ionic level: H⁺ + OH⁻ → H₂O.",
+    "tags":["ionic equations","neutralisation"]
+  },
+  {
+    "id":"chem-acidbase-20",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/13",
+    "session":"Oct/Nov 2018",
+    "qnum":"Q20",
+    "question":"Which salt is insoluble in water?",
+    "choices":["NaCl","K₂SO₄","BaSO₄","NH₄Cl"],
+    "answer":2,
+    "explanation":"BaSO₄ is insoluble, used in precipitation test for sulfate.",
+    "tags":["solubility","salts"]
+  },
+
+  {
+    "id":"chem-acidbase-21",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/23",
+    "session":"May/Jun 2021",
+    "qnum":"Q21",
+    "question":"Which oxide is basic?",
+    "choices":["CO₂","SO₂","MgO","SiO₂"],
+    "answer":2,
+    "explanation":"Metal oxides like MgO are basic.",
+    "tags":["oxides","bases"]
+  },
+  {
+    "id":"chem-acidbase-22",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/11",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q22",
+    "question":"Which oxide is acidic?",
+    "choices":["Na₂O","CO₂","MgO","CaO"],
+    "answer":1,
+    "explanation":"Non-metal oxides like CO₂ are acidic.",
+    "tags":["oxides","acids"]
+  },
+  {
+    "id":"chem-acidbase-23",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/22",
+    "session":"May/Jun 2017",
+    "qnum":"Q23",
+    "question":"Which salt is formed from the reaction between calcium carbonate and hydrochloric acid?",
+    "choices":["CaCl₂","CaSO₄","CaCO₃","Ca(NO₃)₂"],
+    "answer":0,
+    "explanation":"CaCO₃ + 2HCl → CaCl₂ + CO₂ + H₂O.",
+    "tags":["acids","carbonates","salts"]
+  },
+  {
+    "id":"chem-acidbase-24",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/13",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q24",
+    "question":"Which ion is present in all alkalis?",
+    "choices":["H⁺","Na⁺","OH⁻","Cl⁻"],
+    "answer":2,
+    "explanation":"All alkalis release OH⁻ ions in water.",
+    "tags":["alkalis","ions"]
+  },
+  {
+    "id":"chem-acidbase-25",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/23",
+    "session":"May/Jun 2018",
+    "qnum":"Q25",
+    "question":"Which method is best for preparing crystals of copper(II) sulfate?",
+    "choices":["Precipitation","Neutralisation with alkali","Neutralisation with insoluble base","Titration"],
+    "answer":2,
+    "explanation":"React dilute H₂SO₄ with insoluble base CuO, then crystallise.",
+    "tags":["salts","preparation"]
+  },
+  {
+    "id":"chem-acidbase-26",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/12",
+    "session":"May/Jun 2019",
+    "qnum":"Q26",
+    "question":"Which type of salt is NH₄NO₃?",
+    "choices":["Normal salt","Acid salt","Basic salt","Double salt"],
+    "answer":0,
+    "explanation":"NH₄NO₃ is a normal salt formed by full neutralisation.",
+    "tags":["salts","classification"]
+  },
+  {
+    "id":"chem-acidbase-27",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/11",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q27",
+    "question":"Which of the following shows neutralisation in agriculture?",
+    "choices":["Adding HCl to soil","Adding lime to soil","Adding CO₂ to soil","Adding water to soil"],
+    "answer":1,
+    "explanation":"Lime (CaO or CaCO₃) neutralises acidic soil.",
+    "tags":["neutralisation","application"]
+  },
+  {
+    "id":"chem-acidbase-28",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/21",
+    "session":"May/Jun 2016",
+    "qnum":"Q28",
+    "question":"What colour does blue litmus paper turn in acid?",
+    "choices":["Red","Blue","Green","No change"],
+    "answer":0,
+    "explanation":"Acid turns blue litmus red.",
+    "tags":["indicators"]
+  },
+  {
+    "id":"chem-acidbase-29",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/22",
+    "session":"Oct/Nov 2022",
+    "qnum":"Q29",
+    "question":"Which salt is prepared by titration method?",
+    "choices":["NaCl","KNO₃","BaSO₄","CuSO₄"],
+    "answer":1,
+    "explanation":"Soluble salts from strong acid + alkali (e.g., HNO₃ + KOH → KNO₃) are prepared by titration.",
+    "tags":["titration","salts"]
+  },
+  {
+    "id":"chem-acidbase-30",
+    "topic":"Acids, Bases and Salts",
+    "paper":"0620/13",
+    "session":"May/Jun 2015",
+    "qnum":"Q30",
+    "question":"Which oxide is amphoteric?",
+    "choices":["ZnO","Na₂O","CO₂","MgO"],
+    "answer":0,
+    "explanation":"ZnO reacts with both acids and bases, hence amphoteric.",
+    "tags":["oxides","amphoteric"]
+  }
+  ]
+}</script>
+
+
+  <script>
+    // --- Helpers ---
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    const state = {
+      allQuestions: [],
+      picked: [],
+      cursor: 0,
+      correct: 0,
+      streak: 0,
+      startTime: 0,
+      endTime: 0,
+      mode: 'practice',
+      timer: null,
+      timeLeft: 0,
+      answers: [] // {id, choice, correct}
+    };
+
+    const topicsPreferred = [
+  "Atomic Structure",
+  "Bonding",
+  "States of Matter",
+  "Periodic Table",
+  "Stoichiometry",
+  "Reactions of Acids",
+  "Metals",
+  "Electrolysis",
+  "Organic Chemistry",
+  "Air and Atmosphere",
+  "Practical Chemistry"
+];
+
+
+    function loadBanks(){
+      try {
+        const base = JSON.parse(document.getElementById('question-bank').textContent);
+        const demo = JSON.parse(document.getElementById('demo-bank').textContent);
+        state.allQuestions = [].concat(base.questions);
+        if($('#demoToggle').checked){ state.allQuestions = state.allQuestions.concat(demo.questions); }
+      } catch(e){ console.error(e); }
+    }
+
+    function renderTopicOptions(){
+      const sel = document.getElementById('topic');
+      sel.innerHTML = '<option value="all">All topics</option>';
+      const topics = [...new Set(state.allQuestions.map(q=>q.topic))];
+      topicsPreferred.concat(topics).filter((v,i,self)=>self.indexOf(v)===i).forEach(t=>{
+        if(!t) return; const opt=document.createElement('option'); opt.value=t; opt.textContent=t; sel.appendChild(opt);
+      });
+    }
+
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+      return arr;
+    }
+
+    function startQuiz(){
+      const topic = document.getElementById('topic').value;
+      const count = Math.max(1, Math.min(50, parseInt(document.getElementById('count').value||'10')));
+      const minutes = Math.max(0, parseInt(document.getElementById('minutes').value||'0'));
+      state.mode = document.getElementById('mode').value;
+      const shuffleChoices = document.getElementById('shuffleChoices').checked;
+
+      loadBanks();
+      renderTopicOptions();
+
+      let pool = state.allQuestions.filter(q=> topic==='all' ? true : q.topic===topic);
+      pool = shuffle([...pool]);
+      state.picked = pool.slice(0, count).map(q=> ({...q, choices:[...q.choices]}));
+
+      if(shuffleChoices){
+        state.picked.forEach(q=>{
+          const correctText = q.choices[q.answer];
+          shuffle(q.choices);
+          q.answer = q.choices.indexOf(correctText);
+        });
+      }
+
+      state.cursor = 0; state.correct = 0; state.streak = 0; state.answers = [];
+      state.startTime = Date.now();
+      state.endTime = minutes>0 ? state.startTime + minutes*60*1000 : 0;
+      clearInterval(state.timer);
+      if(minutes>0){
+        state.timeLeft = minutes*60;
+        state.timer = setInterval(()=>{
+          state.timeLeft--; updateTimer(); if(state.timeLeft<=0){ clearInterval(state.timer); finishQuiz(); }
+        }, 1000);
+      } else { state.timeLeft = 0; updateTimer(); }
+
+      renderQuestion();
+      updateStats();
+      document.getElementById('finish').classList.add('hidden');
+      document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+    }
+
+    function updateTimer(){
+      const el = document.getElementById('statTime');
+      if(state.endTime===0){ el.textContent = '∞'; return; }
+      const m = Math.max(0, Math.floor(state.timeLeft/60)).toString().padStart(2,'0');
+      const s = Math.max(0, state.timeLeft%60).toString().padStart(2,'0');
+      el.textContent = `${m}:${s}`;
+    }
+
+    function updateStats(){
+      const scorePct = state.picked.length ? Math.round(100*state.correct/state.picked.length) : 0;
+      document.getElementById('statScore').textContent = scorePct + '%';
+      document.getElementById('statProgress').textContent = `${Math.min(state.cursor+1, state.picked.length)}/${state.picked.length}`;
+      document.getElementById('statStreak').textContent = `${state.streak}🔥`;
+    }
+
+    function renderQuestion(){
+      const wrap = document.getElementById('quiz');
+      wrap.innerHTML = '';
+      if(state.cursor >= state.picked.length){ finishQuiz(); return; }
+      const q = state.picked[state.cursor];
+
+      const card = document.createElement('div');
+      card.className = 'glass p-6 rounded-2xl ring-1 ring-white/10 shadow-xl';
+
+      const meta = document.createElement('div');
+      meta.className = 'flex items-start gap-3 flex-wrap';
+      meta.innerHTML = `<div class="text-xs px-2 py-1 bg-white/10 rounded">${q.topic||'—'}</div>` +
+        (q.paper? `<div class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10">Paper: ${q.paper||''} ${q.session? '• '+q.session: ''} ${q.qnum? '• '+q.qnum: ''}</div>`:'' );
+      card.appendChild(meta);
+
+      const h3 = document.createElement('h3');
+      h3.className = 'mt-2 text-lg font-semibold';
+      h3.textContent = q.question;
+      card.appendChild(h3);
+
+      if(q.image){
+        const img = document.createElement('img');
+        img.src = q.image; img.alt='Question figure';
+        img.className = 'mt-3 rounded-xl max-h-60 object-contain ring-1 ring-white/10';
+        card.appendChild(img);
+      }
+
+      const list = document.createElement('div');
+      list.className = 'mt-4 grid gap-3';
+
+      q.choices.forEach((c,idx)=>{
+        const btn = document.createElement('button');
+        btn.className = 'option text-left px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition';
+        btn.innerHTML = `<span class='font-semibold mr-2'>${String.fromCharCode(65+idx)}.</span> ${c}`;
+        btn.addEventListener('click', ()=> selectChoice(idx));
+        list.appendChild(btn);
+      });
+      card.appendChild(list);
+
+      const actions = document.createElement('div');
+      actions.className = 'mt-4 flex items-center gap-3';
+      const skip = document.createElement('button');
+      skip.className = 'px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20';
+      skip.textContent = 'Skip';
+      skip.addEventListener('click', ()=>{ recordAnswer(null,false); nextQuestion(); });
+
+      const reveal = document.createElement('button');
+      reveal.className = 'px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20';
+      reveal.textContent = 'Show Explanation';
+      reveal.addEventListener('click', ()=> showExplain(q, null));
+
+      actions.appendChild(skip);
+      actions.appendChild(reveal);
+      card.appendChild(actions);
+
+      wrap.appendChild(card);
+
+      function selectChoice(idx){
+        const nodes = $$('.option', card);
+        nodes.forEach(n=> n.disabled = true);
+        const correct = idx===q.answer;
+        nodes[idx].classList.add(correct? 'choice-correct' : 'choice-wrong');
+        nodes[q.answer].classList.add('choice-correct');
+        recordAnswer(idx, correct);
+        if(state.mode==='practice') showExplain(q, correct);
+        setTimeout(()=> nextQuestion(), 900);
+      }
+    }
+
+    function showExplain(q){
+      const box = document.createElement('div');
+      box.className = 'mt-3 p-3 rounded-xl bg-black/30 border border-white/10';
+      box.innerHTML = `<div class='font-semibold mb-1'>Explanation</div><div class='text-sm text-slate-200'>${q.explanation||'-'}</div>`;
+      document.getElementById('quiz').firstChild.appendChild(box);
+    }
+
+    function recordAnswer(choice, correct){
+      if(correct){ state.correct++; state.streak++; }
+      else { state.streak = 0; }
+      const q = state.picked[state.cursor];
+      state.answers.push({id:q.id, topic:q.topic, choice, correct, key:q.answer});
+      updateStats();
+    }
+
+    function nextQuestion(){
+      state.cursor++;
+      if(state.cursor < state.picked.length){ renderQuestion(); }
+      else { finishQuiz(); }
+    }
+
+    function finishQuiz(){
+      clearInterval(state.timer);
+      const wrap = document.getElementById('finish');
+      wrap.classList.remove('hidden');
+      const pct = Math.round(100*state.correct/state.picked.length);
+      const timeUsed = Math.round((Date.now()-state.startTime)/1000);
+      const mm = String(Math.floor(timeUsed/60)).padStart(2,'0');
+      const ss = String(timeUsed%60).padStart(2,'0');
+      document.getElementById('summary').textContent = `Score: ${pct}% | Correct ${state.correct} out of ${state.picked.length} | Time: ${mm}:${ss}`;
+      const data = {summary:{score:pct, correct:state.correct, total:state.picked.length, time:timeUsed}, answers:state.answers, picked:state.picked.map(q=>({id:q.id, topic:q.topic, paper:q.paper, session:q.session, qnum:q.qnum}))};
+      document.getElementById('exportArea').textContent = JSON.stringify(data,null,2);
+
+      document.getElementById('reviewBtn').onclick = ()=> renderReview();
+      document.getElementById('restartBtn').onclick = ()=> startQuiz();
+    }
+
+    function renderReview(){
+      const wrap = document.getElementById('quiz');
+      wrap.innerHTML = '';
+      state.picked.forEach((q,i)=>{
+        const card = document.createElement('div');
+        card.className = 'glass p-6 rounded-2xl ring-1 ring-white/10 shadow-xl mb-4';
+        const ans = state.answers[i];
+        card.innerHTML = `<div class='text-xs px-2 py-1 bg-white/10 rounded inline-block mb-2'>${q.topic||'—'}</div>`+
+          (q.paper? `<div class='text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 ml-2 inline-block'>Paper: ${q.paper||''} ${q.session? '• '+q.session: ''} ${q.qnum? '• '+q.qnum: ''}</div>`: '')+
+          `<div class='text-sm text-slate-300 mb-2'></div>
+          <h3 class='text-lg font-semibold mb-2'>${q.question}</h3>`;
+        const list = document.createElement('div');
+        list.className = 'grid gap-2';
+        q.choices.forEach((c,idx)=>{
+          const div = document.createElement('div');
+          div.className = 'px-4 py-3 rounded-xl border';
+          div.classList.add(idx===q.answer ? 'choice-correct' : (ans.choice===idx ? 'choice-wrong' : 'border-white/10 bg-white/5'));
+          div.innerHTML = `<span class='font-semibold mr-2'>${String.fromCharCode(65+idx)}.</span> ${c}`;
+          list.appendChild(div);
+        });
+        card.appendChild(list);
+        const box = document.createElement('div');
+        box.className = 'mt-3 p-3 rounded-xl bg-black/30 border border-white/10 text-sm';
+        box.innerHTML = `<div class='font-semibold mb-1'>Explanation</div>${q.explanation||'-'}`;
+        card.appendChild(box);
+        wrap.appendChild(card);
+      });
+      document.getElementById('finish').scrollIntoView({behavior:'smooth'});
+    }
+
+    function loadFromFile(){
+      const input = document.getElementById('file');
+      const file = input.files?.[0];
+      if(!file) return alert('Choose a JSON file first.');
+      const reader = new FileReader();
+      reader.onload = (e)=>{
+        try{
+          const json = JSON.parse(e.target.result);
+          if(!json.questions || !Array.isArray(json.questions)) throw new Error('Invalid JSON structure.');
+          json.questions.forEach((q,idx)=>{
+            if(!q.id || !q.topic || !q.question || !Array.isArray(q.choices) || typeof q.answer!=="number"){
+              throw new Error(`Question at index ${idx} is invalid.`);
+            }
+          });
+          const base = JSON.parse(document.getElementById('question-bank').textContent);
+          base.questions = base.questions.concat(json.questions);
+          document.getElementById('question-bank').textContent = JSON.stringify(base);
+          alert(`Loaded ${json.questions.length} question(s).`);
+          loadBanks();
+          renderTopicOptions();
+        } catch(err){ alert('Failed to load: '+ err.message); }
+      };
+      reader.readAsText(file);
+    }
+
+    function toggleTheme(){
+      document.body.classList.toggle('bg-slate-50');
+      document.body.classList.toggle('text-slate-900');
+    }
+
+    // Init
+    document.getElementById('start').addEventListener('click', startQuiz);
+    document.getElementById('loadFile').addEventListener('click', loadFromFile);
+    document.getElementById('btnTheme').addEventListener('click', toggleTheme);
+    document.getElementById('demoToggle').addEventListener('change', ()=>{ loadBanks(); renderTopicOptions(); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // First load
+    loadBanks();
+    renderTopicOptions();
+  </script>
+</body>
+</html>
