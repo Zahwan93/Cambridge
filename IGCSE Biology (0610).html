@@ -23,7 +23,7 @@
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
       <img src="https://zahwan93.github.io/Kebun-Ilmu-Matematika-SMP/logo.png" alt="Kebun Ilmu Logo" class="w-10 h-10 rounded-xl ring-2 ring-white/10"/>
       <div>
-        <h1 class="text-xl font-bold leading-tight">Kebun Ilmu — IGCSE Biology (0610)</h1>
+        <h1 class="text-xl font-bold leading-tight">Kebun Ilmu — IIGCSE Biology (0610)</h1>
         <p class="text-xs text-slate-300">Topical multiple-choice practice — interactive & elegant</p>
       </div>
       <div class="ml-auto flex items-center gap-2">
@@ -144,174 +144,979 @@
 
   <!-- Footer -->
   <footer class="text-center text-xs text-slate-400 py-10">
-    © <span id="year"></span> Kebun Ilmu — IGCSE Biology (0610) MCQ Trainer. Built with ♥.
+    © <span id="year"></span> Kebun Ilmu — IIGCSE Biology (0610) MCQ Trainer. Built with ♥.
   </footer>
 
-  <!-- Question bank (DEMO for IGCSE Biology 0610). Toggle via #demoToggle. -->
-<script id="demo-bank" type="application/json">{
+  <!-- Question bank (DEMO original, not copied from past papers). Toggle via #demoToggle. -->
+ <script id="demo-bank" type="application/json">{
   "meta": {
     "version": "1.1",
-    "note": "Demo questions for UI testing (IGCSE Biology 0610-style). Includes paper/session/Q-number metadata."
+    "note": "Demo questions for UI testing (IGCSE Biology (0610)-style). Includes sample paper/session/Q-number metadata."
   },
   "questions": [
     {
       "id":"demo-bio-1",
       "topic":"Cell Biology",
-      "paper":"0610/12",
+      "paper":"0610/21",
       "session":"May/Jun 2021",
-      "qnum":"Q2",
-      "question":"Which organelle is the site of aerobic respiration in a cell?",
-      "choices":["Nucleus","Chloroplast","Mitochondrion","Ribosome"],
-      "answer":2,
-      "explanation":"Mitochondria are the site of aerobic respiration, releasing energy as ATP.",
-      "tags":["cell","respiration"]
+      "qnum":"Q3",
+      "question":"Which organelle is responsible for producing energy in a cell?",
+      "choices":["Nucleus","Mitochondria","Ribosomes","Chloroplasts"],
+      "answer":1,
+      "explanation":"Mitochondria are responsible for cellular respiration, producing energy in the form of ATP.",
+      "tags":["cells","organelles"]
     },
     {
       "id":"demo-bio-2",
       "topic":"Photosynthesis",
-      "paper":"0610/21",
+      "paper":"0610/12",
       "session":"Oct/Nov 2020",
-      "qnum":"Q4",
-      "question":"Which gas is taken in during photosynthesis?",
-      "choices":["Oxygen","Carbon dioxide","Nitrogen","Water vapour"],
+      "qnum":"Q5",
+      "question":"Which gas is taken in by plants during photosynthesis?",
+      "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
       "answer":1,
-      "explanation":"Plants take in carbon dioxide and release oxygen during photosynthesis.",
-      "tags":["photosynthesis","gas exchange"]
+      "explanation":"Plants absorb carbon dioxide (CO₂) from the air to produce glucose and oxygen during photosynthesis.",
+      "tags":["photosynthesis","plants"]
     },
     {
       "id":"demo-bio-3",
-      "topic":"Human Physiology",
-      "paper":"0610/32",
+      "topic":"Enzymes",
+      "paper":"0610/42",
       "session":"May/Jun 2019",
-      "qnum":"Q6",
-      "question":"Which blood vessels carry blood away from the heart?",
-      "choices":["Arteries","Veins","Capillaries","Venules"],
-      "answer":0,
-      "explanation":"Arteries carry blood away from the heart, while veins carry blood toward the heart.",
-      "tags":["circulatory system","blood vessels"]
+      "qnum":"Q8",
+      "question":"Which factor can denature enzymes and stop their activity?",
+      "choices":["Low temperature","Neutral pH","High temperature","Substrate concentration"],
+      "answer":2,
+      "explanation":"High temperatures change the shape of the enzyme's active site, causing denaturation and loss of function.",
+      "tags":["enzymes","denaturation"]
     },
     {
       "id":"demo-bio-4",
-      "topic":"Ecology",
-      "paper":"0610/42",
+      "topic":"Genetics",
+      "paper":"0610/22",
       "session":"Oct/Nov 2021",
-      "qnum":"Q7",
-      "question":"Which term describes all the organisms of one species in a particular area?",
-      "choices":["Community","Population","Ecosystem","Habitat"],
-      "answer":1,
-      "explanation":"A population is all the organisms of one species living in a specific area.",
-      "tags":["ecology","population"]
+      "qnum":"Q6",
+      "question":"What is the term for different forms of the same gene?",
+      "choices":["Alleles","Chromosomes","Genotypes","Phenotypes"],
+      "answer":0,
+      "explanation":"Alleles are alternative forms of the same gene that occupy the same position on homologous chromosomes.",
+      "tags":["genetics","alleles"]
     },
     {
       "id":"demo-bio-5",
-      "topic":"Genetics",
-      "paper":"0610/22",
+      "topic":"Human Reproduction",
+      "paper":"0610/32",
       "session":"May/Jun 2020",
-      "qnum":"Q5",
-      "question":"In humans, brown eye colour (B) is dominant to blue (b). What is the genotype of a blue-eyed person?",
-      "choices":["BB","Bb","bb","bB"],
+      "qnum":"Q2",
+      "question":"Where does fertilisation normally take place in humans?",
+      "choices":["Ovary","Uterus","Fallopian tube","Vagina"],
       "answer":2,
-      "explanation":"Only genotype bb (homozygous recessive) results in blue eyes.",
-      "tags":["genetics","inheritance"]
+      "explanation":"Fertilisation usually occurs in the fallopian tube where the egg meets the sperm.",
+      "tags":["reproduction","fertilisation"]
     }
   ]
 }</script>
+
+
 
 
   <!-- Empty bank to receive licensed past-paper content via import -->
   <script id="question-bank" type="application/json">{
   "meta": {
     "version": "1.0",
-    "note": "Sample IGCSE Biology 0610 questions for testing/import."
+    "note": "Sample IIGCSE Biology (0610) questions for testing/import."
   },
   "questions": [
     {
       "id":"bio-cell-1",
       "topic":"Cell Biology",
-      "paper":"0610/12",
+      "paper":"0610/21",
       "session":"May/Jun 2021",
       "qnum":"Q1",
-      "question":"Which structure controls the activities of a cell?",
-      "choices":["Cytoplasm","Cell wall","Nucleus","Chloroplast"],
-      "answer":2,
-      "explanation":"The nucleus controls cell activities by regulating gene expression.",
-      "tags":["cell","nucleus"]
+      "question":"Which organelle controls the activities of a cell?",
+      "choices":["Nucleus","Mitochondria","Ribosome","Chloroplast"],
+      "answer":0,
+      "explanation":"The nucleus contains genetic material and controls cell activities.",
+      "tags":["cells","organelles"]
     },
     {
-      "id":"bio-enzymes-1",
-      "topic":"Enzymes",
-      "paper":"0610/21",
+      "id":"bio-cell-2",
+      "topic":"Cell Biology",
+      "paper":"0610/12",
       "session":"Oct/Nov 2020",
-      "qnum":"Q4",
-      "question":"Enzymes are:",
-      "choices":["Carbohydrates","Lipids","Proteins","Nucleic acids"],
-      "answer":2,
-      "explanation":"Enzymes are proteins that act as biological catalysts.",
-      "tags":["enzymes","proteins"]
-    },
-    {
-      "id":"bio-transport-1",
-      "topic":"Transport in Organisms",
-      "paper":"0610/32",
-      "session":"May/Jun 2019",
-      "qnum":"Q7",
-      "question":"Which process describes the movement of water through a partially permeable membrane?",
-      "choices":["Diffusion","Osmosis","Active transport","Transpiration"],
+      "qnum":"Q2",
+      "question":"Which structure is found in plant cells but not in animal cells?",
+      "choices":["Nucleus","Cell wall","Mitochondria","Cytoplasm"],
       "answer":1,
-      "explanation":"Osmosis is the diffusion of water through a partially permeable membrane.",
-      "tags":["transport","osmosis"]
+      "explanation":"Plant cells have a cell wall made of cellulose; animal cells do not.",
+      "tags":["cells","plants"]
     },
     {
-      "id":"bio-photosynthesis-1",
-      "topic":"Photosynthesis",
+      "id":"bio-enzyme-1",
+      "topic":"Enzymes",
       "paper":"0610/42",
-      "session":"Oct/Nov 2021",
-      "qnum":"Q8",
-      "question":"Which wavelength of light is absorbed most efficiently by chlorophyll?",
-      "choices":["Green","Blue","Red","Yellow"],
+      "session":"May/Jun 2019",
+      "qnum":"Q3",
+      "question":"Which factor affects enzyme activity the most?",
+      "choices":["Light intensity","pH","Carbon dioxide","Oxygen"],
       "answer":1,
-      "explanation":"Chlorophyll absorbs light most efficiently in the blue and red regions of the spectrum.",
-      "tags":["photosynthesis","light"]
+      "explanation":"Enzymes are sensitive to pH; extreme pH levels can denature them.",
+      "tags":["enzymes","pH"]
     },
     {
-      "id":"bio-stat-1",
-      "topic":"Human Nutrition",
+      "id":"bio-enzyme-2",
+      "topic":"Enzymes",
       "paper":"0610/22",
-      "session":"May/Jun 2020",
-      "qnum":"Q10",
-      "question":"Which nutrient is the main source of energy in the human diet?",
-      "choices":["Proteins","Fats","Carbohydrates","Vitamins"],
-      "answer":2,
-      "explanation":"Carbohydrates are the primary source of energy for humans.",
-      "tags":["nutrition","energy"]
+      "session":"Oct/Nov 2021",
+      "qnum":"Q4",
+      "question":"Amylase breaks down starch into which product?",
+      "choices":["Glucose","Maltose","Fructose","Lactose"],
+      "answer":1,
+      "explanation":"Amylase converts starch into maltose, a disaccharide.",
+      "tags":["enzymes","digestion"]
     },
     {
-      "id":"bio-prob-1",
+      "id":"bio-photo-1",
+      "topic":"Photosynthesis",
+      "paper":"0610/32",
+      "session":"May/Jun 2020",
+      "qnum":"Q5",
+      "question":"Which gas is required for photosynthesis?",
+      "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+      "answer":1,
+      "explanation":"Plants use carbon dioxide in photosynthesis to produce glucose and oxygen.",
+      "tags":["photosynthesis","plants"]
+    },
+    {
+      "id":"bio-photo-2",
+      "topic":"Photosynthesis",
+      "paper":"0610/21",
+      "session":"Oct/Nov 2021",
+      "qnum":"Q6",
+      "question":"What is the main product of photosynthesis?",
+      "choices":["Glucose","Oxygen","Starch","Water"],
+      "answer":0,
+      "explanation":"The main product of photosynthesis is glucose, which is stored or used in respiration.",
+      "tags":["photosynthesis","glucose"]
+    },
+    {
+    "id":"bio-resp-1",
+    "topic":"Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2021",
+    "qnum":"Q1",
+    "question":"Which process releases energy in cells?",
+    "choices":["Diffusion","Photosynthesis","Respiration","Transpiration"],
+    "answer":2,
+    "explanation":"Respiration breaks down glucose to release energy in the form of ATP.",
+    "tags":["respiration","energy"]
+  },
+  {
+    "id":"bio-resp-2",
+    "topic":"Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q2",
+    "question":"Which of the following is the main substrate used during respiration?",
+    "choices":["Starch","Glucose","Cellulose","Glycogen"],
+    "answer":1,
+    "explanation":"Glucose is the primary substrate used by cells to release energy through respiration.",
+    "tags":["respiration","glucose"]
+  },
+  {
+    "id":"bio-resp-3",
+    "topic":"Respiration",
+    "paper":"0610/13",
+    "session":"May/Jun 2020",
+    "qnum":"Q3",
+    "question":"In which organelle does aerobic respiration mainly take place?",
+    "choices":["Nucleus","Mitochondria","Ribosome","Chloroplast"],
+    "answer":1,
+    "explanation":"Mitochondria are the 'powerhouses' of the cell where aerobic respiration occurs.",
+    "tags":["respiration","mitochondria"]
+  },
+  {
+    "id":"bio-resp-4",
+    "topic":"Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q4",
+    "question":"Which of the following best describes respiration?",
+    "choices":["The intake of oxygen","The release of carbon dioxide","The breakdown of glucose to release energy","The movement of water across membranes"],
+    "answer":2,
+    "explanation":"Respiration involves the breakdown of glucose to release usable energy in the form of ATP.",
+    "tags":["respiration","definition"]
+  },
+  {
+    "id":"bio-resp-5",
+    "topic":"Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2019",
+    "qnum":"Q5",
+    "question":"What is the main purpose of respiration?",
+    "choices":["To produce oxygen","To produce glucose","To release energy","To form enzymes"],
+    "answer":2,
+    "explanation":"The energy released from respiration is used for processes like movement, growth, and repair.",
+    "tags":["respiration","purpose"]
+  },
+  {
+    "id":"bio-resp-6",
+    "topic":"Respiration",
+    "paper":"0610/12",
+    "session":"Oct/Nov 2022",
+    "qnum":"Q6",
+    "question":"Which gas is a waste product of aerobic respiration?",
+    "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+    "answer":1,
+    "explanation":"Carbon dioxide is produced when glucose is completely oxidized during aerobic respiration.",
+    "tags":["respiration","waste"]
+  },
+  {
+    "id":"bio-resp-7",
+    "topic":"Respiration",
+    "paper":"0610/22",
+    "session":"May/Jun 2021",
+    "qnum":"Q7",
+    "question":"Which statement is correct about respiration?",
+    "choices":["It only happens in plants","It only happens in animals","It happens in all living cells","It happens only in the presence of sunlight"],
+    "answer":2,
+    "explanation":"Respiration occurs in all living cells, both plants and animals, to provide energy for life processes.",
+    "tags":["respiration","cells"]
+  },
+  {
+    "id":"bio-resp-8",
+    "topic":"Respiration",
+    "paper":"0610/32",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q8",
+    "question":"Which of the following correctly describes the role of ATP in cells?",
+    "choices":["Stores genetic information","Transfers energy","Produces oxygen","Absorbs glucose"],
+    "answer":1,
+    "explanation":"ATP stores and transfers energy released during respiration for cellular activities.",
+    "tags":["respiration","ATP"]
+  },
+  {
+    "id":"bio-resp-9",
+    "topic":"Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2020",
+    "qnum":"Q9",
+    "question":"Which statement is true about energy from respiration?",
+    "choices":["It is stored as heat","It is released as ATP","It is stored in chlorophyll","It is released only during sleep"],
+    "answer":1,
+    "explanation":"The main form of usable energy from respiration is stored in ATP molecules.",
+    "tags":["respiration","ATP"]
+  },
+  {
+    "id":"bio-resp-10",
+    "topic":"Respiration",
+    "paper":"0610/13",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q10",
+    "question":"What happens to glucose molecules during respiration?",
+    "choices":["They are broken down to release energy","They are stored as glycogen","They are converted into chlorophyll","They remain unchanged"],
+    "answer":0,
+    "explanation":"Glucose molecules are broken down step by step to release energy for cell functions.",
+    "tags":["respiration","glucose"]
+  },
+{
+    "id":"bio-aero-1",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2021",
+    "qnum":"Q1",
+    "question":"Which of the following is the overall word equation for aerobic respiration?",
+    "choices":["Glucose → Lactic acid + Energy","Glucose + Oxygen → Carbon dioxide + Water + Energy","Glucose → Ethanol + Carbon dioxide + Energy","Glucose + Carbon dioxide → Oxygen + Energy"],
+    "answer":1,
+    "explanation":"Aerobic respiration uses oxygen to completely break down glucose into carbon dioxide and water, releasing energy.",
+    "tags":["aerobic","equation"]
+  },
+  {
+    "id":"bio-aero-2",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q2",
+    "question":"Which organelle is the site of aerobic respiration?",
+    "choices":["Chloroplast","Mitochondria","Nucleus","Ribosome"],
+    "answer":1,
+    "explanation":"Mitochondria are the main site where aerobic respiration occurs.",
+    "tags":["aerobic","mitochondria"]
+  },
+  {
+    "id":"bio-aero-3",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/13",
+    "session":"May/Jun 2020",
+    "qnum":"Q3",
+    "question":"What is the main purpose of oxygen in aerobic respiration?",
+    "choices":["To combine with glucose","To accept electrons at the end of the electron transport chain","To produce ATP directly","To form carbon dioxide"],
+    "answer":1,
+    "explanation":"Oxygen acts as the final electron acceptor in the electron transport chain, allowing ATP production.",
+    "tags":["aerobic","oxygen"]
+  },
+  {
+    "id":"bio-aero-4",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/42",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q4",
+    "question":"Which statement about aerobic respiration is correct?",
+    "choices":["It produces more energy than anaerobic respiration","It occurs in the cytoplasm only","It produces lactic acid","It does not require oxygen"],
+    "answer":0,
+    "explanation":"Aerobic respiration releases more ATP per glucose molecule than anaerobic respiration.",
+    "tags":["aerobic","energy"]
+  },
+  {
+    "id":"bio-aero-5",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2019",
+    "qnum":"Q5",
+    "question":"Which of the following is a product of aerobic respiration?",
+    "choices":["Lactic acid","Ethanol","Carbon dioxide","Glucose"],
+    "answer":2,
+    "explanation":"Carbon dioxide and water are products of aerobic respiration.",
+    "tags":["aerobic","products"]
+  },
+  {
+    "id":"bio-aero-6",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2018",
+    "qnum":"Q6",
+    "question":"Which process produces the most ATP molecules per glucose molecule?",
+    "choices":["Anaerobic respiration","Aerobic respiration","Fermentation","Photosynthesis"],
+    "answer":1,
+    "explanation":"Aerobic respiration produces about 36–38 ATP molecules per glucose, more than anaerobic processes.",
+    "tags":["aerobic","ATP"]
+  },
+  {
+    "id":"bio-aero-7",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/32",
+    "session":"May/Jun 2020",
+    "qnum":"Q7",
+    "question":"Which gas is consumed during aerobic respiration?",
+    "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+    "answer":0,
+    "explanation":"Oxygen is required for the complete oxidation of glucose in aerobic respiration.",
+    "tags":["aerobic","oxygen"]
+  },
+  {
+    "id":"bio-aero-8",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/42",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q8",
+    "question":"Which stage of aerobic respiration produces the most ATP?",
+    "choices":["Glycolysis","Link reaction","Krebs cycle","Electron transport chain"],
+    "answer":3,
+    "explanation":"The electron transport chain generates the majority of ATP in aerobic respiration.",
+    "tags":["aerobic","ATP"]
+  },
+  {
+    "id":"bio-aero-9",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2021",
+    "qnum":"Q9",
+    "question":"During aerobic respiration, which molecule stores energy in a form usable by the cell?",
+    "choices":["ATP","Glucose","Oxygen","Carbon dioxide"],
+    "answer":0,
+    "explanation":"ATP stores and transfers energy for cellular activities.",
+    "tags":["aerobic","ATP"]
+  },
+  {
+    "id":"bio-aero-10",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q10",
+    "question":"Which of the following correctly describes aerobic respiration?",
+    "choices":["Glucose is partially broken down to release energy","Glucose is completely oxidized to release maximum energy","It occurs without oxygen","It produces lactic acid"],
+    "answer":1,
+    "explanation":"Aerobic respiration completely oxidizes glucose to produce carbon dioxide, water, and maximum ATP.",
+    "tags":["aerobic","definition"]
+  },
+{
+    "id":"bio-anaero-1",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2021",
+    "qnum":"Q1",
+    "question":"Which of the following is the main difference between aerobic and anaerobic respiration?",
+    "choices":["Anaerobic respiration uses oxygen","Anaerobic respiration produces more ATP","Anaerobic respiration produces lactic acid or ethanol","Anaerobic respiration occurs in mitochondria only"],
+    "answer":2,
+    "explanation":"Anaerobic respiration occurs without oxygen and produces either lactic acid (in animals) or ethanol and carbon dioxide (in plants/yeast).",
+    "tags":["anaerobic","comparison"]
+  },
+  {
+    "id":"bio-anaero-2",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q2",
+    "question":"What is the word equation for anaerobic respiration in human muscle cells?",
+    "choices":["Glucose → Ethanol + CO₂","Glucose → Lactic acid","Glucose + Oxygen → CO₂ + Water","Glucose → ATP + Water"],
+    "answer":1,
+    "explanation":"In human muscles, anaerobic respiration produces lactic acid when oxygen is in short supply.",
+    "tags":["anaerobic","humans"]
+  },
+  {
+    "id":"bio-anaero-3",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/13",
+    "session":"May/Jun 2020",
+    "qnum":"Q3",
+    "question":"Which type of cell performs anaerobic respiration when oxygen is limited?",
+    "choices":["Plant cells","Animal cells","Yeast cells","All of the above"],
+    "answer":3,
+    "explanation":"Many types of cells can respire anaerobically when oxygen is insufficient.",
+    "tags":["anaerobic","cells"]
+  },
+  {
+    "id":"bio-anaero-4",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/42",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q4",
+    "question":"What is a disadvantage of anaerobic respiration compared to aerobic respiration?",
+    "choices":["It produces less energy per glucose molecule","It requires oxygen","It produces only water","It occurs only in plants"],
+    "answer":0,
+    "explanation":"Anaerobic respiration produces much less ATP per glucose than aerobic respiration.",
+    "tags":["anaerobic","energy"]
+  },
+  {
+    "id":"bio-anaero-5",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2019",
+    "qnum":"Q5",
+    "question":"Which substance accumulates in muscles during intense exercise due to anaerobic respiration?",
+    "choices":["Carbon dioxide","Ethanol","Lactic acid","ATP"],
+    "answer":2,
+    "explanation":"Lactic acid builds up when muscles respire anaerobically, causing fatigue.",
+    "tags":["anaerobic","lactic acid"]
+  },
+  {
+    "id":"bio-anaero-6",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2018",
+    "qnum":"Q6",
+    "question":"Which gas is produced during anaerobic respiration in yeast?",
+    "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+    "answer":1,
+    "explanation":"Yeast produces ethanol and carbon dioxide during anaerobic fermentation.",
+    "tags":["anaerobic","yeast"]
+  },
+  {
+    "id":"bio-anaero-7",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/32",
+    "session":"May/Jun 2020",
+    "qnum":"Q7",
+    "question":"Why does anaerobic respiration occur in muscle cells?",
+    "choices":["Because oxygen is abundant","Because oxygen is lacking","To produce more ATP than aerobic respiration","To release CO₂ rapidly"],
+    "answer":1,
+    "explanation":"When oxygen supply is insufficient for aerobic respiration, muscles switch to anaerobic respiration to release some energy.",
+    "tags":["anaerobic","muscles"]
+  },
+  {
+    "id":"bio-anaero-8",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/42",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q8",
+    "question":"Which of the following is an advantage of anaerobic respiration?",
+    "choices":["It produces maximum ATP","It allows energy release when oxygen is limited","It produces water instead of lactic acid","It is more efficient than aerobic respiration"],
+    "answer":1,
+    "explanation":"Anaerobic respiration allows cells to release energy when oxygen is in short supply, even if less efficiently.",
+    "tags":["anaerobic","advantage"]
+  },
+  {
+    "id":"bio-anaero-9",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2021",
+    "qnum":"Q9",
+    "question":"Which equation represents anaerobic respiration in yeast cells?",
+    "choices":["Glucose → Lactic acid","Glucose → Ethanol + Carbon dioxide","Glucose + Oxygen → CO₂ + Water","Glucose → ATP + Water"],
+    "answer":1,
+    "explanation":"Yeast ferments glucose anaerobically to produce ethanol and carbon dioxide.",
+    "tags":["anaerobic","yeast"]
+  },
+  {
+    "id":"bio-anaero-10",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q10",
+    "question":"Which of the following statements is true about anaerobic respiration?",
+    "choices":["It produces more energy than aerobic respiration","It produces lactic acid in human muscles","It requires oxygen","It occurs in mitochondria only"],
+    "answer":1,
+    "explanation":"In humans, anaerobic respiration produces lactic acid in muscles when oxygen is insufficient.",
+    "tags":["anaerobic","lactic acid"]
+  },
+{
+    "id":"bio-resp-11",
+    "topic":"Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2022",
+    "qnum":"Q11",
+    "question":"Which statement best describes the process of respiration?",
+    "choices":["It produces energy directly","It breaks down glucose to release energy","It stores oxygen in cells","It only happens in plants"],
+    "answer":1,
+    "explanation":"Respiration breaks down glucose in cells to release energy stored in ATP molecules.",
+    "tags":["respiration","energy"]
+  },
+  {
+    "id":"bio-resp-12",
+    "topic":"Respiration",
+    "paper":"0610/21",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q12",
+    "question":"Where does respiration occur inside a cell?",
+    "choices":["Nucleus","Mitochondria","Cytoplasm","Ribosomes"],
+    "answer":1,
+    "explanation":"The mitochondria are the main site of aerobic respiration in eukaryotic cells.",
+    "tags":["respiration","mitochondria"]
+  },
+  {
+    "id":"bio-resp-13",
+    "topic":"Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2020",
+    "qnum":"Q13",
+    "question":"Which of the following processes in living organisms requires energy from respiration?",
+    "choices":["Diffusion","Active transport","Osmosis","Evaporation"],
+    "answer":1,
+    "explanation":"Active transport uses ATP from respiration to move substances against the concentration gradient.",
+    "tags":["respiration","ATP"]
+  },
+  {
+    "id":"bio-resp-14",
+    "topic":"Respiration",
+    "paper":"0610/32",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q14",
+    "question":"Which gas is always produced in aerobic respiration?",
+    "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+    "answer":1,
+    "explanation":"Carbon dioxide is a waste product of aerobic respiration in both plants and animals.",
+    "tags":["respiration","gas exchange"]
+  },
+  {
+    "id":"bio-resp-15",
+    "topic":"Respiration",
+    "paper":"0610/11",
+    "session":"May/Jun 2021",
+    "qnum":"Q15",
+    "question":"Which molecule stores the energy released from respiration?",
+    "choices":["Glucose","ATP","DNA","Starch"],
+    "answer":1,
+    "explanation":"Energy from glucose breakdown is stored in ATP molecules and used for cellular activities.",
+    "tags":["respiration","ATP"]
+  },
+  {
+    "id":"bio-resp-16",
+    "topic":"Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2022",
+    "qnum":"Q16",
+    "question":"Which statement explains why respiration is important in humans?",
+    "choices":["It absorbs carbon dioxide","It stores energy in glucose","It provides energy for metabolism","It creates oxygen in cells"],
+    "answer":2,
+    "explanation":"Respiration releases energy from glucose to fuel metabolism and essential life processes.",
+    "tags":["respiration","humans"]
+  },
+  {
+    "id":"bio-resp-17",
+    "topic":"Respiration",
+    "paper":"0610/32",
+    "session":"May/Jun 2019",
+    "qnum":"Q17",
+    "question":"Which of these is an example of a process that needs energy from respiration?",
+    "choices":["Protein synthesis","Photosynthesis","Diffusion","Osmosis"],
+    "answer":0,
+    "explanation":"Protein synthesis requires energy in the form of ATP from respiration to link amino acids.",
+    "tags":["respiration","metabolism"]
+  },
+  {
+    "id":"bio-resp-18",
+    "topic":"Respiration",
+    "paper":"0610/12",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q18",
+    "question":"Why does the rate of respiration increase during exercise?",
+    "choices":["More glucose is stored","More carbon dioxide is produced","More energy is needed for muscle contraction","Less oxygen is needed"],
+    "answer":2,
+    "explanation":"Muscles require more energy during exercise, so respiration rate increases.",
+    "tags":["respiration","exercise"]
+  },
+  {
+    "id":"bio-resp-19",
+    "topic":"Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2020",
+    "qnum":"Q19",
+    "question":"Which of the following is NOT a product of aerobic respiration?",
+    "choices":["Carbon dioxide","Water","Lactic acid","Energy"],
+    "answer":2,
+    "explanation":"Lactic acid is produced in anaerobic respiration, not aerobic respiration.",
+    "tags":["respiration","aerobic"]
+  },
+  {
+    "id":"bio-resp-20",
+    "topic":"Respiration",
+    "paper":"0610/32",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q20",
+    "question":"Which organelle is nicknamed the 'powerhouse of the cell' because of respiration?",
+    "choices":["Chloroplast","Nucleus","Mitochondrion","Golgi body"],
+    "answer":2,
+    "explanation":"Mitochondria are the site of aerobic respiration and produce most of the ATP in cells.",
+    "tags":["respiration","mitochondria"]
+  },
+{
+    "id":"bio-aero-11",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/22",
+    "session":"May/Jun 2022",
+    "qnum":"Q21",
+    "question":"Which word equation represents aerobic respiration?",
+    "choices":["Glucose → Lactic acid + Energy","Glucose + Oxygen → Carbon dioxide + Water + Energy","Glucose → Ethanol + Carbon dioxide + Energy","Oxygen + Carbon dioxide → Glucose + Energy"],
+    "answer":1,
+    "explanation":"In aerobic respiration, glucose reacts with oxygen to release energy, carbon dioxide, and water.",
+    "tags":["aerobic","equation"]
+  },
+  {
+    "id":"bio-aero-12",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/42",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q22",
+    "question":"Where in the cell does most aerobic respiration occur?",
+    "choices":["Cytoplasm","Mitochondria","Nucleus","Ribosomes"],
+    "answer":1,
+    "explanation":"The mitochondria are the site of aerobic respiration, producing large amounts of ATP.",
+    "tags":["aerobic","mitochondria"]
+  },
+  {
+    "id":"bio-aero-13",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2021",
+    "qnum":"Q23",
+    "question":"Why does aerobic respiration release more energy than anaerobic respiration?",
+    "choices":["It breaks down glucose completely","It produces lactic acid","It happens faster","It does not use oxygen"],
+    "answer":0,
+    "explanation":"Aerobic respiration fully oxidizes glucose, producing much more ATP compared to anaerobic respiration.",
+    "tags":["aerobic","energy"]
+  },
+  {
+    "id":"bio-aero-14",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/32",
+    "session":"May/Jun 2020",
+    "qnum":"Q24",
+    "question":"Which of these is a product of aerobic respiration?",
+    "choices":["Carbon dioxide","Lactic acid","Ethanol","Nitrogen"],
+    "answer":0,
+    "explanation":"Carbon dioxide is a waste product of aerobic respiration in both plants and animals.",
+    "tags":["aerobic","gas exchange"]
+  },
+  {
+    "id":"bio-aero-15",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/12",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q25",
+    "question":"During exercise, why does the breathing rate increase?",
+    "choices":["To reduce body temperature","To supply more oxygen to muscles","To remove nitrogen faster","To produce less ATP"],
+    "answer":1,
+    "explanation":"During exercise, muscles need more oxygen for aerobic respiration to release energy for contractions.",
+    "tags":["aerobic","exercise"]
+  },
+  {
+    "id":"bio-aero-16",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/32",
+    "session":"Oct/Nov 2019",
+    "qnum":"Q26",
+    "question":"What is the main advantage of aerobic respiration?",
+    "choices":["It uses less oxygen","It produces ethanol","It releases large amounts of energy","It is faster than anaerobic respiration"],
+    "answer":2,
+    "explanation":"Aerobic respiration provides a high yield of ATP compared to anaerobic respiration.",
+    "tags":["aerobic","ATP"]
+  },
+  {
+    "id":"bio-aero-17",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/21",
+    "session":"May/Jun 2021",
+    "qnum":"Q27",
+    "question":"Which process supplies the oxygen needed for aerobic respiration?",
+    "choices":["Photosynthesis","Diffusion into cells","Fermentation","Active transport"],
+    "answer":1,
+    "explanation":"Oxygen required for aerobic respiration enters the blood through diffusion in the alveoli.",
+    "tags":["aerobic","oxygen"]
+  },
+  {
+    "id":"bio-aero-18",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2022",
+    "qnum":"Q28",
+    "question":"Why is aerobic respiration essential for brain function?",
+    "choices":["The brain stores oxygen","The brain requires constant energy supply","The brain produces lactic acid","The brain produces glucose"],
+    "answer":1,
+    "explanation":"The brain has a high energy demand and depends on aerobic respiration for ATP production.",
+    "tags":["aerobic","brain"]
+  },
+  {
+    "id":"bio-aero-19",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/32",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q29",
+    "question":"Which gas exchange occurs during aerobic respiration in humans?",
+    "choices":["Oxygen diffuses out, carbon dioxide in","Oxygen diffuses in, carbon dioxide out","Carbon dioxide diffuses in only","Only oxygen diffuses in"],
+    "answer":1,
+    "explanation":"Oxygen enters the bloodstream for aerobic respiration while carbon dioxide is released as waste.",
+    "tags":["aerobic","gas exchange"]
+  },
+  {
+    "id":"bio-aero-20",
+    "topic":"Aerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q30",
+    "question":"Which factor directly increases the rate of aerobic respiration?",
+    "choices":["Lower temperature","Higher oxygen availability","Lower glucose concentration","Reduced ATP demand"],
+    "answer":1,
+    "explanation":"Increasing oxygen supply allows faster aerobic respiration, producing more ATP for cell activities.",
+    "tags":["aerobic","rate"]
+  },
+{
+    "id":"bio-anaero-1",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/12",
+    "session":"May/Jun 2022",
+    "qnum":"Q31",
+    "question":"Which statement about anaerobic respiration is correct?",
+    "choices":["It requires oxygen","It releases less energy than aerobic respiration","It occurs only in plants","It produces only water"],
+    "answer":1,
+    "explanation":"Anaerobic respiration produces less ATP because glucose is not completely broken down.",
+    "tags":["anaerobic","energy"]
+  },
+  {
+    "id":"bio-anaero-2",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/42",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q32",
+    "question":"In humans, what is the main product of anaerobic respiration?",
+    "choices":["Carbon dioxide","Lactic acid","Ethanol","Oxygen"],
+    "answer":1,
+    "explanation":"In humans, anaerobic respiration converts glucose into lactic acid when oxygen is insufficient.",
+    "tags":["anaerobic","lactic acid"]
+  },
+  {
+    "id":"bio-anaero-3",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/32",
+    "session":"May/Jun 2020",
+    "qnum":"Q33",
+    "question":"Which word equation represents anaerobic respiration in yeast?",
+    "choices":["Glucose → Ethanol + Carbon dioxide + Energy","Glucose + Oxygen → Water + Energy","Glucose → Lactic acid + Energy","Oxygen + Carbon dioxide → Glucose + Energy"],
+    "answer":0,
+    "explanation":"In yeast, glucose is broken down anaerobically into ethanol, carbon dioxide, and small amounts of energy.",
+    "tags":["anaerobic","yeast"]
+  },
+  {
+    "id":"bio-anaero-4",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/21",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q34",
+    "question":"Why do muscles switch to anaerobic respiration during intense exercise?",
+    "choices":["Oxygen supply cannot meet demand","Glucose is not available","It produces more ATP","Lactic acid must be removed"],
+    "answer":0,
+    "explanation":"When oxygen supply is limited, muscles switch to anaerobic respiration to produce ATP quickly.",
+    "tags":["anaerobic","exercise"]
+  },
+  {
+    "id":"bio-anaero-5",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2021",
+    "qnum":"Q35",
+    "question":"Which of the following happens due to lactic acid buildup?",
+    "choices":["Increased oxygen uptake","Muscle fatigue","Higher ATP production","More carbon dioxide released"],
+    "answer":1,
+    "explanation":"Lactic acid accumulation lowers muscle pH, leading to fatigue and pain after intense exercise.",
+    "tags":["anaerobic","lactic acid"]
+  },
+  {
+    "id":"bio-anaero-6",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/22",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q36",
+    "question":"How is the oxygen debt repaid after vigorous exercise?",
+    "choices":["By increasing glucose intake","By breathing rapidly to oxidize lactic acid","By storing more ATP","By producing more carbon dioxide"],
+    "answer":1,
+    "explanation":"After exercise, rapid breathing supplies oxygen to break down lactic acid into carbon dioxide and water.",
+    "tags":["anaerobic","oxygen debt"]
+  },
+  {
+    "id":"bio-anaero-7",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/32",
+    "session":"May/Jun 2022",
+    "qnum":"Q37",
+    "question":"In which organisms does anaerobic respiration produce ethanol?",
+    "choices":["Humans only","Yeast only","Plants only","Both yeast and humans"],
+    "answer":1,
+    "explanation":"Yeast performs alcoholic fermentation, producing ethanol and carbon dioxide in the absence of oxygen.",
+    "tags":["anaerobic","ethanol"]
+  },
+  {
+    "id":"bio-anaero-8",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/12",
+    "session":"Oct/Nov 2020",
+    "qnum":"Q38",
+    "question":"Which statement compares aerobic and anaerobic respiration correctly?",
+    "choices":["Anaerobic respiration produces more ATP","Aerobic respiration produces lactic acid","Anaerobic respiration occurs when oxygen is lacking","Aerobic respiration occurs without oxygen"],
+    "answer":2,
+    "explanation":"Anaerobic respiration is used when oxygen is unavailable, producing less ATP than aerobic respiration.",
+    "tags":["anaerobic","comparison"]
+  },
+  {
+    "id":"bio-anaero-9",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/42",
+    "session":"May/Jun 2022",
+    "qnum":"Q39",
+    "question":"What is the main disadvantage of anaerobic respiration in humans?",
+    "choices":["It requires more oxygen","It releases less energy and causes lactic acid buildup","It produces ethanol","It speeds up muscle recovery"],
+    "answer":1,
+    "explanation":"Anaerobic respiration is less efficient and leads to lactic acid accumulation, which causes muscle fatigue.",
+    "tags":["anaerobic","disadvantage"]
+  },
+  {
+    "id":"bio-anaero-10",
+    "topic":"Anaerobic Respiration",
+    "paper":"0610/21",
+    "session":"Oct/Nov 2021",
+    "qnum":"Q40",
+    "question":"Why do sprinters often experience an oxygen debt after a race?",
+    "choices":["They breathe too slowly","Glucose is unavailable","Anaerobic respiration produces lactic acid","Oxygen cannot diffuse into cells"],
+    "answer":2,
+    "explanation":"During short bursts of intense activity, oxygen supply is insufficient, leading to lactic acid accumulation and oxygen debt.",
+    "tags":["anaerobic","sports"]
+  },
+        {
+      "id":"bio-genetics-1",
+      "topic":"Genetics",
+      "paper":"0610/23",
+      "session":"May/Jun 2019",
+      "qnum":"Q9",
+      "question":"What is the term for different versions of the same gene?",
+      "choices":["Chromosomes","Alleles","Genotypes","Phenotypes"],
+      "answer":1,
+      "explanation":"Alleles are variations of the same gene located at the same locus on a chromosome.",
+      "tags":["genetics","alleles"]
+    },
+    {
+      "id":"bio-genetics-2",
       "topic":"Genetics",
       "paper":"0610/11",
-      "session":"Oct/Nov 2019",
-      "qnum":"Q13",
-      "question":"In a monohybrid cross, the F1 generation shows all dominant traits. What is the F2 ratio of dominant to recessive?",
-      "choices":["1:1","2:1","3:1","9:3:3:1"],
-      "answer":2,
-      "explanation":"A typical monohybrid cross results in a 3:1 ratio in the F2 generation.",
-      "tags":["genetics","inheritance"]
+      "session":"Oct/Nov 2021",
+      "qnum":"Q10",
+      "question":"Which genetic material carries instructions for making proteins?",
+      "choices":["RNA","DNA","Chromosomes","Ribosomes"],
+      "answer":1,
+      "explanation":"DNA carries the genetic code used to produce proteins during transcription and translation.",
+      "tags":["genetics","dna"]
     },
     {
-      "id":"bio-ecology-1",
-      "topic":"Ecology",
-      "paper":"0610/23",
+      "id":"bio-repro-1",
+      "topic":"Human Reproduction",
+      "paper":"0610/22",
+      "session":"May/Jun 2018",
+      "qnum":"Q11",
+      "question":"Where does fertilisation usually take place in humans?",
+      "choices":["Uterus","Ovary","Fallopian tube","Vagina"],
+      "answer":2,
+      "explanation":"Fertilisation normally occurs in the fallopian tube.",
+      "tags":["reproduction","fertilisation"]
+    },
+    {
+      "id":"bio-repro-2",
+      "topic":"Human Reproduction",
+      "paper":"0610/13",
+      "session":"Oct/Nov 2020",
+      "qnum":"Q12",
+      "question":"Which hormone controls the menstrual cycle?",
+      "choices":["Adrenaline","Testosterone","Oestrogen","Insulin"],
+      "answer":2,
+      "explanation":"Oestrogen regulates the menstrual cycle along with progesterone.",
+      "tags":["hormones","menstrual"]
+    },
+    {
+      "id":"bio-homeo-1",
+      "topic":"Homeostasis",
+      "paper":"0610/32",
       "session":"May/Jun 2021",
-      "qnum":"Q15",
-      "question":"Which term describes the role of an organism in its ecosystem?",
-      "choices":["Habitat","Niche","Community","Population"],
+      "qnum":"Q13",
+      "question":"Which organ controls blood glucose concentration?",
+      "choices":["Liver","Kidneys","Pancreas","Heart"],
+      "answer":2,
+      "explanation":"The pancreas releases insulin and glucagon to regulate blood glucose levels.",
+      "tags":["homeostasis","glucose"]
+    },
+    {
+      "id":"bio-homeo-2",
+      "topic":"Homeostasis",
+      "paper":"0610/42",
+      "session":"Oct/Nov 2019",
+      "qnum":"Q14",
+      "question":"What happens when body temperature rises above normal?",
+      "choices":["Shivering","Vasodilation","Vasoconstriction","Decreased sweating"],
       "answer":1,
-      "explanation":"A niche is the role an organism plays in its ecosystem, including its interactions and resources used.",
-      "tags":["ecology","niche"]
+      "explanation":"Vasodilation increases blood flow to the skin to release heat.",
+      "tags":["homeostasis","temperature"]
+    },
+    {
+      "id":"bio-eco-1",
+      "topic":"Ecology & Environment",
+      "paper":"0610/22",
+      "session":"May/Jun 2020",
+      "qnum":"Q15",
+      "question":"Which gas contributes most to global warming?",
+      "choices":["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+      "answer":1,
+      "explanation":"Carbon dioxide is a greenhouse gas responsible for global warming.",
+      "tags":["environment","climate"]
+    },
+    {
+      "id":"bio-eco-2",
+      "topic":"Ecology & Environment",
+      "paper":"0610/21",
+      "session":"Oct/Nov 2021",
+      "qnum":"Q16",
+      "question":"Which process returns carbon dioxide to the atmosphere?",
+      "choices":["Photosynthesis","Respiration","Condensation","Absorption"],
+      "answer":1,
+      "explanation":"Respiration releases carbon dioxide back into the atmosphere.",
+      "tags":["carbon cycle","respiration"]
     }
   ]
 }</script>
-
 
 
 
@@ -336,23 +1141,13 @@
 
     const topicsPreferred = [
   "Cell Biology",
-  "Biological Molecules & Enzymes",
-  "Movement in and out of Cells",
-  "Transport in Plants",
-  "Transport in Humans",
-  "Respiration",
+  "Enzymes",
   "Photosynthesis",
-  "Human Nutrition & Digestion",
-  "Coordination and Response",
-  "Excretion in Humans",
+  "Respiration",
+  "Genetics",
+  "Human Reproduction",
   "Homeostasis",
-  "Reproduction in Plants",
-  "Reproduction in Humans",
-  "Genetics and Inheritance",
-  "Variation and Selection",
-  "Organisms and their Environment",
-  "Ecosystems & Energy Flow",
-  "Human Influences on Ecosystems"
+  "Ecology & Environment"
 ];
 
 
