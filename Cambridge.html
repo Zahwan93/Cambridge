@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- MathJax untuk tampilan rumus -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <title>Kebun Ilmu – Media Pembelajaran Interaktif</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--brand:#10b981;--brand-2:#22d3ee}
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji"}
+    .glass{backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.6))}
+    .chip{border:1px solid rgba(0,0,0,.06);}
+    .btn{transition:transform .05s ease}
+    .btn:active{transform:translateY(1px) scale(.99)}
+    details>summary{list-style:none}
+    details>summary::-webkit-details-marker{display:none}
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-sky-50 via-emerald-50 to-white text-gray-800">
+  <!-- Header / Brand -->
+  <header class="sticky top-0 z-40 border-b border-emerald-100/60 glass">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
+      <img src="https://zahwan93.github.io/Kebun-Ilmu-Matematika-SMP/logo.png" alt="Logo Kebun Ilmu" class="w-10 h-10 rounded-xl shadow" />
+      <div class="flex-1">
+        <h1 class="text-lg sm:text-2xl font-extrabold tracking-tight">
+          Kebun Ilmu <span class="text-emerald-600">— Interactive Learning Platform</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-gray-500">Materials · Practice · Simulation</p>
+      </div>
+      <nav class="hidden sm:flex items-center gap-2">
+        <button data-tab="materi" class="tab-btn btn px-3 py-2 rounded-xl bg-emerald-600 text-white text-sm font-medium shadow hover:shadow-md">Materials</button>
+        <button data-tab="latihan" class="tab-btn btn px-3 py-2 rounded-xl bg-white text-gray-700 text-sm font-medium border chip hover:bg-gray-50">Practice</button>
+        <button data-tab="simulasi" class="tab-btn btn px-3 py-2 rounded-xl bg-white text-gray-700 text-sm font-medium border chip hover:bg-gray-50">Quiz</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Tab Switcher -->
+  <div class="sm:hidden sticky top-[60px] z-30 bg-white/80 backdrop-blur border-b border-emerald-100/60">
+    <div class="max-w-6xl mx-auto px-4 py-2 grid grid-cols-3 gap-2">
+      <button data-tab="materi" class="tab-btn btn py-2 rounded-lg bg-emerald-600 text-white text-xs font-semibold">Materials</button>
+      <button data-tab="latihan" class="tab-btn btn py-2 rounded-lg bg-white border chip text-xs font-semibold">Practice</button>
+      <button data-tab="simulasi" class="tab-btn btn py-2 rounded-lg bg-white border chip text-xs font-semibold">Quiz</button>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+    <!-- Info links to Pusmendik -->
+    
+    <!-- Tabs content wrapper -->
+    <section id="tab-materi" class="tab-pane">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="md:col-span-1 space-y-4">
+          <div class="p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+            <h2 class="font-bold text-lg">Select Material</h2>
+            <label class="block mt-3 text-sm">Subject</label>
+            <select id="materiMapel" class="w-full mt-1 px-3 py-2 rounded-xl border chip focus:outline-none focus:ring-2 focus:ring-emerald-300">
+              <!-- Diisi via JS -->
+            </select>
+            <label class="block mt-3 text-sm">Chapter</label>
+            <select id="materiBab" class="w-full mt-1 px-3 py-2 rounded-xl border chip focus:outline-none focus:ring-2 focus:ring-emerald-300">
+            </select>
+            <button id="btnLoadMateri" class="btn mt-4 w-full py-2 rounded-xl bg-emerald-600 text-white font-semibold">Display</button>
+          </div>
+
+                  </div>
+
+        <div class="md:col-span-2 space-y-4">
+          <div class="p-5 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+            <h2 class="font-bold text-xl flex items-center gap-2">📘 Summary of Material</h2>
+            <div id="materiKonten" class="prose prose-sm sm:prose lg:prose-lg max-w-none mt-3"></div>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+            <h2 class="font-bold text-xl flex items-center gap-2">🎬 Video</h2>
+            <div id="materiVideo" class="aspect-video w-full overflow-hidden rounded-xl bg-gray-100 flex items-center justify-center text-gray-400">
+              <span class="text-sm">Pilih materi untuk memuat video…</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-latihan" class="tab-pane hidden">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="md:col-span-1 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+          <h2 class="font-bold text-lg">Practice Settings</h2>
+          <label class="block mt-3 text-sm">Subject</label>
+          <select id="latihMapel" class="w-full mt-1 px-3 py-2 rounded-xl border chip focus:outline-none focus:ring-2 focus:ring-emerald-300"></select>
+          <label class="block mt-3 text-sm">Chapter</label>
+          <select id="latihBab" class="w-full mt-1 px-3 py-2 rounded-xl border chip focus:outline-none focus:ring-2 focus:ring-emerald-300"></select>
+          <button id="btnLoadLatihan" class="btn mt-4 w-full py-2 rounded-xl bg-emerald-600 text-white font-semibold">Load Questions</button>
+        </div>
+        <div class="md:col-span-2 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="font-bold text-xl">Practice Questions</h2>
+            <button id="btnPeriksaSemua" class="btn px-3 py-2 rounded-xl border chip text-sm">Check All</button>
+          </div>
+          <div id="latihanContainer" class="mt-3 space-y-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-simulasi" class="tab-pane hidden">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="md:col-span-1 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+          <h2 class="font-bold text-lg">Quiz Settings</h2>
+          <label class="block mt-3 text-sm">Subject</label>
+          <select id="simMapel" class="w-full mt-1 px-3 py-2 rounded-xl border chip"></select>
+          <label class="block mt-3 text-sm">Number of Questions</label>
+          <input id="simJumlah" type="number" min="5" max="50" value="10" class="w-full mt-1 px-3 py-2 rounded-xl border chip" />
+          <label class="block mt-3 text-sm">Duration (minutes)</label>
+          <input id="simDurasi" type="number" min="5" max="180" value="15" class="w-full mt-1 px-3 py-2 rounded-xl border chip" />
+          <button id="btnMulaiSim" class="btn mt-4 w-full py-2 rounded-xl bg-emerald-600 text-white font-semibold">Start Quiz</button>
+          <p class="text-xs text-gray-500 mt-2">Timer akan berjalan. Skor & pembahasan ditampilkan setelah selesai.</p>
+        </div>
+        <div class="md:col-span-2 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="font-bold text-xl">Quiz</h2>
+            <div id="simInfo" class="text-sm text-gray-600">Not Started</div>
+          </div>
+          <div id="simContainer" class="mt-3 space-y-4"></div>
+          <div id="simHasil" class="mt-4 hidden p-4 rounded-xl border chip bg-emerald-50"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
+    <div class="mt-10 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm text-xs text-gray-500">
+      <p><strong>Kebun Ilmu</strong> – Aplikasi belajar mandiri. Konten ringkasan & soal di sini adalah contoh yang disusun menyerupai format TKA. Untuk rujukan resmi gunakan tautan Pusmendik di atas.</p>
+    </div>
+  </footer>
+
+  <!-- App Data & Logic -->
+  <script>
+  // ======= Dataset Contoh (DISERAGAMKAN DENGAN TKA SMA) =======
+  // Struktur: mapel -> bab[] -> materi (html), video (YT embed id), soal[]
+  const DB = {
+  'Biology IGCSE': {
+    bab: {
+      'Biotechnology and Genetic Modification': {
+        materi: `
+          <h2 class="text-xl font-bold mb-2">Biotechnology and Genetic Modification</h2>
+
+          <h3 class="font-semibold mt-3">1. Why Bacteria Are Useful in Biotechnology</h3>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Rapid reproduction – bacteria divide every 20 minutes under ideal conditions.</li>
+            <li>Ability to produce complex molecules like insulin, enzymes, and vaccines.</li>
+            <li>Simple DNA structure (circular chromosome + plasmids) makes them easy to modify.</li>
+            <li>Cost-effective and scalable – bacteria can be grown in fermenters.</li>
+          </ul>
+
+          <h3 class="font-semibold mt-3">2. Example: Producing Human Insulin Using GM Bacteria</h3>
+          <ol class="list-decimal pl-6 mb-4">
+            <li>Isolation of the insulin gene using restriction enzymes (produces sticky ends).</li>
+            <li>Cutting open a bacterial plasmid with the same enzyme.</li>
+            <li>Insertion of the insulin gene into the plasmid using DNA ligase → recombinant plasmid.</li>
+            <li>Plasmid inserted into bacteria (transformation).</li>
+            <li>Bacteria multiply in fermenters, each carrying the recombinant plasmid.</li>
+            <li>Bacteria produce human insulin, which is purified and used as medicine.</li>
+          </ol>
+
+          <h3 class="font-semibold mt-3">3. Enzyme Use in Industry: Example of Pectinase</h3>
+          <p class="mb-2">Pectinase is used in fruit juice production:</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Breaks down pectin in fruit cell walls.</li>
+            <li>Releases more juice and makes juice clearer.</li>
+            <li>Increases yield and improves quality of juice (apples, grapes, oranges).</li>
+          </ul>
+
+          <h3 class="font-semibold mt-3">4. Examples of Genetic Modification in Crops</h3>
+          <table class="table-auto border border-collapse border-gray-400 w-full mb-4">
+            <thead>
+              <tr class="bg-gray-200">
+                <th class="border px-2 py-1">Example</th>
+                <th class="border px-2 py-1">Benefit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border px-2 py-1">Human gene → Bacteria</td>
+                <td class="border px-2 py-1">Produce medicines like insulin</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border px-2 py-1">Herbicide resistance gene → Crops</td>
+                <td class="border px-2 py-1">Easier weed control</td>
+              </tr>
+              <tr>
+                <td class="border px-2 py-1">Insect resistance gene (Bt crops)</td>
+                <td class="border px-2 py-1">Reduced pest damage, less pesticide use</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border px-2 py-1">Nutritional gene (Golden Rice)</td>
+                <td class="border px-2 py-1">Improved nutrition (Vitamin A)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="font-semibold mt-3">5. GM Crops: Advantages & Disadvantages</h3>
+          <table class="table-auto border border-collapse border-gray-400 w-full">
+            <thead>
+              <tr class="bg-gray-200">
+                <th class="border px-2 py-1">Advantages</th>
+                <th class="border px-2 py-1">Disadvantages</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border px-2 py-1">Pest resistance, drought tolerance, improved nutrition, higher yield</td>
+                <td class="border px-2 py-1">Possible unknown health effects, cross-contamination with wild plants</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border px-2 py-1">Herbicide resistance, longer shelf life, scientific and industrial use</td>
+                <td class="border px-2 py-1">Impact on small farmers, harm to non-target species, ethical/religious concerns, resistance development</td>
+              </tr>
+            </tbody>
+          </table>
+        `,
+        video: 'F6r8sFqC0Fs', 
+        soal: [
+          {
+            id:'bio1', tipe:'pg',
+            tanya:'Why are bacteria commonly used in biotechnology?',
+            opsi:[
+              'They reproduce slowly and are hard to modify',
+              'They reproduce rapidly and can produce useful proteins',
+              'They have multiple linear chromosomes',
+              'They are multicellular organisms'
+            ],
+            kunci:1,
+            bahas:'Bacteria reproduce rapidly and can be genetically modified to produce proteins like insulin, making them ideal for biotechnology.'
+          },
+          {
+            id:'bio2', tipe:'pg',
+            tanya:'Which enzyme is used to join human DNA with plasmid DNA?',
+            opsi:['Restriction enzyme','DNA polymerase','DNA ligase','RNA polymerase'],
+            kunci:2,
+            bahas:'Restriction enzymes cut DNA, but DNA ligase is the enzyme that joins DNA fragments together.'
+          },
+          {
+            id:'bio3', tipe:'pg',
+            tanya:'What is the role of pectinase in fruit juice production?',
+            opsi:[
+              'It kills bacteria in the juice',
+              'It breaks down starch to sugar',
+              'It breaks down pectin to release more juice',
+              'It adds color to the juice'
+            ],
+            kunci:2,
+            bahas:'Pectinase breaks down pectin in fruit cell walls, releasing more juice and making it clearer.'
+          },
+          {
+            id:'bio4', tipe:'pg',
+            tanya:'Golden Rice is genetically modified to produce …',
+            opsi:['Vitamin C','Vitamin A (beta-carotene)','Iron','Calcium'],
+            kunci:1,
+            bahas:'Golden Rice contains beta-carotene, a source of Vitamin A, to help prevent Vitamin A deficiency.'
+          },
+          {
+            id:'bio5', tipe:'cb',
+            tanya:'Which of the following are disadvantages of GM crops?',
+            opsi:[
+              'Higher yield and longer shelf life',
+              'Possible unknown health effects',
+              'Cross-contamination with wild plants',
+              'Ethical or religious concerns'
+            ],
+            kunci:[1,2,3],
+            bahas:'The disadvantages include possible unknown health risks, environmental risks like cross-contamination, and ethical/religious concerns.'
+          },
+{
+    id: 'bio1',
+    tipe: 'tf',
+    tanya: 'Decide whether each statement is True or False:',
+    opsi: [
+      'Pectinase is used to increase juice yield from fruits.',
+      'Insulin produced by GM bacteria is chemically different from human insulin.',
+      'Golden Rice was developed to prevent vitamin A deficiency.'
+    ],
+    kunci: [true, false, true],
+    bahas: 'Pectinase increases juice yield. GM insulin is identical to human insulin. Golden Rice produces beta-carotene to prevent vitamin A deficiency.'
+  },
+  {
+    id: 'bio2',
+    tipe: 'tf',
+    tanya: 'Decide whether each statement is True or False:',
+    opsi: [
+      'Restriction enzymes cut DNA at specific sequences.',
+      'Plasmids are circular DNA molecules found in bacteria.',
+      'DNA ligase is used to cut DNA into fragments.'
+    ],
+    kunci: [true, true, false],
+    bahas: 'Restriction enzymes cut DNA; plasmids are bacterial vectors; ligase joins DNA fragments, not cuts.'
+  },
+{
+    id: 'bio3',
+    tipe: 'pg',
+    tanya: 'Which of the following is a benefit of GM crops?',
+    opsi: [
+      'They always guarantee no pest attack.',
+      'They may reduce the need for chemical pesticides.',
+      'They never cause cross-contamination with wild plants.',
+      'They ensure crops cannot be affected by drought.'
+    ],
+    kunci: 1,
+    bahas: 'GM crops like Bt maize reduce pesticide use, but they do not guarantee complete protection or prevent cross-contamination.'
+  },
+  {
+    id: 'bio4',
+    tipe: 'pg',
+    tanya: 'Which enzyme is used to join DNA fragments during genetic engineering?',
+    opsi: [
+      'Pectinase',
+      'Amylase',
+      'DNA ligase',
+      'Lipase'
+    ],
+    kunci: 2,
+    bahas: 'DNA ligase is used to join DNA fragments. Pectinase is for fruit juice, amylase breaks down starch, lipase breaks down fats.'
+  },
+  {
+    id: 'bio5',
+    tipe: 'pg',
+    tanya: 'Golden Rice was genetically modified to contain:',
+    opsi: [
+      'More iron',
+      'Beta-carotene',
+      'Extra protein',
+      'Vitamin C'
+    ],
+    kunci: 1,
+    bahas: 'Golden Rice contains beta-carotene, a precursor of vitamin A.'
+  },
+  {
+    id: 'bio6',
+    tipe: 'pg',
+    tanya: 'What is the role of a plasmid in genetic engineering?',
+    opsi: [
+      'To act as a vector carrying foreign genes',
+      'To cut DNA at specific sequences',
+      'To produce human insulin directly',
+      'To destroy unwanted DNA'
+    ],
+    kunci: 0,
+    bahas: 'Plasmids are vectors that carry foreign genes into bacteria.'
+  },
+{
+    id: 'bio7',
+    tipe: 'cb',
+    bacaan: 'A scientist genetically modified bacteria by inserting the human gene for insulin. The bacteria were cultured in large fermenters.',
+    tanya: 'What is the advantage of producing insulin this way?',
+    opsi: [
+      'It is identical to human insulin and cheaper to produce.',
+      'It is less effective than animal insulin.',
+      'It requires fewer fermenters than growing animal pancreas.',
+      'It avoids the need for enzymes like ligase.'
+    ],
+    kunci: 0,
+    bahas: 'GM bacteria produce insulin identical to human insulin, cheaper and more ethical than using animal pancreas.'
+  },
+  {
+    id: 'bio8',
+    tipe: 'cb',
+    bacaan: 'A farmer planted GM crops resistant to herbicides. He sprayed the field with herbicide to kill weeds.',
+    tanya: 'What is the benefit of this practice?',
+    opsi: [
+      'It ensures crops never need water.',
+      'It kills weeds without damaging the crop.',
+      'It prevents insect pests from eating the crop.',
+      'It increases the vitamin content of the crop.'
+    ],
+    kunci: 1,
+    bahas: 'Herbicide-resistant crops allow farmers to kill weeds without harming the crop.'
+  },
+  {
+    id: 'bio9',
+    tipe: 'cb',
+    bacaan: 'Bt maize has been genetically modified with a gene from the bacterium Bacillus thuringiensis.',
+    tanya: 'What is the purpose of this gene?',
+    opsi: [
+      'To make maize resistant to drought.',
+      'To produce a toxin that kills insect pests.',
+      'To allow maize to fix nitrogen.',
+      'To increase starch production.'
+    ],
+    kunci: 1,
+    bahas: 'Bt maize produces a toxin that kills insect pests, reducing the need for pesticides.'
+  },
+  {
+    id: 'bio10',
+    tipe: 'cb',
+    bacaan: 'Some people worry about the long-term effects of eating GM foods, even though there is no strong evidence of harm.',
+    tanya: 'This concern is an example of which type of issue?',
+    opsi: [
+      'Scientific',
+      'Ethical/Social',
+      'Economic',
+      'Nutritional'
+    ],
+    kunci: 1,
+    bahas: 'Concerns about unknown health effects and tampering with nature are ethical and social issues.'
+  },
+{
+    id: 'bio11',
+    tipe: 'tf',
+    tanya: 'Decide whether each statement is True or False:',
+    opsi: [
+      'If pests evolve resistance to Bt toxin, farmers may need to use more chemical pesticides again.',
+      'Genetically modified crops automatically guarantee higher yield in all environments.',
+      'The use of pectinase in juice production is an example of biotechnology applied in industry.'
+    ],
+    kunci: [true, false, true],
+    bahas: 'Pest resistance may force farmers to use pesticides again. GM crops do not always guarantee higher yield (depends on environment). Pectinase in juice industry is a clear example of biotechnology.'
+  },
+  {
+    id: 'bio12',
+    tipe: 'tf',
+    tanya: 'Decide whether each statement is True or False:',
+    opsi: [
+      'Golden Rice could help solve vitamin A deficiency, but social and economic acceptance is also important.',
+      'Plasmids used in genetic engineering are found naturally in viruses.',
+      'Gene transfer in bacteria can be achieved using plasmids as vectors.'
+    ],
+    kunci: [true, false, true],
+    bahas: 'Golden Rice is not just about science but also social acceptance. Plasmids are in bacteria, not viruses. Plasmids can transfer genes in GM work.'
+  },
+{
+    id: 'bio13',
+    tipe: 'pg',
+    tanya: 'A farmer plants GM maize resistant to insects. After 5 years, insect damage increases again. The most likely explanation is:',
+    opsi: [
+      'The GM maize lost its resistance over time',
+      'Insects developed resistance to the Bt toxin',
+      'The soil nutrients were reduced',
+      'The maize cross-pollinated with wild plants'
+    ],
+    kunci: 1,
+    bahas: 'Overuse of GM Bt crops can lead to pest resistance, making the toxin less effective over time.'
+  },
+  {
+    id: 'bio14',
+    tipe: 'pg',
+    tanya: 'A scientist wants to transfer a human gene into bacteria to produce insulin. Which sequence of steps is correct?',
+    opsi: [
+      'Cut gene with ligase → insert into plasmid → put into bacteria',
+      'Cut gene with restriction enzyme → insert into plasmid → join with ligase → put into bacteria',
+      'Use pectinase to cut DNA → insert gene → grow bacteria',
+      'Extract insulin from pancreas → inject into bacteria'
+    ],
+    kunci: 1,
+    bahas: 'Restriction enzymes cut DNA, ligase joins it into plasmids, plasmids are inserted into bacteria.'
+  },
+  {
+    id: 'bio15',
+    tipe: 'pg',
+    tanya: 'Why might some people oppose GM foods even if scientific tests show them to be safe?',
+    opsi: [
+      'Because GM crops always contain toxic chemicals',
+      'Due to ethical, cultural, or religious concerns',
+      'Because GM crops cannot grow in any soil',
+      'Because GM crops never provide nutrition'
+    ],
+    kunci: 1,
+    bahas: 'Ethical and cultural objections are common, even when scientific evidence shows GM foods are safe.'
+  },
+  {
+    id: 'bio16',
+    tipe: 'pg',
+    tanya: 'Which of the following best explains why GM crops could threaten biodiversity?',
+    opsi: [
+      'They can make farmers richer',
+      'They may reduce the use of pesticides',
+      'Their pollen may cross-breed with wild relatives',
+      'They produce vitamins not found in natural crops'
+    ],
+    kunci: 2,
+    bahas: 'Cross-breeding between GM and wild plants can reduce biodiversity by spreading modified genes.'
+  },
+{
+    id: 'bio17',
+    tipe: 'cb',
+    tanya: 'Which of the following are possible risks of using GM crops?',
+    opsi: [
+      'Loss of biodiversity due to cross-pollination',
+      'Evolution of “superweeds” resistant to herbicides',
+      'Farmers becoming dependent on seed companies',
+      'Crops completely immune to all diseases forever'
+    ],
+    kunci: [0,1,2],
+    bahas: 'Cross-pollination, resistant weeds, and farmer dependency are real risks. No crop is completely immune forever.'
+  },
+  {
+    id: 'bio18',
+    tipe: 'cb',
+    tanya: 'Which processes involve enzymes in biotechnology?',
+    opsi: [
+      'Using pectinase in juice production',
+      'Using DNA ligase in gene transfer',
+      'Using restriction enzymes to cut DNA',
+      'Using light energy to make glucose in photosynthesis'
+    ],
+    kunci: [0,1,2],
+    bahas: 'Pectinase, ligase, and restriction enzymes are used in biotechnology. Photosynthesis is a natural process, not biotech enzyme use.'
+  },
+  {
+    id: 'bio19',
+    tipe: 'cb',
+    tanya: 'Which examples show biotechnology solving real-world problems?',
+    opsi: [
+      'Golden Rice reducing vitamin A deficiency',
+      'Bacteria producing human insulin',
+      'Pectinase used for clearer juice',
+      'Bt crops increasing pest resistance in insects'
+    ],
+    kunci: [0,1,2],
+    bahas: 'Golden Rice, GM insulin, and pectinase are benefits. Bt crops increasing resistance is actually a problem, not a solution.'
+  },
+  {
+    id: 'bio20',
+    tipe: 'cb',
+    tanya: 'Which factors should be considered before introducing GM crops in a new country?',
+    opsi: [
+      'Nutritional benefit for the population',
+      'Environmental impact on local biodiversity',
+      'Cultural and ethical acceptance',
+      'Ability to guarantee zero climate change'
+    ],
+    kunci: [0,1,2],
+    bahas: 'Benefits, environmental risks, and social acceptance must be considered. GM crops cannot stop climate change.'
+  }
+        ]
+      }
+    }
+  },
+'Science': {
+  bab: {
+    'Food Chain': {
+      materi: `
+        <h2 class="text-xl font-bold mb-2">Food Chain</h2>
+
+        <h3 class="font-semibold mt-3">1. Definition of Food Chain</h3>
+        <p class="mb-4">
+          A food chain is a sequence that shows how energy and nutrients flow 
+          from one organism to another in an ecosystem. It begins with producers 
+          and ends with top predators or decomposers.
+        </p>
+
+        <h3 class="font-semibold mt-3">2. Main Components of a Food Chain</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li><b>Producers:</b> Green plants or algae that produce food through photosynthesis.</li>
+          <li><b>Primary Consumers:</b> Herbivores that eat producers (e.g., rabbits, caterpillars).</li>
+          <li><b>Secondary Consumers:</b> Carnivores that eat herbivores (e.g., snakes, frogs).</li>
+          <li><b>Tertiary Consumers:</b> Top predators that eat other carnivores (e.g., eagles, lions).</li>
+          <li><b>Decomposers:</b> Organisms like fungi and bacteria that break down dead matter, 
+              returning nutrients to the soil.</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">3. Example of a Simple Food Chain</h3>
+        <p class="mb-2">Grass → Grasshopper → Frog → Snake → Eagle</p>
+
+        <h3 class="font-semibold mt-3">4. Types of Food Chains</h3>
+        <table class="table-auto border border-collapse border-gray-400 w-full mb-4">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border px-2 py-1">Type</th>
+              <th class="border px-2 py-1">Description</th>
+              <th class="border px-2 py-1">Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border px-2 py-1">Grazing Food Chain</td>
+              <td class="border px-2 py-1">Starts with producers eaten by herbivores and then carnivores.</td>
+              <td class="border px-2 py-1">Grass → Rabbit → Fox</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="border px-2 py-1">Detritus Food Chain</td>
+              <td class="border px-2 py-1">Begins with decomposing organic matter consumed by detritivores and predators.</td>
+              <td class="border px-2 py-1">Dead leaves → Earthworm → Bird</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="font-semibold mt-3">5. Importance of Food Chains</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Transfer of energy through different trophic levels.</li>
+          <li>Maintain balance in ecosystems.</li>
+          <li>Support biodiversity and nutrient recycling.</li>
+        </ul>
+      `,
+      video: 'h9oDTMXM7M8', 
+      soal: [
+        {
+          id:'sc1', tipe:'pg',
+          tanya:'What is the first organism in a food chain?',
+          opsi:[
+            'Primary consumer',
+            'Secondary consumer',
+            'Producer',
+            'Decomposer'
+          ],
+          kunci:2,
+          bahas:'A food chain always starts with producers (plants or algae) because they produce energy through photosynthesis.'
+        },
+        {
+          id:'sc2', tipe:'pg',
+          tanya:'Which of the following is an example of a detritus food chain?',
+          opsi:[
+            'Grass → Cow → Human',
+            'Dead leaves → Earthworm → Bird',
+            'Algae → Small fish → Big fish',
+            'Grass → Grasshopper → Frog'
+          ],
+          kunci:1,
+          bahas:'A detritus food chain begins with dead organic matter, such as dead leaves being eaten by decomposers or detritivores.'
+        },
+{
+  id: 'food1',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Producers are organisms that make their own food through photosynthesis.',
+    'Consumers can make their own food without eating other organisms.',
+    'Decomposers break down dead organisms into simpler substances.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Producers make food by photosynthesis, consumers depend on others, decomposers recycle nutrients.'
+},
+{
+  id: 'food2',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Herbivores feed only on plants.',
+    'Carnivores feed only on plants.',
+    'Omnivores eat both plants and animals.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Herbivores eat plants, carnivores eat animals, omnivores eat both.'
+},
+{
+  id: 'food3',
+  tipe: 'pg',
+  tanya: 'What is the primary source of energy in a food chain?',
+  opsi: [
+    'Water',
+    'The Sun',
+    'Soil',
+    'Air'
+  ],
+  kunci: 1,
+  bahas: 'The Sun provides energy for plants (producers), which start the food chain.'
+},
+{
+  id: 'food4',
+  tipe: 'pg',
+  tanya: 'Which of the following is a producer in a food chain?',
+  opsi: [
+    'Lion',
+    'Grass',
+    'Frog',
+    'Hawk'
+  ],
+  kunci: 1,
+  bahas: 'Grass is a producer that makes its own food via photosynthesis.'
+},
+{
+  id: 'food5',
+  tipe: 'cb',
+  tanya: 'Select all that are decomposers in the food chain:',
+  opsi: [
+    'Fungi',
+    'Earthworms',
+    'Bacteria',
+    'Hawk'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Fungi, earthworms, and bacteria recycle nutrients; hawks are top carnivores.'
+},
+{
+  id: 'food6',
+  tipe: 'pg',
+  tanya: 'In a simple food chain grass → grasshopper → frog → snake, which is the secondary consumer?',
+  opsi: [
+    'Grass',
+    'Grasshopper',
+    'Frog',
+    'Snake'
+  ],
+  kunci: 2,
+  bahas: 'Grasshopper is a primary consumer, frog that eats grasshoppers is the secondary consumer.'
+},
+{
+  id: 'food7',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Energy decreases at each level of the food chain.',
+    'Producers are always at the top of the food chain.',
+    'Tertiary consumers usually have the least energy available.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Energy is lost as heat at each level. Producers are at the base. Tertiary consumers receive the least energy.'
+},
+{
+  id: 'food8',
+  tipe: 'pg',
+  tanya: 'Which of the following best describes a food web?',
+  opsi: [
+    'A straight line of feeding relationships.',
+    'A network of interconnected food chains.',
+    'A diagram showing energy pyramids only.',
+    'A chart of population sizes in ecosystems.'
+  ],
+  kunci: 1,
+  bahas: 'A food web shows how different food chains are linked together.'
+},
+{
+  id: 'food9',
+  tipe: 'pg',
+  tanya: 'In an energy pyramid, which level has the most energy?',
+  opsi: [
+    'Producers',
+    'Primary consumers',
+    'Secondary consumers',
+    'Tertiary consumers'
+  ],
+  kunci: 0,
+  bahas: 'Producers capture the most energy directly from the Sun.'
+},
+{
+  id: 'food10',
+  tipe: 'cb',
+  tanya: 'Which organisms are primary consumers?',
+  opsi: [
+    'Cows',
+    'Deer',
+    'Lions',
+    'Rabbits'
+  ],
+  kunci: [0, 1, 3],
+  bahas: 'Cows, deer, and rabbits eat plants. Lions are carnivores, not primary consumers.'
+},
+{
+  id: 'food11',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Detritivores feed on dead organisms and waste.',
+    'Producers depend on animals for food.',
+    'Scavengers help recycle energy in ecosystems.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Detritivores consume waste, producers make food, scavengers aid in decomposition.'
+},
+{
+  id: 'food12',
+  tipe: 'pg',
+  tanya: 'In the chain: plankton → small fish → big fish → human, what is the tertiary consumer?',
+  opsi: [
+    'Plankton',
+    'Small fish',
+    'Big fish',
+    'Human'
+  ],
+  kunci: 2,
+  bahas: 'Big fish eat small fish, making them tertiary consumers.'
+},
+{
+  id: 'food13',
+  tipe: 'pg',
+  tanya: 'Which of the following organisms is an omnivore?',
+  opsi: [
+    'Cow',
+    'Lion',
+    'Human',
+    'Eagle'
+  ],
+  kunci: 2,
+  bahas: 'Humans eat both plants and animals, so they are omnivores.'
+},
+{
+  id: 'food14',
+  tipe: 'cb',
+  tanya: 'Select all that are carnivores:',
+  opsi: [
+    'Tiger',
+    'Goat',
+    'Shark',
+    'Wolf'
+  ],
+  kunci: [0, 2, 3],
+  bahas: 'Tiger, shark, and wolf eat animals. Goat is a herbivore.'
+},
+{
+  id: 'food15',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'The Sun provides energy for producers.',
+    'Energy is recycled in food chains.',
+    'Matter (nutrients) is recycled in ecosystems.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Energy flows one way and decreases, but matter cycles in ecosystems.'
+},
+{
+  id: 'food16',
+  tipe: 'pg',
+  tanya: 'Which of these is a scavenger?',
+  opsi: [
+    'Vulture',
+    'Cow',
+    'Ant',
+    'Grasshopper'
+  ],
+  kunci: 0,
+  bahas: 'Vultures feed on dead animals, so they are scavengers.'
+},
+{
+  id: 'food17',
+  tipe: 'pg',
+  tanya: 'Which trophic level is directly dependent on sunlight?',
+  opsi: [
+    'Primary consumers',
+    'Producers',
+    'Secondary consumers',
+    'Tertiary consumers'
+  ],
+  kunci: 1,
+  bahas: 'Producers use sunlight to make food through photosynthesis.'
+},
+{
+  id: 'food18',
+  tipe: 'cb',
+  tanya: 'Which of the following organisms can be found at the first trophic level?',
+  opsi: [
+    'Algae',
+    'Grass',
+    'Mushroom',
+    'Tree'
+  ],
+  kunci: [0, 1, 3],
+  bahas: 'Algae, grass, and trees are producers. Mushrooms are decomposers.'
+},
+{
+  id: 'food19',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'A food chain shows multiple feeding relationships.',
+    'Top predators are at risk if producers are removed.',
+    'Energy transfer between levels is 100% efficient.'
+  ],
+  kunci: [false, true, false],
+  bahas: 'A food chain is linear, food webs show multiple. Energy transfer is not 100% efficient.'
+},
+{
+  id: 'food20',
+  tipe: 'pg',
+  tanya: 'In a desert food chain cactus → insect → lizard → hawk, which is the top predator?',
+  opsi: [
+    'Cactus',
+    'Insect',
+    'Lizard',
+    'Hawk'
+  ],
+  kunci: 3,
+  bahas: 'Hawk is the top predator at the end of this desert food chain.'
+},
+{
+  id: 'food21',
+  tipe: 'pg',
+  tanya: 'If the population of producers decreases drastically, which group will be affected first?',
+  opsi: [
+    'Secondary consumers',
+    'Primary consumers',
+    'Tertiary consumers',
+    'Decomposers'
+  ],
+  kunci: 1,
+  bahas: 'Primary consumers depend directly on producers, so they are affected first.'
+},
+{
+  id: 'food22',
+  tipe: 'pg',
+  tanya: 'In a marine food chain, phytoplankton → zooplankton → small fish → big fish → shark. What would happen if small fish population collapses?',
+  opsi: [
+    'Phytoplankton increase, big fish decrease',
+    'Zooplankton increase, shark increase',
+    'Big fish increase, shark increase',
+    'Phytoplankton decrease, zooplankton increase'
+  ],
+  kunci: 0,
+  bahas: 'Without small fish, zooplankton might increase, big fish decrease due to lack of food, and phytoplankton increase due to fewer grazers.'
+},
+{
+  id: 'food23',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Removing top predators can cause an increase in herbivore populations.',
+    'Overpopulation of herbivores can lead to overgrazing.',
+    'Energy transfer between trophic levels is about 90% efficient.'
+  ],
+  kunci: [true, true, false],
+  bahas: 'Predator removal increases herbivores, leading to overgrazing. Only ~10% of energy transfers, not 90%.'
+},
+{
+  id: 'food24',
+  tipe: 'cb',
+  tanya: 'Which consequences might occur if decomposers disappear from an ecosystem?',
+  opsi: [
+    'Nutrient cycle is disrupted',
+    'Dead matter accumulates',
+    'Producers cannot obtain essential minerals',
+    'Energy flow increases'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Decomposers recycle nutrients. Without them, waste accumulates and producers lack minerals. Energy flow decreases, not increases.'
+},
+{
+  id: 'food25',
+  tipe: 'pg',
+  tanya: 'A sudden increase in snake population will most directly reduce which group in a food chain grass → grasshopper → frog → snake → hawk?',
+  opsi: [
+    'Grass',
+    'Grasshopper',
+    'Frog',
+    'Hawk'
+  ],
+  kunci: 2,
+  bahas: 'Snakes eat frogs, so frog population decreases first.'
+},
+{
+  id: 'food26',
+  tipe: 'pg',
+  tanya: 'Why are food chains usually not longer than 4–5 trophic levels?',
+  opsi: [
+    'Ecosystems cannot support producers at higher levels',
+    'Too much energy is lost at each transfer',
+    'Consumers stop eating after certain levels',
+    'Predators cannot adapt to complex chains'
+  ],
+  kunci: 1,
+  bahas: 'Only about 10% of energy is transferred each level, so long chains are unsustainable.'
+},
+{
+  id: 'food27',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Invasive species can disrupt food webs by outcompeting native species.',
+    'Removal of producers may increase stability of food chains.',
+    'Food webs are more stable than simple food chains.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Invasive species destabilize ecosystems. Producers are essential, and food webs provide alternatives, making them more stable.'
+},
+{
+  id: 'food28',
+  tipe: 'cb',
+  tanya: 'Which of the following organisms can be secondary consumers in different food webs?',
+  opsi: [
+    'Frog',
+    'Snake',
+    'Spider',
+    'Grasshopper'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Frogs, snakes, and spiders eat primary consumers. Grasshoppers are primary consumers.'
+},
+{
+  id: 'food29',
+  tipe: 'pg',
+  tanya: 'What will most likely happen if hawks (apex predators) are removed from the chain grass → grasshopper → frog → snake → hawk?',
+  opsi: [
+    'Snake population decreases',
+    'Snake population increases',
+    'Frog population increases',
+    'Grasshopper population decreases'
+  ],
+  kunci: 1,
+  bahas: 'Without hawks, snake population increases, leading to fewer frogs and more grasshoppers.'
+},
+{
+  id: 'food30',
+  tipe: 'pg',
+  tanya: 'Which of these best explains the concept of biomagnification?',
+  opsi: [
+    'Energy increases at higher trophic levels',
+    'Pollutants become more concentrated in top predators',
+    'Nutrients recycle between producers and consumers',
+    'Decomposers break down toxins'
+  ],
+  kunci: 0,
+  bahas: 'Toxins like mercury accumulate and magnify in higher trophic levels.'
+},
+{
+  id: 'food31',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'A food web provides alternative food sources for organisms.',
+    'If one species goes extinct, a food web is always unaffected.',
+    'Top predators help control prey populations.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Food webs offer alternatives but not always immunity. Predators regulate prey numbers.'
+},
+{
+  id: 'food32',
+  tipe: 'cb',
+  tanya: 'Which factors can disturb the balance of food chains?',
+  opsi: [
+    'Pollution',
+    'Climate change',
+    'Overfishing',
+    'Stable nutrient cycling'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Pollution, climate change, and overfishing disturb balance. Stable nutrient cycling maintains it.'
+},
+{
+  id: 'food33',
+  tipe: 'pg',
+  tanya: 'If energy at producer level is 10,000 J, approximately how much energy is available at tertiary consumer level (assuming 10% rule)?',
+  opsi: [
+    '1,000 J',
+    '100 J',
+    '10 J',
+    '0.1 J'
+  ],
+  kunci: 1,
+  bahas: 'Producers: 10,000 J → primary 1,000 J → secondary 100 J → tertiary 10 J.'
+},
+{
+  id: 'food34',
+  tipe: 'pg',
+  tanya: 'Which scenario demonstrates a trophic cascade?',
+  opsi: [
+    'Removal of wolves leads to overpopulation of deer and decline of plants',
+    'More sunlight increases algae growth',
+    'Flood brings more nutrients to river',
+    'Hurricane destroys producer plants'
+  ],
+  kunci: 0,
+  bahas: 'Predator removal leads to herbivore explosion and plant decline, a classic trophic cascade.'
+},
+{
+  id: 'food35',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Energy flow in ecosystems is one-way.',
+    'Matter cycles in ecosystems.',
+    'Energy is recycled completely in food chains.'
+  ],
+  kunci: [true, true, false],
+  bahas: 'Energy flows in one direction and decreases, but matter cycles.'
+},
+{
+  id: 'food36',
+  tipe: 'pg',
+  tanya: 'If grass → rabbit → fox is a food chain, what will happen to rabbit population if foxes decline?',
+  opsi: [
+    'Rabbit population increases',
+    'Rabbit population decreases',
+    'Grass decreases immediately',
+    'Grass unaffected'
+  ],
+  kunci: 0,
+  bahas: 'Without foxes, rabbits increase, possibly leading to overgrazing.'
+},
+{
+  id: 'food37',
+  tipe: 'cb',
+  tanya: 'Which human activities can directly disrupt food webs?',
+  opsi: [
+    'Deforestation',
+    'Overhunting',
+    'Introduction of invasive species',
+    'Reforestation'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Deforestation, overhunting, and invasive species destabilize webs. Reforestation supports balance.'
+},
+{
+  id: 'food38',
+  tipe: 'pg',
+  tanya: 'Why do top predators tend to be fewer in number compared to producers?',
+  opsi: [
+    'They reproduce more slowly',
+    'Less energy is available at higher levels',
+    'They are more likely to migrate',
+    'They depend on decomposers'
+  ],
+  kunci: 1,
+  bahas: 'Energy loss at each level means fewer organisms can be supported at the top.'
+},
+{
+  id: 'food39',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Food chains show linear flow of energy.',
+    'Food webs are more complex than food chains.',
+    'All energy is conserved as it passes through trophic levels.'
+  ],
+  kunci: [true, true, false],
+  bahas: 'Food chains are linear, food webs are complex. Energy is lost as heat, not conserved entirely.'
+},
+{
+  id: 'food40',
+  tipe: 'pg',
+  tanya: 'Which adaptation helps top predators survive despite low energy availability?',
+  opsi: [
+    'They have very high reproduction rates',
+    'They consume large territories and multiple prey types',
+    'They photosynthesize for extra energy',
+    'They live only at the producer level'
+  ],
+  kunci: 1,
+  bahas: 'Top predators adapt by hunting widely and eating varied prey to survive energy scarcity.'
+},
+{
+  id: 'food41',
+  tipe: 'pg',
+  tanya: 'In a grassland, grass → rabbit → fox. If a disease kills many rabbits, what is the most immediate effect?',
+  opsi: [
+    'Fox population decreases',
+    'Grass population decreases',
+    'Fox population increases',
+    'Grass remains stable'
+  ],
+  kunci: 0,
+  bahas: 'Less rabbits means foxes have less food, so fox population decreases.'
+},
+{
+  id: 'food42',
+  tipe: 'cb',
+  tanya: 'A lake ecosystem has algae → fish → bird. Which of the following can explain why bird numbers drop?',
+  opsi: [
+    'Algae bloom reduces oxygen for fish',
+    'Overfishing reduces fish population',
+    'Birds stop migrating to the lake',
+    'More algae are eaten by herbivorous insects'
+  ],
+  kunci: [0, 1],
+  bahas: 'If fish decrease due to oxygen drop or overfishing, birds lose food sources.'
+},
+{
+  id: 'food43',
+  tipe: 'pg',
+  tanya: 'Why does removal of wolves in Yellowstone cause overpopulation of deer and destruction of vegetation?',
+  opsi: [
+    'Wolves recycle nutrients directly',
+    'Deer population was controlled by wolves',
+    'Vegetation depends on wolves for growth',
+    'Energy flow is reversed without wolves'
+  ],
+  kunci: 1,
+  bahas: 'Wolves regulate deer population. Without them, deer overgraze plants (trophic cascade).'
+},
+{
+  id: 'food44',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'If primary consumers increase too much, producers may decline sharply.',
+    'If decomposers disappear, producers will eventually run out of nutrients.',
+    'Removing one species in a food web always has no effect.'
+  ],
+  kunci: [true, true, false],
+  bahas: 'Overgrazing harms producers. Decomposers recycle nutrients. Species removal often has effects.'
+},
+{
+  id: 'food45',
+  tipe: 'pg',
+  tanya: 'If pesticide enters a pond ecosystem, which group is most at risk due to biomagnification?',
+  opsi: [
+    'Algae',
+    'Small fish',
+    'Big fish',
+    'Birds feeding on fish'
+  ],
+  kunci: 3,
+  bahas: 'Pollutants accumulate and magnify up the chain, affecting top consumers most.'
+},
+{
+  id: 'food46',
+  tipe: 'cb',
+  tanya: 'Which of the following scenarios illustrate disruption of food chains by human activity?',
+  opsi: [
+    'Deforestation reduces habitat for herbivores',
+    'Plastic pollution kills marine turtles',
+    'Illegal hunting decreases tiger numbers',
+    'Reforestation increases producer population'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Deforestation, pollution, and hunting disturb food chains. Reforestation helps restore balance.'
+},
+{
+  id: 'food47',
+  tipe: 'pg',
+  tanya: 'If grass → grasshopper → frog → snake, which population is likely to increase if frogs are eliminated?',
+  opsi: [
+    'Grass',
+    'Grasshopper',
+    'Snake',
+    'All populations decrease'
+  ],
+  kunci: 1,
+  bahas: 'Without frogs, grasshopper numbers increase due to lack of predation.'
+},
+{
+  id: 'food48',
+  tipe: 'pg',
+  tanya: 'Why does energy decrease as we move up trophic levels?',
+  opsi: [
+    'Organisms eat less at higher levels',
+    'Energy is lost as heat in metabolism',
+    'Energy is destroyed at each step',
+    'Producers capture less sunlight'
+  ],
+  kunci: 1,
+  bahas: 'Only ~10% of energy passes to next level, most is lost as heat.'
+},
+{
+  id: 'food49',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Food webs are more resilient to species loss than food chains.',
+    'Herbivores can also act as decomposers.',
+    'Top predators can indirectly protect producers.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Food webs provide alternative links. Herbivores eat plants, not dead matter. Predators regulate herbivores, helping plants.'
+},
+{
+  id: 'food50',
+  tipe: 'cb',
+  tanya: 'Which outcomes may result from overfishing in a marine ecosystem?',
+  opsi: [
+    'Decrease in predator populations',
+    'Increase in zooplankton',
+    'Algal bloom growth',
+    'Stabilization of food web'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Overfishing reduces fish, predators lose food, zooplankton increase, algae bloom. Web becomes unstable, not stable.'
+},
+{
+  id: 'food51',
+  tipe: 'pg',
+  tanya: 'Which organism is always at the start of a food chain?',
+  opsi: [
+    'Herbivore',
+    'Producer',
+    'Carnivore',
+    'Omnivore'
+  ],
+  kunci: 1,
+  bahas: 'Food chains always begin with producers such as plants.'
+},
+{
+  id: 'food52',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Plants make their own food using sunlight.',
+    'Animals can make their own food.',
+    'Decomposers return nutrients to the soil.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Plants are producers. Animals need to eat. Decomposers recycle nutrients.'
+},
+{
+  id: 'food53',
+  tipe: 'pg',
+  tanya: 'In the chain grass → cow → human, which is the primary consumer?',
+  opsi: [
+    'Grass',
+    'Cow',
+    'Human',
+    'Soil'
+  ],
+  kunci: 1,
+  bahas: 'The cow eats grass, so it is the primary consumer.'
+},
+{
+  id: 'food54',
+  tipe: 'cb',
+  tanya: 'Which of the following are producers?',
+  opsi: [
+    'Tree',
+    'Mushroom',
+    'Algae',
+    'Grass'
+  ],
+  kunci: [0, 2, 3],
+  bahas: 'Trees, algae, and grass make food. Mushrooms are decomposers, not producers.'
+},
+{
+  id: 'food55',
+  tipe: 'pg',
+  tanya: 'What do arrows in a food chain show?',
+  opsi: [
+    'The direction animals move',
+    'The flow of energy',
+    'The size of populations',
+    'The amount of sunlight'
+  ],
+  kunci: 1,
+  bahas: 'Arrows show the direction of energy transfer from one organism to another.'
+},
+{
+  id: 'food56',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Herbivores eat only plants.',
+    'Omnivores eat only meat.',
+    'Carnivores eat other animals.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Herbivores eat plants, carnivores eat animals, omnivores eat both.'
+},
+{
+  id: 'food57',
+  tipe: 'pg',
+  tanya: 'In a pond food chain algae → insect larva → fish → bird, what is the secondary consumer?',
+  opsi: [
+    'Algae',
+    'Insect larva',
+    'Fish',
+    'Bird'
+  ],
+  kunci: 2,
+  bahas: 'Fish eat insect larvae, making them secondary consumers.'
+},
+{
+  id: 'food58',
+  tipe: 'cb',
+  tanya: 'Which organisms recycle nutrients back into the soil?',
+  opsi: [
+    'Fungi',
+    'Earthworms',
+    'Bacteria',
+    'Herbivores'
+  ],
+  kunci: [0, 1, 2],
+  bahas: 'Decomposers such as fungi, worms, and bacteria recycle nutrients.'
+},
+{
+  id: 'food59',
+  tipe: 'pg',
+  tanya: 'Why do food chains usually have only a few steps?',
+  opsi: [
+    'Too many animals at the top',
+    'Energy is lost at each level',
+    'Producers stop growing',
+    'Animals eat only once'
+  ],
+  kunci: 1,
+  bahas: 'Energy decreases at each step, so only a few levels are possible.'
+},
+{
+  id: 'food60',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False:',
+  opsi: [
+    'Scavengers feed on dead animals.',
+    'Humans are always herbivores.',
+    'Food webs link many food chains together.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Scavengers eat dead animals. Humans are omnivores. Food webs connect chains.'
+},
+{
+  id: 'food61',
+  tipe: 'pg',
+  tanya: 'A farmer sprays insecticide to kill grasshoppers. What will most likely happen to the number of frogs in the food chain grass → grasshopper → frog → snake?',
+  opsi: [
+    'Increase',
+    'Decrease',
+    'Stay the same',
+    'Double'
+  ],
+  kunci: 1,
+  bahas: 'Fewer grasshoppers means less food for frogs, so their number decreases.'
+},
+{
+  id: 'food62',
+  tipe: 'cb',
+  tanya: 'A pond food web includes algae, fish, insects, and birds. If many fish are caught by humans, which might happen?',
+  opsi: [
+    'More insects survive',
+    'Birds have less food',
+    'Algae population increases',
+    'Birds increase rapidly'
+  ],
+  kunci: [0,1,2],
+  bahas: 'With fewer fish, insects increase, birds lose food, and algae grow more.'
+},
+{
+  id: 'food63',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False about a desert food chain: cactus → mouse → snake → eagle',
+  opsi: [
+    'The mouse is a primary consumer.',
+    'The eagle is a producer.',
+    'The snake is a secondary consumer.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Mouse eats cactus (primary), eagle is a top carnivore, snake eats mouse (secondary).'
+},
+{
+  id: 'food64',
+  tipe: 'pg',
+  tanya: 'In a food web, rabbits eat grass, and foxes eat rabbits. If disease kills many rabbits, what happens to foxes?',
+  opsi: [
+    'They increase',
+    'They decrease',
+    'They stay the same',
+    'They turn into herbivores'
+  ],
+  kunci: 1,
+  bahas: 'With less food (rabbits), fox numbers decrease.'
+},
+{
+  id: 'food65',
+  tipe: 'pg',
+  tanya: 'Why would cutting down many trees affect the food chain tree → caterpillar → bird → hawk?',
+  opsi: [
+    'Caterpillars lose food',
+    'Birds get more food',
+    'Hawks increase',
+    'Nothing changes'
+  ],
+  kunci: 0,
+  bahas: 'Without trees, caterpillars have less food, so the whole chain is affected.'
+},
+{
+  id: 'food66',
+  tipe: 'cb',
+  tanya: 'Which human activities can disturb food chains?',
+  opsi: [
+    'Pollution',
+    'Overfishing',
+    'Deforestation',
+    'Recycling'
+  ],
+  kunci: [0,1,2],
+  bahas: 'Pollution, overfishing, and deforestation disrupt food chains. Recycling does not.'
+},
+{
+  id: 'food67',
+  tipe: 'pg',
+  tanya: 'In a lake, algae are eaten by small fish, which are eaten by large fish. If algae die from pollution, what happens?',
+  opsi: [
+    'Small fish decrease',
+    'Large fish increase',
+    'Large fish stay the same',
+    'Nothing changes'
+  ],
+  kunci: 0,
+  bahas: 'Without algae, small fish starve, so the whole chain collapses.'
+},
+{
+  id: 'food68',
+  tipe: 'tf',
+  tanya: 'True or False about food chains in the ocean:',
+  opsi: [
+    'Plankton are producers.',
+    'Sharks are usually top predators.',
+    'Whales eat only producers.'
+  ],
+  kunci: [true, true, false],
+  bahas: 'Plankton are producers. Sharks top the chain. Whales eat krill, not producers only.'
+},
+{
+  id: 'food69',
+  tipe: 'pg',
+  tanya: 'Which is the best explanation why top predators are fewer in number than producers?',
+  opsi: [
+    'They are lazier',
+    'Energy is lost at each level',
+    'They eat less food',
+    'They live longer'
+  ],
+  kunci: 1,
+  bahas: 'Energy decreases at each step, so only few predators survive at the top.'
+},
+{
+  id: 'food70',
+  tipe: 'cb',
+  tanya: 'If bees disappeared, what might happen in food chains involving flowering plants?',
+  opsi: [
+    'Fewer plants grow',
+    'Herbivores lose food',
+    'Carnivores decrease',
+    'Producers increase rapidly'
+  ],
+  kunci: [0,1,2],
+  bahas: 'Bees pollinate plants. Without them, fewer plants grow, affecting herbivores and carnivores.'
+},
+{
+  id: 'food71',
+  tipe: 'pg',
+  tanya: 'Which best defines a producer in a food chain?',
+  opsi: [
+    'An organism that makes its own food using sunlight',
+    'An organism that eats plants',
+    'An organism that feeds on dead matter',
+    'An animal at the top of the food chain'
+  ],
+  kunci: 0,
+  bahas: 'Producers (plants, algae) make their own food through photosynthesis.'
+},
+{
+  id: 'food72',
+  tipe: 'pg',
+  tanya: 'What is the definition of a consumer in a food chain?',
+  opsi: [
+    'An organism that produces energy from the sun',
+    'An organism that depends on others for food',
+    'An organism that breaks down dead organisms',
+    'An organism that stores sunlight in leaves'
+  ],
+  kunci: 1,
+  bahas: 'Consumers get energy by eating plants or other animals.'
+},
+{
+  id: 'food73',
+  tipe: 'tf',
+  tanya: 'Decide whether each statement is True or False about food chain definitions:',
+  opsi: [
+    'Decomposers break down dead plants and animals.',
+    'Primary consumers eat producers.',
+    'Secondary consumers always eat decomposers.'
+  ],
+  kunci: [true, true, false],
+  bahas: 'Decomposers recycle nutrients; primary consumers eat producers; secondary consumers eat herbivores, not decomposers.'
+},
+{
+  id: 'food74',
+  tipe: 'cb',
+  tanya: 'Which of the following are examples of decomposers?',
+  opsi: [
+    'Mushrooms',
+    'Bacteria',
+    'Grass',
+    'Earthworms'
+  ],
+  kunci: [0,1,3],
+  bahas: 'Mushrooms, bacteria, and earthworms break down dead matter. Grass is a producer, not a decomposer.'
+},
+{
+  id: 'food75',
+  tipe: 'pg',
+  tanya: 'What does the term "trophic level" mean?',
+  opsi: [
+    'A stage in a food chain where organisms share the same function',
+    'The number of animals in an ecosystem',
+    'The habitat of producers',
+    'The temperature needed for survival'
+  ],
+  kunci: 0,
+  bahas: 'A trophic level refers to a step in the food chain with similar feeding roles.'
+},
+{
+  id: 'food76',
+  tipe: 'pg',
+  tanya: 'What is the correct definition of a food web?',
+  opsi: [
+    'A single straight pathway of energy transfer',
+    'Interconnected food chains in an ecosystem',
+    'A diagram showing only producers',
+    'The network of habitats in a forest'
+  ],
+  kunci: 1,
+  bahas: 'A food web shows how multiple food chains are linked in an ecosystem.'
+},
+{
+  id: 'food77',
+  tipe: 'tf',
+  tanya: 'True or False about producers:',
+  opsi: [
+    'Producers are autotrophs.',
+    'Producers depend on other animals for food.',
+    'Green plants are common producers.'
+  ],
+  kunci: [true, false, true],
+  bahas: 'Producers make their own food. They don’t depend on animals. Green plants are typical producers.'
+},
+{
+  id: 'food78',
+  tipe: 'pg',
+  tanya: 'Which best defines a detritivore?',
+  opsi: [
+    'An animal that hunts other animals',
+    'An organism that feeds on dead organic material',
+    'An organism that makes food from sunlight',
+    'An organism that eats only producers'
+  ],
+  kunci: 1,
+  bahas: 'Detritivores (e.g., earthworms, woodlice) feed on dead matter.'
+},
+{
+  id: 'food79',
+  tipe: 'cb',
+  tanya: 'Which statements define secondary consumers?',
+  opsi: [
+    'They eat herbivores.',
+    'They can be carnivores or omnivores.',
+    'They make their own food.',
+    'They are always producers.'
+  ],
+  kunci: [0,1],
+  bahas: 'Secondary consumers feed on primary consumers and may be carnivores or omnivores.'
+},
+{
+  id: 'food80',
+  tipe: 'pg',
+  tanya: 'Which definition describes an apex predator?',
+  opsi: [
+    'An organism that eats dead matter',
+    'A top predator with no natural enemies',
+    'A producer at the bottom of the chain',
+    'A small insect feeding on plants'
+  ],
+  kunci: 1,
+  bahas: 'An apex predator, like a lion or eagle, is at the top of the food chain.'
+},
+
+
+
+      ]
+    }
+  }
+}
+
+}
+;
+
+  // ======= Helpers =======
+  const $ = (sel, par=document) => par.querySelector(sel);
+  const $$ = (sel, par=document) => Array.from(par.querySelectorAll(sel));
+  function setTab(name){
+    $$('.tab-pane').forEach(p => p.classList.add('hidden'));
+    $('#tab-'+name).classList.remove('hidden');
+    $$('.tab-btn').forEach(b=>{
+      const active = b.dataset.tab===name;
+      b.classList.toggle('bg-emerald-600', active);
+      b.classList.toggle('text-white', active);
+      b.classList.toggle('border', !active);
+      b.classList.toggle('chip', !active);
+      b.classList.toggle('bg-white', !active);
+      b.classList.toggle('text-gray-700', !active);
+    })
+  }
+
+  function populateSelect(sel, list){
+    sel.innerHTML = '';
+    list.forEach(v=>{
+      const opt=document.createElement('option');
+      opt.value=v; opt.textContent=v; sel.appendChild(opt);
+    })
+  }
+
+  function renderMateri(mapel, bab){
+    const item = DB[mapel]?.bab?.[bab];
+    if(!item){
+      $('#materiKonten').innerHTML = '<p class="text-gray-500">Materi belum tersedia.</p>';
+      $('#materiVideo').innerHTML = '<span class="text-sm">Video belum tersedia.</span>';
+      return;
+    }
+    $('#materiKonten').innerHTML = item.materi;
+    if(item.video){
+      $('#materiVideo').innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${item.video}" title="Video pembelajaran" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    } else {
+      $('#materiVideo').innerHTML = '<span class="text-sm">Video belum tersedia.</span>';
+    }
+if(window.MathJax){
+    MathJax.typesetPromise([$('#materiKonten')]);
+  }
+  }
+
+  function buildSoalCard(q, idx, prefix){
+  const wrap = document.createElement('div');
+  wrap.className = 'p-4 rounded-xl border chip';
+  wrap.dataset.id = q.id;
+
+  const head = document.createElement('div');
+  head.className = 'flex items-start justify-between gap-3';
+  head.innerHTML = `<div class="font-semibold">${idx+1}. ${q.tanya.replace(/\n/g,'<br>')}</div>`;
+  wrap.appendChild(head);
+
+  const body = document.createElement('div');
+  body.className = 'mt-3 space-y-2';
+if(q.gambar){
+  const img = document.createElement('img');
+  img.src = q.gambar;
+  img.alt = 'Gambar soal';
+  img.className = 'my-3 w-full max-w-md rounded-lg border';
+  body.appendChild(img);
+}
+if(q.bacaan){
+  const teks = document.createElement('div');
+  teks.className = 'mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm whitespace-pre-line';
+  teks.innerText = q.bacaan;
+  body.appendChild(teks);
+}
+  // ====== PILIHAN GANDA ======
+  if(q.tipe === 'pg'){
+    q.opsi.forEach((o,i)=>{
+      const row = document.createElement('label');
+      row.className = 'flex items-center gap-2 p-2 rounded-lg hover:bg-gray-50 border border-transparent';
+      row.innerHTML = `<input type="radio" name="${prefix}-${q.id}" value="${i}" class="accent-emerald-600"> <span>${String.fromCharCode(65+i)}. ${o}</span>`;
+      body.appendChild(row);
+    });
+  }
+
+  // ====== CHECKBOX ======
+  if(q.tipe === 'cb'){
+    q.opsi.forEach((o,i)=>{
+      const row = document.createElement('label');
+      row.className = 'flex items-center gap-2 p-2 rounded-lg hover:bg-gray-50 border border-transparent';
+      row.innerHTML = `<input type="checkbox" name="${prefix}-${q.id}" value="${i}" class="accent-emerald-600"> <span>${String.fromCharCode(65+i)}. ${o}</span>`;
+      body.appendChild(row);
+    });
+  }
+  // ====== CONSERVATION & RELAXATION ======
+  if(q.tipe === 'cr'){
+    const table = document.createElement('table');
+    table.className = 'w-full border border-gray-200 rounded-lg';
+
+    // Header tabel
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+      <tr class="bg-gray-100 text-center">
+        <th class="p-2 border">places</th>
+        <th class="p-2 border w-28">Conservation</th>
+        <th class="p-2 border w-28">Relaxation</th>
+      </tr>`;
+    table.appendChild(thead);
+
+    // Body tabel
+    const tbody = document.createElement('tbody');
+    q.opsi.forEach((o,i)=>{
+      const idCon = `${prefix}-${q.id}-cr-${i}-con`;
+      const idRel = `${prefix}-${q.id}-cr-${i}-rel`;
+
+      const row = document.createElement('tr');
+      row.className = 'border-t';
+      row.innerHTML = `
+        <td class="p-2 border">${o}</td>
+        <td class="p-2 text-center border">
+          <input type="radio" id="${idCon}" name="${prefix}-${q.id}-cr-${i}" value="conservation" class="accent-emerald-600">
+        </td>
+        <td class="p-2 text-center border">
+          <input type="radio" id="${idRel}" name="${prefix}-${q.id}-cr-${i}" value="relaxation" class="accent-rose-600">
+        </td>`;
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    body.appendChild(table);
+  }
+  // ====== TRUE / FALSE (English) ======
+  if(q.tipe === 'tf'){
+    const table = document.createElement('table');
+    table.className = 'w-full border border-gray-200 rounded-lg';
+
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+      <tr class="bg-gray-100 text-center">
+        <th class="p-2 border">Statement</th>
+        <th class="p-2 border w-20">True</th>
+        <th class="p-2 border w-20">False</th>
+      </tr>`;
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    q.opsi.forEach((o,i)=>{
+      const idTrue = `${prefix}-${q.id}-tf-${i}-true`;
+      const idFalse = `${prefix}-${q.id}-tf-${i}-false`;
+
+      const row = document.createElement('tr');
+      row.className = 'border-t';
+      row.innerHTML = `
+        <td class="p-2 border">${o}</td>
+        <td class="p-2 text-center border">
+          <input type="radio" id="${idTrue}" name="${prefix}-${q.id}-tf-${i}" value="true" class="accent-emerald-600">
+        </td>
+        <td class="p-2 text-center border">
+          <input type="radio" id="${idFalse}" name="${prefix}-${q.id}-tf-${i}" value="false" class="accent-rose-600">
+        </td>`;
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    body.appendChild(table);
+  }
+
+  // ====== BENAR / SALAH ======
+  if(q.tipe === 'bs'){
+    const table = document.createElement('table');
+    table.className = 'w-full border border-gray-200 rounded-lg';
+
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+      <tr class="bg-gray-100 text-center">
+        <th class="p-2 border">Pernyataan</th>
+        <th class="p-2 border w-20">Benar</th>
+        <th class="p-2 border w-20">Salah</th>
+      </tr>`;
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    q.opsi.forEach((o,i)=>{
+      const idBenar = `${prefix}-${q.id}-bs-${i}-benar`;
+      const idSalah = `${prefix}-${q.id}-bs-${i}-salah`;
+
+      const row = document.createElement('tr');
+      row.className = 'border-t';
+      row.innerHTML = `
+        <td class="p-2 border">${o}</td>
+        <td class="p-2 text-center border">
+          <input type="radio" id="${idBenar}" name="${prefix}-${q.id}-bs-${i}" value="true" class="accent-emerald-600">
+        </td>
+        <td class="p-2 text-center border">
+          <input type="radio" id="${idSalah}" name="${prefix}-${q.id}-bs-${i}" value="false" class="accent-rose-600">
+        </td>`;
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    body.appendChild(table);
+  }
+
+  // ====== ISIAN ======
+  if(q.tipe === 'isian'){
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.placeholder = 'Ketik jawaban singkat…';
+    inp.className = 'w-full px-3 py-2 rounded-lg border chip focus:outline-none focus:ring-2 focus:ring-emerald-300';
+    inp.name = `${prefix}-${q.id}-isian`;
+    body.appendChild(inp);
+  }
+
+  // ====== AKSI ======
+  const actions = document.createElement('div');
+  actions.className = 'mt-3 flex flex-wrap items-center gap-2';
+
+  const btnCek = document.createElement('button');
+  btnCek.className = 'btn px-3 py-2 rounded-lg bg-emerald-600 text-white text-sm';
+  btnCek.textContent = 'Check Answer';
+
+  const btnBahas = document.createElement('button');
+  btnBahas.className = 'btn px-3 py-2 rounded-lg border chip text-sm';
+  btnBahas.textContent = 'Explanation';
+
+  const status = document.createElement('span');
+  status.className = 'ml-auto text-sm';
+
+  const bahas = document.createElement('div');
+  bahas.className = 'mt-3 hidden p-3 rounded-lg bg-emerald-50 border border-emerald-100 text-sm';
+  bahas.textContent = q.bahas || 'Belum ada pembahasan.';
+
+  // ====== EVENT CEK JAWABAN ======
+  btnCek.addEventListener('click',()=>{
+    let benar = false;
+
+    if(q.tipe === 'pg'){
+      const v = (document.querySelector(`input[name='${prefix}-${q.id}']:checked`)||{}).value;
+      benar = Number(v) === Number(q.kunci);
+    }
+    else if(q.tipe === 'cb'){
+      const checked = [...document.querySelectorAll(`input[name='${prefix}-${q.id}']:checked`)].map(el=>Number(el.value));
+      const kunci = Array.isArray(q.kunci) ? q.kunci.slice().sort() : [q.kunci];
+      benar = checked.slice().sort().toString() === kunci.toString();
+    }
+    else if(q.tipe === 'tf'){
+      const jawabanUser = q.opsi.map((o,i)=>{
+        const el = document.querySelector(`input[name='${prefix}-${q.id}-tf-${i}']:checked`);
+        return el ? el.value === 'true' : null;
+      });
+
+      if(jawabanUser.includes(null)){
+        alert('Please select True/False for all statements!');
+        return;
+      }
+      benar = jawabanUser.every((val,i)=> val === q.kunci[i]);
+    }
+
+    else if(q.tipe === 'bs'){
+      const jawabanUser = q.opsi.map((o,i)=>{
+        const el = document.querySelector(`input[name='${prefix}-${q.id}-bs-${i}']:checked`);
+        return el ? el.value === 'true' : null;
+      });
+
+      if(jawabanUser.includes(null)){
+        alert('Pilih jawaban untuk semua pernyataan!');
+        return;
+      }
+      benar = jawabanUser.every((val,i)=> val === q.kunci[i]);
+    }
+    else if(q.tipe === 'cr'){
+      const jawabanUser = q.opsi.map((o,i)=>{
+        const el = document.querySelector(`input[name='${prefix}-${q.id}-cr-${i}']:checked`);
+        return el ? el.value : null;
+      });
+
+      if(jawabanUser.includes(null)){
+        alert('Pilih jawaban Conservation / Relaxation untuk semua pernyataan!');
+        return;
+      }
+      benar = jawabanUser.every((val,i)=> val === q.kunci[i]);
+    }
+    else {
+      const v = (document.querySelector(`input[name='${prefix}-${q.id}-isian']`)||{}).value||'';
+      benar = v.trim().toLowerCase() === String(q.kunciText||'').trim().toLowerCase();
+    }
+
+    status.textContent = benar ? '✅ Benar' : '❌ Salah';
+    status.classList.toggle('text-emerald-600', benar);
+    status.classList.toggle('text-rose-600', !benar);
+  });
+
+  btnBahas.addEventListener('click',()=> bahas.classList.toggle('hidden'));
+
+  actions.append(btnCek, btnBahas, status);
+  wrap.append(body, actions, bahas);
+  return wrap;
+}
+
+  function loadLatihan(mapel,bab){
+    const item = DB[mapel]?.bab?.[bab];
+    const box = $('#latihanContainer');
+    box.innerHTML='';
+    if(!item){ 
+        box.innerHTML = '<p class="text-gray-500">Soal belum tersedia.</p>'; 
+        return; 
+    }
+    item.soal.forEach((q,i)=> box.appendChild(buildSoalCard(q,i,'lat')) );
+
+    // Tambahkan ini agar MathJax render ulang rumus pada soal latihan
+    if(window.MathJax){
+        MathJax.typesetPromise([box]);
+    }
+}
+
+
+  // ======= SIMULASI =======
+  let simState = {timer:null, endAt: null, daftar: [], mapel:'', durasi: 0};
+
+  function startSimulasi(mapel, jumlah, durasiMenit){
+    const pools = Object.values(DB[mapel]?.bab || {}).flatMap(x=>x.soal||[]);
+    if(pools.length===0){
+      $('#simContainer').innerHTML = '<p class="text-gray-500">Bank soal untuk mapel ini belum tersedia.</p>';
+      return;
+    }
+    const shuffled=[...pools].sort(()=>Math.random()-0.5).slice(0, Math.min(jumlah,pools.length));
+    simState = {timer:null, endAt: Date.now()+durasiMenit*60*1000, daftar: shuffled, mapel, durasi:durasiMenit};
+    renderSimulasi();
+    runTimer();
+  }
+
+  function renderSimulasi(){
+    const box = $('#simContainer');
+    box.innerHTML='';
+    simState.daftar.forEach((q,i)=> box.appendChild(buildSoalCard(q,i,'sim')) );
+    $('#simHasil').classList.add('hidden');
+
+    // Tambahkan ini agar MathJax render ulang rumus pada soal simulasi
+    if(window.MathJax){
+        MathJax.typesetPromise([box]);
+    }
+}
+
+
+  function runTimer(){
+    clearInterval(simState.timer);
+    const info = $('#simInfo');
+    const tick = ()=>{
+      const remain = Math.max(0, simState.endAt - Date.now());
+      const mm = String(Math.floor(remain/60000)).padStart(2,'0');
+      const ss = String(Math.floor((remain%60000)/1000)).padStart(2,'0');
+      info.textContent = `Subject: ${simState.mapel} • Time Left ${mm}:${ss}`;
+      if(remain===0){
+        clearInterval(simState.timer);
+        selesaiSimulasi();
+      }
+    };
+    tick();
+    simState.timer = setInterval(tick, 250);
+  }
+
+  function nilaiPG(q){
+    const v = (document.querySelector(`input[name='sim-${q.id}']:checked`)||{}).value;
+    return Number(v)===Number(q.kunci);
+  }
+  function nilaiIsian(q){
+    const v = (document.querySelector(`input[name='sim-${q.id}-isian']`)||{}).value||'';
+    return v.trim().toLowerCase() === String(q.kunciText||'').trim().toLowerCase();
+  }
+
+  function selesaiSimulasi(){
+    const total = simState.daftar.length;
+    let benar = 0;
+    simState.daftar.forEach(q=>{
+      benar += (q.tipe==='pg') ? (nilaiPG(q)?1:0) : (nilaiIsian(q)?1:0);
+    });
+    const skor = Math.round((benar/total)*100);
+    const hasil = $('#simHasil');
+    hasil.classList.remove('hidden');
+    hasil.innerHTML = `<div class="font-semibold">Hasil Simulasi</div>
+      <div class="mt-1 text-sm">Benar: <strong>${benar}</strong> dari ${total} soal • Skor: <strong>${skor}</strong></div>
+      <button id="btnReview" class="btn mt-3 px-3 py-2 rounded-lg border chip text-sm">Tampilkan Pembahasan</button>`;
+    $('#simInfo').textContent = `Selesai • Mapel: ${simState.mapel}`;
+
+    $('#btnReview').addEventListener('click',()=>{
+      // Tampilkan semua pembahasan
+      $$('#simContainer .p-4').forEach(card=>{
+        const pemb = card.querySelector('div.mt-3.hidden');
+        if(pemb) pemb.classList.remove('hidden');
+      })
+    })
+  }
+
+  // ======= INIT =======
+  function initSelectors(){
+    const mapels = Object.keys(DB);
+    populateSelect($('#materiMapel'), mapels);
+    populateSelect($('#latihMapel'), mapels);
+    populateSelect($('#simMapel'), mapels);
+
+    const firstBab = (mapel)=> Object.keys(DB[mapel].bab);
+
+    // Materi default
+    const m0 = mapels[0];
+    populateSelect($('#materiBab'), firstBab(m0));
+    // Latihan default
+    populateSelect($('#latihBab'), firstBab(mapels[0]));
+
+    $('#materiMapel').addEventListener('change', e=>{
+      populateSelect($('#materiBab'), firstBab(e.target.value));
+    });
+    $('#latihMapel').addEventListener('change', e=>{
+      populateSelect($('#latihBab'), firstBab(e.target.value));
+    });
+
+    $('#btnLoadMateri').addEventListener('click',()=>{
+      renderMateri($('#materiMapel').value, $('#materiBab').value);
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    $('#btnLoadLatihan').addEventListener('click',()=>{
+      loadLatihan($('#latihMapel').value, $('#latihBab').value);
+    });
+
+    $('#btnPeriksaSemua').addEventListener('click',()=>{
+      $$('#latihanContainer .p-4').forEach(card=>{
+        const cek = card.querySelector('button');
+        cek?.click();
+      });
+    });
+
+    $('#btnMulaiSim').addEventListener('click',()=>{
+      const map = $('#simMapel').value;
+      const j = Math.max(5, Math.min(50, Number($('#simJumlah').value||10)));
+      const d = Math.max(5, Math.min(180, Number($('#simDurasi').value||15)));
+      startSimulasi(map, j, d);
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    // Muat awal
+    renderMateri($('#materiMapel').value, $('#materiBab').value);
+    loadLatihan($('#latihMapel').value, $('#latihBab').value);
+  }
+
+  // Tab switching
+  $$('.tab-btn').forEach(b=> b.addEventListener('click',()=> setTab(b.dataset.tab)) );
+
+  // Start
+  setTab('materi');
+  initSelectors();
+  </script>
+</body>
+</html>
