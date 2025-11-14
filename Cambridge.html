@@ -145,6 +145,530 @@
   const DB = {
 'Pure Mathematics 1 (AS Level)': {
   bab: {
+'Induction and Sigma Notation': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Mathematical Induction & Sigma Notation</h2>
+
+    <h3 class="font-semibold mt-3">1. Mathematical Induction</h3>
+    <p class="mb-3">
+      Mathematical induction is a method of proving statements that are true for all integers 
+      beginning from a certain value (usually \\(n = 1\\)).
+    </p>
+
+    <h4 class="font-semibold">Steps of Induction</h4>
+    <ul class="list-disc pl-6 mb-4">
+      <li><strong>Base Step:</strong> Show the statement is true for the first value (e.g., \\(n=1\\)).</li>
+      <li><strong>Inductive Step:</strong> Assume true for \\(n=k\\), then prove true for \\(n=k+1\\).</li>
+      <li>If both steps are satisfied, the statement is true for all \\(n\\ge1\\).</li>
+    </ul>
+
+    <h4 class="font-semibold">Example Identity</h4>
+    <p class="mb-2">
+      \\[
+        1 + 2 + 3 + \dots + n = \\frac{n(n+1)}{2}
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">2. Sigma Notation</h3>
+    <p class="mb-3">
+      Sigma notation is a concise way to represent the sum of a sequence of terms.
+    </p>
+
+    <h4 class="font-semibold">General Form</h4>
+    <p class="mb-2">
+      \\[
+        \\sum_{i=a}^{b} f(i)
+      \\]
+    </p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>\\(i\\) is the index of summation.</li>
+      <li>\\(a\\) is the lower limit, \\(b\\) is the upper limit.</li>
+      <li>\\(f(i)\\) is the term to be summed.</li>
+    </ul>
+
+    <h4 class="font-semibold">Common Sigma Formulas</h4>
+    <p>
+    \\[
+      \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}
+    \\]
+    \\[
+      \\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6}
+    \\]
+    \\[
+      \\sum_{i=1}^{n} i^3 = \\left(\\frac{n(n+1)}{2}\\right)^2
+    \\]
+    </p>
+  `,
+
+  video: ['QHhFMv_0wcs','xFUP_S1H3jo'],  // ganti dengan ID video YouTube yang kamu mau
+
+  soal: [
+{
+  "id": "in1",
+  "tipe": "pg",
+  "bacaan": "Prove by mathematical induction that the inequality \\(2n + 1 < 2^n\\) holds for all integers \\(n \\ge 3\\).",
+  "tanya": "Is the statement proven or not proven?",
+  "opsi": [
+    "Proven",
+    "Not proven"
+  ],
+  "kunci": 0,
+  "bahas": `<p><strong>1. Base Case (\\(n = 3\\)):</strong></p>
+  <p>
+    \\[
+    2(3) + 1 = 7 < 8 = 2^3.
+    \\]
+    The base case is true.
+  </p>
+
+  <p><strong>2. Induction Hypothesis:</strong></p>
+  <p>
+    Assume that for some integer \\(k \\ge 3\\),
+    \\[
+    2k + 1 < 2^k.
+    \\]
+    We must show that the inequality also holds for \\(k+1\\).
+  </p>
+
+  <p><strong>3. Induction Step (prove for \\(k+1\\)):</strong></p>
+  <p>Start with the inequality to be proven:</p>
+  <p>
+    \\[
+    2(k+1) + 1 < 2^{k+1}.
+    \\]
+    The left-hand side simplifies to:
+    \\[
+    2(k+1) + 1 = 2k + 3.
+    \\]
+  </p>
+
+  <p><strong>Now compare the target expression \\(2k + 3\\) with the induction hypothesis.</strong></p>
+
+  <p>From the hypothesis:</p>
+  <p>
+    \\[
+    2k + 1 < 2^k.
+    \\]
+  </p>
+
+  <p>We want to relate \\(2k + 3\\) to \\(2^k\\). Notice that:</p>
+  <p>
+    \\[
+    2k + 3 = (2k + 1) + 2.
+    \\]
+  </p>
+
+  <p>Since \\(k \\ge 3\\), we have:</p>
+  <p>
+    \\[
+    2 < 2^{k-1}.
+    \\]
+    (This is true because for \\(k=3\\), \\(2^{k-1} = 4 > 2\\), and the right-hand side grows exponentially.)
+  </p>
+
+  <p>Thus:</p>
+  <p>
+    \\[
+    2k + 3 = (2k + 1) + 2 < 2^k + 2^{k-1} = 2^{k-1}(2 + 1) = 3 \\cdot 2^{k-1}.
+    \\]
+  </p>
+
+  <p>Finally, observe that:</p>
+  <p>
+    \\[
+    3 \\cdot 2^{k-1} < 4 \\cdot 2^{k-1} = 2^k \\cdot 2 = 2^{k+1}.
+    \\]
+  </p>
+
+  <p>Therefore we have the full chain:</p>
+  <p>
+    \\[
+    2(k+1) + 1 = 2k + 3 < 3 \\cdot 2^{k-1} < 2^{k+1}.
+    \\]
+  </p>
+
+  <p><strong>Thus,</strong></p>
+  <p>
+    \\[
+    2(k+1) + 1 < 2^{k+1}.
+    \\]
+  </p>
+
+  <p><strong>4. Conclusion:</strong></p>
+  <p>
+    The statement holds for \\(n = 3\\), and assuming it is true for \\(n = k\\) implies it is true for \\(n = k+1\\). Therefore, by mathematical induction,
+    \\[
+    2n + 1 < 2^n \\text{ for all integers } n \\ge 3.
+    \\]
+    <b>The statement is Proven.</b>
+  </p>
+<p><img src='https://i.imgur.com/vZOMvt5.png'></p>`
+},
+
+    {
+  "id": "in2",
+  "tipe": "pg",
+  "bacaan": "Prove by mathematical induction that the inequality \\(6n < 3^n\\) holds for all integers \\(n \\ge 3\\).",
+  "tanya": "Is the statement proven or not proven?",
+  "opsi": [
+    "Proven",
+    "Not proven"
+  ],
+  "kunci": 0,
+  "bahas": `<p><strong>1. Base Case (\\(n = 3\\)):</strong></p>
+  <p>
+    \\[
+    6(3) = 18 < 27 = 3^3.
+    \\]
+    The base case is true.
+  </p>
+
+  <p><strong>2. Induction Hypothesis:</strong></p>
+  <p>
+    Assume that for some integer \\(k \\ge 3\\),
+    \\[
+    6k < 3^k.
+    \\]
+    We must prove the inequality for \\(k+1\\).
+  </p>
+
+  <p><strong>3. Induction Step (prove for \\(k+1\\)):</strong></p>
+  <p>Start with the expression to be proven:</p>
+  <p>
+    \\[
+    6(k+1) < 3^{k+1}.
+    \\]
+  </p>
+
+  <p>The left-hand side simplifies to:</p>
+  <p>
+    \\[
+    6(k+1) = 6k + 6.
+    \\]
+  </p>
+
+  <p><strong>Using the induction hypothesis:</strong></p>
+  <p>
+    \\[
+    6k < 3^k.
+    \\]
+    Add 6 to both sides:
+    \\[
+    6k + 6 < 3^k + 6.
+    \\]
+  </p>
+
+  <p><strong>Now compare 6 with \\(3^k\\).</strong></p>
+  <p>
+    Since \\(k \\ge 3\\),
+    \\[
+    3^k \\ge 3^3 = 27.
+    \\]
+  </p>
+
+  <p>
+    Therefore,
+    \\[
+    6 < 27 = 3^k.
+    \\]
+  </p>
+
+  <p>So we have:</p>
+  <p>
+    \\[
+    6k + 6 < 3^k + 3^k = 2 \\cdot 3^k.
+    \\]
+  </p>
+
+  <p>But</p>
+  <p>
+    \\[
+    2 \\cdot 3^k < 3 \\cdot 3^k = 3^{k+1}.
+    \\]
+    because multiplying by 3 makes the value larger.
+  </p>
+
+  <p>Thus, the complete chain is:</p>
+  <p>
+    \\[
+    6(k+1) = 6k + 6 < 2 \\cdot 3^k < 3^{k+1}.
+    \\]
+  </p>
+
+  <p><strong>Therefore,</strong></p>
+  <p>
+    \\[
+    6(k+1) < 3^{k+1}.
+    \\]
+  </p>
+
+  <p><strong>4. Conclusion:</strong></p>
+  <p>
+    The inequality holds for \\(n=3\\), and if it holds for \\(n=k\\), it also holds for \\(n=k+1\\). Therefore, by mathematical induction,
+    \\[
+    6n < 3^n \\text{ for all integers } n \\ge 3.
+    \\]
+    <b>The statement is Proven.</b>
+  </p>
+<p><img src='https://i.imgur.com/c3r4S5z.png'></p>`
+},
+{
+  "id": "in3",
+  "tipe": "pg",
+  "bacaan": "Prove by mathematical induction that the inequality \\((n+1)^2 < 2n^2\\) holds for all integers \\(n \\ge 3\\).",
+  "tanya": "Is the statement proven or not proven?",
+  "opsi": [
+    "Proven",
+    "Not proven"
+  ],
+  "kunci": 0,
+  "bahas": `<p><strong>1. Base Case (\\(n = 3\\)):</strong></p>
+  <p>
+    \\[
+    (3+1)^2 = 16 < 2 \\cdot 3^2 = 18.
+    \\]
+    The base case is true.
+  </p>
+
+  <p><strong>2. Induction Hypothesis:</strong></p>
+  <p>
+    Assume that for some integer \\(k \\ge 3\\),
+    \\[
+    (k+1)^2 < 2 \\cdot k^2.
+    \\]
+    We must prove the inequality for \\(k+1\\).
+  </p>
+
+  <p><strong>3. Induction Step (prove for \\(k+1\\)):</strong></p>
+  <p>
+    We want to show:
+    \\[
+    (k+2)^2 < 2 \\cdot (k+1)^2.
+    \\]
+  </p>
+
+  <p>Rewrite the left-hand side:</p>
+  <p>
+    \\[
+    (k+2)^2 = (k+1)^2 + (2k + 3).
+    \\]
+  </p>
+
+  <p><strong>Using the induction hypothesis:</strong></p>
+  <p>
+    \\[
+    (k+1)^2 < 2 \\cdot k^2.
+    \\]
+    Add \\(2k + 3\\) to both sides:
+    \\[
+(k+1)^2 + (2k + 3)< 2 \\cdot k^2 + (2k + 3).
+    \\]
+\\[
+(k+2)^2 < 2 \\cdot k^2 + (2k + 3).
+    \\]
+  </p>
+
+  <p><strong>Now compare with the target right-hand side:</strong></p>
+  <p>
+    \\[
+    2 \\cdot (k+1)^2 = 2k^2 + 4k + 2.
+    \\]
+  </p>
+
+  <p>We need to show:</p>
+  <p>
+    \\[
+    2k^2 + 2k + 3 \\le 2k^2 + 4k + 2.
+    \\]
+  </p>
+
+  <p>This simplifies to:</p>
+  <p>
+    \\[
+    2k + 3 \\le 4k + 2
+    \\]
+    which is
+    \\[
+    0 \\le 2k - 1.
+    \\]
+  </p>
+
+  <p>Since \\(k \\ge 3\\), this inequality is true.</p>
+
+  <p>Thus, we have:</p>
+  <p>
+    \\[
+    (k+2)^2 < 2k^2 + 2k + 3 \\le 2 \\cdot (k+1)^2.
+    \\]
+  </p>
+
+  <p><strong>4. Conclusion:</strong></p>
+  <p>
+    The inequality holds for \\(n = 3\\), and if it holds for \\(n = k\\), it also holds for \\(n = k+1\\). Therefore, by mathematical induction,
+    \\[
+    (n+1)^2 < 2n^2 \\text{ for all integers } n \\ge 3.
+    \\]
+    <b>The statement is Proven.</b>
+  </p>`
+},
+{
+  "id": "in4",
+  "tipe": "pg",
+  "bacaan": "Prove by mathematical induction that the inequality \\(\\frac{1}{1^2} + \\frac{1}{2^2} + \\cdots + \\frac{1}{n^2} \\le 2 - \\frac{1}{n}\\) holds for all integers \\(n \\ge 1\\).",
+  "tanya": "Is the statement proven or not proven?",
+  "opsi": [
+    "Proven",
+    "Not proven"
+  ],
+  "kunci": 0,
+  "bahas": `<p><strong>1. Base Case (\\(n = 1\\)):</strong></p>
+  <p>
+    \\[
+    \\frac{1}{1^2} = 1, \\qquad 2 - \\frac{1}{1} = 1.
+    \\]
+    So the inequality holds for the base case.
+  </p>
+
+  <p><strong>2. Induction Hypothesis:</strong></p>
+  <p>
+    Assume that for some integer \\(k \\ge 1\\),
+    \\[
+    \\frac{1}{1^2} + \\frac{1}{2^2} + \\cdots + \\frac{1}{k^2} \\le 2 - \\frac{1}{k}.
+    \\]
+    We must prove the inequality for \\(k+1\\).
+  </p>
+
+  <p><strong>3. Induction Step (prove for \\(k+1\\)):</strong></p>
+  <p>
+    Consider:
+    \\[
+    \\sum_{i=1}^{k+1} \\frac{1}{i^2} = \\sum_{i=1}^{k} \\frac{1}{i^2} + \\frac{1}{(k+1)^2}.
+    \\]
+    Using the induction hypothesis:
+    \\[
+    \\sum_{i=1}^{k+1} \\frac{1}{i^2} \\le \\Big(2 - \\frac{1}{k}\\Big) + \\frac{1}{(k+1)^2}.
+    \\]
+  </p>
+
+  <p>We want to show:</p>
+  <p>
+    \\[
+    \\Big(2 - \\frac{1}{k}\\Big) + \\frac{1}{(k+1)^2} \\le 2 - \\frac{1}{k+1}.
+    \\]
+  </p>
+
+  <p>Subtract 2 from both sides and rewrite:</p>
+  <p>
+    \\[
+    -\\frac{1}{k} + \\frac{1}{(k+1)^2} \\le -\\frac{1}{k+1}.
+    \\]
+  </p>
+
+  <p>This is equivalent to proving:</p>
+  <p>
+    \\[
+    \\frac{1}{(k+1)^2} \\le \\frac{1}{k} - \\frac{1}{k+1} = \\frac{1}{k(k+1)}.
+    \\]
+  </p>
+
+  <p>Since \\((k+1)^2 \\ge k(k+1)\\) for all \\(k \\ge 1\\), the inequality</p>
+  <p>
+    \\[
+    \\frac{1}{(k+1)^2} \\le \\frac{1}{k(k+1)}
+    \\]
+    holds true.
+  </p>
+
+  <p>Therefore:</p>
+  <p>
+    \\[
+    \\sum_{i=1}^{k+1} \\frac{1}{i^2} \\le 2 - \\frac{1}{k+1}.
+    \\]
+  </p>
+
+  <p><strong>4. Conclusion:</strong></p>
+  <p>
+    The inequality holds for \\(n = 1\\), and if it holds for \\(n = k\\), it also holds for \\(n = k+1\\). Therefore, by mathematical induction:
+    \\[
+    \\frac{1}{1^2} + \\frac{1}{2^2} + \\cdots + \\frac{1}{n^2} \\le 2 - \\frac{1}{n}.
+    \\]
+    <b>The statement is Proven.</b>
+  </p>`
+},
+{
+  "id": "in5",
+  "tipe": "pg",
+  "bacaan": "Prove by mathematical induction that \\(6^{4n} + 38^n - 2\\) is divisible by \\(74\\) for all positive integers \\(n\\).",
+  "tanya": "Is the statement proven or not proven?",
+  "opsi": [
+    "Proven",
+    "Not proven"
+  ],
+  "kunci": 0,
+  "bahas": `<p><strong>1. Base Case (\\(n=1\\)):</strong></p>
+  <p>
+    Compute the expression for \\(n=1\\):
+    \\[
+    6^{4\\cdot 1} + 38^1 - 2 = 6^4 + 38 - 2 = 1296 + 36 = 1332.
+    \\]
+    Since \\(1332 = 74 \\cdot 18\\), the expression is divisible by \\(74\\). The base case is true.
+  </p>
+
+  <p><strong>2. Induction Hypothesis:</strong></p>
+  <p>
+    Assume that for some integer \\(k\\ge 1\\) the statement holds, i.e.
+    \\[
+    6^{4k} + 38^k - 2 \\text{ is divisible by } 74.
+    \\]
+We can write \\[6^{4k} + 38^k - 2=74d\\]
+    We must prove the statement for \\(k+1\\).
+  </p>
+
+  <p><strong>3. Induction Step (prove for \\(k+1\\)):</strong></p>
+  <p>
+    Consider the expression at \\(k+1\\):
+    \\[
+    6^{4(k+1)} + 38^{k+1} - 2
+    \\]\\[= 6^{4k}\\cdot 6^4 + 38^k\\cdot 38 - 2.
+    \\]
+\\[
+=6^4\\bigl(6^{4k}+38^k-2\\bigr) + 38^k\\cdot 38 - 2-6^4(38^k-2).
+\\]
+\\[
+=6^4\\bigl(6^{4k}+38^k-2\\bigr) + 38^k\\cdot 1258 +2590.
+\\]
+\\[
+=6^4\\bigl(6^{4k}+38^k-2\\bigr) + 38^k\\cdot 74 \\cdot 17  +74\\cdot 35.
+\\]
+
+  </p> 
+<p>from  Induction Hypothesis</p>
+\\[6^{4k} + 38^k - 2=74d\\]
+<p>We can write</p>
+\\[
+=6^4\\cdot 74d + 38^k\\cdot 74 \\cdot 17  +74\\cdot 35.
+\\]
+\\[
+=74(6^4\\cdot d + 38^k \\cdot 17  + 35).
+\\]
+<p>Since 
+\\(6^{4(k+1)} + 38^{k+1} - 2\\)
+ is a multiple of 74, it is divisible by 74</p>
+  <p>
+  <p><strong>4. Conclusion:</strong></p>
+  <p>
+    The expression is true for \\(n=1\\), and the induction step shows that if it is true for \\(n=k\\) then it is true for \\(n=k+1\\). Hence by mathematical induction,
+    \\[
+    6^{4n} + 38^n - 2 \\text{ is divisible by } 74 \\quad\\text{for all positive integers } n.
+    \\]
+    <b>The statement is Proven.</b>
+  </p>
+  <p><img src='https://i.imgur.com/HOv30qs.png'></p>`
+},
+
+  ]
+},
+
     'Equation of a Circle': {
       materi: `
         <h2 class="text-xl font-bold mb-2">The Equation of a Circle</h2>
