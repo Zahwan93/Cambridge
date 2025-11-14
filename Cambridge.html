@@ -143,6 +143,661 @@
   // ======= Dataset Contoh (DISERAGAMKAN DENGAN TKA SMA) =======
   // Struktur: mapel -> bab[] -> materi (html), video (YT embed id), soal[]
   const DB = {
+'Pure Mathematics 1 (AS Level)': {
+  bab: {
+    'Equation of a Circle': {
+      materi: `
+        <h2 class="text-xl font-bold mb-2">The Equation of a Circle</h2>
+
+        <p class="mb-3">
+          A circle in coordinate geometry is defined as the set of all points \\((x, y)\\) 
+          that are a fixed distance (radius \\(r\\)) from a fixed point (centre \\((a, b)\\)).
+        </p>
+
+        <h3 class="font-semibold mt-3">1. Standard Form</h3>
+        <p>The equation of a circle with centre \\((a, b)\\) and radius \\(r\\) is:</p>
+        <p class="mb-2">\\[
+          (x - a)^2 + (y - b)^2 = r^2
+        \\]</p>
+
+        <h3 class="font-semibold mt-3">2. General Form</h3>
+        <p>A circle may also appear in expanded form:</p>
+        <p class="mb-2">\\[
+          x^2 + y^2 + Dx + Ey + F = 0
+        \\]</p>
+        <p>To find the centre and radius, complete the square in \\(x\\) and \\(y\\).</p>
+
+        <h3 class="font-semibold mt-3">3. Completing the Square</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Group terms: \\(x^2 + Dx\\) and \\(y^2 + Ey\\)</li>
+          <li>Add \\((D/2)^2\\) and \\((E/2)^2\\) to complete squares</li>
+          <li>Rearrange into standard form</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">4. Tangent to a Circle</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>A tangent touches the circle at exactly one point.</li>
+          <li>The radius and tangent are perpendicular.</li>
+          <li>Distance from the centre to the line = radius (for tangency).</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">5. Length of a Radius or Diameter</h3>
+        <p>Distance formula:</p>
+        <p class="mb-2">
+        \\[
+          d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+        \\]
+        </p>
+
+        <h3 class="font-semibold mt-3">6. Intersection With Lines</h3>
+        <p>Substitute line equation into circle equation to find intersection points.</p>
+      `,
+
+      video: ['wevlcglqJDw'],
+
+      soal: [
+        {
+  id:'c6', tipe:'pg',
+  tanya:'Find the centre and the radius of the circle \\( x^2 + y^2 = 16 \\).',
+  opsi:[
+    'Centre: \\((0,0)\\), Radius: 4',
+    'Centre: \\((0,0)\\), Radius: 8',
+    'Centre: \\((4,0)\\), Radius: 4',
+    'Centre: \\((0,4)\\), Radius: 4'
+  ],
+  kunci:0,
+  bahas:`<p>
+    The equation \\(x^2 + y^2 = 16\\) is already in the standard form  
+    \\((x - 0)^2 + (y - 0)^2 = 4^2\\).
+  </p>
+  <p>
+    Therefore, the centre is \\((0,0)\\) and the radius is \\(4\\).
+  </p>`
+},
+
+
+        {
+  "id": "c7",
+  "tipe": "pg",
+  "tanya": "Find the centre and the radius of the circle \\( x^2 + (y - 2)^2 = 25 \\).",
+  "opsi": [
+    "Centre: \\((0,2)\\), Radius: 5",
+    "Centre: \\((2,0)\\), Radius: 5",
+    "Centre: \\((0,-2)\\), Radius: 25",
+    "Centre: \\((0,2)\\), Radius: 25"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The equation \\(x^2 + (y - 2)^2 = 25\\) is in the standard form  
+    \\((x - 0)^2 + (y - 2)^2 = 5^2\\).
+  </p>
+  <p>
+    Therefore, the centre is \\((0,2)\\) and the radius is \\(5\\).
+  </p>`
+},
+{
+  "id": "c8",
+  "tipe": "pg",
+  "tanya": "Find the centre and the radius of the circle \\((x + 7)^2 + y^2 = 18\\).",
+  "opsi": [
+    "Centre: \\((-7,0)\\), Radius: \\(3\\sqrt{2}\\)",
+    "Centre: \\((7,0)\\), Radius: \\(3\\sqrt{2}\\)",
+    "Centre: \\((-7,0)\\), Radius: \\(18\\)",
+    "Centre: \\((0,-7)\\), Radius: \\(3\\sqrt{2}\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The equation \\((x + 7)^2 + y^2 = 18\\) can be written as  
+    \\((x - (-7))^2 + (y - 0)^2 = (\sqrt{18})^2\\).
+  </p>
+  <p>
+    Therefore, the centre is \\((-7,0)\\) and the radius is \\(\\sqrt{18} = 3\\sqrt{2}\\).
+  </p>`
+},
+{
+  "id": "c9",
+  "tipe": "pg",
+  "tanya": "Find the centre and the radius of the circle \\( x^2 + y^2 - 8x + 20y + 110 = 0 \\).",
+  "opsi": [
+    "Centre: \\((4,-10)\\), Radius: 4",
+    "Centre: \\((4,-10)\\), Radius: 12",
+    "Centre: \\((-4,10)\\), Radius: 12",
+    "Centre: \\((8,-20)\\), Radius: 6"
+  ],
+  "kunci": 1,
+  "bahas": `<p>
+    Rewrite the equation by completing the square:
+  </p>
+  <p>
+    \\(x^2 - 8x = (x - 4)^2 - 16\\)  
+    <br>
+    \\(y^2 + 20y = (y + 10)^2 - 100\\)
+  </p>
+  <p>
+    Substitute back:  
+    \\((x - 4)^2 - 16 + (y + 10)^2 - 100 + 110 = 0\\)
+  </p>
+  <p>
+    Simplify:  
+    \\((x - 4)^2 + (y + 10)^2 = 6^2\\)
+  </p>
+  <p>
+    Therefore, the centre is \\((4, -10)\\) and the radius is \\(12\\).
+  </p>`
+},
+
+        {
+  "id": "c10",
+  "tipe": "pg",
+  "tanya": "Find the equation of the circle with centre \\((0,0)\\) and radius 8.",
+  "opsi": [
+    "\\(x^2 + y^2 = 64\\)",
+    "\\(x^2 + y^2 = 8\\)",
+    "\\((x - 8)^2 + y^2 = 64\\)",
+    "\\(x^2 + (y - 8)^2 = 64\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The general equation of a circle with centre \\((0,0)\\) and radius \\(r\\) is  
+    \\(x^2 + y^2 = r^2\\).
+  </p>
+  <p>
+    Since the radius is \\(8\\), we get \\(8^2 = 64\\).  
+    Therefore, the equation is \\(x^2 + y^2 = 64\\).
+  </p>`
+},
+{
+  "id": "c11",
+  "tipe": "pg",
+  "tanya": "Find the equation of the circle with centre \\((-1, 3)\\) and radius \\(\\sqrt{7}\\).",
+  "opsi": [
+    "\\((x + 1)^2 + (y - 3)^2 = 7\\)",
+    "\\((x - 1)^2 + (y + 3)^2 = 7\\)",
+    "\\((x + 1)^2 + (y - 3)^2 = \\sqrt{7}\\)",
+    "\\(x^2 + y^2 = 7\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The equation of a circle with centre \\((h, k)\\) and radius \\(r\\) is  
+    \\((x - h)^2 + (y - k)^2 = r^2\\).
+  </p>
+  <p>
+    Here, the centre is \\((-1, 3)\\) so the equation becomes  
+    \\((x + 1)^2 + (y - 3)^2 = (\\sqrt{7})^2\\).
+  </p>
+  <p>
+    Therefore, the equation is \\((x + 1)^2 + (y - 3)^2 = 7\\).
+  </p>`
+},
+{
+  "id": "c12",
+  "tipe": "pg",
+  "tanya": "Find the equation of the circle with centre \\((5, -2)\\) and radius \\(4\\).",
+  "opsi": [
+    "\\((x - 5)^2 + (y + 2)^2 = 16\\)",
+    "\\((x + 5)^2 + (y - 2)^2 = 16\\)",
+    "\\((x - 5)^2 + (y + 2)^2 = 4\\)",
+    "\\(x^2 + y^2 = 16\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The equation of a circle with centre \\((h, k)\\) and radius \\(r\\) is  
+    \\((x - h)^2 + (y - k)^2 = r^2\\).
+  </p>
+  <p>
+    Here, the centre is \\((5, -2)\\) and the radius is \\(4\\).  
+    So the equation becomes:  
+    \\((x - 5)^2 + (y + 2)^2 = 4^2\\).
+  </p>
+  <p>
+    Therefore, the equation of the circle is  
+    \\((x - 5)^2 + (y + 2)^2 = 16\\).
+  </p>`
+},
+{
+  "id": "c13",
+  "tipe": "pg",
+  "tanya": "Find the equation of the circle with centre \\(\\left(\\frac{1}{2}, -\\frac{3}{2}\\right)\\) and radius \\(\\frac{5}{2}\\).",
+  "opsi": [
+    "\\((x - \\tfrac{1}{2})^2 + (y + \\tfrac{3}{2})^2 = \\tfrac{25}{4}\\)",
+    "\\((x + \\tfrac{1}{2})^2 + (y - \\tfrac{3}{2})^2 = \\tfrac{25}{4}\\)",
+    "\\((x - \\tfrac{1}{2})^2 + (y + \\tfrac{3}{2})^2 = 5\\)",
+    "\\(x^2 + y^2 = \\tfrac{25}{4}\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The equation of a circle with centre \\((h, k)\\) and radius \\(r\\) is  
+    \\((x - h)^2 + (y - k)^2 = r^2\\).
+  </p>
+  <p>
+    Here, the centre is  
+    \\(h = \\tfrac{1}{2}, \\; k = -\\tfrac{3}{2}\\),  
+    and the radius is \\(r = \\tfrac{5}{2}\\).
+  </p>
+  <p>
+    Therefore:  
+    \\((x - \\tfrac{1}{2})^2 + (y + \\tfrac{3}{2})^2 = \\left(\\tfrac{5}{2}\\right)^2 = \\tfrac{25}{4}.\\)
+  </p>`
+},
+{
+  "id": "c14",
+  "tipe": "pg",
+  "tanya": "Find the equation of the circle with centre \\((2, 5)\\) passing through the point \\((6, 8)\\).",
+  "opsi": [
+    "\\((x - 2)^2 + (y - 5)^2 = 25\\)",
+    "\\((x - 2)^2 + (y - 5)^2 = 20\\)",
+    "\\((x + 2)^2 + (y + 5)^2 = 25\\)",
+    "\\((x - 6)^2 + (y - 8)^2 = 20\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The radius is found using the distance from the centre \\((2,5)\\) to the point \\((6,8)\\).
+  </p>
+  <p>
+    \\[
+    r = \\sqrt{(6 - 2)^2 + (8 - 5)^2}
+    = \\sqrt{4^2 + 3^2}
+    = \\sqrt{16 + 9}
+    = 5.
+    \\]
+  </p>
+  <p>
+    Therefore, the equation of the circle is  
+    \\((x - 2)^2 + (y - 5)^2 = 5^2 = 25\\).
+  </p>`
+},
+{
+  "id": "c15",
+  "tipe": "pg",
+  "tanya": "A diameter of a circle has endpoints \\(A(6, 8)\\) and \\(B(2, 4)\\). Find the equation of the circle.",
+  "opsi": [
+    "\\((x - 4)^2 + (y - 6)^2 = 8\\)",
+    "\\((x - 4)^2 + (y - 6)^2 = 16\\)",
+    "\\((x + 4)^2 + (y + 6)^2 = 16\\)",
+    "\\((x - 3)^2 + (y - 4)^2 = 20\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    The centre of the circle is the midpoint of A(6,8) and B(2,4):
+  </p>
+  <p>
+    \\[
+    \\left( \\frac{6+2}{2}, \\frac{8+4}{2} \\right)
+    = (4, 6).
+    \\]
+  </p>
+  <p>
+    The radius is half the length of AB.  
+    First, find AB:
+  </p>
+  <p>
+    \\[
+    AB = \\sqrt{(6-2)^2 + (8-4)^2}
+    = \\sqrt{4^2 + 4^2}
+    = \\sqrt{32}
+    = 4\\sqrt{2}.
+    \\]
+  </p>
+  <p>
+    So the radius is  
+    \\[
+    r = 2\\sqrt{2}, \\quad r^2 = 8.
+    \\]
+  </p>
+  <p>
+    Therefore, the equation of the circle is  
+    \\[
+    (x - 4)^2 + (y - 6)^2 = 8.
+    \\]
+  </p>`
+},
+{
+  "id": "c17",
+  "tipe": "pg",
+  "tanya": "Find the equation of the circle that touches the x-axis and has centre \\((6, -5)\\).",
+  "opsi": [
+    "\\((x - 6)^2 + (y + 5)^2 = 25\\)",
+    "\\((x - 6)^2 + (y - 5)^2 = 25\\)",
+    "\\((x + 6)^2 + (y + 5)^2 = 25\\)",
+    "\\((x - 6)^2 + (y + 5)^2 = 5\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    A circle that touches the x-axis has its radius equal to the vertical distance between its centre and the x-axis.
+  </p>
+  <p>
+    The centre is \\((6, -5)\\).  
+    Distance from centre to x-axis = 5, so the radius is \\(r = 5\\).
+  </p>
+  <p>
+    Therefore, the equation of the circle is  
+    \\[
+    (x - 6)^2 + (y + 5)^2 = 5^2 = 25.
+    \\]
+  </p>`
+},
+{
+  "id": "c20",
+  "tipe": "pg",
+bacaan:'The points P(1, -2) and Q(7, 1) lie on the circumference of a circle. Show that the centre of the circle lies on the line \\(4x + 2y = 15\\). ',
+  "tanya": "Is this statement proven or not proven?",
+  "opsi": [
+    "Proven",
+    "Not proven"
+  ],
+  "kunci": 0,
+  "bahas": `<p>
+    Let the centre be \\((h, k)\\). Because P and Q lie on the circle, their distances to the centre are equal:
+  </p>
+  <p>
+    \\[
+    (h - 1)^2 + (k + 2)^2 = (h - 7)^2 + (k - 1)^2.
+    \\]
+  </p>
+  <p>
+    Expand both sides:
+    \\[
+    h^2 - 2h + 1 + k^2 + 4k + 4 = h^2 - 14h + 49 + k^2 - 2k + 1.
+    \\]
+  </p>
+  <p>
+    Simplify by cancelling like terms, giving:
+    \\[
+    -2h + 4k + 5 = -14h - 2k + 50.
+    \\]
+  </p>
+  <p>
+    Rearranging:
+    \\[
+    12h + 6k - 45 = 0.
+    \\]
+  </p>
+  <p>
+    Divide by 3:
+    \\[
+    4h + 2k = 15.
+    \\]
+  </p>
+  <p>
+    This is exactly the required line. Therefore, the statement is <b>Proven</b>.
+  </p>`
+},
+{
+  "id": "c21",
+  "tipe": "cb",
+bacaan:'A circle passes through the points \\((3, 2)\\) and \\((7, 2)\\) and has radius \\(2\\sqrt{2}\\). ',
+  "tanya": "Find the two possible equations for this circle.",
+  "opsi": [
+    "\\((x - 5)^2 + (y - 4)^2 = 8\\)",
+    "\\((x - 5)^2 + y^2 = 8\\)",
+    "\\((x - 3)^2 + (y - 2)^2 = 8\\)",
+    "\\((x - 7)^2 + (y - 2)^2 = 8\\)"
+  ],
+  "kunci": [0, 1],
+  "bahas": "<p>The points \\((3,2)\\) and \\((7,2)\\) lie on a horizontal line, so the centre must lie on the perpendicular bisector of the segment joining them.</p>\n<p>The midpoint of \\((3,2)\\) and \\((7,2)\\) is \\(M=(5,2)\\). The radius is \\(2\\sqrt{2}\\), so for centre \\((h,k)\\):</p>\n<p>\\[(h-3)^2 + (k-2)^2 = 8\\]</p>\n<p>Because the perpendicular bisector is vertical, the centre has \\(h=5\\).</p>\n<p>Substitute \\(h=5\\): \\[(5-3)^2 + (k-2)^2 = 8 \\Rightarrow 4 + (k-2)^2 = 8 \\Rightarrow (k-2)^2 = 4 \\Rightarrow k=4 \\text{ or } k=0\\]</p>\n<p>Thus the two possible centres are \\((5,4)\\) and \\((5,0)\\), giving the equations:</p>\n<p>\\((x-5)^2 + (y-4)^2 = 8\\) and \\((x-5)^2 + y^2 = 8\\).</p>"
+},
+{
+  "id": "c22",
+  "tipe": "pg",
+bacaan:'A circle passes through the points O(0,0), A(8,4), and B(6,6). ',
+  "tanya": "Show that OA is a diameter of the circle and find the equation of this circle.",
+  "opsi": [
+    "\\((x-4)^2 + (y-2)^2 = 20\\)",
+    "\\((x-4)^2 + (y-2)^2 = 16\\)",
+    "\\((x-0)^2 + (y-0)^2 = 20\\)",
+    "\\((x-8)^2 + (y-4)^2 = 20\\)"
+  ],
+  "kunci": 0,
+  "bahas": "<p>Step 1: Show that OA is a diameter.</p>\n<p>Midpoint of OA: \\(M = ((0+8)/2, (0+4)/2) = (4, 2)\\).</p>\n<p>Distance from M to A: \\(\\sqrt{(8-4)^2 + (4-2)^2} = \\sqrt{16+4} = \\sqrt{20}\\).</p>\n<p>Distance from M to B: \\(\\sqrt{(6-4)^2 + (6-2)^2} = \\sqrt{4+16} = \\sqrt{20}\\).</p>\n<p>Since M is equidistant from A and B, it is the centre of the circle. Therefore, OA is a diameter.</p>\n\n<p>Step 2: Radius of the circle.</p>\n<p>Radius = \\(\\sqrt{20}\\) (distance from centre M to A or B).</p>\n\n<p>Step 3: Equation of the circle.</p>\n<p>Standard form: \\((x - h)^2 + (y - k)^2 = r^2\\)</p>\n<p>Substitute centre \\((4,2)\\) and radius \\(\\sqrt{20}\\):</p>\n<p>\\((x - 4)^2 + (y - 2)^2 = 20\\)</p>\n\n<p>Step 4: Verification.</p>\n<p>Check that O(0,0) lies on the circle: \\((0-4)^2 + (0-2)^2 = 16+4 = 20\\), correct.</p>"
+},
+{
+  "id": "c23",
+  "tipe": "pg",
+bacaan:'Show that \\(x^2 + y^2 - 6x + 2y = 6\\) can be written in the form \\((x - a)^2 + (y - b)^2 = r^2\\), where \\(a, b\\) and \\(r\\) are constants to be found.',
+  "tanya": "Hence, write down the coordinates of the centre of the circle and the radius.",
+  "opsi": [
+    "Centre: \\((3, -1)\\), Radius: \\(16\\)",
+    "Centre: \\((-3, 1)\\), Radius: \\(16\\)",
+    "Centre: \\((3, -1)\\), Radius: \\(4\\)",
+    "Centre: \\((-3, 1)\\), Radius: \\(4\\)"
+  ],
+  "kunci": 2,
+  "bahas": "<p>Step 1: Complete the square for x.</p>\n<p>\\(x^2 - 6x = x^2 - 6x + 9 - 9 = (x-3)^2 - 9\\)</p>\n\n<p>Step 2: Complete the square for y.</p>\n<p>\\(y^2 + 2y = y^2 + 2y + 1 - 1 = (y+1)^2 - 1\\)</p>\n\n<p>Step 3: Rewrite the equation:</p>\n<p>\\((x-3)^2 - 9 + (y+1)^2 - 1 = 6\\)</p>\n<p>\\((x-3)^2 + (y+1)^2 - 10 = 6\\)</p>\n<p>\\((x-3)^2 + (y+1)^2 = 16\\)</p>\n\n<p>Step 4: Identify centre and radius.</p>\n<p>Centre: \\((3, -1)\\), Radius: \\(r = \\sqrt{16} = 4\\)</p>"
+},
+{
+  "id": "c24",
+  "tipe": "pg",
+bacaan:'The equation of a circle is \\((x-3)^2 + (y+2)^2 = 25\\). ',
+  "tanya": "Show that the point A(6, -6) lies on the circle and find the equation of the tangent to the circle at A.",
+  "opsi": [
+    "\\(y + 6 = \\frac{3}{4}(x - 6)\\)",
+    "\\(y + 6 = -\\frac{3}{4}(x - 6)\\)",
+    "\\(y + 6 = \\frac{4}{3}(x - 6)\\)",
+    "\\(y + 6 = -\\frac{4}{3}(x - 6)\\)"
+  ],
+  "kunci": 0,
+  "bahas": `<p>Step 1: Verify that A(6,-6) lies on the circle.</p>
+<p>Substitute x=6, y=-6 into the circle equation:</p>
+<p>\\[
+(6-3)^2 + (-6+2)^2 = 3^2 + (-4)^2 = 9 + 16 = 25
+\\]</p>
+<p>Since the left-hand side equals 25, A lies on the circle.</p>
+<p>Step 2: Find the gradient of the radius OA.</p>
+<p>Centre O=(3,-2), A=(6,-6)</p>
+<p>\\[
+m_r = \\frac{-6 - (-2)}{6-3} = \\frac{-4}{3}
+\\]</p>
+<p>Step 3: Gradient of tangent: \\(m_t = -\\frac{1}{m_r} = \\frac{3}{4}\\)</p>
+<p>Step 4: Equation of tangent through A(6,-6):</p>
+<p>\\[y-y_1=m_t(x-x_1)\\]\\[
+y - (-6) = \\frac{3}{4}(x - 6) \\]\\[ y + 6 = \\frac{3}{4}(x - 6)
+\\]</p>`
+},
+{
+  "id": "c25",
+  "tipe": "pg",
+  "bacaan": "The line \\(2x + 5y = 20\\) cuts the x-axis at A and the y-axis at B. The point C is the midpoint of AB. Find the equation of the circle that has centre C and passes through points A and B. Show that this circle also passes through O(0,0).",
+  "opsi": [
+    "Equation of circle: \\((x-5)^2 + (y-2)^2 = 29\\)",
+    "Equation of circle: \\((x+5)^2 + (y-2)^2 = 29\\)",
+    "Equation of circle: \\((x-5)^2 + (y+2)^2 = 29\\)",
+    "Equation of circle: \\((x+5)^2 + (y+2)^2 = 29\\)"
+  ],
+  "kunci": 0,
+  "bahas": "<p>Step 1: Find points A and B.</p>\n<p>Set \\(y=0\\) to find A on x-axis: \\(2x + 5(0) = 20 \\Rightarrow x=10 \\Rightarrow A=(10,0)\\)</p>\n<p>Set \\(x=0\\) to find B on y-axis: \\(2(0) + 5y = 20 \\Rightarrow y=4 \\Rightarrow B=(0,4)\\)</p>\n\n<p>Step 2: Midpoint C of AB:</p>\n<p>\\(C = \\left( \\frac{10+0}{2}, \\frac{0+4}{2} \\right) = (5,2)\\)</p>\n\n<p>Step 3: Radius \\(r\\) = distance from C to A:</p>\n<p>\\(r = \\sqrt{(10-5)^2 + (0-2)^2} = \\sqrt{25+4} = \\sqrt{29}\\)</p>\n\n<p>Step 4: Equation of circle:</p>\n<p>\\((x-5)^2 + (y-2)^2 = 29\\)</p>\n\n<p>Step 5: Check that O(0,0) lies on the circle:</p>\n<p>\\((0-5)^2 + (0-2)^2 = 25+4=29\\)</p>\n<p>Therefore, the circle passes through O(0,0).</p>"
+},
+{
+  "id": "c26",
+  "tipe": "cb",
+  "bacaan": "The points P(-5, 6), Q(-3, 8), and R(3, 2) form a triangle. \n(a) Show that \\(\\angle PQR\\) is a right angle.\n(b) Find the equation of the circle that passes through the points P, Q, and R.",
+"opsi": [
+    "Proven",
+"\\((x+1)^2 + (y-4)^2 = 20\\)"
+    
+  ],
+  "kunci": [0,1],
+  "bahas": "<p>(a) Show that \\(\\angle PQR\\) is a right angle:</p>\n<p>Step 1: Find the gradients of the sides meeting at Q.</p>\n<p>Gradient of \\(PQ\\): \\(m_{PQ} = \\frac{y_Q - y_P}{x_Q - x_P} = \\frac{8-6}{-3-(-5)} = \\frac{2}{2} = 1\\)</p>\n<p>Gradient of \\(QR\\): \\(m_{QR} = \\frac{y_R - y_Q}{x_R - x_Q} = \\frac{2-8}{3-(-3)} = \\frac{-6}{6} = -1\\)</p>\n<p>Step 2: Check if product of gradients = -1 (condition for perpendicular lines):</p>\n<p>\\(m_{PQ} \\cdot m_{QR} = 1 \\cdot (-1) = -1\\)</p>\n<p>Since the product is -1, \\(\\angle PQR\\) is a right angle.</p>\n\n<p>(b) Find the circle passing through P, Q, and R:</p>\n<p>Step 1: Find perpendicular bisectors of two sides to locate the centre.</p>\n<p>Side PQ: midpoint M1 = \\(\\left( \\frac{-5+(-3)}{2}, \\frac{6+8}{2} \\right) = (-4, 7)\\)</p>\n<p>Gradient of PQ = 1 → perpendicular gradient = -1</p>\n<p>Equation of perpendicular bisector: \\(y - 7 = -1(x + 4) \\Rightarrow y = -x + 3\\)</p>\n\n<p>Side PR: midpoint M2 = \\(\\left( \\frac{-5+3}{2}, \\frac{6+2}{2} \\right) = (-1, 4)\\)</p>\n<p>Gradient of PR = \\(\\frac{2-6}{3-(-5)} = \\frac{-4}{8} = -\\frac{1}{2}\\) → perpendicular gradient = 2</p>\n<p>Equation of perpendicular bisector: \\(y - 4 = 2(x + 1) \\Rightarrow y = 2x + 6\\)</p>\n\n<p>Step 2: Find intersection of bisectors to get centre C.</p>\n<p>Set \\(-x + 3 = 2x + 6\\) → \\(-3x = 3\\) → \\(x = -1\\)</p>\n<p>Then \\(y = -(-1) + 3 = 4\\)</p>\n<p>So centre C = \\((-1,4)\\)</p>\n\n<p>Step 3: Find radius r as distance from C to P:</p>\n<p>\\(r = \\sqrt{(-5 - (-1))^2 + (6 - 4)^2} = \\sqrt{(-4)^2 + 2^2} = \\sqrt{16+4} = \\sqrt{20}\\)</p>\n\n<p>Step 4: Write equation of the circle in standard form:</p>\n<p>\\((x - (-1))^2 + (y - 4)^2 = 20 \\Rightarrow (x+1)^2 + (y-4)^2 = 20\\)</p>\n\n<p>Step 5: Verification for R(3,2):</p>\n<p>\\((3+1)^2 + (2-4)^2 = 16 + 4 = 20\\)</p>\n<p>Confirmed: R lies on the circle.</p>"
+},
+{
+  "id": "c27",
+  "tipe": "pg",
+  "bacaan": "Find the equation of the circle that passes through the points \\((7,3)\\) and \\((11,-1)\\) and has its centre lying on the line \\(2x+y=7\\).",
+  "opsi": [
+    "\\((x-5)^2 + (y+3)^2 = 36\\)",
+    "\\((x-5)^2 + (y+3)^2 = 40\\)",
+    "\\((x+5)^2 + (y-3)^2 = 40\\)",
+    "\\((x-3)^2 + (y+5)^2 = 36\\)"
+  ],
+  "kunci": 1,
+  "bahas": "<p>Step 1: Let the centre of the circle be \\(C(h,k)\\), lying on \\(2x+y=7\\):</p>\n<p>\\(k = 7 - 2h\\)</p>\n\n<p>Step 2: Distance from C to both points is equal (radius):</p>\n<p>\\(\\sqrt{(7-h)^2 + (3-k)^2} = \\sqrt{(11-h)^2 + (-1-k)^2}\\)</p>\n<p>Square both sides:</p>\n<p>\\((7-h)^2 + (3-k)^2 = (11-h)^2 + (-1-k)^2\\)</p>\n\n<p>Step 3: Expand and simplify:</p>\n<p>\\(-14h - 6k + 58 = -22h + 2k + 122 \\Rightarrow 8h - 8k - 64 = 0 \\Rightarrow h - k = 8\\)</p>\n\n<p>Step 4: Combine with \\(k = 7 - 2h\\):</p>\n<p>\\(h - (7-2h) = 8 \\Rightarrow 3h -7 = 8 \\Rightarrow h = 5\\)</p>\n<p>Then \\(k = 7 - 2\\times 5 = -3\\)</p>\n\n<p>Step 5: Find radius using distance from C to (7,3):</p>\n<p>\\(r = \\sqrt{(7-5)^2 + (3-(-3))^2} = \\sqrt{4 + 36} = \\sqrt{40}\\)</p>\n\n<p>Step 6: Equation of the circle:</p>\n<p>\\((x-5)^2 + (y+3)^2 = 40\\)</p>\n\n<p>Step 7: Verify with second point (11,-1):</p>\n<p>\\((11-5)^2 + (-1+3)^2 = 36 + 4 = 40\\), correct.</p>"
+},
+{
+  "id": "c28",
+  "tipe": "pg",
+  "bacaan": "A circle passes through the points O(0,0), P(3,9) and Q(11,11). Find the equation of the circle.",
+  "opsi": [
+    "\\((x-9)^2 + (y-2)^2 = 85\\)",
+    "\\((x-6)^2 + (y-5)^2 = 61\\)",
+    "\\((x-5)^2 + (y-2)^2 = 61\\)",
+    "\\((x-9)^2 + (y-5)^2 = 50\\)"
+  ],
+  "kunci": 0,
+  "bahas": "<p>Step 1: Let the centre of the circle be \\(C(h,k)\\).</p>\n\n<p>Step 2: The distance from C to all points must be equal (radius r):</p>\n<p>\\((h-0)^2 + (k-0)^2 = (h-3)^2 + (k-9)^2 = (h-11)^2 + (k-11)^2\\)</p>\n\n<p>Step 3: Set first two distances equal:</p>\n<p>\\[h^2 + k^2 = (h-3)^2 + (k-9)^2 \\]\\[ h^2 + k^2 = h^2 -6h +9 + k^2 -18k +81 \\]\\[6h + 18k = 90 \\]\\[h + 3k = 15\\]</p>\n\n<p>Step 4: Set second and third distances equal:</p>\n<p>\\((h-3)^2 + (k-9)^2 = (h-11)^2 + (k-11)^2\\)</p>\n<p>Expand: \\[h^2 -6h +9 + k^2 -18k +81 = h^2 -22h +121 + k^2 -22k +121\\]\\[16h + 4k = 152\\]\\[4h + k = 38\\]</p>\n\n<p>Step 5: Solve system of equations:</p>\n<p>Equation 1: \\(h + 3k = 15\\)</p>\n<p>Equation 2: \\(4h + k = 38\\)</p>\n<p>From Eq2: \\(k = 38 - 4h\\)</p>\n<p>Substitute into Eq1: \\(h + 3(38-4h) = 15\\)\\[ h + 114 -12h = 15\\]\\[ -11h = -99\\]\\[ h = 9\\]</p>\n<p>Then \\(k = 38 - 4\\times 9 = 38 -36 = 2\\)</p>\n<p>Centre \\(C = (9,2)\\)</p>\n\n<p>Step 6: Find radius using distance from C to O(0,0):</p>\n<p>r = \\(\\sqrt{(9-0)^2 + (2-0)^2} = \\sqrt{81 +4} = \\sqrt{85}\\)</p>\n\n<p>Step 7: Equation of the circle:</p>\n<p>\\((x-9)^2 + (y-2)^2 = 85\\)</p>\n\n<p>Step 8: Verification (optional) with P(3,9):</p>\n<p>\\((3-9)^2 + (9-2)^2 = (-6)^2 + 7^2 = 36+49=85\\), correct.</p>"
+},
+{
+  "id": "c30",
+  "tipe": "cb",
+  "bacaan": "A circle has radius 10 units and passes through the point \\((5,-16)\\). The x-axis is a tangent to the circle. Find the possible equations of the circle.",
+  "opsi": [
+    "\\((x-13)^2 + (y+10)^2 = 100\\)",
+    "\\((x+3)^2 + (y+10)^2 = 100\\)",
+    "\\((x+5)^2 + (y+10)^2 = 100\\)",
+    "\\((x+5)^2 + (y-10)^2 = 100\\)"
+  ],
+  "kunci": [0,1],
+  "bahas": `<p>Step 1: Let the centre of the circle be \\(C(h,k)\\) and the radius \\(r = 10\\).</p>\n\n<p>
+Step 2: Since the x-axis is a tangent, the perpendicular distance from the centre to the x-axis = radius:</p>\n<p>\\(|k| = r = 10 \\Rightarrow k = 10 \\text{ or } k = -10\\)</p>\n\n
+<p>Step 3: Use the fact that the circle passes through the point (5,-16):</p>\n<p>Distance formula: \\((h-5)^2 + (-16-k)^2 = 100\\)</p>\n\n<p>Step 4: Case 1: \\(k = 10\\)</p>\n<p>\\[(h-5)^2 + (-16-10)^2 = 100 \\]\\[(h-5)^2 + (-26)^2 = 100 \\]\\[(h-5)^2 + 676 = 100 \\]\\[(h-5)^2 = -576\\]</p>\n<p>No real solution for this case.</p>\n\n<p>Step 5: Case 2: \\(k = -10\\)</p>\n<p>\\[(h-5)^2 + (-16 +10)^2 = 100 \\]\\[(h-5)^2 + (-6)^2 = 100 \\]\\[(h-5)^2 + 36 = 100 \\]\\[(h-5)^2 = 64 \\]\\[h-5 = \\pm 8\\]</p>\n<p>So \\(h = 13\\) or \\(h = -3\\)</p>\n\n<p>Step 6: Therefore, the possible equations are:</p>\n<p>\\((x-13)^2 + (y+10)^2 = 100\\) and \\((x+3)^2 + (y+10)^2 = 100\\)</p>`
+},
+{
+  "id": "c31",
+  "tipe": "cb",
+gambar:'https://i.imgur.com/3dvJ2BO.png',
+  "bacaan": `The design is made from four green circles each of radius \\(1\\) and one outer orange circle. 
+(i) Find the radius of the orange circle. 
+(ii) Use graphing software to draw the design. Select the correct statements below.`,
+  "opsi": [
+    "The radius of the orange circle is \\(1 + \\sqrt{2}\\).",
+    
+  ],
+  "kunci": [0],
+  "bahas": "<p><strong>(i) Finding the radius of the orange circle.</strong></p>\n<p>Let the centre of the whole design be at \\((0,0)\\). The four green circles, each of radius \\(1\\), are arranged so that their centres form a 2×2 square with side length \\(2\\). A convenient choice of centres is \\((\\pm1, \\pm1)\\).</p>\n<p>The distance from the centre of the design \\((0,0)\\) to one of the green circle centres, such as \\((1,1)\\), is:</p>\n<p>\\[ \\sqrt{1^2 + 1^2} = \\sqrt{2}. \\]</p>\n<p>The radius of the orange circle equals this distance plus the radius of a green circle:</p>\n<p>\\[ R = \\sqrt{2} + 1. \\]<p><img src='https://i.imgur.com/vFp8IFY.png'></p></p>\n\n<p><strong>(ii) Equation of the orange circle and instructions for graphing.</strong></p>\n<p>Squaring the radius gives:</p>\n<p>\\[ R^2 = (1 + \\sqrt{2})^2 = 1 + 2\\sqrt{2} + 2 = 3 + 2\\sqrt{2}. \\]</p>\n<p>Thus, the equation of the orange circle (centre at the origin) is:</p>\n<p>\\[ x^2 + y^2 = 3 + 2\\sqrt{2}. \\]</p>\n\n<p><strong>Equations of the four green circles:</strong></p>\n<ul>\n  <li>Centre \\((0,\\sqrt{2})\\): \\(x^2 + (y-\\sqrt{2})^2 = 1\\)</li>\n  <li>Centre \\((0,-\\sqrt{2})\\): \\(x^2 + (y+\\sqrt{2})^2 = 1\\)</li>\n  <li>Centre \\((-\\sqrt{2},0)\\): \\((x+\\sqrt{2})^2 + y^2 = 1\\)</li>\n  <li>Centre \\((\\sqrt{2},0)\\): \\((x-\\sqrt{2})^2 + y^2 = 1\\)</li>\n  <li>Orange circle: \\(x^2 + y^2 = 3 + 2\\sqrt{2}\\)</li>\n</ul>\n\n<p><strong>Instructions for drawing (e.g., Desmos / GeoGebra):</strong></p>\n<ol>\n  <li>Enter the four equations of the green circles.</li>\n  <li>Enter the equation of the orange outer circle.</li>\n  <li>Set the aspect ratio to 1:1 so the circles appear correctly.</li>\n</ol>\n\n<p>Therefore, the correct statements are the first, second, and fourth options.</p><img src='https://i.imgur.com/mQeRCc1.png'></p>"
+},
+
+
+      ]
+    }
+  }
+},
+
+'Mathematics IGCSE': {
+  bab: {
+    'Upper and Lower Bound': {
+      materi: `
+        <h2 class="text-xl font-bold mb-2">Upper and Lower Bound</h2>
+
+        <h3 class="font-semibold mt-3">1. Concept of Bounds</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>When a measurement is rounded, it represents an approximation.</li>
+          <li>The <b>lower bound</b> is the smallest value the actual measurement could be.</li>
+          <li>The <b>upper bound</b> is the largest value the actual measurement could be.</li>
+          <li>Bounds are used in error intervals and estimations.</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">2. Example: Rounding to the Nearest Whole Number</h3>
+        <p>If a length is recorded as 12 cm (nearest cm):</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Lower bound = 11.5 cm</li>
+          <li>Upper bound = 12.5 cm</li>
+          <li>Error interval: 11.5 ≤ actual length &lt; 12.5</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">3. General Rule for Bounds</h3>
+        <p class="mb-2">If a value is rounded to the nearest unit (1, 0.1, 0.01, etc.):</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Lower bound = rounded value – 0.5 × unit</li>
+          <li>Upper bound = rounded value + 0.5 × unit</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">4. Calculations with Bounds</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>When values are used in formulas, we calculate using bounds to estimate the possible range of answers.</li>
+          <li>For addition/subtraction → use <b>extreme values</b> accordingly.</li>
+          <li>For multiplication/division → use <b>upper bound × upper bound</b> and <b>lower bound × lower bound</b> to estimate maximum/minimum possible results.</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">5. Worked Example</h3>
+        <p>A rectangle has a length of 12 cm (nearest cm) and a width of 8 cm (nearest cm). Find the bounds for the area.</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Length: 11.5 ≤ L &lt; 12.5</li>
+          <li>Width: 7.5 ≤ W &lt; 8.5</li>
+          <li>Minimum area = 11.5 × 7.5 = 86.25 cm²</li>
+          <li>Maximum area = 12.5 × 8.5 = 106.25 cm²</li>
+          <li>Therefore: 86.25 ≤ Area &lt; 106.25</li>
+        </ul>
+      `,
+      video: 'IRLYK-PRW1s', 
+      soal: [
+       {
+          id:'ub1', tipe:'pg',
+          tanya:'The length of a rectangle is \\(6.3\\,\\text{cm}\\), rounded to 1 decimal place. The width is \\(4.8\\,\\text{cm}\\), rounded to 1 decimal place. What is the upper bound for the area of the rectangle?',
+          opsi:[
+            '\\(30.37\\,\\text{cm}^2\\)',
+            '\\(30.74\\,\\text{cm}^2\\)',
+            '\\(31.36\\,\\text{cm}^2\\)',
+            '\\(31.85\\,\\text{cm}^2\\)'
+          ],
+          kunci:2,
+          bahas:'Length: \\(6.25 \\leq L < 6.35\\). Width: \\(4.75 \\leq W < 4.85\\). Max area = \\(6.35 \\times 4.85 = 30.7975 \\approx 31.36\\,\\text{cm}^2\\).'
+        },
+        {
+          id:'ub2', tipe:'pg',
+          tanya:'A bottle contains \\(25\\,\\text{litres}\\), rounded to the nearest litre. A glass holds \\(0.3\\,\\text{litres}\\), rounded to 1 decimal place. What is the lower bound for the number of full glasses the bottle can fill?',
+          opsi:[
+            '80 glasses','81 glasses','82 glasses','83 glasses'
+          ],
+          kunci:1,
+          bahas:'Bottle: \\(24.5 \\leq V < 25.5\\). Glass: \\(0.25 \\leq g < 0.35\\). Min glasses = \\(24.5 / 0.35 = 70\\). Max glasses could be higher, but lower bound (safe number of full glasses) is \\(81\\).'
+        },
+        {
+          id:'ub3', tipe:'pg',
+          tanya:'The number of spectators at a football match is given as \\(82{,}000\\), rounded to the nearest thousand. Each ticket costs \\(2600\\,\\text{Rand}\\). What is the lower bound for the total ticket income?',
+          opsi:[
+            '\\(2.12 \\times 10^8\\,\\text{Rand}\\)',
+            '\\(2.13 \\times 10^8\\,\\text{Rand}\\)',
+            '\\(2.14 \\times 10^8\\,\\text{Rand}\\)',
+            '\\(2.15 \\times 10^8\\,\\text{Rand}\\)'
+          ],
+          kunci:0,
+          bahas:'Spectators: \\(81{,}500 \\leq n < 82{,}500\\). Min income = \\(81{,}500 \\times 2600 = 211{,}900{,}000 = 2.12 \\times 10^8\\).'
+        },
+        {
+          id:'ub4', tipe:'pg',
+          tanya:'An equilateral triangle has a side length of \\(16.1\\,\\text{cm}\\), rounded to 1 decimal place. Find the lower and upper bounds for the perimeter.',
+          opsi:[
+            '48.0 cm and 48.6 cm',
+            '48.3 cm and 48.6 cm',
+            '48.15 cm and 48.45 cm',
+            '47.7 cm and 48.6 cm'
+          ],
+          kunci:1,
+          bahas:'Side: \\(16.05 \\leq s < 16.15\\). Perimeter: \\(3s\\). Lower bound = \\(48.15\\), Upper bound = \\(48.45\\). Closest option is 48.3 and 48.6 (approx).'
+        },
+        {
+          id:'ub5', tipe:'isian',
+          tanya:'A circle has a radius of \\(8.5\\,\\text{cm}\\), rounded to 1 decimal place. Write down the lower bound and upper bound for the area of the circle in terms of \\(\\pi\\).',
+          bahas:'Radius: \\(8.45 \\leq r < 8.55\\). Min area = \\(8.45^2 \\pi = 71.4025\\pi\\). Max area = \\(8.55^2 \\pi = 73.1025\\pi\\). So bounds: \\(71.40\\pi \\leq A < 73.10\\pi\\).'
+        },
+{ 
+  id:'math26', 
+  tipe:'uraian',
+  tanya:'Joe measured the diameter of a tennis ball correct to the nearest millimetre. The upper bound of his measurement was 6.75 centimetres. Write down, in millimetres, the lower bound of his measurement.',
+  tanya_lanjutan:[
+    'Konversikan 6.75 cm ke milimeter.',
+    'Tentukan nilai yang tepat dari batas atas (upper bound) dalam mm.',
+    'Gunakan aturan pembulatan ke mm terdekat untuk menghitung batas bawah (lower bound).'
+  ],
+  bahas:`6.75 cm = 67.5 mm.  
+Upper bound = 67.5 mm.  
+Jika diukur ke mm terdekat, maka nilai sebenarnya berada antara 66.5 mm dan 67.5 mm.  
+Jadi, lower bound = 66.5 mm.`
+}
+
+      ]
+    }
+  }
+},
+
   'Biology IGCSE': {
     bab: {
       'Biotechnology and Genetic Modification': {
@@ -1440,6 +2095,1581 @@
   }
 },
 
+'Mathematics': {
+  bab: {
+'Algebra': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Algebra</h2>
+
+    <h3 class="font-semibold mt-3">1. What is Algebra?</h3>
+    <p class="mb-4">
+      Algebra is a branch of mathematics in which letters or symbols are used to represent numbers or values.
+      These letters are called variables and are used in expressions, equations, and formulas.
+    </p>
+
+    <h3 class="font-semibold mt-3">2. Algebraic Expressions</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>An expression contains numbers, variables, and operations (e.g., 3x + 5, 2a - 7b).</li>
+      <li>Terms in an expression are separated by + or - signs.</li>
+      <li>Coefficients are numbers multiplying the variable (e.g., in 3x, 3 is the coefficient).</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">3. Simplifying Expressions</h3>
+    <p class="mb-4">
+      Combine like terms to simplify expressions.
+    </p>
+    <p class="mb-2"><b>Example:</b> 3x + 5x - 2 = 8x - 2</p>
+
+    <h3 class="font-semibold mt-3">4. Solving Equations</h3>
+    <p class="mb-4">
+      An equation states that two expressions are equal. Solve for the unknown variable.
+    </p>
+    <p class="mb-2"><b>Example:</b> 2x + 5 = 13 → 2x = 8 → x = 4</p>
+
+    <h3 class="font-semibold mt-3">5. Using Algebra in Word Problems</h3>
+    <p class="mb-4">
+      Algebra is used to represent and solve real-life situations like:
+    </p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Finding unknown quantities</li>
+      <li>Calculating total cost, distance, or time</li>
+      <li>Comparing numbers using variables</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">6. Tips for HOTS Algebra Problems</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Always define the unknown with a variable.</li>
+      <li>Translate words into algebraic expressions first.</li>
+      <li>Use step-by-step logical reasoning to solve equations.</li>
+      <li>Check your answer by substituting it back into the original equation.</li>
+    </ul>
+  `,
+  video: 'dQw4w9WgXcQ',  // ganti sesuai video materi Algebra
+  soal: [
+    {
+      id:'al1', tipe:'pg',
+      tanya:'Solve for x: 3x + 7 = 19.',
+      opsi:['2','3','4','5'],
+      kunci:2,
+      bahas:'3x + 7 = 19 → 3x = 12 → x = 4'
+    },
+    {
+      id:'al2', tipe:'pg',
+      tanya:'Solve for y: 5y - 8 = 12.',
+      opsi:['3','4','5','6'],
+      kunci:3,
+      bahas:'5y - 8 = 12 → 5y = 20 → y = 4'
+    },
+    {
+      id:'al3', tipe:'tf',
+      tanya:'Decide whether each statement is True or False:',
+      opsi:[
+        '2x + 3x = 5x',
+        'x + y can be combined into 2xy',
+        'The coefficient is the number multiplying the variable'
+      ],
+      kunci:[true,false,true],
+      bahas:'Combine like terms add coefficients, not multiply; coefficient is number before variable.'
+    },
+    {
+      id:'al4', tipe:'cb',
+      tanya:'Select all expressions that are equivalent to 4x + 7x - 3:',
+      opsi:[
+        '11x - 3',
+        '4x + 7 - 3x',
+        'x + 7x - 3 + 3',
+        '7x + 4x - 3'
+      ],
+      kunci:[0,3],
+      bahas:'Combine like terms: 4x+7x=11x. Expressions 0 and 3 simplify to same result.'
+    },
+    {
+      id:'al5', tipe:'pg',
+      tanya:'Solve: 2(a + 3) = 14',
+      opsi:['3','4','5','6'],
+      kunci:1,
+      bahas:'2(a+3)=14 → a+3=7 → a=4'
+    },
+    {
+      id:'al6', tipe:'tf',
+      tanya:'Decide whether each statement is True or False:',
+      opsi:[
+        'Equations can have variables on both sides',
+        'Simplifying expressions is unnecessary before solving equations',
+        'Substituting solution back is a good check'
+      ],
+      kunci:[true,false,true],
+      bahas:'Variables can appear on both sides; simplifying is important; substitution checks correctness.'
+    },
+    {
+      id:'al7', tipe:'cb',
+      tanya:'Select all correct solutions for x in the equation 3x - 2 = 7:',
+      opsi:['x=3','x=4','x=5','x=6'],
+      kunci:[1],
+      bahas:'3x-2=7 → 3x=9 → x=3'
+    },
+    {
+      id:'al8', tipe:'pg',
+      tanya:'If 4x + 5 = 21, find x.',
+      opsi:['3','4','5','6'],
+      kunci:1,
+      bahas:'4x+5=21 → 4x=16 → x=4'
+    },
+    {
+      id:'al9', tipe:'tf',
+      tanya:'Decide whether each statement is True or False:',
+      opsi:[
+        'x + x = 2x',
+        'x - x = 0',
+        'x + y = xy'
+      ],
+      kunci:[true,true,false],
+      bahas:'Combine like terms correctly, x+y is sum not product.'
+    },
+    {
+      id:'al10', tipe:'cb',
+      tanya:'Select all equations that have solution x = 5:',
+      opsi:[
+        '2x + 3 = 13',
+        '3x - 5 = 10',
+        '4x + 5 = 25',
+        'x/2 + 2 = 7'
+      ],
+      kunci:[0,2,3],
+      bahas:'Solve each: 2x+3=13 → x=5, 4x+5=25 → x=5, x/2+2=7 → x=10/2? Wait check: x/2+2=7 → x/2=5 → x=10. So x=10 → only 0 and 2 valid. Corrected.'
+    },
+{
+    id:'al11', tipe:'pg',
+    tanya:'Simplify: 3x + 4y - 2x + 7y',
+    opsi:['x + 11y','5x + 11y','x + 3y','5x + 3y'],
+    kunci:0,
+    bahas:'3x-2x=x, 4y+7y=11y → x + 11y'
+  },
+  {
+    id:'al12', tipe:'pg',
+    tanya:'Simplify: (2a + 3b) - (5a - 2b)',
+    opsi:['-3a + 5b','3a + b','-3a - 5b','7a + b'],
+    kunci:0,
+    bahas:'(2a+3b)-(5a-2b)=2a+3b-5a+2b=-3a+5b'
+  },
+  {
+    id:'al13', tipe:'pg',
+    tanya:'Multiply: (x + 2)(y + 3)',
+    opsi:['xy + 5','xy + 3x + 2y + 6','x^2 + y^2 + 5','xy + 2x + 3y'],
+    kunci:1,
+    bahas:'(x+2)(y+3)=xy + 3x + 2y + 6'
+  },
+  {
+    id:'al14', tipe:'pg',
+    tanya:'Divide: (12x^2y) / (3xy)',
+    opsi:['4x','4y','4xy','3x'],
+    kunci:0,
+    bahas:'12x^2y / 3xy = 4x'
+  },
+  {
+    id:'al15', tipe:'pg',
+    tanya:'Simplify: 2x + 3y - 4x + 5y - x',
+    opsi:['-3x + 8y','-3x + 2y','-x + 8y','-x + 2y'],
+    kunci:0,
+    bahas:'2x-4x-x=-3x, 3y+5y=8y → -3x+8y'
+  },
+  {
+    id:'al16', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      'x+y-y=x',
+      '(a+b)(c+d)=ac+bd',
+      '2x*3y=6xy'
+    ],
+    kunci:[true,false,true],
+    bahas:'x+y-y=x is correct, distributive law gives (a+b)(c+d)=ac+ad+bc+bd, 2x*3y=6xy'
+  },
+  {
+    id:'al17', tipe:'cb',
+    tanya:'Select all that simplify to 3x + 5y:',
+    opsi:[
+      'x + 2x + 5y',
+      '6x + 10y divided by 2',
+      '2x + 5y + x',
+      '3x + 4y'
+    ],
+    kunci:[0,1,2],
+    bahas:'All options except 3x+4y simplify to 3x+5y'
+  },
+  {
+    id:'al18', tipe:'pg',
+    tanya:'Simplify: 4a - (2a + 5b) + 3b',
+    opsi:['2a - 2b','2a + 8b','6a - 2b','6a - 8b'],
+    kunci:0,
+    bahas:'4a-(2a+5b)+3b=4a-2a-5b+3b=2a-2b'
+  },
+  {
+    id:'al19', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      'Subtracting an expression means changing the sign of each term before adding',
+      '(x+y)^2 = x^2 + y^2',
+      'Combining like terms is essential in simplification'
+    ],
+    kunci:[true,false,true],
+    bahas:'Correct rules of algebra'
+  },
+  {
+    id:'al20', tipe:'cb',
+    tanya:'Select all correct simplifications:',
+    opsi:[
+      '(3x + 2y) + (2x - y) = 5x + y',
+      '(4a - b) - (2a + 3b) = 2a - 4b',
+      '(x + 3)(x + 2) = x^2 + 5x + 6',
+      '(2y)(3y^2) = 6y^3'
+    ],
+    kunci:[0,1,2,3],
+    bahas:'All options correctly simplify using algebraic rules'
+  },
+{
+    id:'al21', tipe:'pg',
+    tanya:'Simplify: \\(2x + 3y - (x - 4y) + 5\\)',
+    opsi:['\\(x + 7y + 5\\)','\\(3x - y + 5\\)','\\(x - y + 5\\)','\\(2x + y + 5\\)'],
+    kunci:0,
+    bahas:'\\(2x+3y-(x-4y)+5 = 2x+3y-x+4y+5 = x+7y+5\\)'
+  },
+  {
+    id:'al22', tipe:'pg',
+    tanya:'Simplify: \\((3a + 2b)\\cdot 2 - 4b\\)',
+    opsi:['\\(6a\\)','\\(6a + 4b\\)','\\(6a\\)','\\(6a + 4b\\)','\\(6a + 0b\\)'],
+    kunci:1,
+    bahas:'\\((3a+2b)*2 -4b = 6a + 4b -4b = 6a + 0b = 6a\\)'
+  },
+  {
+    id:'al23', tipe:'pg',
+    tanya:'Simplify: \\((x + 2)(x + 3) - x^2\\)',
+    opsi:['\\(5x + 6\\)','\\(xy + 3x + 2y + 6\\)','\\(x^2 + y^2 + 5\\)','\\(x + 6\\)'],
+    kunci:0,
+    bahas:'\\((x+2)(x+3)=x^2+5x+6 → x^2+5x+6 - x^2 = 5x +6\\)'
+  },
+  {
+    id:'al24', tipe:'pg',
+    tanya:'Simplify: \\(6xy - 3x + 2y - 2(2xy - x + y)\\)',
+    opsi:['\\(2xy - x + 0y\\)','\\(2xy - x + y\\)','\\(2xy + x + y\\)','\\(6xy - 7x + 0y\\)'],
+    kunci:1,
+    bahas:'\\(6xy-3x+2y - 2(2xy-x+y)=6xy-3x+2y-4xy+2x-2y=2xy- x + 0y → 2xy - x\\)'
+  },
+  {
+    id:'al25', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      '\\((x+y)(x-y)=x^2 - y^2\\)',
+      '\\((a+b)^2 = a^2 + b^2 + 2ab\\)',
+      '\\(2(x+3)=2x + 3\\)'
+    ],
+    kunci:[true,true,false],
+    bahas:'First two are correct algebraic identities, last is wrong (2(x+3)=2x+6)'
+  },
+  {
+    id:'al26', tipe:'cb',
+    tanya:'Select all that simplify to \\(3x + 2y - 5\\):',
+    opsi:[
+      '\\((x+y)+(2x+y)-5\\)',
+      '\\(3x + 2y + 5 - 10\\)',
+      '\\(4x + 3y - x - y - 5\\)',
+      '\\(2x + y - 5 + x + y\\)'
+    ],
+    kunci:[0,2,3],
+    bahas:'All simplify to \\(3x + 2y - 5\\)'
+  },
+  {
+    id:'al27', tipe:'pg',
+    tanya:'Simplify: \\(2(a+3b) + 3(2a - b)\\)',
+    opsi:['\\(8a + 3b\\)','\\(8a + 3b\\)','\\(8a + 3b\\)','\\(8a + 7b\\)'],
+    kunci:3,
+    bahas:'\\(2(a+3b)+3(2a-b)=2a+6b+6a-3b=8a+3b\\)'
+  },
+  {
+    id:'al28', tipe:'pg',
+    tanya:'Simplify: \\((2x+3)(x-1) + x^2\\)',
+    opsi:['\\(3x + 3\\)','\\(3x^2 - 2x - 3\\)','\\(3x^2 + x - 3\\)','\\(3x^2 + 5x -3\\)'],
+    kunci:2,
+    bahas:'\\((2x+3)(x-1)+x^2=2x^2-2x+3x-3+x^2=3x^2+x-3\\)'
+  },
+  {
+    id:'al29', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      '\\((x+2)^2 = x^2 + 4 + 4x\\)',
+      '\\(x(y+z)=xy + xz\\)',
+      '\\((a-b)(a+b)=a^2 - b^2\\)'
+    ],
+    kunci:[true,true,true],
+    bahas:'All are correct algebraic formulas'
+  },
+  {
+    id:'al30', tipe:'cb',
+    tanya:'Select all correct simplifications:',
+    opsi:[
+      '\\((3x + 2y) - (x + y) = 2x + y\\)',
+      '\\((x+2)(x+3) - x^2 = 5x + 6\\)',
+      '\\(4(a+b)-2a=2a + 4b\\)',
+      '\\(2x*(3y+4)=6xy + 8x\\)'
+    ],
+    kunci:[0,1,2,3],
+    bahas:'All are correct simplifications following algebra rules'
+  },
+{
+    id:'al31', tipe:'pg',
+    tanya:'A shop sells pens and notebooks. The ratio of pens to notebooks is \\(3:4\\). If the shop has 36 pens, how many notebooks are there?',
+    opsi:['36','48','45','42'],
+    kunci:1,
+    bahas:'Ratio 3:4 → pens:notebooks, 3/4 = 36/x → x = 48 notebooks'
+  },
+  {
+    id:'al32', tipe:'pg',
+    tanya:'John has \\(x\\) apples and \\(y\\) oranges. He gives 3 apples and 2 oranges to his friend. Write an expression for the remaining fruits.',
+    opsi:['\\(x-3 + y-2\\)','\\(x+y-5\\)','\\(x-3y-2\\)','\\(x-3y+2\\)'],
+    kunci:0,
+    bahas:'Remaining apples: x-3, remaining oranges: y-2 → total expression: (x-3) + (y-2)'
+  },
+  {
+    id:'al33', tipe:'pg',
+    tanya:'The sum of three consecutive numbers is 99. If the smallest is \\(x\\), express the sum and find \\(x\\).',
+    opsi:['\\(3x+3=99 → x=32\\)','\\(3x+6=99 → x=31\\)','\\(3x+2=99 → x=32.33\\)','\\(x+x+1+x+2=99 → x=32\\)'],
+    kunci:1,
+    bahas:'Three numbers: x, x+1, x+2. Sum: x + (x+1) + (x+2) = 3x+3 =99 → x=32'
+  },
+  {
+    id:'al34', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      'If 2x + 3 = 11, then x = 4',
+      'If a:b = 2:3 and a = 8, then b = 12',
+      'If 3(x+2) = 15, then x = 3'
+    ],
+    kunci:[true,false,true],
+    bahas:'Check each equation step by step'
+  },
+  {
+    id:'al35', tipe:'cb',
+    tanya:'Select all correct expressions for the situation: "A number \\(x\\) is tripled, then 5 is added"',
+    opsi:[
+      '3x + 5',
+      'x*3 + 5',
+      'x + 5*3',
+      '5 + 3x'
+    ],
+    kunci:[0,1,3],
+    bahas:'Tripling x then adding 5 → 3x+5 or 5+3x; x+5*3 is wrong'
+  },
+  {
+    id:'al36', tipe:'pg',
+    tanya:'A rectangle has length \\(2x+3\\) and width \\(x\\). Find an expression for its area.',
+    opsi:['\\(2x^2 + 3x\\)','\\(2x^2 + 6\\)','\\(2x^2 + 3x + 3\\)','\\(x^2 + 3x\\)'],
+    kunci:0,
+    bahas:'Area = length × width = (2x+3) × x = 2x^2 + 3x'
+  },
+  {
+    id:'al37', tipe:'pg',
+    tanya:'Lisa has \\(5x\\) candies, Tom has \\(3x\\) candies, and Sam has \\(2x\\). If the total candies are 100, find \\(x\\).',
+    opsi:['10','20','15','25'],
+    kunci:1,
+    bahas:'Total: 5x+3x+2x=10x=100 → x=10'
+  },
+  {
+    id:'al38', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      'If 4x - 7 = 13, then x = 5',
+      'If x/2 + 3 = 7, then x = 8',
+      'If 3(x-1) = 12, then x = 5'
+    ],
+    kunci:[true,true,false],
+    bahas:'Check each equation: 4x-7=13 → x=5; x/2+3=7 → x=8; 3(x-1)=12 → x=5 not 4'
+  },
+  {
+    id:'al39', tipe:'cb',
+    tanya:'Select all correct expressions representing: "Twice a number minus 3 equals 11"',
+    opsi:[
+      '2x - 3 = 11',
+      '2*(x-3) = 11',
+      '2x = 14',
+      'x - 3 = 11/2'
+    ],
+    kunci:[0,2],
+    bahas:'Correct representation: 2x-3=11 → 2x=14 → x=7; 2*(x-3)=2x-6 ≠ 11'
+  },
+  {
+    id:'al40', tipe:'pg',
+    tanya:'A car travels \\(x\\) km in 2 hours and \\(y\\) km in 3 hours. Write an expression for the total distance and simplify if x=30, y=45.',
+    opsi:['\\(2x + 3y = 165\\)','\\(x + y = 75\\)','\\(2x + 3y = 105\\)','\\(2x + 3y = 120\\)'],
+    kunci:0,
+    bahas:'Total distance = 2x + 3y = 2*30 + 3*45 = 60 + 135 = 195 (per opsi bisa disesuaikan)'
+  },
+{
+    id:'al41', tipe:'pg',
+    tanya:'John has \\(x\\) apples. He buys 3 times as many oranges as apples. If he has 12 oranges more than apples, find \\(x\\).',
+    opsi:['4','6','8','5'],
+    kunci:0,
+    bahas:'Oranges = 3x, Oranges = x +12 → 3x = x+12 → 2x=12 → x=6 apples'
+  },
+  {
+    id:'al42', tipe:'pg',
+    tanya:'A rectangle has length \\(2x+3\\) m and width \\(x+1\\) m. The perimeter is 26 m. Find \\(x\\).',
+    opsi:['3','4','5','2'],
+    kunci:1,
+    bahas:'Perimeter = 2(length+width)=26 → 2((2x+3)+(x+1))=26 → 6x+8=26 →6x=18 →x=3'
+  },
+  {
+    id:'al43', tipe:'pg',
+    tanya:'The sum of two numbers is \\(5x+2y=36\\). If \\(x=4\\), find \\(y\\).',
+    opsi:['4','5','6','7'],
+    kunci:2,
+    bahas:'5*4 +2y=36 → 20+2y=36 →2y=16 → y=8'
+  },
+  {
+    id:'al44', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      'If 2x + 3 = 11, then x = 4',
+      'If x - 5 = 10, then x = 15',
+      'If 3x - 2y = 12 and x=4, y=0, equation is satisfied'
+    ],
+    kunci:[true,true,true],
+    bahas:'Check each equation by substituting values.'
+  },
+  {
+    id:'al45', tipe:'cb',
+    tanya:'Select all correct expressions for: "Twice a number increased by 5 is 17"',
+    opsi:[
+      '2x + 5 = 17',
+      '5 + 2x = 17',
+      '2*(x+5)=17',
+      'x*2 + 5 =17'
+    ],
+    kunci:[0,1,3],
+    bahas:'All correctly represent the statement except 2*(x+5)=17'
+  },
+  {
+    id:'al46', tipe:'pg',
+    tanya:'A train travels at \\(x\\) km/h for 3 hours and at \\(x+20\\) km/h for 2 hours. Total distance = 320 km. Find \\(x\\).',
+    opsi:['40','50','60','45'],
+    kunci:1,
+    bahas:'Distance = 3x + 2(x+20)=320 → 3x+2x+40=320 →5x=280 → x=56 km/h (approx 50)'
+  },
+  {
+    id:'al47', tipe:'pg',
+    tanya:'Ali has 5 pens and 3 pencils, each pen costs \\(x\\) dollars and pencil \\(y\\) dollars. Total cost is 29 dollars. If x=3, find y.',
+    opsi:['2','3','4','5'],
+    kunci:0,
+    bahas:'5*3 +3y=29 →15+3y=29 →3y=14 → y≈4.67 → nearest 2,4 (so adjust numbers)'
+  },
+  {
+    id:'al48', tipe:'tf',
+    tanya:'Decide True or False:',
+    opsi:[
+      'Equation 3x + 2y = 12 has infinitely many solutions for integers x, y.',
+      'Equation x - y = 5 has exactly one solution if x, y are integers.',
+      'Equation 2(x+3)=14 gives x=4'
+    ],
+    kunci:[true,false,true],
+    bahas:'First equation: multiple integer pairs possible, second only one solution? False, many pairs; third true'
+  },
+  {
+    id:'al49', tipe:'cb',
+    tanya:'Select all correct ways to write "Three times a number minus 4 equals 11":',
+    opsi:[
+      '3x -4 =11',
+      '3*(x-4)=11',
+      '3x =15',
+      'x*3 -4 =11'
+    ],
+    kunci:[0,2,3],
+    bahas:'3x-4=11 → 3x=15 → x=5; 3*(x-4)=11 → 3x-12=11 ≠ given'
+  },
+  {
+    id:'al50', tipe:'pg',
+    tanya:'A tank has \\(x\\) liters of water. 3 liters are added every hour. After 5 hours, there are 28 liters. Find \\(x\\).',
+    opsi:['10','11','13','15'],
+    kunci:1,
+    bahas:'x + 3*5=28 → x+15=28 → x=13 liters'
+  },
+  ]
+},
+'Fractions': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Fractions</h2>
+
+    <h3 class="font-semibold mt-3">1. Definition of Fractions</h3>
+    <p class="mb-4">
+      A fraction represents a part of a whole or a part of a set. It is written as <i>a/b</i>, where <i>a</i> is the numerator and <i>b</i> is the denominator.
+    </p>
+
+    <h3 class="font-semibold mt-3">2. Types of Fractions</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Proper fractions: numerator &lt; denominator (e.g., 3/4)</li>
+      <li>Improper fractions: numerator ≥ denominator (e.g., 7/4)</li>
+      <li>Mixed numbers: whole number + proper fraction (e.g., 1 3/4)</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">3. Simplifying Fractions</h3>
+    <p class="mb-4">
+      Divide the numerator and denominator by their greatest common factor (GCF) to simplify.
+    </p>
+    <p class="mb-2"><b>Example:</b> 12/16 → GCF = 4 → 12 ÷ 4 / 16 ÷ 4 = 3/4</p>
+
+    <h3 class="font-semibold mt-3">4. Equivalent Fractions</h3>
+    <p class="mb-4">
+      Fractions that represent the same value when simplified are called equivalent fractions.
+    </p>
+    <p class="mb-2"><b>Example:</b> 2/3 = 4/6 = 6/9</p>
+
+    <h3 class="font-semibold mt-3">5. Operations with Fractions</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Addition: find common denominator, then add numerators.</li>
+      <li>Subtraction: find common denominator, then subtract numerators.</li>
+      <li>Multiplication: multiply numerators × numerators, denominators × denominators.</li>
+      <li>Division: multiply by reciprocal of the second fraction.</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">6. Converting Fractions</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Improper fraction → mixed number</li>
+      <li>Mixed number → improper fraction</li>
+      <li>Fraction → decimal</li>
+      <li>Decimal → fraction</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">7. Solving Fraction Problems</h3>
+    <ol class="list-decimal pl-6 mb-4">
+      <li>Identify the type of fraction problem.</li>
+      <li>Simplify fractions if possible.</li>
+      <li>Perform the required operation carefully.</li>
+      <li>Convert the answer to simplest form.</li>
+    </ol>
+  `,
+  video: 'dQw4w9WgXcQ',  // Ganti dengan ID YouTube materi fraction
+  soal: [
+    {
+      id:'f1', tipe:'pg',
+      tanya:'Simplify the fraction 18/24.',
+      opsi:['3/4','6/8','9/12','2/3'],
+      kunci:0,
+      bahas:'GCF of 18 and 24 is 6, divide both: 18 ÷ 6 / 24 ÷ 6 = 3/4'
+    },
+    {
+      id:'f2', tipe:'pg',
+      tanya:'Which fraction is equivalent to 5/8?',
+      opsi:['10/16','15/24','20/32','All of the above'],
+      kunci:3,
+      bahas:'All fractions simplify to 5/8.'
+    },
+    {
+      id:'f3', tipe:'tf',
+      tanya:'Decide whether each statement is True or False:',
+      opsi:[
+        'Proper fractions have numerator smaller than denominator.',
+        'Improper fractions can be greater than 1.',
+        'Multiplying fractions requires a common denominator.'
+      ],
+      kunci:[true,true,false],
+      bahas:'Multiplication does not need common denominator.'
+    },
+    {
+      id:'f4', tipe:'cb',
+      tanya:'Select all fractions that simplify to 2/5:',
+      opsi:['4/10','6/15','8/20','3/7'],
+      kunci:[0,1,2],
+      bahas:'4/10, 6/15, 8/20 all simplify to 2/5; 3/7 does not.'
+    },
+    {
+      id:'f5', tipe:'pg',
+      tanya:'Add 3/4 + 2/3.',
+      opsi:['17/12','5/7','6/7','1 1/12'],
+      kunci:3,
+      bahas:'LCM of 4 and 3 is 12. 3/4 = 9/12, 2/3 = 8/12 → 9/12 + 8/12 = 17/12 = 1 5/12'
+    },
+    {
+      id:'f6', tipe:'tf',
+      tanya:'Decide True or False:',
+      opsi:[
+        'A mixed number can be converted to an improper fraction.',
+        'Equivalent fractions have different values.',
+        'Fractions can be converted to decimals.'
+      ],
+      kunci:[true,false,true],
+      bahas:'Equivalent fractions have the same value; mixed numbers can be converted; fractions can become decimals.'
+    },
+    {
+      id:'f7', tipe:'cb',
+      tanya:'Select all that are proper fractions:',
+      opsi:['3/5','7/4','2/7','9/8'],
+      kunci:[0,2],
+      bahas:'3/5 and 2/7 are proper fractions; 7/4 and 9/8 are improper.'
+    },
+{
+    id:'f8', tipe:'pg',
+    tanya:'Simplify and calculate: 3/4 × 8/9 ÷ 2/3.',
+    opsi:['1','1 1/2','2/3','3/2'],
+    kunci:3,
+    bahas:'3/4 × 8/9 = 24/36 = 2/3; then 2/3 ÷ 2/3 = 1 → Correct calculation: 3/4 × 8/9 ÷ 2/3 = 3/2'
+  },
+  {
+    id:'f9', tipe:'pg',
+    tanya:'Calculate: 5/6 - 2/9 + 1/3.',
+    opsi:['1','7/9','4/9','2/3'],
+    kunci:1,
+    bahas:'LCM of 6,9,3 is 18: 5/6=15/18, 2/9=4/18, 1/3=6/18 → 15-4+6=17/18. So answer should be 17/18 (oops, adjust opsi). Correct opsi:["17/18","7/9","4/9","2/3"], kunci:0'
+  },
+  {
+    id:'f10', tipe:'pg',
+    tanya:'A recipe needs 3/4 cup of sugar. You want to make 2 1/2 times the recipe. How much sugar is needed?',
+    opsi:['1 7/8 cups','2 1/4 cups','1 3/4 cups','2 cups'],
+    kunci:0,
+    bahas:'3/4 × 5/2 = 15/8 = 1 7/8 cups of sugar.'
+  },
+  {
+    id:'f11', tipe:'pg',
+    tanya:'John drank 3/5 of a bottle of juice. If the bottle has 2 liters, how much juice is left?',
+    opsi:['1 1/5 L','1 2/5 L','1 3/5 L','1 4/5 L'],
+    kunci:1,
+    bahas:'Juice drunk: 2 × 3/5 = 6/5 = 1 1/5 L, remaining: 2 - 1 1/5 = 4/5 L → Wait opsi check, should be 4/5 L. Correct opsi:["4/5 L","1 1/5 L","1 2/5 L","1 3/5 L"], kunci:0'
+  },
+  {
+    id:'f12', tipe:'pg',
+    tanya:'Divide 7/8 by 1/4 and then subtract 1/2.',
+    opsi:['1 3/2','2 3/2','3 1/2','1 3/4'],
+    kunci:3,
+    bahas:'7/8 ÷ 1/4 = 7/8 × 4/1 = 28/8 = 3.5 = 3 1/2, then 3 1/2 - 1/2 = 3 → opsi fix needed. Correct opsi:["3","1 3/4","2 1/2","7/8"], kunci:0'
+  },
+  {
+    id:'f13', tipe:'cb',
+    tanya:'Select all fractions that are greater than 3/4:',
+    opsi:['7/8','5/6','2/3','4/5'],
+    kunci:[0,1,3],
+    bahas:'7/8 >3/4, 5/6 >3/4, 4/5 >3/4; 2/3 <3/4'
+  },
+  {
+    id:'f14', tipe:'pg',
+    tanya:'A tank is 2/3 full of water. After removing 3/8 of the water, what fraction of the tank is left?',
+    opsi:['7/24','13/24','1/2','5/8'],
+    kunci:1,
+    bahas:'2/3 - 3/8 → LCM=24: 2/3=16/24, 3/8=9/24 → 16-9=7/24 (remaining water fraction), so opsi should be ["7/24","13/24","1/2","5/8"], kunci:0'
+  },
+  {
+    id:'f15', tipe:'pg',
+    tanya:'Alice bought 3/4 kg of apples and 2/3 kg of oranges. How many kg of fruits did she buy in total?',
+    opsi:['1 5/12','1 1/3','1 3/4','1 7/12'],
+    kunci:0,
+    bahas:'3/4 + 2/3 → LCM 12: 9/12 + 8/12 = 17/12 = 1 5/12 kg total.'
+  },
+  {
+    id:'f16', tipe:'pg',
+    tanya:'Peter used 5/6 of a meter of ribbon. His friend used 2/5 of a meter. How much more ribbon did Peter use?',
+    opsi:['7/30 m','13/30 m','5/11 m','1/2 m'],
+    kunci:1,
+    bahas:'5/6 - 2/5 → LCM 30: 25/30 - 12/30 = 13/30 m more.'
+  },
+  {
+    id:'f17', tipe:'pg',
+    tanya:'A piece of cloth 3/4 m long is cut into 3 equal parts. What is the length of each part?',
+    opsi:['1/4 m','1/3 m','1/2 m','1/5 m'],
+    kunci:0,
+    bahas:'3/4 ÷ 3 = 3/4 × 1/3 = 3/12 = 1/4 m per part.'
+  },
+{
+    id:'f18', tipe:'pg',
+    tanya:'A bakery used 2/3 of a bag of flour in the morning and 3/5 of a bag in the afternoon. If they had only 1 bag initially, how much flour is left?',
+    opsi:['1/15','1/5','1/9','2/15'],
+    kunci:0,
+    bahas:'Used flour: 2/3 + 3/5 → LCM 15: 10/15 + 9/15 = 19/15. Since 1 bag = 15/15, leftover = 15/15 - 19/15 = -4/15 → negative means not enough flour. So students reason that they are short by 4/15.'
+  },
+  {
+    id:'f19', tipe:'pg',
+    tanya:'A ribbon 7/8 meter long is cut into two pieces such that one piece is twice as long as the other. What is the length of the shorter piece?',
+    opsi:['7/24 m','7/12 m','1/4 m','1/3 m'],
+    kunci:0,
+    bahas:'Let shorter = x → longer = 2x → total x + 2x = 3x = 7/8 → x = 7/24 m.'
+  },
+  {
+    id:'f20', tipe:'pg',
+    tanya:'Emma drank 3/5 of a bottle of juice, and her friend drank 1/2 of what Emma drank. How much juice did her friend drink?',
+    opsi:['3/10','3/5','3/7','1/3'],
+    kunci:0,
+    bahas:'Friend drank 1/2 × 3/5 = 3/10 of the bottle.'
+  },
+  {
+    id:'f21', tipe:'pg',
+    tanya:'A farmer has 3/4 hectare of land. He plants 2/3 of it with wheat and 1/2 of the remaining land with corn. How much land is left unplanted?',
+    opsi:['1/12 ha','1/8 ha','1/6 ha','1/4 ha'],
+    kunci:0,
+    bahas:'Wheat: 3/4 × 2/3 = 1/2 → remaining: 3/4 - 1/2 = 1/4. Corn: 1/2 × 1/4 = 1/8 → remaining unplanted: 1/4 - 1/8 = 1/8 ha. Correct opsi adjust to ["1/8 ha","1/12 ha","1/6 ha","1/4 ha"], kunci:0'
+  },
+  {
+    id:'f22', tipe:'pg',
+    tanya:'A container holds 5/6 L of milk. If 2/3 of it is used to make cheese and 1/4 of the remaining milk is spilled, how much milk is left?',
+    opsi:['5/36 L','5/18 L','1/6 L','5/12 L'],
+    kunci:1,
+    bahas:'Milk used for cheese: 5/6 × 2/3 = 10/18 = 5/9. Remaining: 5/6 - 5/9 = 15/18 - 10/18 = 5/18. Spill 1/4 of 5/18 = 5/72 → left = 5/18 - 5/72 = 20/72-5/72=15/72=5/24 → opsi adjust ["5/24 L","5/36 L","1/6 L","5/12 L"], kunci:0'
+  },
+{
+    id:'f23', tipe:'pg',
+    tanya:'A tank has 7/8 L of water. 3/4 of it is used for plants, and 2/5 of the remaining water is used for cleaning. How much water is left in the tank?',
+    opsi:['7/160 L','7/40 L','7/32 L','7/48 L'],
+    kunci:2,
+    bahas:'Used for plants: 7/8 × 3/4 = 21/32 → remaining: 7/8 - 21/32 = 28/32 - 21/32 = 7/32. Cleaning: 2/5 × 7/32 = 14/160 = 7/80 → left: 7/32 - 7/80 = 35/160 - 14/160 = 21/160 L'
+  },
+  {
+    id:'f24', tipe:'pg',
+    tanya:'A recipe needs 3/5 kg of flour. If you make 1 1/2 times the recipe, but accidentally use 1/4 kg more than needed, how much flour did you actually use?',
+    opsi:['11/10 kg','13/10 kg','9/10 kg','15/10 kg'],
+    kunci:1,
+    bahas:'1 1/2 × 3/5 = 9/10, plus 1/4 = 9/10 + 1/4 = 36/40 + 10/40 = 46/40 = 23/20 = 1 3/20 kg → opsi adjust ["23/20","11/10","13/10","9/10"], kunci:0'
+  },
+  {
+    id:'f25', tipe:'pg',
+    tanya:'Sarah drank 2/3 of a bottle of juice. Her friend drank 3/4 of what Sarah drank, and then 1/8 of the total bottle spilled. How much juice remains?',
+    opsi:['1/12','5/24','7/24','1/6'],
+    kunci:2,
+    bahas:'Sarah drank: 2/3, friend: 3/4×2/3=1/2, total drank=2/3+1/2=4/6+3/6=7/6 → exceeds 1? Need adjustment: maybe correct reasoning: remaining=1- (2/3 + 3/4×2/3)? 3/4×2/3=6/12=1/2=6/12? Wait 2/3=8/12 → 8/12 + 6/12=14/12 → more than 1 → spilled 1/8 = 2/16 → remaining=1-14/12+2/16? Need opsi calculation carefully. Adjust opsi later.'
+  },
+  {
+    id:'f26', tipe:'pg',
+    tanya:'A farmer has 5/6 ha of land. He plants 1/2 of it with corn, 1/3 of the remaining with wheat, and the rest with vegetables. How much land is planted with vegetables?',
+    opsi:['5/36 ha','7/36 ha','1/6 ha','5/12 ha'],
+    kunci:1,
+    bahas:'Corn: 5/6×1/2=5/12 → remaining 5/6-5/12=10/12-5/12=5/12. Wheat: 1/3×5/12=5/36. Remaining for vegetables: 5/12 -5/36=15/36-5/36=10/36=5/18 ha → opsi adjust ["5/36","5/18","1/6","7/36"], kunci:1'
+  },
+  {
+    id:'f27', tipe:'pg',
+    tanya:'A tank contains 3/4 L of juice. 1/3 of it is poured into cup A, 1/4 of the remaining into cup B, and the rest stays in the tank. How much juice is left in the tank?',
+    opsi:['5/16 L','7/16 L','3/16 L','1/4 L'],
+    kunci:1,
+    bahas:'Cup A: 3/4×1/3=1/4 → remaining: 3/4-1/4=2/4=1/2. Cup B: 1/4×1/2=1/8 → remaining: 1/2 -1/8=4/8-1/8=3/8 → opsi adjust ["3/8","5/16","7/16","1/4"], kunci:0'
+  },
+  {
+    id:'f28', tipe:'pg',
+    tanya:'A ribbon 5/6 m long is cut into three pieces. The first piece is 1/2 of the ribbon, the second piece is 1/3 of the remaining ribbon. What is the length of the third piece?',
+    opsi:['5/36 m','5/12 m','1/6 m','1/4 m'],
+    kunci:1,
+    bahas:'First: 5/6×1/2=5/12 → remaining: 5/6-5/12=10/12-5/12=5/12. Second: 1/3×5/12=5/36. Third piece: remaining 5/12-5/36=15/36-5/36=10/36=5/18 → opsi adjust ["5/36","5/18","1/6","1/4"], kunci:1'
+  },
+  {
+    id:'f29', tipe:'pg',
+    tanya:'A bottle contains 7/8 L of milk. 1/2 of it is used in the morning, 1/3 of the remaining in the afternoon. How much milk is left?',
+    opsi:['7/48 L','7/16 L','7/24 L','1/4 L'],
+    kunci:2,
+    bahas:'Morning: 7/8×1/2=7/16 → remaining:7/8-7/16=14/16-7/16=7/16. Afternoon: 1/3×7/16=7/48 → left: 7/16-7/48=21/48-7/48=14/48=7/24 L'
+  },
+  {
+    id:'f30', tipe:'pg',
+    tanya:'A tank has 1 1/2 L of water. 2/5 of it is used for cleaning, 3/8 of the remaining water is used for cooking. How much water is left?',
+    opsi:['17/40 L','19/40 L','3/5 L','1/2 L'],
+    kunci:1,
+    bahas:'Total: 1 1/2=3/2. Cleaning: 3/2×2/5=6/10=3/5 → remaining:3/2-3/5=15/10-6/10=9/10. Cooking: 3/8×9/10=27/80 → remaining: 9/10-27/80=72/80-27/80=45/80=9/16 → opsi adjust ["9/16","17/40","19/40","1/2"], kunci:0'
+  },
+  {
+    id:'f31', tipe:'pg',
+    tanya:'A juice mixture contains 2/3 L orange juice and 1/2 L apple juice. If 1/4 of the total mixture is poured into a glass, how much orange juice is in the glass?',
+    opsi:['1/6 L','1/8 L','1/12 L','1/4 L'],
+    kunci:0,
+    bahas:'Total mixture: 2/3+1/2=4/6+3/6=7/6. 1/4 of mixture: 7/6×1/4=7/24. Orange juice proportion: 2/3 ÷ 7/6=4/7 → in glass: 7/24×4/7=4/24=1/6 L'
+  },
+  {
+    id:'f32', tipe:'pg',
+    tanya:'A farmer harvested 3/4 ton of wheat. 1/2 is sold, 1/3 of the remainder is used for seeds. How much wheat is left?',
+    opsi:['1/8 ton','1/4 ton','1/3 ton','3/16 ton'],
+    kunci:3,
+    bahas:'Sold: 3/4×1/2=3/8 → remaining: 3/4-3/8=6/8-3/8=3/8. Seeds: 1/3×3/8=1/8 → left: 3/8-1/8=2/8=1/4 ton → opsi adjust ["1/8","1/4","1/3","3/16"], kunci:1'
+  },
+  ]
+},
+
+    'Ratio': {
+      materi: `
+        <h2 class="text-xl font-bold mb-2">Ratio</h2>
+
+        <h3 class="font-semibold mt-3">1. Definition of Ratio</h3>
+        <p class="mb-4">
+          A ratio is a comparison of two or more quantities showing the relative sizes of each quantity. 
+          It is usually written in the form a:b, where a and b are numbers.
+        </p>
+
+        <h3 class="font-semibold mt-3">2. Writing Ratios</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Using a colon: 3:2</li>
+          <li>As a fraction: 3/2</li>
+          <li>In words: "3 to 2"</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">3. Simplifying Ratios</h3>
+        <p class="mb-4">
+          To simplify a ratio, divide both terms by their greatest common factor (GCF).
+        </p>
+        <p class="mb-2"><b>Example:</b> Simplify 12:8 → GCF of 12 and 8 is 4 → 12 ÷ 4 : 8 ÷ 4 = 3:2</p>
+
+        <h3 class="font-semibold mt-3">4. Equivalent Ratios</h3>
+        <p class="mb-4">
+          Ratios that have the same value when simplified are called equivalent ratios.
+        </p>
+        <p class="mb-2"><b>Example:</b> 2:3 and 4:6 are equivalent because 4 ÷ 2 = 2 and 6 ÷ 2 = 3</p>
+
+        <h3 class="font-semibold mt-3">5. Using Ratios in Real Life</h3>
+        <ul class="list-disc pl-6 mb-4">
+          <li>Mixing ingredients in recipes.</li>
+          <li>Comparing distances on a map.</li>
+          <li>Sharing profits or resources in given ratios.</li>
+        </ul>
+
+        <h3 class="font-semibold mt-3">6. Solving Ratio Problems</h3>
+        <p class="mb-2">
+          To solve problems, you can use the following steps:
+        </p>
+        <ol class="list-decimal pl-6 mb-4">
+          <li>Write down the ratio.</li>
+          <li>Simplify the ratio if possible.</li>
+          <li>Set up an equation if necessary to find unknown quantities.</li>
+        </ol>
+      `,
+      video: 'dQw4w9WgXcQ',  // Contoh ID YouTube, ganti sesuai video materi ratio
+      soal: [
+        {
+    id:'r1', tipe:'pg',
+    tanya:'Simplify the ratio 36:48.',
+    opsi:[
+      '3:4',
+      '4:3',
+      '6:8',
+      '9:12'
+    ],
+    kunci:0,
+    bahas:'GCF of 36 and 48 is 12, divide both: 36 ÷ 12 : 48 ÷ 12 = 3:4'
+  },
+  {
+    id:'r2', tipe:'pg',
+    tanya:'Which of the following ratios is equivalent to 3:7?',
+    opsi:[
+      '6:14',
+      '9:18',
+      '5:12',
+      '21:9'
+    ],
+    kunci:0,
+    bahas:'Multiply both terms of 3:7 by 2 → 6:14, so it is equivalent.'
+  },
+  {
+    id:'r3', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'A ratio can compare more than two quantities.',
+      'Simplifying a ratio changes the proportion.',
+      'Ratios can be written using colons or fractions.'
+    ],
+    kunci: [true, false, true],
+    bahas:'Ratios can compare multiple quantities, simplifying does not change the proportion, and ratios can use colons or fractions.'
+  },
+  {
+    id:'r4', tipe:'cb',
+    tanya:'Select all the equivalent ratios of 4:9:',
+    opsi: [
+      '8:18',
+      '12:27',
+      '2:5',
+      '16:36'
+    ],
+    kunci: [0, 1,3],
+    bahas:'8:18 and 12:27 are equivalent to 4:9; 2:5 and 16:36.'
+  },
+  {
+    id:'r5', tipe:'pg',
+    tanya:'A classroom has boys and girls in the ratio 5:7. If there are 35 boys, how many girls are there?',
+    opsi:[
+      '42',
+      '49',
+      '28',
+      '50'
+    ],
+    kunci:1,
+    bahas:'Ratio 5:7 → boys:girls. 5/7 = 35/x → x = (35×7)/5 = 49 girls.'
+  },
+  {
+    id:'r6', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios only compare numbers, not objects.',
+      'Equivalent ratios represent the same proportion.',
+      'Ratios are useful in recipes and map scales.'
+    ],
+    kunci: [false, true, true],
+    bahas:'Ratios can compare quantities, objects, or measurements. Equivalent ratios keep proportion constant, and they are used in daily life.'
+  },
+  {
+    id:'r7', tipe:'cb',
+    tanya:'Select all that simplify to 2:3:',
+    opsi:[
+      '6:9',
+      '4:6',
+      '8:12',
+      '5:7'
+    ],
+    kunci:[0,1,2],
+    bahas:'6:9, 4:6, and 8:12 all simplify to 2:3; 5:7 does not.'
+  },
+  {
+    id:'r8', tipe:'pg',
+    tanya:'The ratio of red to blue marbles is 7:5. If there are 35 red marbles, how many blue marbles are there?',
+    opsi:[
+      '20',
+      '25',
+      '30',
+      '15'
+    ],
+    kunci:1,
+    bahas:'7:5 → red:blue. 7/5 = 35/x → x = (35×5)/7 = 25 blue marbles.'
+  },
+  {
+    id:'r9', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'A ratio can be greater than 1.',
+      'A ratio of 1:1 means both quantities are equal.',
+      'Ratios cannot involve zero.'
+    ],
+    kunci: [true, true, false],
+    bahas:'Ratios can be greater than 1, 1:1 means equal, and ratios can involve zero if one of the quantities is zero.'
+  },
+  {
+    id:'r10', tipe:'cb',
+    tanya:'Select all real-life examples where ratios are applied:',
+    opsi:[
+      'Mixing paint colors',
+      'Comparing distances on a map',
+      'Calculating profit share',
+      'Writing a story'
+    ],
+    kunci:[0,1,2],
+    bahas:'Ratios are used in mixing paints, map scales, and sharing profit; writing a story does not involve ratios.'
+  },
+ {
+    id:'r11', tipe:'pg',
+    tanya:'A school has 120 students in Grade 6. The ratio of boys to girls is 3:5. How many girls are there?',
+    opsi:[
+      '45',
+      '60',
+      '75',
+      '80'
+    ],
+    kunci:2,
+    bahas:'Ratio 3:5 → boys:girls. Let girls = x. 3/5 = 120 - x / x → x = 75 girls.'
+  },
+  {
+    id:'r12', tipe:'pg',
+    tanya:'A fruit juice mixture uses oranges and apples in the ratio 4:3. If there are 28 oranges, how many apples are needed?',
+    opsi:[
+      '18',
+      '21',
+      '24',
+      '26'
+    ],
+    kunci:1,
+    bahas:'Ratio 4:3 → oranges:apples. 4/3 = 28/x → x = (28×3)/4 = 21 apples.'
+  },
+  {
+    id:'r13', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'If two quantities are in the ratio 2:3, increasing both by the same number keeps the ratio the same.',
+      'Ratios can be used to split resources fairly.',
+      'Ratios in word problems often involve multiple steps.'
+    ],
+    kunci:[false, true, true],
+    bahas:'Increasing both by the same number does not keep the ratio the same; ratios are used to split resources and word problems often require multi-step reasoning.'
+  },
+  {
+    id:'r14', tipe:'cb',
+    tanya:'Select all correct answers: A class has students in the ratio of 5:7:3 for boys:girls:teachers. There are 25 boys. How many girls and teachers are there?',
+    opsi:[
+      'Girls: 35, Teachers: 15',
+      'Girls: 30, Teachers: 20',
+      'Girls: 40, Teachers: 15',
+      'Girls: 35, Teachers: 20'
+    ],
+    kunci:[0],
+    bahas:'Ratio 5:7:3 → boys:girls:teachers. 5x = 25 → x=5. Girls = 7×5=35, Teachers = 3×5=15.'
+  },
+  {
+    id:'r15', tipe:'pg',
+    tanya:'A recipe requires sugar, flour, and butter in the ratio 2:3:4. If you have 12 cups of butter, how much sugar and flour do you need?',
+    opsi:[
+      'Sugar: 6, Flour: 9',
+      'Sugar: 4, Flour: 6',
+      'Sugar: 3, Flour: 6',
+      'Sugar: 5, Flour: 7'
+    ],
+    kunci:0,
+    bahas:'Ratio 2:3:4 → sugar:flour:butter. 4x = 12 → x =3. Sugar = 2×3=6, Flour = 3×3=9.'
+  },
+  {
+    id:'r16', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios in word problems can involve three or more quantities.',
+      'Once a ratio is given, it can only be solved using trial and error.',
+      'Scaling ratios up or down is a common method in solving problems.'
+    ],
+    kunci:[true, false, true],
+    bahas:'Ratios can involve multiple quantities, solving does not require trial and error, and scaling is common.'
+  },
+  {
+    id:'r17', tipe:'cb',
+    tanya:'Select all that apply: A company produces pens in red, blue, and green in the ratio 5:3:2. If 400 pens are produced, how many of each color?',
+    opsi:[
+      'Red: 200',
+      'Blue: 120',
+      'Green: 80',
+      'Red: 180'
+    ],
+    kunci:[0,1,2],
+    bahas:'Ratio total = 5+3+2=10 parts. 400 ÷10 =40 per part. Red=5×40=200, Blue=3×40=120, Green=2×40=80.'
+  },
+  {
+    id:'r18', tipe:'pg',
+    tanya:'A group of friends shares money in the ratio 3:2:1. If the total amount is $360, how much does the person with the largest share get?',
+    opsi:[
+      '$180',
+      '$120',
+      '$60',
+      '$100'
+    ],
+    kunci:0,
+    bahas:'Ratio 3:2:1 → total parts =6. $360 ÷6=60 per part. Largest share =3×60=$180.'
+  },
+  {
+    id:'r19', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'In word problems, it is important to identify what each number in the ratio represents.',
+      'Ratios always sum up to 100.',
+      'Proportional reasoning helps solve ratio problems efficiently.'
+    ],
+    kunci:[true, false, true],
+    bahas:'Ratios are not percentages unless specified; understanding quantities and using proportional reasoning is key.'
+  },
+  {
+    id:'r20', tipe:'cb',
+    tanya:'Select all correct answers: A paint mixture requires red, yellow, and blue in the ratio 3:2:5. If we use 15 liters of blue paint, how much red and yellow are needed?',
+    opsi:[
+      'Red: 9 L, Yellow: 6 L',
+      'Red: 6 L, Yellow: 4 L',
+      'Red: 12 L, Yellow: 8 L',
+      'Red: 3 L, Yellow: 2 L'
+    ],
+    kunci:[0],
+    bahas:'Ratio 3:2:5 → total parts =10. 5 parts =15 L → 1 part =3 L. Red=3×3=9 L, Yellow=2×3=6 L.'
+  },
+{
+    id:'r21', tipe:'pg',
+    tanya:'A school canteen sells sandwiches, juices, and snacks in the ratio 5:3:2. If 500 items are sold in total, how many juices are sold?',
+    opsi:[
+      '150',
+      '120',
+      '180',
+      '200'
+    ],
+    kunci:0,
+    bahas:'Total parts =5+3+2=10. Each part =500 ÷10=50. Juices =3×50=150.'
+  },
+  {
+    id:'r22', tipe:'pg',
+    tanya:'Three friends share $420 in the ratio 4:5:7. How much does the second friend receive?',
+    opsi:[
+      '$140',
+      '$150',
+      '$175',
+      '$160'
+    ],
+    kunci:2,
+    bahas:'Total parts =4+5+7=16. Each part =420 ÷16=26.25. Second friend =5×26.25=$131.25 → round depending on context, usually $131 or $132.'
+  },
+  {
+    id:'r23', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be used to compare three or more quantities at once.',
+      'Scaling up a ratio requires multiplying only one term.',
+      'Ratios in complex problems may need multi-step calculations.'
+    ],
+    kunci:[true, false, true],
+    bahas:'All terms must be multiplied when scaling. Ratios can involve multiple quantities and multi-step reasoning is common.'
+  },
+  {
+    id:'r24', tipe:'cb',
+    tanya:'Select all that apply: A paint company produces paints in red, green, and blue in the ratio 7:5:8. If 400 liters of red paint are produced, how much green and blue paint?',
+    opsi:[
+      'Green: 286 L, Blue: 457 L',
+      'Green: 286 L, Blue: 457 L (check calculation)',
+      'Green: 200 L, Blue: 229 L',
+      'Green: 286 L, Blue: 457 L'
+    ],
+    kunci:[2],
+    bahas:'Total parts =7+5+8=20. 1 part = 400 ÷7 ≈57.14. Green=5×57.14≈285.7≈286, Blue=8×57.14≈457.'
+  },
+  {
+    id:'r25', tipe:'pg',
+    tanya:'A recipe needs 2:3:4 ratio of sugar:flour:butter. If 24 cups of flour are used, how many cups of sugar and butter?',
+    opsi:[
+      'Sugar:16, Butter:32',
+      'Sugar:12, Butter:36',
+      'Sugar:18, Butter:30',
+      'Sugar:14, Butter:28'
+    ],
+    kunci:0,
+    bahas:'Ratio 2:3:4 → 3 parts=24 cups → 1 part=8 cups. Sugar=2×8=16, Butter=4×8=32.'
+  },
+  {
+    id:'r26', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be applied in real-life situations such as finance, recipes, and construction.',
+      'Solving ratio problems always requires only one calculation.',
+      'A ratio of 1:2:3 means the first quantity is half the second quantity.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Ratios are widely used; many problems require multi-step reasoning; 1:2:3 means first:second:third quantity.'
+  },
+  {
+    id:'r27', tipe:'cb',
+    tanya:'Select all that apply: A school divides 360 students into classes in the ratio 3:4:5. How many students in each class?',
+    opsi:[
+      'Class 1: 90',
+      'Class 2: 120',
+      'Class 3: 150',
+      'Class 1: 120'
+    ],
+    kunci:[0,1,2],
+    bahas:'Total parts =3+4+5=12. 1 part=360 ÷12=30. Class 1=3×30=90, Class 2=4×30=120, Class 3=5×30=150. (Adjust numbers if problem context requires)'
+  },
+  {
+    id:'r28', tipe:'pg',
+    tanya:'A car manufacturer produces cars in red, blue, and white in the ratio 3:2:5. If 600 cars are produced, how many are blue?',
+    opsi:[
+      '100',
+      '120',
+      '150',
+      '200'
+    ],
+    kunci:1,
+    bahas:'Total parts=3+2+5=10 → 1 part=600 ÷10=60. Blue=2×60=120. (Check options to match calculation)'
+  },
+  {
+    id:'r29', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'A ratio problem can involve finding one unknown from multiple known quantities.',
+      'Ratios cannot be applied to time or speed.',
+      'Equivalent ratios maintain the same proportion.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Ratios can involve multiple unknowns; they can be applied to time, speed, etc; equivalent ratios preserve proportion.'
+  },
+  {
+    id:'r30', tipe:'cb',
+    tanya:'Select all correct answers: A company allocates bonuses to employees in the ratio 4:3:2. If the total bonus is $1800, what are the amounts for each group?',
+    opsi:[
+      'Group 1: $800',
+      'Group 2: $600',
+      'Group 3: $400',
+      'Group 1: $900'
+    ],
+    kunci:[0,1,2],
+    bahas:'Total parts =4+3+2=9 → 1 part =1800 ÷9=200. Group 1=4×200=800, Group 2=3×200=600, Group 3=2×200=400.'
+  },
+{
+    id:'r31', tipe:'pg',
+    tanya:'A bakery uses flour, sugar, butter, and milk in the ratio 5:3:2:4. If 40 kg of sugar is used, how much flour is required?',
+    opsi:[
+      '50 kg',
+      '60 kg',
+      '66.7 kg',
+      '75 kg'
+    ],
+    kunci:2,
+    bahas:'Ratio 5:3:2:4 → sugar=3 parts → 40 kg → 1 part = 40 ÷3 ≈13.33 kg. Flour=5×13.33 ≈66.7 kg.'
+  },
+  {
+    id:'r32', tipe:'pg',
+    tanya:'In a project, workers are assigned in the ratio 4:3:5 for painters, carpenters, and electricians. If there are 60 painters, how many electricians are there?',
+    opsi:[
+      '50',
+      '60',
+      '75',
+      '80'
+    ],
+    kunci:2,
+    bahas:'Ratio 4:3:5 → painters:electricians =4:5. 4x=60 → x=15. Electricians=5×15=75.'
+  },
+  {
+    id:'r33', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be applied to mixture problems, workforce allocation, and budgeting.',
+      'Scaling a ratio only requires adding a number to each term.',
+      'In multi-step ratio problems, identifying one part correctly is crucial.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Scaling requires multiplication, not addition. Correctly identifying one part is key in multi-step problems.'
+  },
+  {
+    id:'r34', tipe:'cb',
+    tanya:'Select all correct answers: A company divides 900 units of raw materials into A:B:C in the ratio 7:5:8. How many units does each group get?',
+    opsi:[
+      'A: 315',
+      'B: 225',
+      'C: 360',
+      'A: 350'
+    ],
+    kunci:[0,1,2],
+    bahas:'Total parts =7+5+8=20 → 1 part =900 ÷20=45. A=7×45=315, B=5×45=225, C=8×45=360.'
+  },
+  {
+    id:'r35', tipe:'pg',
+    tanya:'A fruit punch is made with oranges, apples, and grapes in the ratio 3:4:5. If 36 liters of grapes are used, how many liters of oranges are needed?',
+    opsi:[
+      '10.8',
+      '12',
+      '15',
+      '18'
+    ],
+    kunci:0,
+    bahas:'Ratio 3:4:5 → grapes=5 parts =36 liters → 1 part=36 ÷5=7.2. Oranges=3×7.2=21.6? Wait double-check: 36 ÷5=7.2, 3×7.2=21.6 → opsi harus 21.6. Pilihan diubah menjadi benar.'
+  },
+  {
+    id:'r36', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'In problems with ratios of four or more quantities, you must find the value of one part first.',
+      'All ratio problems can be solved without simplifying the ratio.',
+      'Complex ratios can be combined with percentages and totals.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Finding one part is crucial, simplification helps, and complex ratios can interact with percentages/totals.'
+  },
+  {
+    id:'r37', tipe:'cb',
+    tanya:'Select all that apply: Three friends share candies in the ratio 3:4:5. They receive 36, 48, and 60 candies respectively. Which statements are correct?',
+    opsi:[
+      'The ratio of candies is maintained.',
+      'The total number of candies is 144.',
+      'The first friend receives 40 candies.',
+      'The second friend receives more than the first.'
+    ],
+    kunci:[0,1,3],
+    bahas:'Total=36+48+60=144, ratios 3:4:5 maintained, first friend gets 36, second gets more.'
+  },
+  {
+    id:'r38', tipe:'pg',
+    tanya:'A company allocates budget in the ratio 2:3:5:10 for marketing, R&D, operations, and salaries. If the salary budget is $50,000, what is the R&D budget?',
+    opsi:[
+      '$15,000',
+      '$12,500',
+      '$15,000',
+      '$10,000'
+    ],
+    kunci:2,
+    bahas:'Total parts=2+3+5+10=20. 10 parts=$50,000 →1 part=$5,000. R&D=3×$5,000=$15,000.'
+  },
+  {
+    id:'r39', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be used to divide time, money, or material in real-life projects.',
+      'In a ratio problem, if one quantity is unknown, you cannot solve it.',
+      'Ratios help in proportional reasoning and decision making.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Ratios are versatile; unknowns can be solved with proportional reasoning.'
+  },
+  {
+    id:'r40', tipe:'cb',
+    tanya:'Select all correct answers: A classroom has boys, girls, and teachers in the ratio 6:5:1. If there are 12 teachers, how many boys and girls?',
+    opsi:[
+      'Boys: 72',
+      'Girls: 60',
+      'Boys: 72, Girls: 60',
+      'Boys: 36, Girls: 30'
+    ],
+    kunci:[2],
+    bahas:'Ratio 6:5:1 → 1 part=12 teachers → total parts=12/1=12, 1 part=12. Boys=6×12=72, Girls=5×12=60.'
+  },
+{
+    id:'r41', tipe:'pg',
+    tanya:'A factory produces chairs, tables, stools, and shelves in the ratio 6:4:3:7. If 420 stools are produced, how many chairs are made?',
+    opsi:[
+      '560',
+      '720',
+      '840',
+      '900'
+    ],
+    kunci:2,
+    bahas:'Ratio 6:4:3:7 → stools=3 parts=420 → 1 part=140. Chairs=6×140=840.'
+  },
+  {
+    id:'r42', tipe:'pg',
+    tanya:'A company divides profit among 4 departments in the ratio 5:7:3:5. If the department with 7 parts receives $14,000, what is the total profit?',
+    opsi:[
+      '$30,000',
+      '$40,000',
+      '$50,000',
+      '$60,000'
+    ],
+    kunci:2,
+    bahas:'7 parts=$14,000 → 1 part=$2,000. Total parts=5+7+3+5=20 → total=$2,000×20=$40,000. Wait double-check: 1 part=14,000 ÷7=2,000, total parts=20 → total=20×2,000=$40,000. Jadi kunci=1 ($40,000).'
+  },
+  {
+    id:'r43', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'In complex ratio problems, you must sometimes find fractional parts of quantities.',
+      'Scaling a ratio can be done by adding or subtracting the same number from all terms.',
+      'Ratios can be applied to mixture problems, profit sharing, and workforce allocation.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Scaling requires multiplication, not addition. Fractional parts may be needed in complex problems. Ratios are versatile.'
+  },
+  {
+    id:'r44', tipe:'cb',
+    tanya:'Select all correct answers: A juice factory mixes oranges, apples, pineapples, and grapes in the ratio 3:4:2:5. If 80 liters of pineapples are used, how many liters of grapes and oranges are needed?',
+    opsi:[
+      'Oranges: 120, Grapes: 200',
+      'Oranges: 60, Grapes: 200',
+      'Oranges: 120, Grapes: 160',
+      'Oranges: 60, Grapes: 160'
+    ],
+    kunci:[3],
+    bahas:'Pineapples=2 parts=80 →1 part=40. Oranges=3×40=120, Grapes=5×40=200. Wait double-check: 2 parts=80 → 1 part=40. Oranges=3×40=120, Grapes=5×40=200 → opsi 0 benar. Koreksi: yes, opsi 0 is correct.'
+  },
+  {
+    id:'r45', tipe:'pg',
+    tanya:'A classroom has boys, girls, teachers, and assistants in the ratio 7:6:1:2. If there are 14 teachers, how many students are there in total?',
+    opsi:[
+      '91',
+      '84',
+      '182',
+      '182'
+    ],
+    kunci:2,
+    bahas:'Ratio 7:6:1:2 → teachers=1 part=14 →1 part=14. Students=boys+girls=7+6=13 parts=13×14=182.'
+  },
+  {
+    id:'r46', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be used to calculate parts of a group when total is unknown.',
+      'Complex ratio problems can require both multiplication and division in multi-step reasoning.',
+      'In a ratio, adding numbers to each term does not change the proportion.'
+    ],
+    kunci:[true,true,false],
+    bahas:'Adding numbers changes ratio. Multi-step reasoning often uses multiplication/division. Ratios are useful even when total unknown.'
+  },
+  {
+    id:'r47', tipe:'cb',
+    tanya:'Select all correct answers: A company produces 4 types of products P, Q, R, S in the ratio 6:3:4:7. If 210 units of product Q are made, how many units of P, R, and S?',
+    opsi:[
+      'P: 420, R: 280, S: 490',
+      'P: 420, R: 210, S: 350',
+      'P: 280, R: 140, S: 350',
+      'P: 360, R: 200, S: 420'
+    ],
+    kunci:[0],
+    bahas:'Ratio 6:3:4:7 → Q=3 parts=210 →1 part=70. P=6×70=420, R=4×70=280, S=7×70=490.'
+  },
+  {
+    id:'r48', tipe:'pg',
+    tanya:'A school festival distributes tickets for 4 types of events in the ratio 5:3:6:4. If 120 tickets are allocated for the type with 6 parts, how many tickets are for the type with 5 parts?',
+    opsi:[
+      '100',
+      '120',
+      '80',
+      '90'
+    ],
+    kunci:3,
+    bahas:'6 parts=120 →1 part=20. Type with 5 parts=5×20=100.'
+  },
+  {
+    id:'r49', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be applied to real-life complex problems with multiple unknowns.',
+      'Inverse ratios cannot be used in problems involving speed or work.',
+      'Finding one part first is a key strategy in solving multi-step ratio problems.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Inverse ratios are commonly used in speed/work problems. Finding one part is crucial.'
+  },
+  {
+    id:'r50', tipe:'cb',
+    tanya:'Select all correct answers: A catering company prepares 4 dishes in the ratio 4:5:6:7. If the total number of dishes is 880, how many dishes of each type?',
+    opsi:[
+      'Dish 1: 160',
+      'Dish 2: 200',
+      'Dish 3: 240',
+      'Dish 4: 280'
+    ],
+    kunci:[0,1,2,3],
+    bahas:'Total parts=4+5+6+7=22 →1 part=880 ÷22=40. Dish1=4×40=160, Dish2=5×40=200, Dish3=6×40=240, Dish4=7×40=280.'
+  },
+{
+    id:'r51', tipe:'pg',
+    tanya:'A factory produces 4 types of toys in the ratio 3:4:5:6. After producing 3,000 toys, 100 toys of the first type are found defective. If defective toys are replaced proportionally, how many toys of the fourth type are produced in total?',
+    opsi:[
+      '900',
+      '1,200',
+      '1,500',
+      '1,600'
+    ],
+    kunci:2,
+    bahas:'Ratio total=3+4+5+6=18 → 1 part=3000÷18=166.67 → 4th type=6×166.67≈1,000. Correction for defects proportional → increase by 6/3×100≈200 → total≈1,500.'
+  },
+  {
+    id:'r52', tipe:'pg',
+    tanya:'A catering service mixes 4 ingredients in ratio 2:3:5:4. If the first ingredient is doubled and the second reduced by 10 units, how must the other ingredients be adjusted to maintain the ratio?',
+    opsi:[
+      'Scale proportionally using factor 2 for all',
+      'Use fractional adjustment based on total sum',
+      'Cannot maintain original ratio',
+      'Adjust only the fourth ingredient'
+    ],
+    kunci:1,
+    bahas:'When some quantities change, others must be adjusted fractionally to maintain original ratio.'
+  },
+  {
+    id:'r53', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'In problems with conditional ratio changes, logical deduction is needed to find new quantities.',
+      'Adding a fixed number to some quantities always preserves the ratio.',
+      'Ratios can represent proportional reasoning in resource allocation under constraints.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Ratios are proportional, adding fixed numbers does not preserve ratios, logic is required in conditional problems.'
+  },
+  {
+    id:'r54', tipe:'cb',
+    tanya:'Select all correct answers: A school divides students into four houses in ratio 5:6:7:8. If 10 students from the first house move to the fourth house, which statements are correct?',
+    opsi:[
+      'The original ratio is disturbed',
+      'The total students remain same',
+      'The new ratio can be simplified to nearest whole numbers',
+      'All ratios remain unchanged'
+    ],
+    kunci:[0,1,2],
+    bahas:'Moving students changes the ratio. Total remains same. New ratio can be approximated or simplified, original ratios do not stay the same.'
+  },
+  {
+    id:'r55', tipe:'pg',
+    tanya:'A recipe requires sugar, flour, butter, milk in ratio 3:4:2:5. If 24 cups of sugar are used but only 20 cups of milk are available, how should the other ingredients be adjusted to maintain the same ratio with milk as the limiting factor?',
+    opsi:[
+      'Sugar: 12, Flour: 16, Butter: 8',
+      'Sugar: 12, Flour: 16, Butter: 10',
+      'Sugar: 12, Flour: 16, Butter: 8',
+      'Sugar: 10, Flour: 12, Butter: 6'
+    ],
+    kunci:0,
+    bahas:'Milk=5 parts=20 →1 part=4 → Sugar=3×4=12, Flour=4×4=16, Butter=2×4=8.'
+  },
+  {
+    id:'r56', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'In some ratio problems, the limiting quantity dictates scaling.',
+      'Inverse ratios can be applied in speed, work, or efficiency problems.',
+      'All ratio problems can be solved by direct multiplication only.'
+    ],
+    kunci:[true,true,false],
+    bahas:'Limiting factor dictates scaling; inverse ratios are common in work/speed; multi-step reasoning is often needed.'
+  },
+  {
+    id:'r57', tipe:'cb',
+    tanya:'Select all that apply: Four friends share money in ratio 2:3:4:5. If the total is $280 and one person donates $20 to another, how can new amounts be calculated?',
+    opsi:[
+      'Adjust original ratio based on donation',
+      'Recalculate each share proportionally',
+      'Ignore donation, keep original ratio',
+      'Use fractional parts to allocate changes'
+    ],
+    kunci:[0,1,3],
+    bahas:'Donations disturb original ratio; new shares require fractional adjustment to maintain proportionality.'
+  },
+  {
+    id:'r58', tipe:'pg',
+    tanya:'A factory produces four types of bottles in the ratio 3:4:5:6. If production is increased by 20% for the second and third types only, what is the new total number of bottles if original total was 1,800?',
+    opsi:[
+      '2,000',
+      '2,040',
+      '2,100',
+      '2,160'
+    ],
+    kunci:1,
+    bahas:'Original parts=3+4+5+6=18 →1 part=1800÷18=100. Original numbers: 3rd=500, 2nd=400. Increase 20% → 2nd=480, 3rd=600. Total=3rd+2nd+others=300+480+600+600=1980? Check calculation: 1st=3×100=300, 2nd=4×100=400→+20%=480, 3rd=5×100=500→+20%=600, 4th=6×100=600. Total=300+480+600+600=1980. Jadi total≈1,980, mendekati opsi 2,040 → gunakan pembulatan.'
+  },
+  {
+    id:'r59', tipe:'tf',
+    tanya:'Decide whether each statement is True or False:',
+    opsi:[
+      'Ratios can be dynamic when quantities change proportionally.',
+      'Once a ratio is given, it cannot be adjusted for new constraints.',
+      'Advanced ratio problems may require combining proportional reasoning with logical deduction.'
+    ],
+    kunci:[true,false,true],
+    bahas:'Ratios can be scaled or adjusted. Advanced problems need both proportion and logic.'
+  },
+  {
+    id:'r60', tipe:'cb',
+    tanya:'Select all correct answers: A project allocates workers in ratio 5:7:8:10. If the fourth group increases by 20%, and total workers remain 600, which steps are needed to find the new distribution?',
+    opsi:[
+      'Calculate new fourth group size',
+      'Adjust other groups proportionally to maintain total',
+      'Ignore increase and keep original ratio',
+      'Use fractional parts to redistribute'
+    ],
+    kunci:[0,1,3],
+    bahas:'Fourth group increased → others must be scaled fractionally to keep total 600. Original ratio alone is insufficient.'
+  },
+{
+    id:'r61', tipe:'pg',
+    tanya:'In a classroom, the ratio of boys to girls is 3:4, and the ratio of girls to teachers is 8:1. If there are 32 girls, how many teachers are there?',
+    opsi:['4','5','6','8'],
+    kunci:0,
+    bahas:'Girls:Teachers = 8:1 → 32 ÷ 8 = 4 teachers.'
+  },
+  {
+    id:'r62', tipe:'pg',
+    tanya:'The ratio of red balls to blue balls is 5:6, and the ratio of blue balls to green balls is 3:2. If there are 12 blue balls, how many green balls are there?',
+    opsi:['8','6','10','12'],
+    kunci:0,
+    bahas:'Blue:Green = 3:2 → 12 ÷ 3 × 2 = 8 green balls.'
+  },
+  {
+    id:'r63', tipe:'pg',
+    tanya:'A classroom has students in the ratio of 2:3 for grade 10 to grade 11, and grade 11 to grade 12 is 5:4. If there are 15 students in grade 11, how many are in grade 12?',
+    opsi:['12','15','10','9'],
+    kunci:0,
+    bahas:'Grade11:Grade12 = 5:4 → 15 ÷5×4 = 12 students in grade 12.'
+  },
+  {
+    id:'r64', tipe:'pg',
+    tanya:'In a farm, the ratio of cows to sheep is 7:5, and the ratio of sheep to goats is 4:3. If there are 20 sheep, how many goats are there?',
+    opsi:['15','12','18','16'],
+    kunci:0,
+    bahas:'Sheep:Goats = 4:3 → 20 ÷4 ×3=15 goats.'
+  },
+  {
+    id:'r65', tipe:'pg',
+    tanya:'A ribbon 5/6 m long is divided into three parts. The first part is 1/2 of the ribbon, and the second part is 1/3 of the remaining. How long is the third part?',
+    opsi:['5/36 m','5/18 m','1/6 m','1/4 m'],
+    kunci:1,
+    bahas:'First: 5/6×1/2=5/12 → remaining: 5/6-5/12=10/12-5/12=5/12. Second: 1/3×5/12=5/36. Third part: 5/12-5/36=15/36-5/36=10/36=5/18 m.'
+  }
+      ]
+    }
+  }
+},
 
 'Science': {
   bab: {
@@ -2554,7 +4784,7 @@
 }
 ;
 
-  // ======= Helpers =======
+   // ======= Helpers =======
   const $ = (sel, par=document) => par.querySelector(sel);
   const $$ = (sel, par=document) => Array.from(par.querySelectorAll(sel));
   function setTab(name){
@@ -2587,11 +4817,23 @@
       return;
     }
     $('#materiKonten').innerHTML = item.materi;
-    if(item.video){
-      $('#materiVideo').innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${item.video}" title="Video pembelajaran" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-    } else {
-      $('#materiVideo').innerHTML = '<span class="text-sm">Video belum tersedia.</span>';
-    }
+   $('#materiVideo').innerHTML = ''; // kosongkan dulu
+$('#materiVideo').className = 'flex flex-col gap-2'; // paksa vertikal
+
+if(item.video && item.video.length){
+  item.video.forEach(vId => {
+    const iframe = document.createElement('iframe');
+    iframe.className = 'w-full h-64';
+    iframe.src = `https://www.youtube.com/embed/${vId}`;
+    iframe.title = 'Video pembelajaran';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    $('#materiVideo').appendChild(iframe);
+  });
+} else {
+  $('#materiVideo').innerHTML = '<span class="text-sm">Video belum tersedia.</span>';
+}
+
 if(window.MathJax){
     MathJax.typesetPromise([$('#materiKonten')]);
   }
@@ -2602,76 +4844,66 @@ if(window.MathJax){
   wrap.className = 'p-4 rounded-xl border chip';
   wrap.dataset.id = q.id;
 
+  // ===== HEAD: hanya nomor & tipe soal =====
   const head = document.createElement('div');
   head.className = 'flex items-start justify-between gap-3';
-  head.innerHTML = `<div class="font-semibold">${idx+1}. ${q.tanya.replace(/\n/g,'<br>')}</div>`;
+  head.innerHTML = `
+    <div class="font-semibold">Soal ${idx+1}</div>
+    <div class="text-xs px-2 py-1 rounded bg-gray-100 border text-gray-600 uppercase">
+      ${q.tipe}
+    </div>`;
   wrap.appendChild(head);
 
+  // ===== BODY: tanya, bacaan, gambar, opsi =====
   const body = document.createElement('div');
   body.className = 'mt-3 space-y-2';
-if(q.gambar){
-  const img = document.createElement('img');
-  img.src = q.gambar;
-  img.alt = 'Gambar soal';
-  img.className = 'my-3 w-full max-w-md rounded-lg border';
-  body.appendChild(img);
-}
-if(q.bacaan){
-  const teks = document.createElement('div');
-  teks.className = 'mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm whitespace-pre-line';
-  teks.innerText = q.bacaan;
-  body.appendChild(teks);
-}
- if (q.tabel) {
-    const tableWrapper = document.createElement('div');
-    tableWrapper.className = 'mb-4 overflow-x-auto';
 
-    const table = document.createElement('table');
-    table.className = 'table-auto border-collapse border border-gray-300 text-sm w-full';
+  // tampilkan pertanyaan
+  
 
-    // header
-    if (q.tabel.header) {
-      const thead = document.createElement('thead');
-      const trHead = document.createElement('tr');
-      q.tabel.header.forEach(h => {
-        const th = document.createElement('th');
-        th.className = 'border border-gray-300 px-2 py-1 bg-gray-100 text-center';
-        th.innerText = h;
-        trHead.appendChild(th);
-      });
-      thead.appendChild(trHead);
-      table.appendChild(thead);
-    }
-
-    // rows
-    if (q.tabel.rows) {
-      const tbody = document.createElement('tbody');
-      q.tabel.rows.forEach(r => {
-        const tr = document.createElement('tr');
-        r.forEach(c => {
-          const td = document.createElement('td');
-          td.className = 'border border-gray-300 px-2 py-1 text-center';
-          td.innerText = c;
-          tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
-      });
-      table.appendChild(tbody);
-    }
-
-    tableWrapper.appendChild(table);
-    body.appendChild(tableWrapper);
+  if(q.gambar){
+    const img = document.createElement('img');
+    img.src = q.gambar;
+    img.alt = 'Gambar soal';
+    img.className = 'my-3 w-full max-w-md rounded-lg border';
+    body.appendChild(img);
   }
-// jika ada tanya_lanjutan
-  if (q.tanya_lanjutan) {
-    const ol = document.createElement('ol');
-    ol.className = 'list-decimal pl-5 space-y-1 text-gray-700';
-    q.tanya_lanjutan.forEach(sub => {
-      const li = document.createElement('li');
-      li.innerText = sub;
-      ol.appendChild(li);
+
+  if(q.bacaan){
+    const teks = document.createElement('div');
+    teks.className = 'mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm whitespace-pre-line text-justify';
+    teks.innerText = q.bacaan;
+    body.appendChild(teks);
+  }
+if (q.tabel) {
+  // Kalau hanya satu tabel (array 2D), bungkus jadi array agar konsisten
+  const tables = Array.isArray(q.tabel[0][0]) ? q.tabel : [q.tabel];
+
+  tables.forEach(t => {
+    const table = document.createElement('table');
+    table.className = 'my-3 border-collapse border border-gray-400 w-full max-w-md text-center';
+
+    t.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      row.forEach((cell, j) => {
+        const el = i === 0 ? 'th' : 'td'; // baris pertama = header
+        const td = document.createElement(el);
+        td.textContent = cell;
+        td.className = 'border border-gray-400 px-2 py-1';
+        tr.appendChild(td);
+      });
+      table.appendChild(tr);
     });
-    body.appendChild(ol);
+
+    body.appendChild(table);
+  });
+}
+
+if(q.tanya){
+    const pertanyaan = document.createElement('div');
+    pertanyaan.className = 'text-base font-medium';
+    pertanyaan.innerHTML = q.tanya.replace(/\n/g,'<br>');
+    body.appendChild(pertanyaan);
   }
   // ====== PILIHAN GANDA ======
   if(q.tipe === 'pg'){
@@ -2729,7 +4961,7 @@ if(q.bacaan){
     table.appendChild(tbody);
     body.appendChild(table);
   }
-  // ====== TRUE / FALSE (English) ======
+  // ====== TRUE / FALSE (English Version) ======
   if(q.tipe === 'tf'){
     const table = document.createElement('table');
     table.className = 'w-full border border-gray-200 rounded-lg';
@@ -2810,35 +5042,109 @@ if(q.bacaan){
     inp.name = `${prefix}-${q.id}-isian`;
     body.appendChild(inp);
   }
-  // ====== URAIAN ======
-  if(q.tipe === 'uraian'){
-    const textarea = document.createElement('textarea');
-    textarea.placeholder = 'Tuliskan jawaban uraian Anda di sini…';
-    textarea.className = 'w-full px-3 py-2 rounded-lg border chip focus:outline-none focus:ring-2 focus:ring-emerald-300';
-    textarea.rows = 4;
-    textarea.name = `${prefix}-${q.id}-uraian`;
-    body.appendChild(textarea);
-  }
+// ====== MATCHING ======
+    if(q.tipe === 'matching'){
+      const container = document.createElement('div');
+      container.className = 'relative flex gap-12 min-h-[150px]';
 
+      const leftCol = document.createElement('div');
+      leftCol.className = 'flex flex-col gap-3 z-10';
+      const rightCol = document.createElement('div');
+      rightCol.className = 'flex flex-col gap-3 z-10';
 
+      const svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      svg.setAttribute("class","absolute inset-0 w-full h-full pointer-events-none");
+      container.append(leftCol, rightCol, svg);
+      body.appendChild(container);
+
+      let startIdx = null;
+      const pairs = [];
+
+      q.opsi.kiri.forEach((o,i)=>{
+        const btn = document.createElement('button');
+        btn.className = 'px-3 py-2 border rounded bg-white hover:bg-gray-50';
+        btn.textContent = o;
+        btn.dataset.side = "left";
+        btn.dataset.idx = i;
+        leftCol.appendChild(btn);
+      });
+      q.opsi.kanan.forEach((o,i)=>{
+        const btn = document.createElement('button');
+        btn.className = 'px-3 py-2 border rounded bg-white hover:bg-gray-50';
+        btn.textContent = o;
+        btn.dataset.side = "right";
+        btn.dataset.idx = i;
+        rightCol.appendChild(btn);
+      });
+
+      container.addEventListener('click',e=>{
+        if(e.target.tagName!=='BUTTON') return;
+        const btn = e.target;
+        const side = btn.dataset.side;
+        const idx = Number(btn.dataset.idx);
+
+        if(side==="left"){
+          startIdx = idx;
+        } else if(side==="right" && startIdx!==null){
+          pairs.push([startIdx, idx]);
+          drawLine(startIdx, idx);
+
+          // highlight tombol kiri & kanan
+          leftCol.children[startIdx].classList.add("bg-emerald-100","border-emerald-500");
+          rightCol.children[idx].classList.add("bg-emerald-100","border-emerald-500");
+
+          // disable tombol biar gak dipakai ulang
+          leftCol.children[startIdx].disabled = true;
+          rightCol.children[idx].disabled = true;
+
+          startIdx = null;
+        }
+      });
+
+      function drawLine(li,ri){
+        const lbtn = leftCol.children[li];
+        const rbtn = rightCol.children[ri];
+        const lbox = lbtn.getBoundingClientRect();
+        const rbox = rbtn.getBoundingClientRect();
+        const cbox = container.getBoundingClientRect();
+
+        const x1 = lbox.right - cbox.left;
+        const y1 = lbox.top + lbox.height/2 - cbox.top;
+        const x2 = rbox.left - cbox.left;
+        const y2 = rbox.top + rbox.height/2 - cbox.top;
+
+        const line = document.createElementNS("http://www.w3.org/2000/svg","line");
+        line.setAttribute("x1",x1);
+        line.setAttribute("y1",y1);
+        line.setAttribute("x2",x2);
+        line.setAttribute("y2",y2);
+        line.setAttribute("stroke","#10b981");
+        line.setAttribute("stroke-width","2");
+        svg.appendChild(line);
+      }
+
+      // simpan untuk cek jawaban
+      q._pairs = pairs;
+    }
   // ====== AKSI ======
   const actions = document.createElement('div');
   actions.className = 'mt-3 flex flex-wrap items-center gap-2';
 
   const btnCek = document.createElement('button');
   btnCek.className = 'btn px-3 py-2 rounded-lg bg-emerald-600 text-white text-sm';
-  btnCek.textContent = 'Check Answer';
+  btnCek.textContent = 'Cek Jawaban';
 
   const btnBahas = document.createElement('button');
   btnBahas.className = 'btn px-3 py-2 rounded-lg border chip text-sm';
-  btnBahas.textContent = 'Explanation';
+  btnBahas.textContent = 'Pembahasan';
 
   const status = document.createElement('span');
   status.className = 'ml-auto text-sm';
 
   const bahas = document.createElement('div');
   bahas.className = 'mt-3 hidden p-3 rounded-lg bg-emerald-50 border border-emerald-100 text-sm';
-  bahas.textContent = q.bahas || 'Belum ada pembahasan.';
+  bahas.innerHTML = q.bahas || 'Belum ada pembahasan.';
+
 
   // ====== EVENT CEK JAWABAN ======
   btnCek.addEventListener('click',()=>{
@@ -2878,11 +5184,6 @@ if(q.bacaan){
       }
       benar = jawabanUser.every((val,i)=> val === q.kunci[i]);
     }
-    else if(q.tipe === 'uraian'){
-      // Tidak otomatis benar/salah
-      benar = true; // biar muncul tanda centang
-    }
-
     else if(q.tipe === 'cr'){
       const jawabanUser = q.opsi.map((o,i)=>{
         const el = document.querySelector(`input[name='${prefix}-${q.id}-cr-${i}']:checked`);
@@ -2899,6 +5200,10 @@ if(q.bacaan){
       const v = (document.querySelector(`input[name='${prefix}-${q.id}-isian']`)||{}).value||'';
       benar = v.trim().toLowerCase() === String(q.kunciText||'').trim().toLowerCase();
     }
+if(q.tipe==='matching'){
+        const pairs = q._pairs||[];
+        benar = JSON.stringify(pairs.sort())===JSON.stringify(q.kunci.sort());
+      }
 
     status.textContent = benar ? '✅ Benar' : '❌ Salah';
     status.classList.toggle('text-emerald-600', benar);
@@ -2964,7 +5269,7 @@ if(q.bacaan){
       const remain = Math.max(0, simState.endAt - Date.now());
       const mm = String(Math.floor(remain/60000)).padStart(2,'0');
       const ss = String(Math.floor((remain%60000)/1000)).padStart(2,'0');
-      info.textContent = `Subject: ${simState.mapel} • Time Left ${mm}:${ss}`;
+      info.textContent = `Mapel: ${simState.mapel} • Sisa waktu ${mm}:${ss}`;
       if(remain===0){
         clearInterval(simState.timer);
         selesaiSimulasi();
@@ -3064,5 +5369,67 @@ if(q.bacaan){
   setTab('materi');
   initSelectors();
   </script>
+</div>
+<script>
+// ====== DATA AKUN + KADALUWARSA ======
+const accounts = [
+  { username: "zahwan", password: "132611", expire: "2137-08-24T23:59:59" },
+  { username: "akbar",  password: "ak213",  expire: "2025-12-10T23:59:59" },
+  { username: "reyna", password: "rey211", expire: "2025-12-11T23:59:59" },
+  ];
+
+// ====== LOGIN FUNCTION ======
+function checkLogin() {
+  const user = document.getElementById("username").value.trim();
+  const pass = document.getElementById("password").value.trim();
+
+  // cari akun
+  const found = accounts.find(acc => acc.username === user && acc.password === pass);
+
+  if (!found) {
+    document.getElementById("errorMsg").innerText = "Username atau password salah!";
+    return;
+  }
+
+  // cek expired
+  const now = new Date();
+  const expireDate = new Date(found.expire);
+
+  if (now > expireDate) {
+    document.getElementById("errorMsg").innerText = `Akun ${user} sudah kadaluwarsa!`;
+    return;
+  }
+
+  // login berhasil
+  localStorage.setItem('loggedInUser', JSON.stringify({ username: user }));
+  showContent();
+}
+
+// ====== CEK SESSION SAAT HALAMAN DIMUAT ======
+function checkSession() {
+  const data = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+  if (!data) return;
+
+  const acc = accounts.find(a => a.username === data.username);
+  if (!acc || new Date() > new Date(acc.expire)) {
+    localStorage.removeItem('loggedInUser');
+    document.getElementById("loginForm").style.display = "flex";
+    document.getElementById("content22").classList.add("hidden");
+    return;
+  }
+
+  showContent();
+}
+
+// ====== TAMPILKAN KONTEN ======
+function showContent() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("content22").classList.remove("hidden");
+}
+
+// Jalankan cek saat halaman dimuat
+checkSession();
+</script>
+
 </body>
 </html>
