@@ -145,6 +145,945 @@
   const DB = {
 'Pure Mathematics 1 (AS Level)': {
   bab: {
+'Functions': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Functions</h2>
+
+    <h3 class="font-semibold mt-3">1. Definition of a Function</h3>
+    <p class="mb-3">
+      A <strong>function</strong> is a relation that assigns each input exactly one output. 
+      If \\(f\\) is a function from A to B, we write \\(f : A \\to B\\), and for each 
+      \\(x \\in A\\), the value \\(f(x) \\in B\\) is uniquely determined.
+    </p>
+
+    <p class="mb-2">A function can be represented by:</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>an equation (e.g., \\(f(x) = x^2 - 3\\))</li>
+      <li>a table of values</li>
+      <li>a graph</li>
+      <li>a mapping diagram</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">2. Composite Functions</h3>
+    <p class="mb-3">
+      The composite function \\((f \\circ g)(x)\\) means “apply \\(g\\) first, then apply \\(f\\)”.  
+      Defined as:
+      \\[
+        (f \\circ g)(x) = f(g(x)).
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">3. Inverse Functions</h3>
+    <p class="mb-3">
+      A function \\(f\\) has an <strong>inverse</strong> if it is one-to-one.  
+      The inverse function \\(f^{-1}\\) satisfies:
+      \\[
+        f(f^{-1}(x)) = x \\quad \\text{and} \\quad f^{-1}(f(x)) = x.
+      \\]
+    </p>
+    <p class="mb-2">To find the inverse:</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Write \\(y = f(x)\\)</li>
+      <li>Swap \\(x\\) and \\(y\\)</li>
+      <li>Solve for \\(y\\)</li>
+      <li>Rewrite as \\(f^{-1}(x)\\)</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">4. Graphs of Functions</h3>
+    <p class="mb-3">
+      The graph of a function shows the set of ordered pairs \\((x, f(x))\\).  
+      Common graphs include linear, quadratic, cubic, exponential, and reciprocal functions.
+    </p>
+
+    <h3 class="font-semibold mt-3">5. Transformations of Functions</h3>
+    <p class="mb-3">
+      A transformation changes the position or shape of a graph.  
+      If \\(y = f(x)\\), then:
+    </p>
+
+    <ul class="list-disc pl-6 mb-4">
+      <li><strong>Vertical translation:</strong> \\(y = f(x) + a\\)</li>
+      <li><strong>Horizontal translation:</strong> \\(y = f(x - a)\\)</li>
+      <li><strong>Vertical stretch:</strong> \\(y = af(x)\\)</li>
+      <li><strong>Horizontal stretch:</strong> \\(y = f(ax)\\)</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">6. Reflections</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Reflection in the x-axis: \\(y = -f(x)\\)</li>
+      <li>Reflection in the y-axis: \\(y = f(-x)\\)</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">7. Stretches</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Vertical stretch by factor \\(a\\): \\(y = af(x)\\)</li>
+      <li>Horizontal stretch by factor \\(a\\): \\(y = f(x/a)\\)</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">8. Combined Transformations</h3>
+    <p class="mb-3">
+      A function can undergo multiple transformations at once, e.g.  
+      \\[
+        y = -2f(x - 3) + 5
+      \\]
+      which represents:  
+      <ul class="list-disc pl-6">
+        <li>shift right 3</li>
+        <li>vertical stretch by factor 2</li>
+        <li>reflection in x-axis</li>
+        <li>shift up 5</li>
+      </ul>
+    </p>
+  `,
+
+  video: ['E5sQq6iMOPI', 'k1aUoYslW2M'], // ganti dengan ID YouTube yang kamu suka
+
+  soal: [
+    {
+  id:'f1',
+  tipe:'cb',
+  bacaan:`Given \\( f(x) = x^2 + 6 \\) and \\( g(x) = \\sqrt{x+3} - 2 \\)
+find : 
+a. \\(fg(6)\\)
+b. \\(gf(4)\\)
+c. \\(ff(-3)\\)
+`,
+  tanya:'Select all the correct answers.',
+  opsi:[
+    '\\(fg(6)=7\\)',
+    '\\(gf(4)=2\\)',
+    '\\(ff(-3)=231\\)'
+  ],
+  kunci:[0,2],
+  bahas:`<p><b>a. \\( fg(6) \\)</b></p>
+  <p>\\( g(6) = \\sqrt{6+3} - 2 = \\sqrt{9} - 2 = 1 \\)</p>
+  <p>\\( f(1) = 1^2 + 6 = 7 \\)</p>
+  <p>The statement \\( fg(6) = 7 \\) is <b>true</b>.</p>
+
+  <p><b>b. \\( gf(4) \\)</b></p>
+  <p>\\( f(4) = 4^2 + 6 = 22 \\)</p>
+  <p>\\( g(22) = \\sqrt{22+3} - 2 = \\sqrt{25} - 2 = 3 \\)</p>
+  <p>The statement \\( gf(4) = 2 \\) is <b>false</b>.</p>
+
+  <p><b>c. \\( ff(-3) \\)</b></p>
+  <p>\\( f(-3) = (-3)^2 + 6 = 15 \\)</p>
+  <p>\\( f(15) = 15^2 + 6 = 231 \\)</p>
+  <p>The statement \\( ff(-3) = 231 \\) is <b>true</b>.</p>`
+},
+
+{
+  id:'f2',
+  tipe:'cb',
+  bacaan:`Given:
+\\( h(x) = x + 5 \\) for \\( x > 0 \\)
+\\( k(x) = \\sqrt{x} \\) for \\( x > 0 \\)
+
+Express each of the following in terms of h and/or k:
+a. \\( x \\mapsto \\sqrt{x} + 5 \\)
+b. \\( x \\mapsto \\sqrt{x+5} \\)
+c. \\( x \\mapsto x + 10 \\)
+`,
+  tanya:'Select all the correct expressions.',
+  opsi:[
+    'a. \\( h(k(x)) \\)',
+    'b. \\( k(h(x)) \\)',
+    'c. \\( h(h(x)) \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>a. \\( x \\mapsto \\sqrt{x} + 5 \\)</b></p>
+  <p>We start with \\( k(x) = \\sqrt{x} \\). Applying \\( k \\) to \\( x \\) gives \\( \\sqrt{x} \\). Then we apply \\( h \\), which adds 5 to the result. So:</p>
+  <p>\\( h(k(x)) = k(x) + 5 = \\sqrt{x} + 5 \\)</p>
+  <p>Thus the expression is correctly written as <b>\\( h(k(x)) \\)</b>.</p>
+
+  <p><b>b. \\( x \\mapsto \\sqrt{x + 5} \\)</b></p>
+  <p>We first apply \\( h \\), which adds 5 to \\( x \\), giving \\( x + 5 \\). Next we apply \\( k \\), which takes the square root. So:</p>
+  <p>\\( k(h(x)) = \\sqrt{h(x)} = \\sqrt{x+5} \\)</p>
+  <p>Thus the correct expression is <b>\\( k(h(x)) \\)</b>.</p>
+
+  <p><b>c. \\( x \\mapsto x + 10 \\)</b></p>
+  <p>Applying \\( h \\) once adds 5, so \\( h(x) = x + 5 \\). Applying \\( h \\) again adds another 5:</p>
+  <p>\\( h(h(x)) = h(x+5) = x + 5 + 5 = x + 10 \\)</p>
+  <p>Therefore the correct expression is <b>\\( h(h(x)) \\)</b>.</p>`
+},
+{
+  id:'f3',
+  tipe:'cb',
+  bacaan:`Given \\( f(x) = ax + b \\) for real \\(x\\).
+It is given that:
+\\( f(5) = 3 \\)
+\\( f(3) = -3 \\)
+
+a. Find the value of \\(a\\) and the value of \\(b\\).  
+b. Solve the equation \\( ff(x) = 4 \\).
+`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    'The value of \\(a\\) is 3 and the value of \\(b\\) is -12.',
+    'The solution of \\( ff(x) = 4 \\) is \\( x = \\frac{52}{9} \\)'
+  ],
+  kunci:[0,1],
+  bahas:`<p><b>a. Finding \\(a\\) and \\(b\\)</b></p>
+  <p>From the equations \\(5a + b = 3\\) and \\(3a + b = -3\\), subtracting gives:</p>
+  <p>\\(2a = 6 \\Rightarrow a = 3\\).</p>
+  <p>Substituting back into \\(3a + b = -3\\):</p>
+  <p>\\(9 + b = -3 \\Rightarrow b = -12\\).</p>
+
+  <p><b>b. Solving \\( ff(x) = 4 \\)</b></p>
+  <p>\\( f(x) = 3x - 12 \\), so:</p>
+  <p>\\( f(f(x)) = f(3x - 12) = 3(3x - 12) - 12 = 9x - 48 \\).</p>
+  <p>Setting \\( 9x - 48 = 4 \\):</p>
+  <p>\\( 9x = 52 \\Rightarrow x = \\frac{52}{9} \\).</p>`
+},
+
+    {
+  id:'f4',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = x^2 + 1 \\), for \\( x \\in \\mathbb{R} \\)
+\\( g(x) = \\frac{3}{x - 2} \\), for \\( x \\in \\mathbb{R}, x \\neq 2 \\)
+
+Solve the equation \\( fg(x) = 5 \\).
+`,
+  tanya:'Select all the correct solutions.',
+  opsi:[
+    '\\(x = \\frac{7}{2}\\)',
+    '\\(x = \\frac{1}{2}\\)',
+    '\\(x = 2\\)'
+  ],
+  kunci:[0,1],
+  bahas:`<p>To solve \\( fg(x) = 5 \\), substitute \\( g(x) = \\frac{3}{x-2} \\) into \\( f(x) = x^2 + 1 \\):</p>
+
+  <p>\\( f(g(x)) = \\left( \\frac{3}{x-2} \\right)^2 + 1 = 5 \\)</p>
+
+  <p>Subtract 1:</p>
+  <p>\\( \\left( \\frac{3}{x-2} \\right)^2 = 4 \\)</p>
+
+  <p>Take square roots:</p>
+  <p>\\( \\frac{3}{x-2} = 2 \\quad \\text{or} \\quad \\frac{3}{x-2} = -2 \\)</p>
+
+  <p><b>Case 1:</b> \\( \\frac{3}{x-2} = 2 \\)</p>
+  <p>\\( 3 = 2(x - 2) \\Rightarrow x = \\frac{7}{2} \\)</p>
+
+  <p><b>Case 2:</b> \\( \\frac{3}{x-2} = -2 \\)</p>
+  <p>\\( 3 = -2(x - 2) \\Rightarrow x = \\frac{1}{2} \\)</p>
+
+  <p>\\( x = 2 \\) is excluded because it makes \\( g(x) \\) undefined.</p>
+
+  <p>Therefore, the correct solutions are <b>\\( x = \\frac{7}{2} \\)</b> and <b>\\( x = \\frac{1}{2} \\)</b>.</p>`
+},
+{
+  id:'f5',
+  tipe:'cb',
+  bacaan:`Given:
+\\( g(x) = x^2 - 2 \\), for \\( x \\in \\mathbb{R} \\)
+\\( h(x) = 2x + 5 \\), for \\( x \\in \\mathbb{R} \\)
+
+a. Find \\( gh(x) \\).  
+b. Solve the equation \\( gh(x) = 14 \\).
+`,
+  tanya:'Select all the correct solutions.',
+  opsi:[
+    '\\(x = -\\tfrac{1}{2}\\)',
+    '\\(x = -\\tfrac{9}{2}\\)',
+    '\\( gh(x) =4x^2 + 20x + 23 \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p>First compute the composite function \\( gh(x) = g(h(x)) \\):</p>
+
+  <p>\\( h(x) = 2x + 5 \\)</p>
+  <p>\\( gh(x) = g(2x + 5) = (2x + 5)^2 - 2 \\)</p>
+
+  <p>Expand the square:</p>
+  <p>\\( (2x + 5)^2 = 4x^2 + 20x + 25 \\)</p>
+
+  <p>Thus:</p>
+  <p>\\( gh(x) = 4x^2 + 20x + 23 \\)</p>
+
+  <p>Now solve \\( gh(x) = 14 \\):</p>
+  <p>\\( 4x^2 + 20x + 23 = 14 \\)</p>
+  <p>\\( 4x^2 + 20x + 9 = 0 \\)</p>
+
+  <p>Use the quadratic formula:</p>
+  <p>\\( x = \\frac{-20 \\pm \\sqrt{400 - 144}}{8} \\)</p>
+  <p>\\( x = \\frac{-20 \\pm 16}{8} \\)</p>
+
+  <p>Solutions:</p>
+  <p>\\( x = -\\tfrac{1}{2} \\quad \\text{and} \\quad x = -\\tfrac{9}{2} \\)</p>
+
+  <p>These are both valid real numbers, so they are the correct solutions.  
+  \\( x = 2 \\) is not a solution.</p>`
+},
+{
+  id:'f6',
+  tipe:'cb',
+  bacaan:`Given:
+\\( g(x) = \\dfrac{2}{x+1} \\), for \\( x \\in \\mathbb{R},\\ x \\neq -1 \\)
+\\( h(x) = (x+2)^2 - 5 \\), for \\( x \\in \\mathbb{R} \\)
+
+Solve the equation \\( hg(x) = 11 \\).
+`,
+  tanya:'Select all the correct solutions.',
+  opsi:[
+    '\\(x = 0\\)',
+    '\\(x = -\\tfrac{4}{3}\\)',
+    '\\(x = -1\\)'
+  ],
+  kunci:[0,1],
+  bahas:`<p>We substitute \\( g(x) \\) into \\( h \\):</p>
+
+  <p>\\( h(g(x)) = \\bigg(\\dfrac{2}{x+1} + 2\\bigg)^2 - 5 \\)</p>
+
+  <p>Simplify the inside:</p>
+  <p>\\( \\dfrac{2}{x+1} + 2 = \\dfrac{2 + 2(x+1)}{x+1} = \\dfrac{2x + 4}{x+1} = \\dfrac{2(x+2)}{x+1} \\)</p>
+
+  <p>So</p>
+  <p>\\( h(g(x)) = \\left(\\dfrac{2(x+2)}{x+1}\\right)^2 - 5 = \\dfrac{4(x+2)^2}{(x+1)^2} - 5 \\)</p>
+
+  <p>Set equal to 11:</p>
+  <p>\\( \\dfrac{4(x+2)^2}{(x+1)^2} - 5 = 11 \\Rightarrow \\dfrac{4(x+2)^2}{(x+1)^2} = 16 \\)</p>
+
+  <p>Divide by 4:</p>
+  <p>\\( \\dfrac{(x+2)^2}{(x+1)^2} = 4 \\)</p>
+
+  <p>Take square roots (remember both signs):</p>
+  <p>\\( \\dfrac{x+2}{x+1} = 2 \\quad \\text{or} \\quad \\dfrac{x+2}{x+1} = -2 \\)</p>
+
+  <p><b>Case 1:</b> \\( \\dfrac{x+2}{x+1} = 2 \\)</p>
+  <p>\\( x+2 = 2(x+1) \\Rightarrow x+2 = 2x+2 \\Rightarrow x = 0 \\)</p>
+
+  <p><b>Case 2:</b> \\( \\dfrac{x+2}{x+1} = -2 \\)</p>
+  <p>\\( x+2 = -2(x+1) \\Rightarrow x+2 = -2x -2 \\Rightarrow 3x + 4 = 0 \\Rightarrow x = -\\dfrac{4}{3} \\)</p>
+
+  <p>Check domain: \\( x = -1 \\) is excluded (denominator zero), so it is not a solution.</p>
+
+  <p>Verify by direct substitution if desired: both \\( x = 0 \\) and \\( x = -\\tfrac{4}{3} \\) give \\( h(g(x)) = 11 \\).</p>
+
+  <p>Therefore the correct solutions are <b>\\( x = 0 \\)</b> and <b>\\( x = -\\tfrac{4}{3} \\)</b>.</p>`
+},
+{
+  id:'f7',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = x^2 - 3x \\), for \\( x \\in \\mathbb{R} \\)  
+\\( g(x) = 2x + 5 \\), for \\( x \\in \\mathbb{R} \\)
+
+Show that the equation \\( gf(x) = 0 \\) has no real solutions.
+`,
+  tanya:'Select the correct conclusion.',
+  opsi:[
+    'The equation has no real solutions.',
+    'The equation has exactly one real solution.',
+    'The equation has two real solutions.'
+  ],
+  kunci:[0],
+  bahas:`<p>We need to solve the equation \\( g(f(x)) = 0 \\).</p>
+
+  <p>First compute the composite function:</p>
+  <p>\\( f(x) = x^2 - 3x \\)</p>
+  <p>\\( g(f(x)) = 2(x^2 - 3x) + 5 \\)</p>
+
+  <p>Simplify:</p>
+  <p>\\( g(f(x)) = 2x^2 - 6x + 5 \\)</p>
+
+  <p>Now solve the equation:</p>
+  <p>\\( 2x^2 - 6x + 5 = 0 \\)</p>
+
+  <p>Compute the discriminant:</p>
+  <p>\\( D = b^2 - 4ac = (-6)^2 - 4(2)(5) = 36 - 40 = -4 \\)</p>
+
+  <p>The discriminant is negative, meaning the quadratic has <b>no real roots</b>.</p>
+
+  <p>Therefore, the equation \\( gf(x) = 0 \\) has <b>no real solutions</b>.</p>`
+},
+{
+  id:'f8',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = k - 2x \\), for \\( x \\in \\mathbb{R} \\)  
+\\( g(x) = \\dfrac{2}{x} \\), for \\( x \\in \\mathbb{R}, x \\neq 0 \\)
+
+Find the values of \\( k \\) for which the equation \\( fg(x) = x \\) has two equal roots.
+`,
+  tanya:'Select all the correct values of \\(k\\).',
+  opsi:[
+    '\\(k = 4\\)',
+    '\\(k = -4\\)',
+    '\\(k = 0\\)'
+  ],
+  kunci:[0,1],
+  bahas:`<p>We need to solve the equation \\( f(g(x)) = x \\) and determine the values of \\( k \\) that make the equation have two equal roots.</p>
+
+  <p>First compute the composite:</p>
+  <p>\\( g(x) = \\dfrac{2}{x} \\)</p>
+  <p>\\( f(g(x)) = k - 2\\left(\\dfrac{2}{x}\\right) = k - \\dfrac{4}{x} \\)</p>
+
+  <p>Set \\( f(g(x)) = x \\):</p>
+  <p>\\( k - \\dfrac{4}{x} = x \\)</p>
+
+  <p>Multiply both sides by \\( x \\neq 0 \\):</p>
+  <p>\\( kx - 4 = x^2 \\)</p>
+
+  <p>Rearrange:</p>
+  <p>\\( x^2 - kx + 4 = 0 \\)</p>
+
+  <p>This quadratic has two equal roots when its discriminant is zero:</p>
+  <p>\\( D = b^2 - 4ac = k^2 - 16 = 0 \\)</p>
+
+  <p>Solve for \\(k\\):</p>
+  <p>\\( k^2 = 16 \\Rightarrow k = 4 \\text{ or } k = -4 \\)</p>
+
+  <p>Thus, the equation \\( fg(x) = x \\) has two equal roots only when:</p>
+  <p><b>\\( k = 4 \\)</b> or <b>\\( k = -4 \\)</b>.</p>`
+},
+{
+  id:'f9',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = x^2 - 3x \\), for \\( x \\in \\mathbb{R} \\)  
+\\( g(x) = 2x - 5 \\), for \\( x \\in \\mathbb{R} \\)
+
+Find the values of \\( k \\) for which the equation \\( gf(x) = k \\) has real solutions.
+`,
+  tanya:'Select all the correct values of \\(k\\).',
+  opsi:[
+    '\\(k = -10\\)',
+    '\\(k = -\\tfrac{19}{2}\\)',
+    '\\(k = 0\\)'
+  ],
+  kunci:[1,2],
+  bahas:`<p>We want to determine the values of \\( k \\) such that the equation  
+  \\( g(f(x)) = k \\) has real solutions.</p>
+
+  <p>First compute the composite function:</p>
+  <p>\\( f(x) = x^2 - 3x \\)</p>
+  <p>\\( g(f(x)) = 2(x^2 - 3x) - 5 = 2x^2 - 6x - 5 \\)</p>
+
+  <p>Set the equation:</p>
+  <p>\\( 2x^2 - 6x - 5 = k \\)</p>
+
+  <p>Rearrange into a quadratic in \\(x\\):</p>
+  <p>\\( 2x^2 - 6x - (5 + k) = 0 \\)</p>
+
+  <p>For this to have real solutions, the discriminant must be non-negative:</p>
+  <p>\\( D = (-6)^2 - 4(2)(-(5+k)) \\)</p>
+  <p>\\( D = 36 + 8(5 + k) \\)</p>
+  <p>\\( D = 36 + 40 + 8k = 76 + 8k \\)</p>
+
+  <p>Condition for real solutions:</p>
+  <p>\\( 76 + 8k \\ge 0 \\)</p>
+
+  <p>Solve:</p>
+  <p>\\( 8k \\ge -76 \\)</p>
+  <p>\\( k \\ge -\\tfrac{76}{8} = -\\tfrac{19}{2} = -9.5 \\)</p>
+
+  <p>Thus, the equation has real solutions for all:</p>
+  <p><b>\\( k \\ge -\\tfrac{19}{2} \\)</b>.</p>
+
+  <p>All given choices satisfy \\( k \\ge -\\tfrac{19}{2} \\), so B and C are correct.</p>`
+},
+{
+  id:'f10',
+  tipe:'cb',
+  bacaan:`Given \\( f(x) = 2x^2 + 4x - 8 \\), for \\( x \\in \\mathbb{R} \\) (the function is defined for \\( x \\ge k \\)).
+  
+a. Express \\( 2x^2 + 4x - 8 \\) in the form \\( a(x + b)^2 + c \\).  
+b. Find the least value of \\( k \\) for which the function is one-one.`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    '\\(2x^2 + 4x - 8 = 2(x+1)^2 - 10\\)',
+    '\\(a = 2,\\; b = 1,\\; c = -10\\)',
+    'The least value of \\(k\\) that makes the function one-one is \\(k = -1\\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>a. Completing the square</b></p>
+  <p>Start with \\(2x^2+4x-8\\).</p>
+  <p>Factor 2 from the quadratic terms: \\(2x^2+4x-8 = 2(x^2+2x) - 8\\).</p>
+  <p>Complete the square inside the parentheses: \\(x^2+2x = (x+1)^2 - 1\\).</p>
+  <p>So</p>
+  <p>\\(2(x^2+2x) - 8 = 2\\big((x+1)^2 - 1\\big) - 8 = 2(x+1)^2 - 2 - 8 = 2(x+1)^2 - 10.\\)</p>
+  <p>Hence \\(2x^2+4x-8 = 2(x+1)^2 - 10\\).</p>
+
+  <p>Therefore \\(a = 2,\\; b = 1,\\; c = -10\\).</p>
+
+  <p><b>b. Least value of \\(k\\) for one-one</b></p>
+  <p>The parabola \\(f(x)=2(x+1)^2-10\\) opens upwards (coefficient \\(a=2>0\\)), so its vertex is the minimum point.</p>
+  <p>The vertex occurs at \\(x=-1\\) (from the form \\(2(x+1)^2-10\\)).</p>
+  <p>Restricting the domain to \\([k,\\infty)\\), the function is one-one (strictly increasing) exactly when \\(k\\ge -1\\). The least such value is \\(k=-1\\) because on \\([-1,\\infty)\\) the parabola increases monotonically.</p>
+
+  <p>Therefore the least value of \\(k\\) that makes \\(f\\) one-one is \\(\\boxed{-1}\\).</p>`
+},
+{
+  id:'f11',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = x^2 - 2x + 4 \\), for \\( x \\in \\mathbb{R} \\)
+
+a. Find the set of values of \\(x\\) for which \\( f(x) \\ge 7 \\).  
+b. Express \\( x^2 - 2x + 4 \\) in the form \\( (x - a)^2 + b \\).  
+c. Write down the range of \\( f \\).`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    '\\( x^2 - 2x + 4 = (x - 1)^2 + 3 \\)',
+    'The solution to \\( f(x) \\ge 7 \\) is \\( x \\le -1 \\) or \\( x \\ge 3 \\)',
+    'The range of \\( f \\) is \\([3, \\infty)\\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>b. Completing the square</b></p>
+  <p>Start with \\( x^2 - 2x + 4 \\).</p>
+  <p>Complete the square:</p>
+  <p>\\( x^2 - 2x = (x - 1)^2 - 1 \\)</p>
+  <p>So</p>
+  <p>\\( x^2 - 2x + 4 = (x - 1)^2 - 1 + 4 = (x - 1)^2 + 3 \\).</p>
+
+  <p><b>a. Solve \\( f(x) \\ge 7 \\)</b></p>
+  <p>Use the completed square form:</p>
+  <p>\\( (x - 1)^2 + 3 \\ge 7 \\)</p>
+  <p>Subtract 3:</p>
+  <p>\\( (x - 1)^2 \\ge 4 \\)</p>
+  <p>Take square roots:</p>
+  <p>\\( |x - 1| \\ge 2 \\)</p>
+  <p>This gives:</p>
+  <p>\\( x - 1 \\ge 2 \\Rightarrow x \\ge 3 \\)</p>
+  <p>or</p>
+  <p>\\( x - 1 \\le -2 \\Rightarrow x \\le -1 \\)</p>
+
+  <p>Equivalent form (expanding original quadratic) yields the same solution:</p>
+  <p><b>\\( x \\le -1 \\) or \\( x \\ge 3 \\)</b>.</p>
+
+  <p><b>c. Range of \\( f(x) \\)</b></p>
+  <p>\\( (x - 1)^2 \\ge 0 \\), minimum value occurs at \\( x = 1 \\).</p>
+  <p>Minimum of \\( f(x) = (x - 1)^2 + 3 \\) is \\( 3 \\).</p>
+  <p>Thus the range is:</p>
+  <p><b>\\([3, \\infty)\\) or \\(x\\ge 3\\) </b>.</p>
+
+`
+},
+{
+    id:'fInv1',
+    tipe:'cb',
+    bacaan:`Find an expression for \\( f^{-1}(x) \\) Find an expression for \\( f^{-1}(x) \\).
+
+a.\\( f(x) = 5x - 8 \\), for \\( x \\in \\mathbb{R} \\)
+b.\\( f(x) = (x - 5)^2 + 3 \\), for \\( x \\ge 5 \\)
+c.\\( f(x) = \\frac{x + 7}{x + 2} \\), for \\( x \\ne -2 \\)
+
+`,
+    tanya:'Select all the correct statements.',
+    opsi:[
+      'a. \\( f^{-1}(x) = \\frac{x+8}{5} \\)',
+      'b. \\( f^{-1}(x) = 5 + \\sqrt{x - 3} \\)',
+      'c. \\( f^{-1}(x) = \\frac{7 - 2x}{x - 1} \\)'
+    ],
+    kunci:[0,1,2],
+    bahas:`<p><b>Finding the inverse</b></p>
+    <b>for part a.</b> 
+<p>Start with:</p>
+    <p>\\( y = 5x - 8 \\)</p>
+    
+    <p>Swap \\(x\\) and \\(y\\):</p>
+    <p>\\( x = 5y - 8 \\)</p>
+
+    <p>Solve for \\(y\\):</p>
+    <p>\\( x + 8 = 5y \\)</p>
+    <p>\\( y = \\frac{x + 8}{5} \\)</p>
+
+    <p>So:</p>
+    <p><b>\\( f^{-1}(x) = \\frac{x+8}{5} \\)</b></p>
+
+    <p>Since \\( f \\) is linear and one-one on all real numbers, both domain and range of the inverse are \\(\\mathbb{R}\\).</p>
+ <b>for part b.</b> 
+
+<p>Start with:</p>
+    <p>\\( y = (x - 5)^2 + 3 \\)</p>
+
+    <p>Swap \\(x\\) and \\(y\\):</p>
+    <p>\\( x = (y - 5)^2 + 3 \\)</p>
+
+    <p>Subtract 3:</p>
+    <p>\\( x - 3 = (y - 5)^2 \\)</p>
+
+    <p>Take square root. Because the domain is \\(x \\ge 5\\), take positive root:</p>
+    <p>\\( y - 5 = \\sqrt{x - 3} \\)</p>
+
+    <p>Thus:</p>
+    <p><b>\\( f^{-1}(x) = 5 + \\sqrt{x - 3} \\)</b></p>
+
+    <p>Domain of \\( f^{-1} \\): same as range of \\( f \\): \\([3, \\infty)\\).</p>
+    <p>Range of \\( f^{-1} \\): same as domain of \\( f \\): \\([5, \\infty)\\).</p>
+<b>for part c.</b> 
+
+
+    <p>Start with:</p>
+    <p>\\( y = \\frac{x + 7}{x + 2} \\)</p>
+
+    <p>Swap \\(x\\) and \\(y\\):</p>
+    <p>\\( x = \\frac{y + 7}{y + 2} \\)</p>
+
+    <p>Multiply both sides:</p>
+    <p>\\( x(y + 2) = y + 7 \\)</p>
+
+    <p>Expand:</p>
+    <p>\\( xy + 2x = y + 7 \\)</p>
+
+    <p>Group the \\(y\\)-terms:</p>
+    <p>\\( xy - y = 7 - 2x \\)</p>
+
+    <p>Factor:</p>
+    <p>\\( y(x - 1) = 7 - 2x \\)</p>
+
+    <p>Solve for \\( y \\):</p>
+    <p><b>\\( y = \\frac{7 - 2x}{x - 1} \\)</b></p>
+
+    <p>Thus:</p>
+    <p><b>\\( f^{-1}(x) = \\frac{7 - 2x}{x - 1} \\)</b></p>
+
+    <p>Denominator cannot be 0, so exclude \\( x = 1 \\).</p>
+`
+  },
+{
+  id:'fInv4',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = x^2 + 4x \\), for \\( x \\ge -2 \\)
+
+a. State the domain and range of \\( f^{-1} \\).  
+b. Find an expression for \\( f^{-1}(x) \\).`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    'The domain of \\( f^{-1} \\) is \\( x \\ge -4 \\)',
+    'The range of \\( f^{-1} \\) is \\( f^{-1}(x) \\ge -2 \\)',
+    '\\( f^{-1}(x) = -2 + \\sqrt{x + 4} \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>Step 1: Completing the square</b></p>
+  <p>\\( f(x) = x^2 + 4x = (x+2)^2 - 4 \\)</p>
+
+  <p><b>Step 2: Find the range of \\( f \\)</b></p>
+  <p>Since \\( x \\ge -2 \\), the minimum occurs at \\( x = -2 \\).</p>
+  <p>\\( f(-2) = -4 \\)</p>
+  <p>Thus the range is:</p>
+  <p><b>\\( f(x) \\ge -4 \\)</b>.</p>
+
+  <p><b>Therefore:</b></p>
+  <p>Domain of \\( f^{-1} \\): \\( x \\ge -4 \\)</p>
+  <p>Range of \\( f^{-1} \\): \\( ( f^{-1}(x)\\ge -2 \\)</p>
+
+  <p><b>Step 3: Find the inverse</b></p>
+  <p>Start with:</p>
+  <p>\\( y = (x+2)^2 - 4 \\)</p>
+
+  <p>Swap \\(x\\) and \\(y\\):</p>
+  <p>\\( x = (y + 2)^2 - 4 \\)</p>
+
+  <p>Add 4:</p>
+  <p>\\( x + 4 = (y + 2)^2 \\)</p>
+
+  <p>Take the positive square root (because \\( y \\ge -2 \\)):</p>
+  <p>\\( y + 2 = \\sqrt{x + 4} \\)</p>
+
+  <p>Thus:</p>
+  <p><b>\\( f^{-1}(x) = -2 + \\sqrt{x + 4} \\)</b></p>`
+},
+{
+  id:'fInv5',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = x^2 - 6x \\), for \\( x \\in \\mathbb{R} \\)
+
+a. Find the range of \\( f^{-1} \\).  
+b. State, with a reason, whether \\( f \\) has an inverse.`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    'The function \\( f \\) does not have an inverse on \\( \\mathbb{R} \\)',
+    'The function is not one-one because it is a parabola',
+    'The range of \\( f^{-1} \\) cannot be defined unless the domain is restricted'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>Step 1: Analyze the function</b></p>
+  <p>\\( f(x) = x^2 - 6x = (x - 3)^2 - 9 \\)</p>
+  <p>This is a parabola opening upwards with vertex at \\( x = 3 \\).</p>
+
+  <p><b>Step 2: Is the function one-one?</b></p>
+  <p>A quadratic function on all real numbers is <b>not</b> one-one because it fails the horizontal line test.</p>
+  <p>Therefore, it does <b>not</b> have an inverse unless we restrict the domain.</p>
+
+  <p><b>Step 3: Range of \\( f^{-1} \\)</b></p>
+  <p>Since the function is not one-one on \\( \\mathbb{R} \\), an inverse cannot exist on that domain.</p>
+  <p>Therefore, the range of \\( f^{-1} \\) is <b>not defined</b> unless a restricted domain is chosen (e.g., \\( x \\ge 3 \\) or \\( x \\le 3 \\)).</p>
+
+  <p><b>Conclusion:</b></p>
+  <ul>
+    <li>\\( f \\) is not one-one on all real numbers → no inverse.</li>
+    <li>Being a parabola is the reason it is not invertible on \\( \\mathbb{R} \\).</li>
+    <li>The range of \\( f^{-1} \\) cannot be stated without domain restriction.</li>
+  </ul>`
+},
+{
+  id:'fInv6',
+  tipe:'cb',
+  bacaan:`Given:
+\\( g(x) = 2x^2 - 8x + 10 \\), for \\( x \\ge 3 \\)
+
+a. Explain why \\( g \\) has an inverse.  
+b. Find an expression for \\( g^{-1}(x) \\).`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    'The function \\( g \\) has an inverse because it is one-one on the domain \\( x \\ge 3 \\)',
+    '\\( g(x) = 2(x - 2)^2 + 2 \\)',
+    '\\( g^{-1}(x) = 2 + \\sqrt{\\frac{x - 2}{2}} \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>Step 1: Complete the square</b></p>
+  <p>\\( g(x) = 2x^2 - 8x + 10 \\)</p>
+  <p>Factor out 2 from the quadratic terms:</p>
+  <p>\\( g(x) = 2(x^2 - 4x) + 10 \\)</p>
+  <p>Complete the square:</p>
+  <p>\\( x^2 - 4x = (x - 2)^2 - 4 \\)</p>
+  <p>So:</p>
+  <p>\\( g(x) = 2[(x - 2)^2 - 4] + 10 = 2(x - 2)^2 - 8 + 10 = 2(x - 2)^2 + 2 \\)</p>
+
+  <p><b>Step 2: Explain why \\( g \\) has an inverse</b></p>
+  <p>The graph is a parabola opening upward, and because the domain is restricted to \\( x \\ge 3 \\), the function is strictly increasing on this interval.</p>
+  <p>Therefore, it is <b>one-one</b> and has an inverse.</p>
+
+  <p><b>Step 3: Find the inverse</b></p>
+  <p>Start with:</p>
+  <p>\\( y = 2(x - 2)^2 + 2 \\)</p>
+
+  <p>Swap \\( x \\) and \\( y \\):</p>
+  <p>\\( x = 2(y - 2)^2 + 2 \\)</p>
+
+  <p>Subtract 2:</p>
+  <p>\\( x - 2 = 2(y - 2)^2 \\)</p>
+
+  <p>Divide by 2:</p>
+  <p>\\( \\frac{x - 2}{2} = (y - 2)^2 \\)</p>
+
+  <p>Take square root. Since domain is \\( y \\ge 3 \\), we take the <b>positive root</b>:</p>
+  <p>\\( y - 2 = \\sqrt{\\frac{x - 2}{2}} \\)</p>
+
+  <p>Thus:</p>
+  <p><b>\\( g^{-1}(x) = 2 + \\sqrt{\\frac{x - 2}{2}} \\)</b></p>`
+},
+{
+  id:'fInv7',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = 2x^2 + 12x - 14 \\), for \\( x \\in \\mathbb{R} \\).  
+Find the least value of \\(k\\) for which \\(f\\) is one-one on \\( x \\ge k \\), and find an expression for \\( f^{-1}(x) \\).`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    '\\( 2x^2 + 12x - 14 = 2(x+3)^2 - 32 \\)',
+    'The least value of \\( k \\) so that \\( f \\) is one-one on \\( x \\ge k \\) is \\( k = -3 \\)',
+    '\\( f^{-1}(x) = -3 + \\sqrt{\\dfrac{x + 32}{2}} \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>Step 1 — complete the square</b></p>
+  <p>\\( f(x) = 2x^2 + 12x - 14 = 2(x^2 + 6x) - 14 \\)</p>
+  <p>\\( x^2 + 6x = (x+3)^2 - 9 \\), so</p>
+  <p>\\( f(x) = 2[(x+3)^2 - 9] - 14 = 2(x+3)^2 - 18 - 14 = 2(x+3)^2 - 32. \\)</p>
+
+  <p><b>Step 2 — least value of \\(k\\) for one-one</b></p>
+  <p>The parabola opens upward (coefficient 2 &gt; 0) and has vertex at \\( x = -3 \\).  
+  Restricting the domain to \\( [k,\\infty) \\), the function is strictly increasing (hence one-one) exactly when \\( k \\ge -3 \\).  
+  Thus the least such value is \\( \\boxed{k = -3} \\).</p>
+
+  <p><b>Step 3 — find the inverse</b></p>
+  <p>Write \\( y = 2(x+3)^2 - 32 \\). Swap \\(x\\) and \\(y\\):</p>
+  <p>\\( x = 2(y+3)^2 - 32 \\)</p>
+  <p>\\( x + 32 = 2(y+3)^2 \\Rightarrow (y+3)^2 = \\dfrac{x+32}{2} \\)</p>
+  <p>Since the original domain used for invertibility is \\( x \\ge -3 \\), we take the positive square root:</p>
+  <p>\\( y + 3 = \\sqrt{\\dfrac{x+32}{2}} \\Rightarrow y = -3 + \\sqrt{\\dfrac{x+32}{2}}. \\)</p>
+
+  <p><b>Domain and range notes:</b></p>
+  <p>The minimum value of \\(f\\) is \\( f(-3) = -32 \\), so the range of \\(f\\) (and hence domain of \\(f^{-1}\\)) is \\( x \\ge -32 \\).  
+  The range of \\( f^{-1} \\) equals the domain of \\( f \\), i.e. \\( x \\ge -3 \\).</p>`
+},
+{
+  id:'fInv9',
+  tipe:'cb',
+gambar: 'https://i.imgur.com/5vv9nJJ.png',
+  bacaan:`The diagram shows the graph of \\(y=f^{-1}(x)\\), where  
+\\( \\displaystyle f^{-1}(x)=\\frac{5x-1}{x} = 5 - \\frac{1}{x} \\)  
+for \\(0 < x \\le 3\\).
+
+a. Find an expression for \\(f(x)\\).  
+b. State the domain of \\(f\\).`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    '\\( f(x) = \\dfrac{1}{5 - x} \\)',
+    'Domain of \\(f\\) is \\( x \\le \\tfrac{14}{3} \\)',
+    'Range of \\(f\\) is \\( 0 < y \\le 3 \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>1. Find \\(f(x)\\)</b></p>
+
+  <p>Start from the inverse:</p>
+  <p>\\( y = f^{-1}(x) = 5 - \\frac{1}{x} \\).</p>
+
+  <p>Swap \\(x\\) and \\(y\\) to obtain the function \\(f\\):</p>
+  <p>\\( x = 5 - \\frac{1}{y} \\).</p>
+
+  <p>Rearrange:</p>
+  <p>\\( \\frac{1}{y} = 5 - x \\)</p>
+  <p>So</p>
+  <p>\\( y = \\frac{1}{5 - x} \\).</p>
+
+  <p>Hence:</p>
+  <p><b>\\( f(x) = \\dfrac{1}{5 - x} \\)</b>.</p>
+
+  <hr>
+
+  <p><b>2. Domain of \\(f\\)</b></p>
+
+  <p>The domain of \\(f\\) equals the range of \\(f^{-1}\\).</p>
+
+  <p>Compute the range of  
+  \\( f^{-1}(x)=5 - \\frac{1}{x} \\) for \\( 0 < x \\le 3 \\):</p>
+
+  <ul>
+    <li>As \\( x \\to 0^{+} \\), \\( \\frac{1}{x} \\to +\\infty \\), so  
+        \\( 5 - \\frac{1}{x} \\to -\\infty \\).</li>
+    <li>At \\( x = 3 \\):  
+        \\( 5 - \\frac{1}{3} = \\frac{14}{3} \\).</li>
+  </ul>
+
+  <p>Thus the range is:</p>
+  <p><b>\\( (-\\infty, \\tfrac{14}{3}] \\)</b>.</p>
+
+  <p>Therefore the domain of \\(f\\) is:</p>
+  <p><b>\\( x \\le \\tfrac{14}{3} \\)</b>.</p>
+
+  <hr>
+
+  <p><b>3. Range of \\(f\\) (not required but included)</b></p>
+  <p>With \\( f(x)=\\dfrac{1}{5-x} \\) and domain \\( x \\le \\tfrac{14}{3} \\):</p>
+  <ul>
+    <li>At \\( x= \\tfrac{14}{3} \\),  
+        \\( f(x)=3 \\).</li>
+    <li>As \\( x \\to -\\infty \\),  
+        \\( 5-x \\to +\\infty \\Rightarrow f(x) \\to 0^{+} \\).</li>
+  </ul>
+  <p>So the range is <b>\\( 0 < y \\le 3 \\)</b>.</p>`
+},
+{
+  id:'fInv10',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = \\dfrac{1}{x-1} \\), for \\( x \\in \\mathbb{R},\\ x \\neq 1 \\)
+
+a. Find an expression for \\( f^{-1}(x) \\).  
+b. Show that if \\( f(x)=f^{-1}(x) \\) then \\( x^2 - x - 1 = 0. \\)  
+c. Find the values of \\( x \\) for which \\( f(x) = f^{-1}(x) \\). (Give answers in surd form.)`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    '\\( f^{-1}(x) = 1 + \\dfrac{1}{x} \\)',
+    '\\( f(x)=f^{-1}(x) \\Rightarrow x^2 - x - 1 = 0 \\)',
+    '\\( x = \\dfrac{1 \\pm \\sqrt{5}}{2} \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>a. Find \\( f^{-1}(x) \\)</b></p>
+
+  <p>Start with \\( y = \\dfrac{1}{x-1} \\). Swap \\(x\\) and \\(y\\):</p>
+  <p>\\( x = \\dfrac{1}{y-1} \\).</p>
+
+  <p>Multiply both sides by \\(y-1\\):</p>
+  <p>\\( x(y-1) = 1 \\Rightarrow xy - x = 1 \\Rightarrow xy = x + 1. \\)</p>
+
+  <p>Solve for \\(y\\):</p>
+  <p>\\( y = \\dfrac{x+1}{x} = 1 + \\dfrac{1}{x}. \\)</p>
+
+  <p>Thus <b>\\( f^{-1}(x) = 1 + \\dfrac{1}{x} \\)</b>, with domain \\( x \\neq 0. \\)</p>
+
+  <hr>
+
+  <p><b>b. Show that \\( f(x)=f^{-1}(x) \\) leads to \\( x^2 - x - 1 = 0 \\)</b></p>
+
+  <p> \\[ f(x)=f^{-1}(x) \\] 
+ \\[ \\dfrac{1}{x-1} = 1 + \\dfrac{1}{x} \\]
+\\[ \\dfrac{1}{x-1} =  \\dfrac{x+1}{x} \\]
+\\[x \\cdot 1=(x+1)(x-1)\\]
+\\[x =x^2-1\\]
+\\[0 =x^2-x-1\\]
+</p>
+  
+  <hr>
+
+  <p><b>c. Solve \\( x^2 - x - 1 = 0 \\) (surd form)</b></p>
+
+  <p>Use quadratic formula:</p>
+  <p>\\( x = \\dfrac{1 \\pm \\sqrt{1 + 4}}{2} = \\dfrac{1 \\pm \\sqrt{5}}{2}. \\)</p>
+
+  <p>Check domain exclusions: neither root equals \\(0\\) or \\(1\\), so both are acceptable.</p>
+
+  <p><b>Therefore the solutions are \\( x = \\dfrac{1+\\sqrt{5}}{2} \\) and \\( x = \\dfrac{1-\\sqrt{5}}{2} \\).</b></p>`
+},
+{
+  id:'f12',
+  tipe:'cb',
+  bacaan:`Given:
+\\( f(x) = -x^2 + 6x - 5 \\), for \\( x \\in \\mathbb{R} \\).  
+The function \\(f\\) is defined for \\( x \\ge m \\), where \\(m\\) is a constant.
+
+a. Express \\( -x^2 + 6x - 5 \\) in the form \\( a(x + b)^2 + c \\), where \\(a,b,c\\) are constants.  
+b. State the smallest possible value of \\( m \\) for which \\( f \\) is one-one.  
+c. For the case \\( m = 5 \\), find an expression for \\( f^{-1}(x) \\) and state the domain of \\( f^{-1} \\) using inequality notation.`,
+  tanya:'Select all the correct statements.',
+  opsi:[
+    '\\( -x^2 + 6x - 5 = -1\\,(x - 3)^2 + 4 ',
+    'The smallest possible value of \\( m \\) so that \\( f \\) is one-one on \\( x \\ge m \\) is \\( m = 3 \\)',
+    'For \\( m = 5 \\): \\( f^{-1}(x) = 3 + \\sqrt{4 - x} \\) and the domain of \\( f^{-1} \\) is \\( x \\le 0 \\)'
+  ],
+  kunci:[0,1,2],
+  bahas:`<p><b>a. Complete the square</b></p>
+
+  <p>Start with \\( -x^2 + 6x - 5 \\).</p>
+  <p>Factor out -1 from the quadratic terms:</p>
+  <p>\\( -x^2 + 6x - 5 = -\\big(x^2 - 6x\\big) - 5. \\)</p>
+  <p>Complete the square inside the bracket: \\( x^2 - 6x = (x - 3)^2 - 9. \\)</p>
+  <p>So</p>
+  <p>\\( -\\big(x^2 - 6x\\big) - 5 = -\\big((x - 3)^2 - 9\\big) - 5 = -(x - 3)^2 + 9 - 5 = -(x - 3)^2 + 4. \\)</p>
+  <p>Writing in the requested form \\( a(x + b)^2 + c \\), we have:</p>
+  <p>\\( a = -1,\\; b = -3,\\; c = 4, \\) since \\( (x-3)^2 = (x + (-3))^2. \\)</p>
+
+  <hr>
+
+  <p><b>b. Smallest \\( m \\) so that \\( f \\) is one-one on \\( x \\ge m \\)</b></p>
+
+  <p>The function is a downward-opening parabola with vertex at \\( x = 3 \\) (from completed square form).  
+  To have \\( f \\) one-one on a domain of the form \\([m,\\infty)\\), the interval must start at the vertex or to the right of it so that \\(f\\) is monotonic (strictly decreasing) on \\([m,\\infty)\\).</p>
+  <p>Therefore the smallest possible value is \\( \\boxed{m = 3} \\).</p>
+
+  <hr>
+
+  <p><b>c. Case \\( m = 5 \\): find \\( f^{-1}(x) \\) and domain of \\( f^{-1} \\)</b></p>
+
+  <p>For \\( m = 5 \\) the domain of \\( f \\) is \\( x \\ge 5 \\). First express \\( y = f(x) \\) and solve for \\( x \\) in terms of \\( y \\):</p>
+
+  <p>\\( y = -x^2 + 6x - 5 \\Rightarrow -x^2 + 6x - 5 - y = 0. \\)</p>
+  <p>Multiply by \\(-1\\):</p>
+  <p>\\( x^2 - 6x + (5 + y) = 0. \\)</p>
+
+  <p>Use the quadratic formula:</p>
+  <p>\\( x = \\dfrac{6 \\pm \\sqrt{36 - 4(1)(5+y)}}{2} = \\dfrac{6 \\pm \\sqrt{16 - 4y}}{2} = 3 \\pm \\sqrt{4 - y}. \\)</p>
+
+  <p>Since the domain of \\( f \\) is \\( x \\ge 5 \\), we must choose the plus sign (the branch giving \\( x \\ge 3 \\)).  
+  To satisfy \\( x \\ge 5 \\) we need \\( 3 + \\sqrt{4 - y} \\ge 5 \\Rightarrow \\sqrt{4 - y} \\ge 2 \\Rightarrow 4 - y \\ge 4 \\Rightarrow y \\le 0. \\)</p>
+
+  <p>Thus the inverse (writing the independent variable as \\(x\\) again) is:</p>
+  <p>\\( \\boxed{\\; f^{-1}(x) = 3 + \\sqrt{4 - x}\\; } \\)</p>
+
+  <p>Its domain is the range of \\( f \\) on \\( [5,\\infty) \\). We have \\( f(5) = 0 \\) and as \\( x \\to \\infty \\), \\( f(x) \\to -\\infty \\). Hence the range of \\( f \\) on \\( [5,\\infty) \\) is \\( x \\le 0 \\).</p>
+
+  <p>Therefore the domain of \\( f^{-1} \\) is \\( \\boxed{x \\le 0} \\).</p>
+
+  <p>Check: \\( f^{-1}(0) = 3 + \\sqrt{4} = 5 \\) (correct).</p>`
+},
+
+
+  ]
+},
+
 'Induction and Sigma Notation': {
   materi: `
     <h2 class="text-xl font-bold mb-2">Mathematical Induction & Sigma Notation</h2>
