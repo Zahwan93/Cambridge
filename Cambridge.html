@@ -1030,7 +1030,7 @@ b. State the smallest possible value of \\( m \\) for which \\( f \\) is one-one
 c. For the case \\( m = 5 \\), find an expression for \\( f^{-1}(x) \\) and state the domain of \\( f^{-1} \\) using inequality notation.`,
   tanya:'Select all the correct statements.',
   opsi:[
-    '\\( -x^2 + 6x - 5 = -1\\,(x - 3)^2 + 4 ',
+    '\\( -x^2 + 6x - 5 = -1\\,(x - 3)^2 + 4\\) ',
     'The smallest possible value of \\( m \\) so that \\( f \\) is one-one on \\( x \\ge m \\) is \\( m = 3 \\)',
     'For \\( m = 5 \\): \\( f^{-1}(x) = 3 + \\sqrt{4 - x} \\) and the domain of \\( f^{-1} \\) is \\( x \\le 0 \\)'
   ],
@@ -1078,6 +1078,233 @@ c. For the case \\( m = 5 \\), find an expression for \\( f^{-1}(x) \\) and stat
   <p>Therefore the domain of \\( f^{-1} \\) is \\( \\boxed{x \\le 0} \\).</p>
 
   <p>Check: \\( f^{-1}(0) = 3 + \\sqrt{4} = 5 \\) (correct).</p>`
+},
+{
+  "id": "f13",
+  "tipe": "cb",
+  "bacaan": `The function \\(f\\) is defined by \\(f(x)=3+6x-2x^{2}\\) for \\(x\\in\\mathbb{R}\\).\n\n(a) Express \\(f(x)\\) in the form \\(a - b(x - c)^{2}\\), where \\(a, b, c\\) are constants, and state the range of \\(f\\).\n\n(b) The graph of \\(y=f(x)\\) is transformed to the graph of \\(y=h(x)\\) by a reflection in one of the axes followed by a translation. It is given that the graph of \\(y=h(x)\\) has a minimum point at the origin. Give details of the reflection and translation involved.\n\nThe function \\(g\\) is defined by \\(g(x)=3+6x-2x^{2}\\) for \\(x\\le 0\\).\n\n(c) Sketch the graph of \\(y=g(x)\\) and explain why \\(g\\) is a one-one function. You are not required to find the coordinates of any intersections with the axes.\n\n(d) Sketch the graph of \\(y=g^{-1}(x)\\) on your diagram in (c), and find an expression for \\(g^{-1}(x)\\). You should label the two graphs in your diagram appropriately and show any relevant mirror line.
+
+[9709/11/O/N/24]`,
+  "tanya": "Select all the correct statements.",
+  "opsi": [
+    "\\(\\) \\(f(x)=\\dfrac{15}{2}-2\\bigl(x-\\tfrac{3}{2}\\bigr)^{2}\\).",
+      "\\(\\) To obtain \\(h\\) reflect \\(y=f(x)\\) in the \\(x\\)-axis then translate \\(\\tfrac{3}{2}\\) units left and \\(\\tfrac{15}{2}\\) units up."
+  ],
+  "kunci": [0,1],
+  "bahas": `<p><b>Part (a) — complete the square.</b></p>\n\n<p>\\(f(x)=3+6x-2x^{2}=-2\\bigl(x^{2}-3x\\bigr)+3=-2\\Bigl((x-\\tfrac{3}{2})^{2}-\\tfrac{9}{4}\\Bigr)+3.\\)</p>\n\n<p>So\n\\[\\boxed{\\;f(x)=\\dfrac{15}{2}-2\\bigl(x-\\tfrac{3}{2}\\bigr)^{2}\\;}\\]\nand because the quadratic part is non-positive the maximum value is \\(\\tfrac{15}{2}\\). Hence\n\\[\\text{range}(f)=\\{y\\mid y\\le\\tfrac{15}{2}\\}=(-\\infty,\\,\\tfrac{15}{2}].\\]</p>\n\n<hr>\n\n
+<p><b>Part (b) — reflection and translation.</b></p>\n\n<p>The vertex (maximum) of \\(f\\) is at \\((\\tfrac{3}{2},\\tfrac{15}{2})\\). To obtain a graph with a minimum at the origin do these steps:</p>\n\n<ol>\n  <li>Reflect in the \\(x\\)-axis: \\(g_1(x)=-f(x)\\). This turns the maximum into a minimum at \\((\\tfrac{3}{2},-\\tfrac{15}{2})\\).</li>\n  <li>Translate the graph \\(\\tfrac{3}{2}\\) units left (replace \\(x\\) by \\(x+\\tfrac{3}{2}\\)) and \\(\\tfrac{15}{2}\\) units up (add \\(\\tfrac{15}{2}\\) to \\(y\\)).\n  Function form: \\(h(x)=-f\\bigl(x+\\tfrac{3}{2}\\bigr)+\\tfrac{15}{2}.\\)</li>\n</ol>\n\n<p>Using the completed-square form, \\(f(x+\\tfrac{3}{2})=\\tfrac{15}{2}-2x^{2}\\), so\n\\[h(x)=-\\Bigl(\\tfrac{15}{2}-2x^{2}\\Bigr)+\\tfrac{15}{2}=2x^{2},\\]\nwhich indeed has minimum \\(0\\) at \\((0,0)\\).</p>\n\n<hr>\n\n
+<p><b>Part (c) — sketch and one-one explanation.</b></p>\n\n<p>(ii) <img src='https://i.imgur.com/nEVH5AU.png'></p>
+\n\n<p>Why \\(g\\) is one-one: differentiate \\(f\\) to get \\(f'(x)=6-4x\\). For all \\(x\\le 0\\) we have\n\\[f'(x)=6-4x\\ge 6>0.\\]\nHence \\(g\\) is strictly increasing on its domain \\(( -\\infty,\\,0]\\), so it is injective (one-one) there.</p>\n\n<p>Range of \\(g\\): as \\(x\\to -\\infty\\) we have \\(g(x)\\to -\\infty\\), and \\(g(0)=3\\). Thus\n\\[\\text{range}(g)=(-\\infty,\\,3].\\]</p>\n\n<hr>\n\n
+<p><b>Part (d) — inverse function and its graph.</b></p>\n\n<p>To find the inverse solve \\(y=3+6x-2x^{2}\\) for \\(x\\) (treating \\(y\\) as the dependent variable). Rearranging gives\n\\[2x^{2}-6x+(y-3)=0.\\]\nSolve using the quadratic formula:\n\\[x=\\dfrac{6\\pm\\sqrt{36-8(y-3)}}{4}=\\dfrac{6\\pm\\sqrt{60-8y}}{4}=\\dfrac{3\\pm\\sqrt{15-2y}}{2}.\\]\nWe must choose the sign that gives \\(x\\le 0\\). When \\(y=3\\) the two roots are \\(x=3\\) and \\(x=0\\); the acceptable one is \\(x=0\\), which corresponds to the minus sign. Therefore the inverse (writing the independent variable as \\(x\\)) is\n\\[\\boxed{\\;g^{-1}(x)=\\dfrac{3-\\sqrt{15-2x}}{2},\\quad\\text{for }x\\le 3.\\;\\]\n(The domain of \\(g^{-1}\\) is the range of \\(g\\), i.e. \\(x\\le 3\\); the range of \\(g^{-1}\\) is \\(x\\le 0\\).)</p>\n\n<p>Graphically, the curve \\(y=g^{-1}(x)\\) is the reflection of \\(y=g(x)\\) in the mirror line \\(y=x\\). On the same axes as part (c) draw the reflected curve across \\(y=x\\) and label it \\(y=g^{-1}(x)\\). Mark clearly the two graphs and the mirror line \\(y=x\\).\n\n<b>Note on labelling:</b> label the left-hand curve \\(y=g(x)\\) (domain \\(x\\le 0\\)), the reflected right-hand curve \\(y=g^{-1}(x)\\) (domain \\(x\\le 3\\)), and the mirror line \\(y=x\\). The inverse expression is \\(g^{-1}(x)=\\dfrac{3-\\sqrt{15-2x}}{2}\\) for \\(x\\le 3\\).</p>\n\n<p><b>Marks guidance (4 marks for part (d)):</b> 1–2 marks for correct inverse algebra and domain; 1–2 marks for correct sketch (reflection across \\(y=x\\)), correct labels and mirror line.</p>`
+},
+{
+  "id": "f14",
+  "tipe": "cb",
+  "bacaan": `The function \\(f\\) is defined by \\(f(x)=\\dfrac{2x+1}{2x-1}\\) for \\(x<\\tfrac{1}{2}\\).
+
+(a) (i) State the value of \\(f(-1)\\).
+
+<p>(ii) <img src='https://i.imgur.com/uuGXV08.png'></p>
+
+The diagram shows the graph of \\(y=f(x)\\). Sketch the graph of \\(y=f^{-1}(x)\\) on this diagram. Show any relevant mirror line.
+
+(iii) Find an expression for \\(f^{-1}(x)\\) and state the domain of the function \\(f^{-1}\\).
+
+The function \\(g\\) is defined by \\(g(x)=3x+2\\) for \\(x\\in\\mathbb{R}\\).
+
+(b) Solve the equation \\(f(x)=g(f(\\tfrac{1}{4}))\\).
+
+[9709/12/O/N/24]`,
+
+  "tanya": "Select all the correct statements.",
+
+  "opsi": [
+    "\\(\\) \\(f(-1)=\\dfrac{1}{3}.\\)",
+    "\\(\\) \\(f^{-1}(x)=\\dfrac{x+1}{2(x-1)}.\\)",
+    "\\(\\) Domain of \\(f^{-1}\\) is \\(( -\\infty,\\,1 ).\\)"
+  ],
+
+  "kunci": [0,1,2],
+
+  "bahas": `<p><b>Part (a)(i)</b></p>
+
+<p>\\(f(-1)=\\dfrac{-1}{-3}=\\dfrac{1}{3}.\\)</p>
+
+<hr>
+
+<p><b>Part (a)(ii)</b></p>
+<p>The graph of \\(y=f^{-1}(x)\\) is the reflection of \\(y=f(x)\\) in the mirror line \\(y=x\\).</p>
+
+<hr>
+
+<p><b>Part (a)(iii)</b></p>
+
+<p>Solve \\(y=\\dfrac{2x+1}{2x-1}\\) for \\(x\\):</p>
+
+<p>
+\\[
+y(2x-1)=2x+1
+\\Rightarrow 2yx-y=2x+1
+\\Rightarrow x(2y-2)=y+1
+\\Rightarrow x=\\dfrac{y+1}{2(y-1)}.
+\\]
+</p>
+
+<p>Thus</p>
+
+<p>\\[
+f^{-1}(x)=\\dfrac{x+1}{2(x-1)}.
+\\]</p>
+
+<p>Domain: as \\(x<\\tfrac{1}{2}\\), \\(f(x)\\to 1^-\\) as \\(x\\to -\\infty\\), and \\(f(x)\\to -\\infty\\) as \\(x\\to (1/2)^-\\).
+Hence:</p>
+
+<p>\\[
+\\text{domain}(f^{-1})=(-\\infty,1).
+\\]</p>
+
+<hr>
+
+<p><b>Part (b)</b></p>
+
+<p>
+\\[
+f(\\tfrac14)=\\frac{3/2}{-1/2}=-3,\\quad
+g(f(\\tfrac14))=g(-3)=3(-3)+2=-7.
+\\]
+</p>
+
+<p>Solve \\(f(x)=-7\\):</p>
+
+<p>
+\\[
+\\frac{2x+1}{2x-1}=-7
+\\Rightarrow 2x+1=-14x+7
+\\Rightarrow 16x=6
+\\Rightarrow x=\\frac{3}{8}.
+\\]
+</p>
+
+<p>Since \\(\\frac38 < \\tfrac12\\), the value is valid for the domain of \\(f\\).</p>
+
+<p>Asymptotes: vertical \\(x=1/2\\), horizontal \\(y=1\\).</p>`
+},
+{
+  "id": "f15",
+  "tipe": "cb",
+  "bacaan": `(a) Express \\(3x^{2}-12x+14\\) in the form \\(3(x+a)^{2}+b\\), where \\(a\\) and \\(b\\) are constants.
+
+The function \\(f(x)=3x^{2}-12x+14\\) is defined for \\(x>k\\), where \\(k\\) is a constant.
+
+(b) Find the least value of \\(k\\) for which \\(f^{-1}(x)\\) exists.
+
+For the rest of this question you may assume the value of \\(k\\) found in part (b).
+
+(c) Find an expression for \\(f^{-1}(x)\\).
+
+(d) Hence or otherwise solve the equation \\(ff(x)=29\\).
+
+[9709/13/O/N/24]`,
+
+  "tanya": "Select all the correct statements.",
+
+  "opsi": [
+    "\\(\\) \\(3x^{2}-12x+14 = 3(x-2)^{2} + 2.\\)",
+    "\\(\\) The least value of \\(k\\) for which \\(f^{-1}\\) exists is \\(k=2\\).",
+    "\\(\\) \\(f^{-1}(x)=2+\\frac{\\sqrt{3}}{3}\\sqrt{x-2}.\\)",
+    "\\(\\) The solution to \\(ff(x)=29\\) is \\(x=3\\)."
+  ],
+
+  "kunci": [0,1,2,3],
+
+  "bahas": `<p><b>Part (a)</b></p>
+
+<p>
+\\[
+3x^{2}-12x+14
+=3(x^{2}-4x)+14
+=3(x^{2}-4x+4)+14-12
+=3(x-2)^{2}+2.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (b)</b></p>
+
+<p>The completed-square form is \\(f(x)=3(x-2)^{2}+2\\), which has a minimum at \\(x=2\\).  
+To make \\(f\\) one-one on \\(x>k\\), the domain must be on the strictly increasing branch, so</p>
+
+<p>
+\\[
+k = 2.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (c)</b></p>
+
+<p>Start with</p>
+
+<p>
+\\[
+y = 3x^{2}-12x+14.
+\\]
+</p>
+
+<p>Rearrange:</p>
+
+<p>
+\\[
+3x^{2}-12x+(14-y)=0
+\\Rightarrow x = \\frac{12 \\pm \\sqrt{12y-24}}{6}
+= 2 \\pm \\frac{\\sqrt{3}}{3}\\sqrt{y-2}.
+\\]
+</p>
+
+<p>Since the domain is \\(x>2\\), choose the positive branch. Thus:</p>
+
+<p>
+\\[
+f^{-1}(x)=2+\\frac{\\sqrt{3}}{3}\\sqrt{x-2}.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (d)</b></p>
+
+<p>Let \\(y=f(x)\\). To solve \\(f(f(x))=29\\), first solve \\(f(y)=29\\):</p>
+
+<p>
+\\[
+3y^{2}-12y+14=29
+\\Rightarrow 3y^{2}-12y-15=0
+\\Rightarrow y^{2}-4y-5=0
+\\Rightarrow y=5 \\text{ or } y=-1.
+\\]
+</p>
+
+<p>Since the domain requires \\(y>2\\), only \\(y=5\\) is valid.</p>
+
+<p>Now solve \\(f(x)=5\\):</p>
+
+<p>
+\\[
+3x^{2}-12x+14=5
+\\Rightarrow 3x^{2}-12x+9=0
+\\Rightarrow (x-1)(x-3)=0.
+\\]
+</p>
+
+<p>With domain \\(x>2\\), the valid solution is</p>
+
+<p>
+\\[
+x=3.
+\\]
+</p>`
 },
 
 
@@ -1661,7 +1888,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
       soal: [
         {
   id:'c6', tipe:'pg',
-  tanya:'Find the centre and the radius of the circle \\( x^2 + y^2 = 16 \\).',
+  bacaan:'Find the centre and the radius of the circle \\( x^2 + y^2 = 16 \\).',
   opsi:[
     'Centre: \\((0,0)\\), Radius: 4',
     'Centre: \\((0,0)\\), Radius: 8',
@@ -1682,7 +1909,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
         {
   "id": "c7",
   "tipe": "pg",
-  "tanya": "Find the centre and the radius of the circle \\( x^2 + (y - 2)^2 = 25 \\).",
+  "bacaan": "Find the centre and the radius of the circle \\( x^2 + (y - 2)^2 = 25 \\).",
   "opsi": [
     "Centre: \\((0,2)\\), Radius: 5",
     "Centre: \\((2,0)\\), Radius: 5",
@@ -1701,7 +1928,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c8",
   "tipe": "pg",
-  "tanya": "Find the centre and the radius of the circle \\((x + 7)^2 + y^2 = 18\\).",
+  "bacaan": "Find the centre and the radius of the circle \\((x + 7)^2 + y^2 = 18\\).",
   "opsi": [
     "Centre: \\((-7,0)\\), Radius: \\(3\\sqrt{2}\\)",
     "Centre: \\((7,0)\\), Radius: \\(3\\sqrt{2}\\)",
@@ -1720,7 +1947,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c9",
   "tipe": "pg",
-  "tanya": "Find the centre and the radius of the circle \\( x^2 + y^2 - 8x + 20y + 110 = 0 \\).",
+  "bacaan": "Find the centre and the radius of the circle \\( x^2 + y^2 - 8x + 20y + 110 = 0 \\).",
   "opsi": [
     "Centre: \\((4,-10)\\), Radius: 4",
     "Centre: \\((4,-10)\\), Radius: 12",
@@ -1752,7 +1979,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
         {
   "id": "c10",
   "tipe": "pg",
-  "tanya": "Find the equation of the circle with centre \\((0,0)\\) and radius 8.",
+  "bacaan": "Find the equation of the circle with centre \\((0,0)\\) and radius 8.",
   "opsi": [
     "\\(x^2 + y^2 = 64\\)",
     "\\(x^2 + y^2 = 8\\)",
@@ -1772,7 +1999,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c11",
   "tipe": "pg",
-  "tanya": "Find the equation of the circle with centre \\((-1, 3)\\) and radius \\(\\sqrt{7}\\).",
+  "bacaan": "Find the equation of the circle with centre \\((-1, 3)\\) and radius \\(\\sqrt{7}\\).",
   "opsi": [
     "\\((x + 1)^2 + (y - 3)^2 = 7\\)",
     "\\((x - 1)^2 + (y + 3)^2 = 7\\)",
@@ -1795,7 +2022,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c12",
   "tipe": "pg",
-  "tanya": "Find the equation of the circle with centre \\((5, -2)\\) and radius \\(4\\).",
+  "bacaan": "Find the equation of the circle with centre \\((5, -2)\\) and radius \\(4\\).",
   "opsi": [
     "\\((x - 5)^2 + (y + 2)^2 = 16\\)",
     "\\((x + 5)^2 + (y - 2)^2 = 16\\)",
@@ -1820,7 +2047,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c13",
   "tipe": "pg",
-  "tanya": "Find the equation of the circle with centre \\(\\left(\\frac{1}{2}, -\\frac{3}{2}\\right)\\) and radius \\(\\frac{5}{2}\\).",
+  "bacaan": "Find the equation of the circle with centre \\(\\left(\\frac{1}{2}, -\\frac{3}{2}\\right)\\) and radius \\(\\frac{5}{2}\\).",
   "opsi": [
     "\\((x - \\tfrac{1}{2})^2 + (y + \\tfrac{3}{2})^2 = \\tfrac{25}{4}\\)",
     "\\((x + \\tfrac{1}{2})^2 + (y - \\tfrac{3}{2})^2 = \\tfrac{25}{4}\\)",
@@ -1845,7 +2072,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c14",
   "tipe": "pg",
-  "tanya": "Find the equation of the circle with centre \\((2, 5)\\) passing through the point \\((6, 8)\\).",
+  "bacaan": "Find the equation of the circle with centre \\((2, 5)\\) passing through the point \\((6, 8)\\).",
   "opsi": [
     "\\((x - 2)^2 + (y - 5)^2 = 25\\)",
     "\\((x - 2)^2 + (y - 5)^2 = 20\\)",
@@ -1872,7 +2099,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c15",
   "tipe": "pg",
-  "tanya": "A diameter of a circle has endpoints \\(A(6, 8)\\) and \\(B(2, 4)\\). Find the equation of the circle.",
+  "bacaan": "A diameter of a circle has endpoints \\(A(6, 8)\\) and \\(B(2, 4)\\). Find the equation of the circle.",
   "opsi": [
     "\\((x - 4)^2 + (y - 6)^2 = 8\\)",
     "\\((x - 4)^2 + (y - 6)^2 = 16\\)",
@@ -1917,7 +2144,7 @@ We can write \\[6^{4k} + 38^k - 2=74d\\]
 {
   "id": "c17",
   "tipe": "pg",
-  "tanya": "Find the equation of the circle that touches the x-axis and has centre \\((6, -5)\\).",
+  "bacaan": "Find the equation of the circle that touches the x-axis and has centre \\((6, -5)\\).",
   "opsi": [
     "\\((x - 6)^2 + (y + 5)^2 = 25\\)",
     "\\((x - 6)^2 + (y - 5)^2 = 25\\)",
@@ -2136,7 +2363,53 @@ gambar:'https://i.imgur.com/3dvJ2BO.png',
   "kunci": [0],
   "bahas": "<p><strong>(i) Finding the radius of the orange circle.</strong></p>\n<p>Let the centre of the whole design be at \\((0,0)\\). The four green circles, each of radius \\(1\\), are arranged so that their centres form a 2×2 square with side length \\(2\\). A convenient choice of centres is \\((\\pm1, \\pm1)\\).</p>\n<p>The distance from the centre of the design \\((0,0)\\) to one of the green circle centres, such as \\((1,1)\\), is:</p>\n<p>\\[ \\sqrt{1^2 + 1^2} = \\sqrt{2}. \\]</p>\n<p>The radius of the orange circle equals this distance plus the radius of a green circle:</p>\n<p>\\[ R = \\sqrt{2} + 1. \\]<p><img src='https://i.imgur.com/vFp8IFY.png'></p></p>\n\n<p><strong>(ii) Equation of the orange circle and instructions for graphing.</strong></p>\n<p>Squaring the radius gives:</p>\n<p>\\[ R^2 = (1 + \\sqrt{2})^2 = 1 + 2\\sqrt{2} + 2 = 3 + 2\\sqrt{2}. \\]</p>\n<p>Thus, the equation of the orange circle (centre at the origin) is:</p>\n<p>\\[ x^2 + y^2 = 3 + 2\\sqrt{2}. \\]</p>\n\n<p><strong>Equations of the four green circles:</strong></p>\n<ul>\n  <li>Centre \\((0,\\sqrt{2})\\): \\(x^2 + (y-\\sqrt{2})^2 = 1\\)</li>\n  <li>Centre \\((0,-\\sqrt{2})\\): \\(x^2 + (y+\\sqrt{2})^2 = 1\\)</li>\n  <li>Centre \\((-\\sqrt{2},0)\\): \\((x+\\sqrt{2})^2 + y^2 = 1\\)</li>\n  <li>Centre \\((\\sqrt{2},0)\\): \\((x-\\sqrt{2})^2 + y^2 = 1\\)</li>\n  <li>Orange circle: \\(x^2 + y^2 = 3 + 2\\sqrt{2}\\)</li>\n</ul>\n\n<p><strong>Instructions for drawing (e.g., Desmos / GeoGebra):</strong></p>\n<ol>\n  <li>Enter the four equations of the green circles.</li>\n  <li>Enter the equation of the orange outer circle.</li>\n  <li>Set the aspect ratio to 1:1 so the circles appear correctly.</li>\n</ol>\n\n<p>Therefore, the correct statements are the first, second, and fourth options.</p><img src='https://i.imgur.com/mQeRCc1.png'></p>"
 },
+{
+  "id": "circles01",
+  "tipe": "cb",
+    "bacaan": `Circles \\(C_1\\) and\\(C_2\\) have equations
+\\[x^{2}+y^{2}+6x-10y+18=0\\ \\text{ and } (x-9)^{2}+(y+4)^{2}-64=0\\] respectively.
+a. Find the distance between the centres of the circles.
 
+P and Q are points on \\(C_1\\)and \\(C_2\\)respectively. The distance between P and Q is denoted by \\(d\\).
+
+b. Find the greatest and least possible values of \\(d\\).`,
+  "tanya": "Select all the correct statements.",
+  "opsi": [
+    "\\(\\) The distance between the centres of C1 and C2 is \\(15\\).",
+    "\\(\\) The greatest possible value of \\(d\\) is \\(27\\).",
+    "\\(\\) The least possible value of \\(d\\) is \\(3\\)."
+  ],
+  "kunci": [0, 1, 2],
+  "bahas": "<p><b>Step 1 — Put the equations into centre–radius form.</b></p>\n\n<p>For C1: \\(x^{2}+y^{2}+6x-10y+18=0\\).\nComplete the square:\n\\((x+3)^{2}-9 + (y-5)^{2}-25 + 18 = 0\\), so\n\\((x+3)^{2}+(y-5)^{2}=16\\).\nThus centre \\(C_{1}=(-3,5)\\) and radius \\(r_{1}=4\\).</p>\n\n<p>For C2: \\((x-9)^{2}+(y+4)^{2}-64=0\\) so\n\\((x-9)^{2}+(y+4)^{2}=64\\).\nThus centre \\(C_{2}=(9,-4)\\) and radius \\(r_{2}=8\\).</p>\n\n<hr>\n\n<p><b>Step 2 — Distance between centres.</b></p>\n\n<p>Distance \\(C_{1}C_{2}=\\sqrt{(9-(-3))^{2}+(-4-5)^{2}}=\\sqrt{12^{2}+(-9)^{2}}=\\sqrt{144+81}=\\sqrt{225}=15.\\)</p>\n\n<hr>\n\n<p><b>Step 3 — Greatest and least possible values of \\(d\\).</b></p>\n\n<ul>\n  <li>The greatest separation of a point on C1 and a point on C2 occurs when the two points lie on the line through the centres and are on opposite outer sides. That distance is\n  \\(C_{1}C_{2}+r_{1}+r_{2}=15+4+8=27.\\)</li>\n\n  <li>Since \\(C_{1}C_{2}=15\\) and \\(r_{1}+r_{2}=12\\), the circles are disjoint (15>12). The least distance between a point on C1 and a point on C2 is when the two points are on the line joining the centres facing each other, giving\n  \\(C_{1}C_{2}-(r_{1}+r_{2})=15-12=3.\\)</li>\n</ul>\n\n<p><b>Answers:</b> centre distance = \\(15\\); greatest \\(d=27\\); least \\(d=3\\).</p>"
+},
+{
+  "id": "circles01_v2",
+  "tipe": "cb",
+  "bacaan": "The equation of a circle is \\[x^{2}+y^{2}+px+2y+q=0,\\] where \\(p\\) and \\(q\\) are constants.\n\n(a) Express the equation in the form \\((x-a)^{2}+(y-b)^{2}=r^{2}\\), where \\(a\\) is to be given in terms of \\(p\\) and \\(r^{2}\\) is to be given in terms of \\(p\\) and \\(q\\).\n\nThe line with equation \\(x+2y=10\\) is the tangent to the circle at the point \\(A(4,3)\\).\n\n(b) (i) Find the equation of the normal to the circle at the point \\(A\\).\n\n(ii) Find the values of \\(p\\) and \\(q\\).",
+  "tanya": "Select all the correct statements.",
+  "opsi": [
+    "\\(\\) The circle can be written as \\((x+\\tfrac{p}{2})^{2}+(y+1)^{2}=\\dfrac{p^{2}}{4}+1-q\\), so \\(a=-\\dfrac{p}{2}\\).",
+    "\\(\\) The equation of the normal to the circle at \\(A(4,3)\\) is \\(y=2x-5\\).",
+    "\\(\\) The constants are \\(p=-4\\) and \\(q=-15\\)."
+  ],
+  "kunci": [0, 1, 2],
+  "bahas": "<p><b>Part (a) — complete the square to get centre–radius form.</b></p>\n\n<p>Starting from\n\\[x^{2}+y^{2}+px+2y+q=0,\\]\ncomplete the square in \\(x\\) and \\(y\\):\n\\[\\bigl(x+\\tfrac{p}{2}\\bigr)^{2}-\\tfrac{p^{2}}{4}+\\bigl(y+1\\bigr)^{2}-1+q=0.\\]\nRearrange to centre–radius form:\n\\[\\bigl(x+\\tfrac{p}{2}\\bigr)^{2}+\\bigl(y+1\\bigr)^{2}=\\tfrac{p^{2}}{4}+1-q.\\]\nThus the centre is \\(\\bigl(-\\tfrac{p}{2},-1\\bigr)\\), so in the requested notation \\(a=-\\tfrac{p}{2}\\), and\n\\[r^{2}=\\dfrac{p^{2}}{4}+1-q.\\]</p>\n\n<hr>\n\n<p><b>Part (b)(i) — equation of the normal at A.</b></p>\n\n<p>The tangent line given is \\(x+2y=10\\), i.e. \\(y=-\\tfrac{1}{2}x+5\\). Its slope is \\(-\\tfrac{1}{2}\\), so the normal (perpendicular) slope is \\(2\\).\nThe normal through \\(A(4,3)\\) has equation\n\\[y-3=2(x-4)\\quad\\Rightarrow\\quad y=2x-5.\\]</p>\n\n<hr>\n\n<p><b>Part (b)(ii) — find \\(p\\) and \\(q\\).</b></p>\n\n<p>The centre of the circle is \\(\\bigl(-\\tfrac{p}{2},-1\\bigr)\\). The centre must lie on the normal line \\(y=2x-5\\) because the radius (line from centre to A) is the normal at A. Substitute the centre coordinates into the normal:\n\\[-1 = 2\\Bigl(-\\tfrac{p}{2}\\Bigr)-5.\\]\nThis simplifies to\n\\[-1 = -p-5 \\quad\\Rightarrow\\quad -p=4 \\quad\\Rightarrow\\quad p=-4.\\]</p>\n\n<p>With \\(p=-4\\), the centre is \\((2,-1)\\). The radius squared is the squared distance from centre to \\(A(4,3)\\):\n\\[r^{2}=(4-2)^{2}+(3-(-1))^{2}=2^{2}+4^{2}=4+16=20.\\]\nUse the formula from part (a):\n\\[r^{2}=\\dfrac{p^{2}}{4}+1-q.\\]\nSubstitute \\(p=-4\\) and \\(r^{2}=20\\):\n\\[20=\\dfrac{(-4)^{2}}{4}+1-q=4+1-q=5-q.\\]\nSo \\(q=5-20=-15.\\)</p>\n\n<p><b>Final answers:</b> centre \\(( -\\tfrac{p}{2},-1)\\), \\(a=-\\tfrac{p}{2}\\),\n\\(r^{2}=\\dfrac{p^{2}}{4}+1-q\\); normal at A is \\(y=2x-5\\); and \\(p=-4,\\ q=-15\\).</p>"
+},
+
+{
+  "id": "circles02",
+  "tipe": "cb",
+  "bacaan": `Points A and B have coordinates \\((4,3)\\) and \\((8,-5)\\). A circle with radius 10 passes through A and B.\n\n(a) Show that the centre of the circle lies on the line \\(y = \\tfrac{1}{2}x - 4\\).\n(b) Find the two possible equations of the circle.`,
+  "tanya": "Select all the correct statements.",
+  "opsi": [
+    "\\(\\) The midpoint of AB is \\((6,-1)\\) and the slope of AB is \\(-2\\).",
+    "\\(\\) The perpendicular bisector of AB has equation \\(y = \\tfrac{1}{2}x - 4\\).",
+    "\\(\\) The two possible centres of the circle are \\((14,3)\\) and \\((-2,-5)\\).",
+    "\\(\\) The two possible equations of the circle are \\((x-14)^{2}+(y-3)^{2}=100\\) and \\((x+2)^{2}+(y+5)^{2}=100\\)."
+  ],
+  "kunci": [0, 1, 2, 3],
+  "bahas": "<p><b>Step 1 — Midpoint and slope of AB.</b></p>\n\n<p>A = (4,3), B = (8,-5). Midpoint M is\n\\[M=\\Bigl(\\frac{4+8}{2},\\frac{3+(-5)}{2}\\Bigr)=(6,-1).\\]\nSlope of AB is\n\\[m_{AB}=\\frac{-5-3}{8-4}=-\\frac{8}{4}=-2.\\]</p>\n\n<hr>\n\n<p><b>Step 2 — Perpendicular bisector.</b></p>\n\n<p>The perpendicular slope is the negative reciprocal of \\(-2\\), i.e. \\(\\tfrac{1}{2}\\).\nThe line through M(6,-1) with slope \\(\\tfrac{1}{2}\\) is\n\\[y+1=\\tfrac{1}{2}(x-6)\\ \\Rightarrow\\ y=\\tfrac{1}{2}x-4.\\]\nHence every possible centre of a circle passing through A and B lies on \\(y=\\tfrac{1}{2}x-4\\).</p>\n\n<hr>\n\n<p><b>Step 3 — Find the centres using the radius condition.</b></p>\n\n<p>Let centre be \\((h,k)\\) with \\(k=\\tfrac{1}{2}h-4\\). Distance from centre to A must be 10:\n\\[(h-4)^{2}+(k-3)^{2}=100.\\]\nSubstitute \\(k=\\tfrac{1}{2}h-4\\):\n\\[(h-4)^{2}\\!+\\!\\bigl(\\tfrac{1}{2}h-7\\bigr)^{2}=100.\\]\nExpand and simplify:\n\\[\\frac{5}{4}h^{2}-15h+65=100\\ \\Rightarrow\\ \\frac{5}{4}h^{2}-15h-35=0.\\]\nMultiply by 4 and divide by 5:\n\\[h^{2}-12h-28=0.\\]\nSolve:\n\\[h=\\frac{12\\pm\\sqrt{144+112}}{2}=\\frac{12\\pm16}{2}\\Rightarrow h=14\\ \\text{or }\\ h=-2.\\]\nThen\n\\[k=\\tfrac{1}{2}h-4\\Rightarrow k=3\\ \\text{when }h=14,\\quad k=-5\\ \\text{when }h=-2.\\]</p>\n\n<hr>\n\n<p><b>Step 4 — Equations of the circles.</b></p>\n\n<p>Using centres and radius 10, the two circle equations are\n\\[(x-14)^{2}+(y-3)^{2}=100\\quad\\text{and}\\quad(x+2)^{2}+(y+5)^{2}=100.\\]</p>\n\n<p><b>Final summary:</b> Midpoint = \\((6,-1)\\); perpendicular bisector = \\(y=\\tfrac{1}{2}x-4\\); centres = \\((14,3)\\) and \\((-2,-5)\\); equations as above.</p>"
+},
 
       ]
     }
@@ -6335,7 +6608,7 @@ if(window.MathJax){
   if(q.bacaan){
     const teks = document.createElement('div');
     teks.className = 'mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm whitespace-pre-line text-justify';
-    teks.innerText = q.bacaan;
+    teks.innerHTML = q.bacaan;
     body.appendChild(teks);
   }
 if (q.tabel) {
