@@ -1306,6 +1306,336 @@ x=3.
 \\]
 </p>`
 },
+{
+  "id": "f16",
+  "tipe": "cb",
+  "bacaan": `The functions \\(f\\) and \\(g\\) are defined by
+
+\\(\\qquad  f(x)=\\sqrt{x} \\qquad  \\qquad   \\qquad \\text{ for } x\\ge 0\\)
+\\(\\qquad g(x)=3\\sqrt{x+2}-5 \\qquad  \\text{ for } x\\ge -2.\\)
+
+(a) Describe fully a sequence of transformations which transforms the graph of \\(y=f(x)\\) to the graph of \\(y=g(x)\\). You should make clear the order in which the transformations are applied.
+
+<p><img src='https://i.imgur.com/fY9n8Cv.png'></p>
+
+The diagram shows the graph of \\(y=g(x)\\) 
+
+(b) On the diagram sketch the graph of \\(y=g^{-1}(x)\\) together with any relevant mirror line.
+
+(c) Find an expression for \\(g^{-1}(x)\\).
+
+(d) State the range of \\(g^{-1}\\).
+
+The function \\(h(x)=x-2\\) is defined for \\(x\\ge 0\\).
+
+(e) Find the value of \\(g^{-1}h(4)\\).
+
+(f) Explain why the composite function \\(hg^{-1}\\) cannot be formed.
+
+[9709/11/M/J/25]`,
+
+  "tanya": "Select all the correct statements.",
+
+  "opsi": [
+    "\\(\\) The transformation from \\(f\\) to \\(g\\) includes a shift 2 units left, a vertical stretch by factor 3, then a translation 5 units down.",
+    "\\(\\) \\(g^{-1}(x)=\\dfrac{(x+5)^{2}}{9}-2.\\)",
+    "\\(\\) The range of \\(g^{-1}\\) is \\([-2,\\infty).\\)",
+    "\\(\\) The value of \\(g^{-1}h(4)\\) is \\(\\tfrac{31}{9}.\\)"
+  ],
+
+  "kunci": [0,1,2,3],
+
+  "bahas": `<p><b>Part (a)</b></p>
+
+<p>The graph of \\(y=f(x)=\\sqrt{x}\\) is transformed to \\(y=g(x)=3\\sqrt{x+2}-5\\) by the following sequence:</p>
+
+<ol>
+<li>Translate 2 units to the left to obtain \\(\\sqrt{x+2}\\).</li>
+<li>Stretch vertically by scale factor 3 to obtain \\(3\\sqrt{x+2}\\).</li>
+<li>Translate 5 units downward to obtain \\(3\\sqrt{x+2}-5\\).</li>
+</ol>
+
+<hr>
+
+<p><b>Part (b)</b></p>
+
+<p>The graph of \\(y=g^{-1}(x)\\) is the reflection of \\(y=g(x)\\) in the mirror line \\(y=x\\).</p>
+
+<hr>
+
+<p><b>Part (c)</b></p>
+
+<p>Start with</p>
+
+<p>
+\\[
+y = 3\\sqrt{x+2}-5.
+\\]
+</p>
+
+<p>Rearrange:</p>
+
+<p>
+\\[
+y+5 = 3\\sqrt{x+2}
+\\Rightarrow \\sqrt{x+2} = \\frac{y+5}{3}
+\\Rightarrow x+2 = \\frac{(y+5)^2}{9}
+\\Rightarrow x = \\frac{(y+5)^2}{9} - 2.
+\\]
+</p>
+
+<p>Thus,</p>
+
+<p>
+\\[
+g^{-1}(x)=\\frac{(x+5)^2}{9}-2.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (d)</b></p>
+
+<p>The domain of \\(g\\) is \\([-2,\\infty)\\).  
+Hence the range of \\(g^{-1}\\) is also</p>
+
+<p>
+\\[
+[-2, \\infty).
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (e)</b></p>
+
+<p>
+\\[
+h(4)=4-2=2,\\quad 
+g^{-1}(2)=\\frac{(2+5)^2}{9}-2=\\frac{49}{9}-2=\\frac{31}{9}.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (f)</b></p>
+
+<p>The composite \\(hg^{-1}\\) cannot be formed because \\(g^{-1}(x)\\) can output values less than 0 (e.g. \\(g^{-1}(-5)=-2\\)), but the domain of \\(h\\) is \\([0,\\infty)\\).  
+Thus some outputs of \\(g^{-1}\\) lie outside the domain of \\(h\\), making the composite undefined.</p>`
+},
+{
+  "id": "f17",
+  "tipe": "cb",
+  "bacaan": `(a) Express \\(x^{2}+4x+2\\) in the form \\((x+a)^{2}+b\\), where \\(a\\) and \\(b\\) are integers.
+
+The functions \\(f\\) and \\(g\\) are defined by
+
+\\(\\qquad f(x)=x^{2}+4x+2 \\qquad\\text{for }x\\le -2,\\)
+
+\\(\\qquad g(x)=-x-4 \\qquad\\text{for }x\\ge -2.\\)
+
+(b) (i) Find an expression for \\(f^{-1}(x)\\).
+
+\\(\\quad\\)(ii) Find an expression for \\((gf)^{-1}(x)\\).
+
+[9709/12/M/J/25]`,
+
+  "tanya": "Select all the correct statements.",
+
+  "opsi": [
+    "` ` \\(x^{2}+4x+2=(x+2)^{2}-2.\\)",
+    "` ` \\(f(x)=(x+2)^{2}-2\\) has domain \\(x\\le -2\\) and range \\(y\\ge -2\\).",
+    "` ` \\(f^{-1}(x)=-2-\\sqrt{x+2}\\), for \\(x\\ge -2\\).",
+    "` ` \\((gf)(x)=-(x+2)^{2}-2.\\)",
+    "` ` \\((gf)^{-1}(x)=-2-\\sqrt{-x-2}\\), for \\(x\\le -2\\)."
+  ],
+
+  "kunci": [0,1,2,3,4],
+
+  "bahas": `<p><b>Part (a)</b></p>
+
+<p>
+\\[
+x^{2}+4x+2=(x^{2}+4x+4)-2=(x+2)^{2}-2.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (b)(i)</b></p>
+
+<p>Given \\(f(x)=(x+2)^{2}-2\\), set \\(y=f(x)\\):  
+\\[
+y+2=(x+2)^{2}.
+\\]
+Because \\(x\\le -2\\), then \\(x+2\\le 0\\), so take the negative root:</p>
+
+<p>
+\\[
+x+2 = -\\sqrt{y+2}
+\\Rightarrow x = -2 - \\sqrt{y+2}.
+\\]
+</p>
+
+<p>Thus,
+\\[
+f^{-1}(x)=-2-\\sqrt{x+2},\\quad x\\ge -2.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (b)(ii)</b></p>
+
+<p>Compute \\((gf)(x)\\):</p>
+
+<p>
+\\[
+(gf)(x)=g(f(x)) = -[(x+2)^{2}-2]-4 = -(x+2)^{2}-2.
+\\]
+</p>
+
+<p>Let \\(y=-(x+2)^{2}-2\\). Rearranging:</p>
+
+<p>
+\\[
+y+2 = -(x+2)^{2}
+\\Rightarrow (x+2)^{2} = -y-2.
+\\]
+</p>
+
+<p>Again \\(x+2\\le 0\\), so</p>
+
+<p>
+\\[
+x+2 = -\\sqrt{-y-2}
+\\Rightarrow x = -2 - \\sqrt{-y-2}.
+\\]
+</p>
+
+<p>Thus,
+\\[
+(gf)^{-1}(x)=-2-\\sqrt{-x-2},\\quad x\\le -2.
+\\]
+</p>`
+},
+{
+  "id": "f18",
+  "tipe": "cb",
+  "bacaan": `The function \\(f\\) is defined by  
+\\[
+f(x)=x^{2}+4ax+a \\quad (x\\in\\mathbb{R}),
+\\]
+where \\(a\\) is a constant.
+
+The function \\(g\\) satisfies
+\\[
+g^{-1}(x)=\\sqrt[3]{2x-4} \\quad (x\\in\\mathbb{R}).
+\\]
+
+(a) Given that the range of \\(f\\) is \\(f(x)\\ge -33\\), find the possible values of \\(a\\).
+
+(b) Given instead that \\(f(g(g(0)))=96\\), find the value of \\(a\\).
+
+
+[9709/13/M/J/25]`,
+
+  "tanya": "Select all the correct statements.",
+
+  "opsi": [
+    " The minimum value of \\(f\\) is \\(-4a^{2}+a\\).",
+    "The condition \\(f(x)\\ge -33\\) gives \\(-\\tfrac{11}{4}\\le a\\le 3\\).",
+    "\\(g(x)=\\dfrac{x^{3}+4}{2}.\\)",
+    "The condition \\(f(g(g(0)))=96\\) gives \\(a=\\tfrac{12}{5}.\\)"
+  ],
+
+  "kunci": [0,1,2,3],
+
+  "bahas": `<p><b>Part (a)</b></p>
+
+<p>For  
+\\[
+f(x)=x^{2}+4ax+a,
+\\]
+the minimum occurs at \\(x=-2a\\). Then</p>
+
+<p>
+\\[
+f(-2a)=4a^{2}-8a^{2}+a=-4a^{2}+a.
+\\]
+</p>
+
+<p>Given \\(f(x)\\ge -33\\):</p>
+
+<p>
+\\[
+-4a^{2}+a \\ge -33
+\\iff 4a^{2}-a-33 \\le 0.
+\\]
+</p>
+
+<p>The quadratic \\(4a^{2}-a-33=0\\) has roots \\(a=3\\) and \\(a=-\\tfrac{11}{4}\\).  
+Since the parabola opens upward,</p>
+
+<p>
+\\[
+-\\tfrac{11}{4} \\le a \\le 3.
+\\]
+</p>
+
+<hr>
+
+<p><b>Part (b)</b></p>
+
+<p>From  
+\\[
+g^{-1}(x)=\\sqrt[3]{\,2x-4\,},
+\\]
+invert to find \\(g(x)\\):</p>
+
+<p>
+\\[
+y=\\sqrt[3]{2x-4}
+\\Rightarrow y^{3}=2x-4
+\\Rightarrow x=\\frac{y^{3}+4}{2}.
+\\]
+</p>
+
+<p>Thus</p>
+
+<p>
+\\[
+g(x)=\\frac{x^{3}+4}{2}.
+\\]
+</p>
+
+<p>Now compute</p>
+
+<p>
+\\[
+g(0)=2,
+\\quad
+g(g(0))=g(2)=6.
+\\]
+</p>
+
+<p>So  
+\\[
+f(g(g(0)))=f(6)=36+24a+a=36+25a.
+\\]
+</p>
+
+<p>\\[36+25a=96\\]</p>
+
+<p>
+\\[
+25a=60\\]\\[
+\\quad
+a=\\frac{12}{5}.
+\\]
+</p>`
+},
+
 
 
   ]
@@ -2372,7 +2702,9 @@ a. Find the distance between the centres of the circles.
 
 P and Q are points on \\(C_1\\)and \\(C_2\\)respectively. The distance between P and Q is denoted by \\(d\\).
 
-b. Find the greatest and least possible values of \\(d\\).`,
+b. Find the greatest and least possible values of \\(d\\).
+
+[9709/11/O/N/24]`,
   "tanya": "Select all the correct statements.",
   "opsi": [
     "\\(\\) The distance between the centres of C1 and C2 is \\(15\\).",
@@ -2385,7 +2717,9 @@ b. Find the greatest and least possible values of \\(d\\).`,
 {
   "id": "circles01_v2",
   "tipe": "cb",
-  "bacaan": "The equation of a circle is \\[x^{2}+y^{2}+px+2y+q=0,\\] where \\(p\\) and \\(q\\) are constants.\n\n(a) Express the equation in the form \\((x-a)^{2}+(y-b)^{2}=r^{2}\\), where \\(a\\) is to be given in terms of \\(p\\) and \\(r^{2}\\) is to be given in terms of \\(p\\) and \\(q\\).\n\nThe line with equation \\(x+2y=10\\) is the tangent to the circle at the point \\(A(4,3)\\).\n\n(b) (i) Find the equation of the normal to the circle at the point \\(A\\).\n\n(ii) Find the values of \\(p\\) and \\(q\\).",
+  "bacaan": `The equation of a circle is \\[x^{2}+y^{2}+px+2y+q=0,\\] where \\(p\\) and \\(q\\) are constants.\n\n(a) Express the equation in the form \\((x-a)^{2}+(y-b)^{2}=r^{2}\\), where \\(a\\) is to be given in terms of \\(p\\) and \\(r^{2}\\) is to be given in terms of \\(p\\) and \\(q\\).\n\nThe line with equation \\(x+2y=10\\) is the tangent to the circle at the point \\(A(4,3)\\).\n\n(b) (i) Find the equation of the normal to the circle at the point \\(A\\).\n\n(ii) Find the values of \\(p\\) and \\(q\\).
+
+[9709/12/O/N/24]`,
   "tanya": "Select all the correct statements.",
   "opsi": [
     "\\(\\) The circle can be written as \\((x+\\tfrac{p}{2})^{2}+(y+1)^{2}=\\dfrac{p^{2}}{4}+1-q\\), so \\(a=-\\dfrac{p}{2}\\).",
@@ -2399,7 +2733,9 @@ b. Find the greatest and least possible values of \\(d\\).`,
 {
   "id": "circles02",
   "tipe": "cb",
-  "bacaan": `Points A and B have coordinates \\((4,3)\\) and \\((8,-5)\\). A circle with radius 10 passes through A and B.\n\n(a) Show that the centre of the circle lies on the line \\(y = \\tfrac{1}{2}x - 4\\).\n(b) Find the two possible equations of the circle.`,
+  "bacaan": `Points A and B have coordinates \\((4,3)\\) and \\((8,-5)\\). A circle with radius 10 passes through A and B.\n\n(a) Show that the centre of the circle lies on the line \\(y = \\tfrac{1}{2}x - 4\\).\n(b) Find the two possible equations of the circle.
+
+[9709/13/O/N/24]`,
   "tanya": "Select all the correct statements.",
   "opsi": [
     "\\(\\) The midpoint of AB is \\((6,-1)\\) and the slope of AB is \\(-2\\).",
