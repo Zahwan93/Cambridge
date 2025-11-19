@@ -145,6 +145,410 @@
   const DB = {
 'Pure Mathematics 1 (AS Level)': {
   bab: {
+'Indices and Logarithms': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Indices & Logarithms</h2>
+
+    <h3 class="font-semibold mt-3">1. Laws of Indices</h3>
+    <p class="mb-3">
+      For any real numbers \\(a>0\\) and integers \\(m,n\\):
+      \\[
+        a^m \\, a^n = a^{m+n}
+      \\]
+      \\[
+        \\frac{a^m}{a^n} = a^{m-n}
+      \\]
+      \\[
+        (a^m)^n = a^{mn}
+      \\]
+      \\[
+        a^{-n} = \\frac{1}{a^n}
+      \\]
+      \\[
+        a^{1/n} = \\sqrt[n]{a}
+      \\]
+      \\[
+        a^{m/n} = \\sqrt[n]{a^m}.
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">2. Standard Index Forms</h3>
+    <p class="mb-3">
+      Numbers may be written in the form \\(a \\times 10^n\\) where  
+      \\(1 \\le a < 10\\) and \\(n\\) is an integer.
+      Useful for very large/small numbers.
+    </p>
+
+    <h3 class="font-semibold mt-3">3. Definition of Logarithms</h3>
+    <p class="mb-3">
+      The logarithm \\(\\log_a b\\) is the power to which \\(a\\) must be raised to obtain \\(b\\):  
+      \\[
+        a^x = b \\quad \\Longleftrightarrow \\quad \\log_a b = x.
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">4. Laws of Logarithms</h3>
+    <p class="mb-3">
+      For \\(a>0\\), \\(a\\neq1\\):
+      \\[
+        \\log_a(xy) = \\log_a x + \\log_a y
+      \\]
+      \\[
+        \\log_a \\left(\\frac{x}{y}\\right) = \\log_a x - \\log_a y
+      \\]
+      \\[
+        \\log_a (x^k) = k\\log_a x.
+      \\]
+      Change of base:
+      \\[
+        \\log_a x = \\frac{\\log_b x}{\\log_b a}.
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">5. Common (Base-10) & Natural Logs</h3>
+    <p class="mb-3">
+      Base 10: \\(\\log x = \\log_{10} x\\).  
+      Natural log: \\(\\ln x = \\log_e x\\).  
+      Useful identities:
+      \\[
+        e^{\\ln x} = x, \\qquad \\ln(e^k) = k.
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">6. Exponential & Logarithmic Equations</h3>
+    <p class="mb-3">
+      To solve equations:
+      <ul class="list-disc pl-6 mb-4">
+        <li>Make bases the same, or</li>
+        <li>Take logarithms on both sides, or</li>
+        <li>Use change-of-base for mixed bases.</li>
+      </ul>
+    </p>
+
+    <h3 class="font-semibold mt-3">7. Examples</h3>
+    <p class="mb-3"><strong>Example 1</strong>: Solve \\(2^{x+1} = 16\\).  
+    Since \\(16 = 2^4\\), we get \\(x+1=4\\) so \\(x=3\\).</p>
+
+    <p class="mb-3"><strong>Example 2</strong>: Simplify \\(\\log 50 - \\log 2\\).  
+      Using quotient law: \\(\\log(25)=1.3979\\ldots\\).</p>
+
+    <p class="mb-3"><strong>Example 3</strong>: Solve \\(\\ln(3x) = 2\\).  
+      \\(3x = e^2\\) so \\(x = \\frac{e^2}{3}\\).</p>
+  `,
+
+  video: ['cNwUO3VqC2g', 'c8IY_zxS8wY'],
+
+  soal: [
+    {
+  id: 'ind1',
+  tipe: 'cb',
+  bacaan: `Solve.
+
+a. \\((\\log_2 x)^2 - 8\\log_2 x + 15 = 0\\)
+
+b. \\((\\log_2 x)^2 - \\log_{10}(x^2) = 3\\)
+
+c. \\((\\log_5 x)^2 + \\log_5(x^3) = 10\\)
+
+d. \\(4(\\log_2 x)^2 + \\log_2(x^2) = 3\\)
+  `,
+  tanya: 'Select all the correct solutions.',
+  opsi: [
+    "a. \\(x = 8 , x = 3\\)",
+    "b. \\(x = 0.1 , x = 1000\\)",
+    "c. \\(x = 25 , x = \\tfrac{1}{3125}\\) ",
+    "d. \\(x = \\tfrac{\\sqrt{2}}{2}, x= 2 \\sqrt{2}\\)"
+      ],
+  kunci: [0,1,2,3],
+  bahas: `
+<img src='https://i.imgur.com/DC3mzf8.png'></p><br>
+<img src='https://i.imgur.com/lb4ljDd.png'></p>
+
+`
+},
+{
+  id: 'ind2',
+  tipe: 'cb',
+  bacaan: `Solve the simultaneous equations.
+
+a. \\(
+\\left\\{
+\\begin{aligned}
+xy &= 81 \\\\
+\\log_{x}(y) &= 3
+\\end{aligned}
+\\right.
+\\)
+
+b. \\(
+\\left\\{
+\\begin{aligned}
+4^{x} &= 2^{y} \\\\
+3\\log_{10}(y) &= \\log_{10}(x) + \\log_{10}(2)
+\\end{aligned}
+\\right.
+\\)
+
+c. \\(
+\\left\\{
+\\begin{aligned}
+\\log_{4}(x - y) &= 2\\log_{4}(x) \\\\
+\\log_{4}(x + y + 9) &= 0
+\\end{aligned}
+\\right.
+\\)
+
+d.  \\(
+\\left\\{
+\\begin{aligned}
+\\log_{10}(x) &= 2\\log_{10}(y) \\\\
+\\log_{10}(2x-17y) &= 2
+\\end{aligned}
+\\right.
+\\)
+
+`,
+  tanya: 'Select all the correct solution pairs.',
+  opsi: [
+    "a. \\((3, 27)\\)",
+    "b. \\((\\tfrac{1}{2}, 1)\\)",
+    "c. \\((4, -12)\\)",
+    "d. \\((\\tfrac{625}{4}, \\tfrac{25}{2})\\)"
+  ],
+  kunci: [0,1,2,3],
+  bahas: `
+<img src='https://i.imgur.com/3gx4upv.png'></p><br>
+<img src='https://i.imgur.com/uSzQ8Nn.png'></p><br>
+<img src='https://i.imgur.com/fpdoBPb.png'></p>
+
+`
+},
+{
+  id: 'ind3',
+  tipe: 'cb',
+  bacaan: `solve \\(5^{x^{2}} > 2^{x}\\) giving your answer in terms of logarithms.
+`,
+  tanya: 'Select all correct statement',
+  opsi: [
+    " \\(x < 0 \\text{ or } x > \\log_{2}5\\)"
+      ],
+  kunci: [0],
+  bahas: `
+<img src='https://i.imgur.com/L8vCtoA.png'></p>`
+},
+{
+  id: 'ind4',
+  tipe: 'cb',
+  bacaan: `Prove that the solution to the inequality \\(3^{2x-1}\\times 2^{1-3x} \\ge 5\\) is  \\(x \\ge \\dfrac{\\log(\\tfrac{15}{2})}{\\log(\\tfrac{9}{8})}\\).
+`,
+  tanya: 'Select all correct statement',
+  opsi: [
+    "Proven",
+    "Not proven"
+      ],
+  kunci: [0],
+  bahas: `<img src='https://i.imgur.com/4MdzY5h.png'></p>`
+},
+{
+  id: 'ind5',
+  tipe: 'cb',
+  bacaan: `In this question you are not allowed to use a calculator.
+
+You are given that \\(\\log_{10} 4 = 0.60206\\) correct to 5 decimal places and that \\(10^{0.206} < 2\\).
+
+a. Find the number of digits in \\(4^{100}\\).  
+b. Find the first digit in \\(4^{100}\\).
+
+`,
+  tanya: 'Select the correct answers.',
+  opsi: [
+    "a. 61 digits ",
+    "b. first digit = 1"
+  ],
+  kunci: [0,1],
+  bahas: `
+<img src='https://i.imgur.com/xUYcfdJ.png'></p>`
+},
+{
+  id: 'ind6',
+  tipe: 'cb',
+  bacaan: `Use logarithms to solve the equation
+\\[5^{x+3} = 7^{x-1}\\]
+giving your answer correct to 3 significant figures.
+
+<i>Cambridge International AS & A Level Mathematics 9709 Paper 21</i>
+`,
+  tanya: 'Select the correct answers.',
+  opsi: [
+    "\\(x = 20.1\\)"
+    ],
+  kunci: [0],
+  bahas: `
+<img src='https://i.imgur.com/hAYmSD9.png'></p>`
+},
+{
+  id: 'ind7',
+  tipe: 'cb',
+  bacaan: `Solve the equation
+\\[6(4^{x}) - 11(2^{x}) + 4 = 0\\]
+giving your answers for \\(x\\) in terms of logarithms where appropriate.`,
+  tanya: 'Select all the correct values of \\(x\\).',
+  opsi: [
+    "a. \\(x = -1\\)",
+    "b. \\(x = 2-\\log_{2}3\\)",
+   ],
+  kunci: [0,1,2],
+  bahas: `
+<img src='https://i.imgur.com/8jsQhYc.png'></p>`
+},
+
+  ]
+},
+
+'Series': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Series</h2>
+
+    <h3 class="font-semibold mt-3">1. Binomial expansion of \\((a+b)^n\\)</h3>
+    <p class="mb-3">
+      For a non-negative integer \\(n\\), the binomial expansion is:
+      \\[
+        (a+b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^{k}.
+      \\]
+      Here \\(\\displaystyle \\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\).
+    </p>
+    <p class="mb-2">Useful special cases and tips:</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>If \\(b=1\\) you get expansion in powers of \\(a\\).</li>
+      <li>Coefficients are symmetric: \\(\\binom{n}{k} = \\binom{n}{n-k}\\).</li>
+      <li>Use Pascal's triangle for small \\(n\\).</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">2. Binomial coefficients</h3>
+    <p class="mb-3">
+      Binomial coefficients satisfy:
+      \\[
+\\binom{n}{0}=1\\]\\[\\quad \\binom{n}{k}=\\binom{n-1}{k-1}+\\binom{n-1}{k}\\]\\[\\quad \\binom{n}{k}=\\frac{n}{k}\\binom{n-1}{k-1}.
+      \\]
+      Also, \\(\\sum_{k=0}^n \\binom{n}{k} = 2^n\\).
+    </p>
+
+    <h3 class="font-semibold mt-3">3. Arithmetic progressions (AP)</h3>
+    <p class="mb-3">
+      An AP has constant difference \\(d\\):  
+      \\(a, a+d, a+2d, \\dots\\).
+      The \\(n\\)-th term:
+      \\[
+        U_n = a + (n-1)d.
+      \\]
+      The sum of the first \\(n\\) terms:
+      \\[
+        S_n = \\frac{n}{2}\\,(2a + (n-1)d) \\]
+\\[S_n = \\frac{n}{2}(a + U_n).
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">4. Geometric progressions (GP)</h3>
+    <p class="mb-3">
+      A GP has ratio \\(r\\):  
+      \\(a, ar, ar^2, \\dots\\).
+      \\[
+        U_n = ar^{n-1}\\]
+      \\[S_n = a\\frac{1-r^n}{1-r} \\ (r\\neq 1).
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">5. Infinite geometric series</h3>
+    <p class="mb-3">
+      If \\(|r|<1\\), the infinite sum is:
+      \\[
+        S_\\infty = \\frac{a}{1-r}.
+      \\]
+      If \\(|r|\\ge1\\) it diverges.
+    </p>
+
+    <h3 class="font-semibold mt-3">6. Further arithmetic and geometric series</h3>
+    <p class="mb-3">
+      Series involving products like \\(n r^{n}\\) or \\(n^2 r^{n}\\) can be evaluated  
+      using differentiation of the GP formula or by multiplying and subtracting.
+    </p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Telescoping: when terms cancel each other.</li>
+      <li>Partial fractions help for rational summands.</li>
+      <li>Differentiate \\(\\sum r^n\\) to find \\(\\sum n r^n\\).</li>
+    </ul>
+
+    <h3 class="font-semibold mt-3">7. Examples</h3>
+    <p class="mb-3"><strong>Example 1</strong>: Expand \\((1+x)^4\\):  
+    \\((1+x)^4 = 1 + 4x + 6x^2 + 4x^3 + x^4\\).</p>
+
+    <p class="mb-3"><strong>Example 2</strong>: Sum of AP 5, 8, 11, ... (20 terms):  
+      \\(S_{20} = 670\\).</p>
+
+    <p class="mb-3"><strong>Example 3</strong>: Infinite GP 3, 2, 4/3, ... with \\(r=2/3\\):  
+      sum = 9.</p>
+  `,
+
+  video: ['b2Y8c1GCaJ0', 'Zp0Vh8w9fL4'],
+
+  soal: [
+    {
+  "id": "s1",
+  "tipe": "cb",
+  "bacaan": `Find the coefficient of \\(x^3\\) in the expansions of:
+
+(a) \\((x+3)^4\\)
+
+(b) \\((3-x)^5\\)
+
+(c) \\((4x+3)^4\\)`,
+
+  "tanya": "Select all the correct answers.",
+
+  "opsi": [
+    "\\((x+3)^4\\) has coefficient of \\(x^3\\) equal to 12.",
+    "\\((3-x)^5\\) has coefficient of \\(x^3\\) equal to -90.",
+    "\\((4x+3)^4\\) has coefficient of \\(x^3\\) equal to 768."
+  ],
+
+  "kunci": [0,1,2],
+
+  "bahas": `
+<p><b>(a) Coefficient of \\(x^3\\) in \\((x+3)^4\\)</b></p>
+<p>
+Using binomial expansion:<br>
+\\[
+\\binom{4}{1} x^3 3^1 = 4 \\cdot 3 = 12.
+\\]
+Thus the coefficient is <b>108</b>.
+</p>
+
+<hr>
+
+<p><b>(b) Coefficient of \\(x^3\\) in \\((3-x)^5\\)</b></p>
+<p>
+Term containing \\(x^3\\):<br>
+\\[
+\\binom{5}{3} (3)^2 (-x)^3 = 10 \\cdot 9 \\cdot (-1) = -90.
+\\]
+Thus the coefficient is <b>-90</b>.
+</p>
+
+<hr>
+
+<p><b>(c) Coefficient of \\(x^3\\) in \\((4x+3)^4\\)</b></p>
+<p>
+Term containing \\(x^3\\):<br>
+\\[
+\\binom{4}{3} (4x)^3 3^1 = 4 \\cdot 64 \\cdot 3 = 768.
+\\]
+</p>
+`
+},
+
+  ]
+},
+
 'Functions': {
   materi: `
     <h2 class="text-xl font-bold mb-2">Functions</h2>
