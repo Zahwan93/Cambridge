@@ -545,6 +545,528 @@ Term containing \\(x^3\\):<br>
 </p>
 `
 },
+{
+  "id": "s2",
+  "tipe": "cb",
+  "bacaan": `\\((3+x)^5 + (3-x)^5 \\equiv A + Bx^2 + Cx^4\\). 
+Find the values of A, B and C.`,
+  "tanya": "Select all the correct values.",
+  "opsi": [
+    "\\(A = 486\\)",
+    "\\(B = 540\\)",
+    "\\(C = 30\\)"
+  ],
+  "kunci": [0,1,2],
+  "bahas": `
+<p><b>Using the identity symbol \\(\\equiv\\):</b></p>
+
+\\[
+(3+x)^5 \\equiv 243 + 405x + 270x^2 + 90x^3 + 15x^4 + x^5
+\\]
+
+\\[
+(3-x)^5 \\equiv 243 - 405x + 270x^2 - 90x^3 + 15x^4 - x^5
+\\]
+
+<p><b>Add the two expressions:</b></p>
+
+\\[
+A \\equiv 243 + 243 = 486
+\\]
+
+\\[
+B \\equiv 270 + 270 = 540 \\quad \\Rightarrow \\quad B = 540
+\\]
+
+\\[
+C \\equiv 15 + 15 = 30 \\quad \\Rightarrow \\quad C = 30
+\\]
+
+<p><b>Final identity:</b></p>
+
+\\[
+(3+x)^5 + (3-x)^5 \\equiv 486 + 270x^2 + 10x^4
+\\]
+`
+},
+{
+  "id": "s3",
+  "tipe": "cb",
+  "bacaan": "The coefficient of \\(x^2\\) in the expansion of \\((3 + ax)^4\\) is 216. Find the possible values of the constant \\(a\\).",
+  "tanya": "Select all the correct values of \\(a\\).",
+  "opsi": [
+    "\\(a = 2\\)",
+    "\\(a = -2\\)"
+  ],
+  "kunci": [0,1],
+  "bahas": `
+<p><b>Expand the coefficient of \\(x^2\\) in \\((3 + ax)^4\\):</b></p>
+
+The general binomial term is<br>
+\\[
+\\binom{4}{k} 3^{4-k} (ax)^k.
+\\]
+
+For the \\(x^2\\) term, take \\(k = 2\\):  
+\\[
+\\binom{4}{2} 3^2 (ax)^2 
+= 6 \\cdot 9 \\cdot a^2 x^2 
+= 54 a^2 x^2.
+\\]
+
+We are told the coefficient is 216:  
+\\[
+54 a^2 = 216.
+\\]
+
+Solve for \\(a\\):  
+\\[
+a^2 = 4 \\quad \\Rightarrow \\quad a = \\pm 2.
+\\]
+
+<p><b>Therefore the possible values of the constant are:</b></p>
+
+\\[
+a = 2 \\quad \\text{or} \\quad a = -2.
+\\]
+`
+},
+{
+  "id": "s4",
+  "tipe": "cb",
+  "bacaan": "a. Expand \\((2+x)^4\\).<br>b. Use your answer to part (a) to express \\((2 + \\sqrt{3})^4\\) in the form \\(a + b\\sqrt{3}\\).",
+  "tanya": "Select all the correct results.",
+  "opsi": [
+    "\\((2+x)^4 = 16 + 32x + 24x^2 + 8x^3 + x^4\\)",
+    "\\((2+\\sqrt{3})^4 = 97 + 56\\sqrt{3}\\)"
+  ],
+  "kunci": [0,1],
+  "bahas": `
+<p><b>(a) Expand \\((2+x)^4\\)</b></p>
+
+Using the binomial expansion:<br>
+\\[
+(2+x)^4 = \\binom{4}{0}2^4 + \\binom{4}{1}2^3x + \\binom{4}{2}2^2x^2 + \\binom{4}{3}2x^3 + \\binom{4}{4}x^4.
+\\]
+
+Compute each term:<br>
+\\[
+16 + 32x + 24x^2 + 8x^3 + x^4.
+\\]
+
+<hr>
+
+<p><b>(b) Substitute \\(x = \\sqrt{3}\\) into the expansion</b></p>
+
+\\[
+(2+\\sqrt{3})^4 = 16 + 32\\sqrt{3} + 24(3) + 8(\\sqrt{3})^3 + (\\sqrt{3})^4
+\\]
+
+Simplify:<br>
+\\[
+= 16 + 32\\sqrt{3} + 72 + 24\\sqrt{3} + 9
+\\]
+
+Combine real and irrational parts:<br>
+\\[
+= (16 + 72 + 9) + (32\\sqrt{3} + 24\\sqrt{3})
+\\]
+
+\\[
+= 97 + 56\\sqrt{3}.
+\\]
+
+<p><b>Thus:</b></p>
+
+\\[
+(2+\\sqrt{3})^4 = 97 + 56\\sqrt{3}.
+\\]
+`
+},
+{
+  "id": "s5",
+  "tipe": "cb",
+  "bacaan": "a. Expand \\((1+x)^3\\).<br>b. Use your answer to part (a) to express:<br>i. \\((1+\\sqrt{5})^3\\) in the form \\(a + b\\sqrt{5}\\)<br>ii. \\((1-\\sqrt{5})^3\\) in the form \\(c + d\\sqrt{5}\\)<br>c. Use your answers to part (b) to simplify \\((1+\\sqrt{5})^3 + (1-\\sqrt{5})^3\\).",
+  "tanya": "Select all correct results.",
+  "opsi": [
+    "\\((1+x)^3 = 1 + 3x + 3x^2 + x^3\\)",
+    "\\((1+\\sqrt{5})^3 = 16 + 8\\sqrt{5}\\)",
+    "\\((1-\\sqrt{5})^3 = 16 - 8\\sqrt{5}\\)",
+    "\\((1+\\sqrt{5})^3 + (1-\\sqrt{5})^3 = 32\\)"
+  ],
+  "kunci": [0,1,2,3],
+  "bahas": `
+<p><b>(a) Expand \\((1+x)^3\\)</b></p>
+
+Using the binomial theorem:<br>
+\\[
+(1+x)^3 = 1 + 3x + 3x^2 + x^3.
+\\]
+
+<hr>
+
+<p><b>(b)(i) Substitute \\(x = \\sqrt{5}\\)</b></p>
+
+\\[
+(1+\\sqrt{5})^3 = 1 + 3\\sqrt{5} + 3(5) + (\\sqrt{5})^3
+\\]
+
+\\[
+= 1 + 3\\sqrt{5} + 15 + 5\\sqrt{5}
+\\]
+
+Combine terms:<br>
+\\[
+= 16 + 8\\sqrt{5}.
+\\]
+
+<hr>
+
+<p><b>(b)(ii) Substitute \\(x = -\\sqrt{5}\\)</b></p>
+
+\\[
+(1-\\sqrt{5})^3 = 1 - 3\\sqrt{5} + 15 - 5\\sqrt{5}
+\\]
+
+\\[
+= 16 - 8\\sqrt{5}.
+\\]
+
+<hr>
+
+<p><b>(c) Add the two results:</b></p>
+
+\\[
+(1+\\sqrt{5})^3 + (1-\\sqrt{5})^3 = (16 + 8\\sqrt{5}) + (16 - 8\\sqrt{5})
+\\]
+
+Irrational parts cancel:<br>
+\\[
+= 32.
+\\]
+
+<p><b>Final Answers:</b><br>
+i. \\(16 + 8\\sqrt{5}\\)<br>
+ii. \\(16 - 8\\sqrt{5}\\)<br>
+iii. Sum = \\(32\\)</p>
+`
+},
+{
+  "id": "s6",
+  "tipe": "cb",
+  "bacaan": "Expand \\((1+x)(2+3x)^4\\).",
+  "tanya": "Select the correct expanded expression.",
+  "opsi": [
+    "\\((1+x)(2+3x)^4 = 16 + 112x + 312x^2 + 432x^3 + 297x^4 + 81x^5\\)"
+  ],
+  "kunci": [0],
+  "bahas": `
+<p><b>Step 1: Expand \\((2+3x)^4\\)</b></p>
+
+Using the binomial theorem:<br>
+
+\\[
+(2+3x)^4 
+= \\binom{4}{0}2^4 
++ \\binom{4}{1}2^3(3x)
++ \\binom{4}{2}2^2(3x)^2
++ \\binom{4}{3}2(3x)^3
++ \\binom{4}{4}(3x)^4
+\\]
+
+Compute each term:<br>
+
+\\[
+= 16 + 96x + 216x^2 + 216x^3 + 81x^4
+\\]
+
+<hr>
+
+<p><b>Step 2: Multiply by \\((1+x)\\)</b></p>
+
+\\[
+(1+x)(16 + 96x + 216x^2 + 216x^3 + 81x^4)
+\\]
+
+Distribute:
+
+\\[
+= 16 + 96x + 216x^2 + 216x^3 + 81x^4
+\\]
+
+\\[
+\\quad + 16x + 96x^2 + 216x^3 + 216x^4 + 81x^5
+\\]
+
+Combine like terms:
+
+\\[
+= 16 + (96+16)x + (216+96)x^2 + (216+216)x^3 + (81+216)x^4 + 81x^5
+\\]
+
+\\[
+= 16 + 112x + 312x^2 + 432x^3 + 297x^4 + 81x^5
+\\]
+
+`
+},
+{
+  "id": "s7",
+  "tipe": "cb",
+  "bacaan": "a. Expand \\((x^2 - 1)^4\\).<br>b. Find the coefficient of \\(x^6\\) in the expansion of \\((1 - 2x^2)(x^2 - 1)^4\\).",
+  "tanya": "Select all correct results.",
+  "opsi": [
+    "\\((x^2 - 1)^4 = x^8 - 4x^6 + 6x^4 - 4x^2 + 1\\)",
+    "The coefficient of \\(x^6\\) in \\((1 - 2x^2)(x^2 - 1)^4\\) is \\(-16\\)"
+  ],
+  "kunci": [0,1],
+  "bahas": `
+<p><b>(a) Expand \\((x^2 - 1)^4\\)</b></p>
+
+Using the binomial theorem:<br>
+
+\\[
+(x^2 - 1)^4 
+= \\binom{4}{0}(x^2)^4 
+- \\binom{4}{1}(x^2)^3
++ \\binom{4}{2}(x^2)^2
+- \\binom{4}{3}(x^2)
++ \\binom{4}{4}.
+\\]
+
+Compute each term:<br>
+
+\\[
+= x^8 - 4x^6 + 6x^4 - 4x^2 + 1.
+\\]
+
+<hr>
+
+<p><b>(b) Find the coefficient of \\(x^6\\) in \\((1 - 2x^2)(x^2 - 1)^4\\)</b></p>
+
+We multiply term by term:
+
+\\[
+(1 - 2x^2)(x^8 - 4x^6 + 6x^4 - 4x^2 + 1).
+\\]
+
+We only need terms that produce \\(x^6\\).<br>
+
+From the \\(1\\) term:<br>
+- \\(1 \\cdot (-4x^6) = -4x^6\\).
+<br>
+From the \\(-2x^2\\) term:<br>
+- \\(-2x^2)(6x^4) = -12x^6\\).
+<br>
+Add contributions:
+
+\\[
+-4x^6 - 12x^6 = -16x^6.
+\\]
+
+But we must check again carefully:
+<br>
+Actually:
+<br>
+- From \\(1\\): coefficient is <b>–4</b><br>
+- From \\(-2x^2\\):  <br>
+  - Only \\(6x^4\\) gives \\(6x^4 \\cdot (-2x^2) = -12x^6\\).<br>
+
+Total:
+
+\\[
+-4 - 12 = -16.
+\\]
+
+<p><b>Thus the coefficient of \\(x^6\\) is:</b></p>
+
+\\[
+-16.
+\\]
+
+`
+},
+{
+  "id": "s8",
+  "tipe": "cb",
+  "bacaan": "Find the coefficient of \\(x^2\\) in the expansion of \\((3x - \\frac{2}{x})^4\\).",
+  "tanya": "Select the correct coefficient.",
+  "opsi": [
+    "The coefficient of \\(x^2\\) is \\(-216\\)."
+  ],
+  "kunci": [0],
+  "bahas": `
+<p><b>General term:</b></p>
+
+\\[
+T_k = \\binom{4}{k}(3x)^{4-k}\\left(-\\frac{2}{x}\\right)^k
+= \\binom{4}{k} 3^{4-k} (-2)^k x^{(4-k)-k}.
+\\]
+
+<p><b>Exponent of \\(x\\):</b></p>
+
+\\[
+(4-k) - k = 4 - 2k.
+\\]
+
+We want exponent = 2:
+
+\\[
+4 - 2k = 2 \\Rightarrow 2k = 2 \\Rightarrow k = 1.
+\\]
+
+<p><b>Coefficient for \\(k=1\\):</b></p>
+
+\\[
+\\binom{4}{1}(3x)^3\\left(-\\frac{2}{x}\\right)
+= 4 \\cdot 27x^3 \\cdot (-2x^{-1})
+= 4 \\cdot 27 \\cdot (-2) x^2
+= -216 x^2.
+\\]
+
+<p><b>Answer:</b> The coefficient of \\(x^2\\) is \\(-216\\).</p>
+`
+},
+{
+  "id": "s9",
+  "tipe": "cb",
+  "bacaan": "Find the term independent of \\(x\\) in the expansion of \\((x^2 - \\frac{3}{x^2})^4\\).",
+  "tanya": "Select the correct term independent of \\(x\\).",
+  "opsi": [
+    "The independent term is \\(54\\)."
+  ],
+  "kunci": [0],
+  "bahas": `
+<p><b>General term:</b></p>
+
+\\[
+T_k = \\binom{4}{k}(x^2)^{4-k}\\left(-3x^{-2}\\right)^k
+= \\binom{4}{k}(-3)^k x^{2(4-k) - 2k}.
+\\]
+
+<p><b>Exponent of \\(x\\):</b></p>
+
+\\[
+2(4-k) - 2k = 8 - 4k.
+\\]
+
+We want the exponent = 0 (independent of \\(x\\)):
+
+\\[
+8 - 4k = 0 \\Rightarrow k = 2.
+\\]
+
+<p><b>Coefficient for \\(k = 2\\):</b></p>
+
+\\[
+\\binom{4}{2}(x^2)^2(-3x^{-2})^2
+= 6 \\cdot x^4 \\cdot 9x^{-4}
+= 54.
+\\]
+
+<p><b>Answer:</b> The independent term is <b>54</b>.</p>
+`
+},
+{
+  "id": "s10",
+  "tipe": "cb",
+  "bacaan": `a. Find the first three terms, in ascending powers of \\(y\\), in the expansion of \\((1+y)^4\\).
+b. By replacing \\(y\\) with \\(5x-2x^2\\), find the coefficient of \\(x^2\\) in the expansion of \\((1+5x-2x^2)^4\\).`,
+  "tanya": "Select all the correct results.",
+  "opsi": [
+    "\\(\\) First three terms: \\(1 + 4y + 6y^2\\).",
+    "Coefficient of \\(x^2\\) in \\((1+5x-2x^2)^4\\) is \\(142\\)."
+  ],
+  "kunci": [0,1],
+  "bahas": `
+<p><b>(a) First three terms (ascending powers of \\(y\\))</b></p>
+
+Using the binomial expansion:
+\\[
+(1+y)^4 = 1 + 4y + 6y^2 + 4y^3 + y^4.
+\\]
+Thus the first three terms (ascending powers of \\(y\\)) are:
+\\[
+\\boxed{1 + 4y + 6y^2}.
+\\]
+
+<hr>
+
+<p><b>(b) Replace \\(y = 5x - 2x^2\\) and find coefficient of \\(x^2\\)</b></p>
+
+We only need terms up to \\(x^2\\). Since \\(y\\) is \\(O(x)\\), terms involving \\(y^3\\) and \\(y^4\\) are \\(O(x^3)\\) or higher and do not contribute to the \\(x^2\\) term. So use:
+\\[
+(1+y)^4 = 1 + 4y + 6y^2 + \\text{(higher-order terms)}.
+\\]
+
+Compute \\(4y\\):
+\\[
+4y = 4(5x - 2x^2) = 20x - 8x^2.
+\\]
+
+Compute \\(6y^2\\):
+\\[
+y^2 = (5x - 2x^2)^2 = 25x^2 - 20x^3 + 4x^4,
+\\]
+so the \\(x^2\\)-part of \\(y^2\\) is \\(25x^2\\), and
+\\[
+6y^2 \\text{ contributes } 6 \\cdot 25x^2 = 150x^2.
+\\]
+
+Now add the \\(x^2\\) contributions:
+- from \\(4y\\): \\(-8x^2\\)
+- from \\(6y^2\\): \\(+150x^2\\)
+
+Total coefficient of \\(x^2\\):
+\\[
+-8 + 150 = 142.
+\\]
+
+<p><b>Answer:</b> coefficient of \\(x^2\\) is \\(\\boxed{142}\\).</p>
+`
+},
+{
+  "id": "s11",
+  "tipe": "cb",
+  "bacaan": "The coefficient of \\(x^2\\) in the expansion of \\((1+ax)^4\\) is 30 times the coefficient of \\(x\\) in the expansion of \\((1+\\tfrac{ax}{3})^3\\). Find the value of \\(a\\).",
+  "tanya": "Select all the correct values of \\(a\\).",
+  "opsi": [
+    "\\(a = 0\\)",
+    "\\(a = 5\\)"
+  ],
+  "kunci": [1],
+  "bahas": `
+<p><b>Step 1 — coefficient of \\(x^2\\) in \\((1+ax)^4\\):</b></p>
+
+\\[
+\\text{Coeff}_{x^2} = \\binom{4}{2} a^2 = 6a^2.
+\\]
+
+<hr>
+
+<p><b>Step 2 — coefficient of \\(x\\) in \\((1+\\tfrac{ax}{3})^3\\):</b></p>
+
+\\[
+\\text{Coeff}_{x} = \\binom{3}{1}\\left(\\frac{a}{3}\\right) = 3\\cdot\\frac{a}{3} = a.
+\\]
+
+<hr>
+
+<p><b>Given:</b> \\(6a^2 = 30 \\times a\\). Solve:</p>
+
+\\[
+6a^2 = 30a \\quad\\Rightarrow\\quad a^2 = 5a \\quad\\Rightarrow\\quad a(a-5)=0.
+\\]
+
+Thus:
+
+\\[
+a = 0 \\quad\\text{or}\\quad a = 5.
+\\]
+<p><b>because:</b> \\(a \\ne 0\\) .</p>
+<p><b>so Answer:</b> \\(a = 5\\) only.</p>
+`
+},
 
   ]
 },
