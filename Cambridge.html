@@ -145,6 +145,245 @@
   const DB = {
 'Pure Mathematics 1 (AS Level)': {
   bab: {
+'Quadratics': {
+  materi: `
+    <h2 class="text-xl font-bold mb-2">Quadratics</h2>
+
+    <h3 class="font-semibold mt-3">1. General Form</h3>
+    <p class="mb-3">
+      A quadratic equation in one variable is written as
+      \\[
+        ax^2 + bx + c = 0,
+      \\]
+      where \\(a \\neq 0\\). The values \\(a,b,c\\) are real numbers.
+    </p>
+
+    <h3 class="font-semibold mt-3">2. Factoring</h3>
+    <p class="mb-3">
+      If \\(ax^2 + bx + c = a(x-r_1)(x-r_2)\\), then \\(r_1, r_2\\) are the roots.  
+      Methods:
+      <ul class="list-disc pl-6">
+        <li>Factorising by inspection</li>
+        <li>Completing the square</li>
+        <li>Quadratic formula</li>
+      </ul>
+    </p>
+
+    <h3 class="font-semibold mt-3">3. Quadratic Formula</h3>
+    <p class="mb-3">
+      For \\(ax^2+bx+c=0\\):
+      \\[
+        x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}.
+      \\]
+      The expression \\(\\Delta = b^2 - 4ac\\) is called the discriminant.
+    </p>
+
+    <h3 class="font-semibold mt-3">4. Discriminant & Nature of Roots</h3>
+    <p class="mb-3">
+      <ul class="list-disc pl-6">
+        <li>\\(\\Delta &gt; 0\\): two distinct real roots</li>
+        <li>\\(\\Delta = 0\\): one repeated real root</li>
+        <li>\\(\\Delta &lt; 0\\): no real roots (complex roots)</li>
+      </ul>
+    </p>
+
+    <h3 class="font-semibold mt-3">5. Vertex Form</h3>
+    <p class="mb-3">
+      Completing the square:
+      \\[
+        y = a(x-h)^2 + k,
+      \\]
+      where the vertex is \\((h,k)\\).  
+      \\[
+        h = -\\frac{b}{2a}, \\qquad k = f(h).
+      \\]
+    </p>
+
+    <h3 class="font-semibold mt-3">6. Parabola Features</h3>
+    <p class="mb-3">
+      If \\(a&gt;0\\) the parabola opens upward (minimum), and if \\(a&lt;0\\) it opens downward (maximum).  
+      Axis of symmetry: \\(x = h\\).
+    </p>
+
+    <h3 class="font-semibold mt-3">7. Word Problems</h3>
+    <p class="mb-3">
+      Quadratic equations commonly appear in geometry, motion, area, and optimisation problems.
+      <ol class="list-decimal pl-6">
+        <li>Form the quadratic model</li>
+        <li>Solve using any method</li>
+        <li>Interpret only valid solutions</li>
+      </ol>
+    </p>
+
+    <h3 class="font-semibold mt-3">8. Examples</h3>
+    <p class="mb-3"><strong>Example 1:</strong> Solve \\(x^2 - 5x + 6 = 0\\).  
+      Factoring: \\((x-2)(x-3)=0\\) → roots: 2 and 3.
+    </p>
+
+    <p class="mb-3"><strong>Example 2:</strong> Vertex of \\(f(x) = -2x^2 + 8x - 5\\).  
+      \\(h = 2\\), \\(k = 3\\). Vertex: (2,3).
+    </p>
+  `,
+
+  video: ['dQq0vW7sY1A', 'xYz9Qpe4Abc'],
+
+  soal: [
+    {
+  id: 'q1',
+  tipe: 'cb',
+  bacaan: `A curve has equation \\(y = 2xy + 5\\) and a line has equation \\(2x + 5y = 1\\).
+
+The curve and the line intersect at the points A and B. Find the coordinates of the midpoint of the line AB.
+`,
+  tanya: 'Select the correct answer.',
+  opsi: [
+    "Midpoint of the line AB is \\((\\tfrac{1}{2},0)\\)",
+      ],
+  kunci: [0],
+  bahas: `
+<img src='https://i.imgur.com/4yQfLRT.png'></p>
+`
+},
+
+{
+  id: 'q2',
+  tipe: 'cb',
+  bacaan: `a. Express \\(9x^2 - 15x\\) in the form \\((3x - a)^2 - b\\).
+
+b. Find the set of values of \\(x\\) that satisfy the inequality \\(9x^2 - 15x < 6\\).`,
+  tanya: 'Select the correct answers.',
+  opsi: [
+    "(a) \\((3x - \\tfrac{5}{2})^2 - \\tfrac{25}{4}\\)",
+    "(b) \\( -\\tfrac{1}{3} < x < 2 \\)"
+  ],
+  kunci: [0,1],
+  bahas: `
+<img src='https://i.imgur.com/fiVfzHj.png'></p>
+`
+},
+
+    {
+  id: 'q3',
+  tipe: 'cb',
+  bacaan: `Find the real roots of the equation
+\\[
+\\frac{36}{x^4} + 4 = \\frac{25}{x^2}.
+\\]
+(Assume \\(x\\) is real and \\(x \\neq 0\\).)
+`,
+  tanya: 'Select the correct set of real roots.',
+  opsi: [
+    "(a) \\(x = \\pm \\tfrac{3}{2},\\; \\pm 2\\)",
+      ],
+  kunci: [0],
+  bahas: `<img src='https://i.imgur.com/zo84yyw.png'>
+  `
+},
+
+
+    {
+  id: 'q4',
+  tipe: 'cb',
+  bacaan: `Find the set of values of \\(k\\) for which the line  \\(y = kx - 3\\) intersects the curve  \\(y = x^2 - 9x\\)  at two distinct points.`,
+  tanya: 'Select the correct condition for two distinct intersections.',
+  opsi: [
+    "\\(k < -9 - 2\\sqrt{3}\\) or \\(k > -9 + 2\\sqrt{3} \\)",
+      ],
+  kunci: [0],
+  bahas: `
+<img src='https://i.imgur.com/3REfeIL.png'>
+  `
+},
+{
+  id: 'q5',
+  tipe: 'cb',
+  bacaan: `Find the set of values of the constant \\(k\\) for which the line \\(y = 2x + k\\) meets the curve\\(y = 1 + 2kx - x^2\\) at two distinct points.`,
+  tanya: 'Select the correct condition(s) for two distinct intersections.',
+  opsi: [
+    " \\(k < 1\\) or \\(k > 2\\)",
+      ],
+  kunci: [0],
+  bahas: `
+<img src='https://i.imgur.com/8invsUw.png'>
+  `
+},
+{
+  id: 'q6',
+  tipe: 'cb',
+  bacaan: `a. Find the coordinates of the vertex of the parabola \\(y = 4x^2 - 12x + 7\\).
+
+b. Find the values of the constant \\(k\\) for which the line \\(y = kx + 3\\) is a tangent to the curve \\(y = 4x^2 - 12x + 7\\).`,
+  tanya: 'Select the correct answers.',
+  opsi: [
+    "a. Vertex = \\((\\tfrac{3}{2}, -2)\\)",
+    " b. Tangent values: \\(k = -4, -20\\)",
+  ],
+  kunci: [0,1],
+  bahas: `
+<img src='https://i.imgur.com/rgPaM5U.png'>
+
+`
+},
+{
+  id: 'q7',
+  tipe: 'cb',
+  bacaan: `A curve has equation \\(y = 5 - 2x + x^2\\) and a line has equation \\(y = 2x + k\\), where \\(k\\) is a constant.
+
+a. Show that the x-coordinates of the points of intersection of the curve and the line are given by  \\[x^2 - 4x + (5 - k) = 0.\\]
+b. For one value of \\(k\\), the line meets the curve at two distinct points A and B, where the coordinates of A are \\((-2,\\;13)\\). Find the coordinates of B.
+
+c. For the case where the line is a tangent to the curve at a point C, find the value of \\(k\\) and the coordinates of C.`,
+  tanya: 'Select all the correct answers .',
+  opsi: [
+    "(a) Intersection equation: \\(x^2-4x+(5-k)=0\\). ",
+    "(b) K= 17 and point B = (6, 29). ",
+    "(c)  k = 1 and point  C = (2, 5).",
+  ],
+  kunci: [0,1,2],
+  bahas: `
+<img src='https://i.imgur.com/A6KOcAh.png'><br>
+<img src='https://i.imgur.com/eezcHvT.png'>
+`
+},
+{
+  id: 'q8',
+  tipe: 'cb',
+  bacaan: `A curve has equation  \\[y = x^2 + 6x + 8.\\]
+a. Sketch the curve, showing the coordinates of any axes-crossing points.
+
+b. The curve is translated by the vector \\(\\begin{pmatrix}2\\\\0\\end{pmatrix}\\), then stretched vertically with stretch factor 3. 
+
+  Find the equation of the resulting curve, giving your answer in the form  \\(y = ax^2 + bx.\\)
+`,
+  tanya: "Select the correct full set of answers.",
+  opsi: [
+    "(a) x-intercepts: (-4,0), (-2,0), y-intercept: (0,8).",
+    "((b) \\(y = 3x^2 + 6x \\)",
+  ],
+  kunci: [0,1],
+  bahas: `
+<img src='https://i.imgur.com/gLTKwLa.png'>`
+},
+{
+  id: 'q9',
+  tipe: 'cb',
+  bacaan: `Solve the inequality
+\\[
+|x-5|^2 < 6|x-5| + 16.
+\\]
+(Find the set of real x that satisfy the inequality.)`,
+  tanya: 'Select the correct solution set.',
+  opsi: [
+    "\\(-3 < x < 13\\)",
+     ],
+  kunci: [0],
+  bahas: `
+<img src='https://i.imgur.com/fVuXLxg.png'>`
+},
+
+  ]
+},
+
 'Indices and Logarithms': {
   materi: `
     <h2 class="text-xl font-bold mb-2">Indices & Logarithms</h2>
@@ -8130,11 +8369,11 @@ if(q.tanya){
 
   const btnCek = document.createElement('button');
   btnCek.className = 'btn px-3 py-2 rounded-lg bg-emerald-600 text-white text-sm';
-  btnCek.textContent = 'Cek Jawaban';
+  btnCek.textContent = 'Check the Answer';
 
   const btnBahas = document.createElement('button');
   btnBahas.className = 'btn px-3 py-2 rounded-lg border chip text-sm';
-  btnBahas.textContent = 'Pembahasan';
+  btnBahas.textContent = 'Explanation';
 
   const status = document.createElement('span');
   status.className = 'ml-auto text-sm';
@@ -8203,7 +8442,7 @@ if(q.tipe==='matching'){
         benar = JSON.stringify(pairs.sort())===JSON.stringify(q.kunci.sort());
       }
 
-    status.textContent = benar ? '✅ Benar' : '❌ Salah';
+    status.textContent = benar ? '✅ Correct' : '❌ Incorrect';
     status.classList.toggle('text-emerald-600', benar);
     status.classList.toggle('text-rose-600', !benar);
   });
